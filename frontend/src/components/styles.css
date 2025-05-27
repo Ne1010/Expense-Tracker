@@ -259,6 +259,8 @@ select:focus {
   flex: 1;
   display: flex;
   flex-direction: column;
+  max-width: 350 px;
+  margin: 0 auto;
   justify-content: center;
   padding: 4rem;
 }
@@ -377,29 +379,123 @@ select:focus {
 
 /* Update the app-title-bar style */
 .app-title-bar {
-  background-color: var(--title-bar-bg);
-  padding: 0.8rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--title-bar-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 2rem;
 }
 
-.app-title-bar .logo-container {
+.search-wrapper {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.app-title-bar .logo-img {
+.search-container {
+  position: relative;
+}
+
+.search-input {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--neumorphic-shadow);
+  width: 250px;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  outline: none;
+  background-color: var(--highlight-color);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  margin-top: 0.5rem;
+  box-shadow: var(--neumorphic-shadow);
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.suggestion-item {
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-color);
+}
+
+.suggestion-item:hover {
+  background-color: var(--accent-color);
+  color: var(--highlight-color);
+}
+
+.no-results {
+  padding: 0.8rem 1.5rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Update existing styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
 
-.app-title-bar .title {
+.title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-color);
+}
+
+.expense-item input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.expense-item input:focus {
+  outline: none;
+  border-color: var(--highlight-color);
 }

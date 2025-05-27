@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Billing Site
 
 A full-stack expense management system built with Django and React.
@@ -90,3 +91,6 @@ npm start
 ## License
 
 MIT 
+=======
+# Billing-site
+>>>>>>> 4816abadaf55e8bfe39c20844286c6bcaa84be52

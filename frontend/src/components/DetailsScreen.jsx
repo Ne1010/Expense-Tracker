@@ -19,6 +19,28 @@ function getCookie(name) {
     return cookieValue;
 }
 
+const MASTER_GROUPS = [
+  ['TRAVEL', 'Travel'],
+  ['OFFICE_SUPPLIES', 'Office Supplies'],
+  ['UTILITIES', 'Utilities'],
+];
+
+const SUBGROUPS = {
+  'TRAVEL': [
+    ['TICKET', 'Ticket Expense'],
+    ['FOOD', 'Food Expense'],
+    ['HOSPITALITY', 'Hospitality Expense'],
+  ],
+  'OFFICE_SUPPLIES': [
+    ['EQUIPMENT', 'Equipment'],
+    ['STATIONERY', 'Stationery'],
+  ],
+  'UTILITIES': [
+    ['INTERNET', 'Internet'],
+    ['ELECTRICITY', 'Electricity'],
+  ],
+};
+
 const DetailsScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -29,20 +51,23 @@ const DetailsScreen = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [bulkUpdate, setBulkUpdate] = useState({
+  const [titleStatus, setTitleStatus] = useState({
     status: '',
     comments: ''
   });
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [editingExpense, setEditingExpense] = useState(null);
 
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin') === 'true';
     setIsAdmin(adminStatus);
-    console.log('Is Admin:', adminStatus);
     fetchData(selectedTitleId);
   }, [selectedTitleId]);
 
   const fetchData = async (titleId = null) => {
     try {
+      setLoading(true);
       const token = localStorage.getItem('token');
       const config = {
         headers: {
@@ -56,6 +81,19 @@ const DetailsScreen = () => {
 
       const titlesResponse = await axios.get('/api/expense-titles/', config);
       setExpenseTitles(titlesResponse.data);
+
+      if (titleId && expensesResponse.data.length > 0) {
+        const firstExpense = expensesResponse.data[0];
+        setTitleStatus({
+          status: firstExpense.status || '',
+          comments: firstExpense.comments || ''
+        });
+      } else {
+        setTitleStatus({
+          status: '',
+          comments: ''
+        });
+      }
 
       setLoading(false);
     } catch (error) {
@@ -74,6 +112,7 @@ const DetailsScreen = () => {
   const handleTitleSelect = (titleId) => {
     setSelectedTitleId(titleId);
     setPendingEdits({});
+    fetchData(titleId);
   };
 
   const selectedTitle = expenseTitles.find(title => title.id === selectedTitleId);
@@ -81,10 +120,30 @@ const DetailsScreen = () => {
     ? expenses.filter(expense => expense.expense_title && expense.expense_title.id === selectedTitleId)
     : expenses;
 
+  const filteredTitles = expenseTitles.filter(title =>
+    title.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    setShowSuggestions(true);
+  };
+
+  const handleSuggestionClick = (titleId) => {
+    setSelectedTitleId(titleId);
+    setSearchQuery('');
+    setShowSuggestions(false);
+  };
+
+  const handleSearchBlur = () => {
+    setTimeout(() => {
+      setShowSuggestions(false);
+    }, 200);
+  };
+
   const handleAdminUpdate = async (expenseId, updatedFields) => {
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
-    console.log('Attempting to update expense:', expenseId, updatedFields);
     try {
       const response = await axios.patch(`/api/expense-forms/${expenseId}/update_status/`, updatedFields, {
         headers: {
@@ -93,7 +152,6 @@ const DetailsScreen = () => {
           'Content-Type': 'application/json'
         },
       });
-      console.log('Update successful:', response.data);
       setExpenses(prevExpenses => 
         prevExpenses.map(expense => 
           expense.id === expenseId 
@@ -112,45 +170,120 @@ const DetailsScreen = () => {
     }
   };
 
-  const handleBulkUpdate = async () => {
-    if (!selectedTitleId || !bulkUpdate.status) return;
+  const handleTitleStatusUpdate = async () => {
+    if (!selectedTitleId || !titleStatus.status) return;
 
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
-    const formsToUpdate = filteredExpenses.map(expense => expense.id);
-
+    
     try {
-      const response = await axios.post('/api/expense-forms/bulk_update/', {
-        expense_ids: formsToUpdate,
-        status: bulkUpdate.status.toUpperCase(),
-        comments: bulkUpdate.comments
-      }, {
-        headers: {
-          'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-      });
+      const formsToUpdate = expenses.filter(expense => 
+        expense.expense_title?.id === selectedTitleId
+      );
 
-      // Update local state
       setExpenses(prevExpenses => 
         prevExpenses.map(expense => 
-          formsToUpdate.includes(expense.id)
+          expense.expense_title?.id === selectedTitleId
             ? { 
                 ...expense, 
-                status: bulkUpdate.status.toUpperCase(),
-                comments: bulkUpdate.comments
+                status: titleStatus.status,
+                comments: titleStatus.comments
               }
             : expense
         )
       );
 
-      // Clear bulk update form
-      setBulkUpdate({ status: '', comments: '' });
+      const promises = formsToUpdate.map(expense => 
+        axios.patch(`/api/expense-forms/${expense.id}/update_status/`, {
+          status: titleStatus.status,
+          comments: titleStatus.comments
+        }, {
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+        })
+      );
+
+      await Promise.all(promises);
+      
+      const expensesUrl = `/api/expense-forms/?title_id=${selectedTitleId}`;
+      const config = {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      };
+      
+      const response = await axios.get(expensesUrl, config);
+      setExpenses(response.data);
+      
       setError('');
     } catch (error) {
       console.error('Error updating expenses:', error.response?.data || error.message);
       setError('Failed to update expenses. Please try again.');
+      fetchData(selectedTitleId);
+    }
+  };
+
+  const handleEditExpense = (expense) => {
+    setEditingExpense(expense.id);
+    setPendingEdits({
+      [expense.id]: {
+        amount: expense.amount,
+        date: expense.date,
+        master_group: expense.master_group,
+        subgroup: expense.subgroup
+      }
+    });
+  };
+
+  const handleMasterGroupChange = (expenseId, value) => {
+    setPendingEdits(prev => ({
+      ...prev,
+      [expenseId]: {
+        ...prev[expenseId],
+        master_group: value,
+        subgroup: ''
+      }
+    }));
+  };
+
+  const handleCancelEdit = () => {
+    setEditingExpense(null);
+    setPendingEdits({});
+  };
+
+  const handleSaveEdit = async (expenseId) => {
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      const response = await axios.patch(`/api/expense-forms/${expenseId}/`, 
+        pendingEdits[expenseId],
+        {
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+        }
+      );
+
+      setExpenses(prevExpenses => 
+        prevExpenses.map(expense => 
+          expense.id === expenseId 
+            ? { ...expense, ...response.data }
+            : expense
+        )
+      );
+
+      setEditingExpense(null);
+      setPendingEdits({});
+      setError('');
+    } catch (error) {
+      console.error('Error updating expense:', error.response?.data || error.message);
+      setError('Failed to update expense. Please try again.');
     }
   };
 
@@ -164,7 +297,37 @@ const DetailsScreen = () => {
           <img src={logoImage} alt="Logo" className="logo-img" />
           <span className="title">Expense Details</span>
         </div>
-        <button onClick={handleLogout} className="btn">Logout</button>
+        <div className="search-wrapper">
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search expense titles..."
+              value={searchQuery}
+              onChange={handleSearch}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={handleSearchBlur}
+              className="search-input"
+            />
+            {showSuggestions && searchQuery && (
+              <div className="search-suggestions">
+                {filteredTitles.length > 0 ? (
+                  filteredTitles.map((title) => (
+                    <div
+                      key={title.id}
+                      className="suggestion-item"
+                      onClick={() => handleSuggestionClick(title.id)}
+                    >
+                      {title.title}
+                    </div>
+                  ))
+                ) : (
+                  <div className="no-results">No matching titles found</div>
+                )}
+              </div>
+            )}
+          </div>
+          <button onClick={handleLogout} className="btn">Logout</button>
+        </div>
       </div>
 
       <div className="expense-details-container">
@@ -190,81 +353,105 @@ const DetailsScreen = () => {
               <h3>Expense Forms</h3>
               {selectedTitle && <h2>{selectedTitle.title}</h2>}
               
-              {isAdmin && selectedTitleId && (
-                <div className="bulk-update-section">
-                  <h4>Bulk Update All Forms</h4>
+              {selectedTitleId && (
+                <div className="current-status-section">
+                  <h4>Current Status</h4>
                   <div className="form-row">
                     <div className="form-group">
                       <div>Status</div>
-                      <select
-                        value={bulkUpdate.status}
-                        onChange={(e) => setBulkUpdate(prev => ({ ...prev, status: e.target.value }))}
-                      >
-                        <option value="">Select Status</option>
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">Rejected</option>
-                      </select>
+                      <div className="status-display">{titleStatus.status || 'Not Set'}</div>
                     </div>
                     <div className="form-group">
                       <div>Comments</div>
-                      <textarea
-                        value={bulkUpdate.comments}
-                        onChange={(e) => setBulkUpdate(prev => ({ ...prev, comments: e.target.value }))}
-                        placeholder="Enter comments for all forms"
-                      />
+                      <div className="comments-display">{titleStatus.comments || 'No comments'}</div>
                     </div>
-                    <button
-                      className="btn"
-                      onClick={handleBulkUpdate}
-                      disabled={!bulkUpdate.status}
-                    >
-                      Update All Forms
-                    </button>
                   </div>
                 </div>
               )}
-
+              
               {filteredExpenses.map((expense) => (
                 <div key={expense.id} className="expense-item">
                   <div className="form-row">
                     <div className="form-group">
                       <div>Master Group</div>
-                      <div>{expense.master_group}</div>
+                      {editingExpense === expense.id ? (
+                        <select
+                          value={pendingEdits[expense.id]?.master_group || expense.master_group}
+                          onChange={(e) => handleMasterGroupChange(expense.id, e.target.value)}
+                        >
+                          {MASTER_GROUPS.map(([value, label]) => (
+                            <option key={value} value={value}>{label}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <div>{MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}</div>
+                      )}
                     </div>
                     
                     <div className="form-group">
                       <div>Subgroup</div>
-                      <div>{expense.subgroup}</div>
+                      {editingExpense === expense.id ? (
+                        <select
+                          value={pendingEdits[expense.id]?.subgroup || expense.subgroup}
+                          onChange={(e) => setPendingEdits(prev => ({
+                            ...prev,
+                            [expense.id]: {
+                              ...prev[expense.id],
+                              subgroup: e.target.value
+                            }
+                          }))}
+                        >
+                          {SUBGROUPS[pendingEdits[expense.id]?.master_group || expense.master_group]?.map(([value, label]) => (
+                            <option key={value} value={value}>{label}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <div>{SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}</div>
+                      )}
                     </div>
                   </div>
                   
                   <div className="form-row">
                     <div className="form-group">
                       <div>Amount</div>
-                      <input
-                        type="number"
-                        name="amount"
-                        value={pendingEdits[expense.id]?.amount || expense.amount}
-                        onChange={(e) => setPendingEdits(prev => ({ ...prev, [expense.id]: { ...prev[expense.id], amount: e.target.value } }))}
-                        disabled={!isAdmin}
-                      />
-                      <div>{expense.currency}</div>
+                      {editingExpense === expense.id ? (
+                        <input
+                          type="number"
+                          value={pendingEdits[expense.id]?.amount || expense.amount}
+                          onChange={(e) => setPendingEdits(prev => ({
+                            ...prev,
+                            [expense.id]: {
+                              ...prev[expense.id],
+                              amount: e.target.value
+                            }
+                          }))}
+                        />
+                      ) : (
+                        <div>{expense.amount} {expense.currency}</div>
+                      )}
                     </div>
                     
                     <div className="form-group">
                       <div>Date</div>
-                      <input
-                        type="date"
-                        name="date"
-                        value={pendingEdits[expense.id]?.date || expense.date}
-                        onChange={(e) => setPendingEdits(prev => ({ ...prev, [expense.id]: { ...prev[expense.id], date: e.target.value } }))}
-                        disabled={!isAdmin}
-                      />
+                      {editingExpense === expense.id ? (
+                        <input
+                          type="date"
+                          value={pendingEdits[expense.id]?.date || expense.date}
+                          onChange={(e) => setPendingEdits(prev => ({
+                            ...prev,
+                            [expense.id]: {
+                              ...prev[expense.id],
+                              date: e.target.value
+                            }
+                          }))}
+                        />
+                      ) : (
+                        <div>{expense.date}</div>
+                      )}
                     </div>
                   </div>
 
-                  {isAdmin && expense.attachment && (
+                  {expense.attachment && (
                     <div className="form-group">
                       <div>Attachment</div>
                       <a
@@ -278,69 +465,101 @@ const DetailsScreen = () => {
                     </div>
                   )}
 
-                  <div className="form-group">
-                    <div>Status</div>
-                    {isAdmin ? (
-                      <select
-                        value={pendingEdits[expense.id]?.status?.toLowerCase() || expense.status.toLowerCase()}
-                        onChange={(e) => {
-                          const newStatus = e.target.value.toUpperCase();
-                          setPendingEdits(prev => ({
-                            ...prev,
-                            [expense.id]: {
-                              ...prev[expense.id],
-                              status: newStatus
-                            }
-                          }));
-                        }}
+                  <div className="form-actions">
+                    {editingExpense === expense.id ? (
+                      <>
+                        <button
+                          className="btn"
+                          onClick={() => handleSaveEdit(expense.id)}
+                        >
+                          Save Changes
+                        </button>
+                        <button
+                          className="btn btn-secondary"
+                          onClick={handleCancelEdit}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="btn"
+                        onClick={() => handleEditExpense(expense)}
                       >
-                        <option value="pending">Pending</option>
-                        <option value="approved">Approved</option>
-                        <option value="rejected">Rejected</option>
-                      </select>
-                    ) : (
-                      <div>
-                        {expense.status}
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="form-group">
-                    <div>Comments</div>
-                    {isAdmin ? (
-                      <textarea
-                        value={pendingEdits[expense.id]?.comments || expense.comments || ''}
-                        onChange={(e) => {
-                          setPendingEdits(prev => ({
-                            ...prev,
-                            [expense.id]: {
-                              ...prev[expense.id],
-                              comments: e.target.value
-                            }
-                          }));
-                        }}
-                      />
-                    ) : (
-                      <div>{expense.comments || 'N/A'}</div>
+                        Edit Form
+                      </button>
                     )}
                   </div>
 
                   {isAdmin && (
-                    <button
-                      className="btn"
-                      onClick={() => handleAdminUpdate(expense.id, {
-                        status: pendingEdits[expense.id]?.status || expense.status,
-                        comments: pendingEdits[expense.id]?.comments || expense.comments || '',
-                        amount: pendingEdits[expense.id]?.amount || expense.amount,
-                        date: pendingEdits[expense.id]?.date || expense.date
-                      })}
-                      disabled={!pendingEdits[expense.id]}
-                    >
-                      Save Changes
-                    </button>
+                    <div className="admin-actions">
+                      <div className="form-row">
+                        <div className="form-group">
+                          <div>Status</div>
+                          <select
+                            value={expense.status || ''}
+                            onChange={(e) => handleAdminUpdate(expense.id, { status: e.target.value.toUpperCase() })}
+                          >
+                            <option value="">Select Status</option>
+                            <option value="PENDING">Pending</option>
+                            <option value="APPROVED">Approved</option>
+                            <option value="REJECTED">Rejected</option>
+                          </select>
+                        </div>
+                        <div className="form-group">
+                          <div>Comments</div>
+                          <textarea
+                            value={expense.comments || ''}
+                            onChange={(e) => handleAdminUpdate(expense.id, { comments: e.target.value })}
+                            placeholder="Enter comments"
+                          />
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </div>
               ))}
+
+              {isAdmin && selectedTitleId && (
+                <div className="title-status-section">
+                  <h4>Update Status and Comments for All Forms</h4>
+                  <div className="form-row">
+                    <div className="form-group">
+                      <div>Status</div>
+                      <select
+                        value={titleStatus.status}
+                        onChange={(e) => setTitleStatus(prev => ({
+                          ...prev,
+                          status: e.target.value.toUpperCase()
+                        }))}
+                      >
+                        <option value="">Select Status</option>
+                        <option value="PENDING">Pending</option>
+                        <option value="APPROVED">Approved</option>
+                        <option value="REJECTED">Rejected</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <div>Comments</div>
+                      <textarea
+                        value={titleStatus.comments}
+                        onChange={(e) => setTitleStatus(prev => ({
+                          ...prev,
+                          comments: e.target.value
+                        }))}
+                        placeholder="Enter comments for all forms"
+                      />
+                    </div>
+                    <button
+                      className="btn"
+                      onClick={handleTitleStatusUpdate}
+                      disabled={!titleStatus.status}
+                    >
+                      Update All Forms
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
