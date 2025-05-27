@@ -1,0 +1,120 @@
+Metadata-Version: 2.1
+Name: django-admin-logs
+Version: 1.0.0
+Summary: View, delete or disable Django admin log entries.
+Home-page: https://github.com/radwon/django-admin-logs
+Author: Adam Radwon
+Author-email: dev@radwon.com
+License: MIT
+Keywords: django admin logs
+Platform: UNKNOWN
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Framework :: Django
+Classifier: Environment :: Web Environment
+Classifier: Operating System :: OS Independent
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.5
+Description-Content-Type: text/x-rst
+Requires-Dist: Django (>=2.1)
+
+=================
+Django Admin Logs
+=================
+
+.. image:: https://img.shields.io/pypi/v/django-admin-logs.svg
+   :target: https://pypi.python.org/pypi/django-admin-logs
+
+.. image:: https://img.shields.io/travis/radwon/django-admin-logs.svg
+   :target: https://travis-ci.org/radwon/django-admin-logs
+
+.. image:: https://img.shields.io/codecov/c/github/radwon/django-admin-logs.svg
+   :target: https://codecov.io/gh/radwon/django-admin-logs
+
+Log entries are automatically created by the Django framework whenever a user
+adds, changes or deletes objects through the admin interface.
+
+**Django Admin Logs** is a package that allows you to either view the admin
+log entries from within the admin interface, or to disable them entirely.
+
+
+Requirements
+============
+
+* Python 3.5+
+* Django 2.1+
+
+
+Installation
+============
+
+Install the package from PyPI:
+
+.. code-block:: bash
+
+    pip install django-admin-logs
+
+Then add it to your ``INSTALLED_APPS`` in the ``settings`` file:
+
+.. code-block:: python
+
+    INSTALLED_APPS = (
+        ...
+        'django_admin_logs',
+        ...
+    )
+
+
+Configuration
+=============
+
+By default, **Django Admin Logs** enables log entries to be viewed from within
+the admin interface but does not allow them to be deleted. Either of these
+options can be configured by adding the following to your ``settings`` file.
+
+.. code-block:: python
+
+    DJANGO_ADMIN_LOGS_DELETABLE = True
+
+This allows super users, or any staff users with the delete_logentry
+permission, to delete log entries from within the admin interface.
+
+.. code-block:: python
+
+    DJANGO_ADMIN_LOGS_ENABLED = False
+
+This disables admin log entries so that they are no longer created by the
+Django framework or viewable from the within the admin interface.
+
+
+Development
+===========
+
+From the local project directory, activate the virtual environment and install the development requirements:
+
+.. code-block:: bash
+
+    pip install -r requirements_dev.txt
+
+To run tests for all supported Python and Django versions using tox:
+
+.. code-block:: bash
+
+    tox
+
+To run tests for specific versions e.g. Python 3.8 and Django 3.0:
+
+.. code-block:: bash
+
+    tox -e py38-django30
+
+
+Changelog
+=========
+
+1.0.0 (2020-03-03)
+------------------
+* Initial release
+
+
