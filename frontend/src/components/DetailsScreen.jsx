@@ -19,10 +19,23 @@ function getCookie(name) {
     return cookieValue;
 }
 
+const STATUS_OPTIONS = [
+  ['PENDING', 'Pending'],
+  ['APPROVED', 'Approved'],
+  ['REJECTED', 'Rejected']
+];
+
 const MASTER_GROUPS = [
   ['TRAVEL', 'Travel'],
   ['OFFICE_SUPPLIES', 'Office Supplies'],
   ['UTILITIES', 'Utilities'],
+];
+
+const CURRENCIES = [
+  ['USD', 'USD'],
+  ['EUR', 'EUR'],
+  ['GBP', 'GBP'],
+  ['INR', 'INR'],
 ];
 
 const SUBGROUPS = {
@@ -58,10 +71,16 @@ const DetailsScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [editingExpense, setEditingExpense] = useState(null);
+  const [newTitle, setNewTitle] = useState('');
+  const [showCopyOptions, setShowCopyOptions] = useState(false);
+  const [copySourceTitleId, setCopySourceTitleId] = useState(null);
+  const [copyForms, setCopyForms] = useState(true);
 
   useEffect(() => {
-    const adminStatus = localStorage.getItem('isAdmin') === 'true';
-    setIsAdmin(adminStatus);
+    // Check if user is admin by checking the username
+    const isUserAdmin = localStorage.getItem('username') === 'admin';
+    setIsAdmin(isUserAdmin);
+    localStorage.setItem('isAdmin', isUserAdmin);
     fetchData(selectedTitleId);
   }, [selectedTitleId]);
 
@@ -108,6 +127,16 @@ const DetailsScreen = () => {
     localStorage.removeItem('username');
     navigate('/login');
   };
+
+  const username = localStorage.getItem('username');
+  // Show copy button for both admin and regular users
+  const showCopyButton = true;
+  
+  // Debug logs
+  console.log('Username:', username);
+  console.log('Is Admin:', isAdmin);
+  console.log('Show Copy Button:', showCopyButton);
+  console.log('LocalStorage isAdmin:', localStorage.getItem('isAdmin'));
 
   const handleTitleSelect = (titleId) => {
     setSelectedTitleId(titleId);
@@ -287,6 +316,88 @@ const DetailsScreen = () => {
     }
   };
 
+  const handleAddTitle = async () => {
+    if (!newTitle.trim()) return;
+
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      const response = await axios.post('/api/expense-titles/', {
+        title: newTitle
+      }, {
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      setExpenseTitles(prev => [...prev, response.data]);
+      setNewTitle('');
+      setError('');
+    } catch (error) {
+      console.error('Error adding title:', error.response?.data || error.message);
+      setError('Failed to add title. Please try again.');
+    }
+  };
+
+  const handleCopyExpense = async () => {
+    if (!newTitle.trim() || !copySourceTitleId) return;
+
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      // Create new title
+      const titleResponse = await axios.post('/api/expense-titles/', {
+        title: newTitle
+      }, {
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const newTitleId = titleResponse.data.id;
+
+      if (copyForms) {
+        // Get all forms from source title
+        const sourceForms = expenses.filter(expense => 
+          expense.expense_title?.id === copySourceTitleId
+        );
+
+        // Create copies of all forms for the new title
+        const formPromises = sourceForms.map(form => 
+          axios.post('/api/expense-forms/', {
+            ...form,
+            expense_title: newTitleId,
+            id: undefined // Remove ID to create new record
+          }, {
+            headers: {
+              'X-CSRFToken': csrftoken,
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          })
+        );
+
+        await Promise.all(formPromises);
+      }
+
+      // Refresh data
+      setExpenseTitles(prev => [...prev, titleResponse.data]);
+      setNewTitle('');
+      setCopySourceTitleId(null);
+      setShowCopyOptions(false);
+      setError('');
+    } catch (error) {
+      console.error('Error copying expense:', error.response?.data || error.message);
+      setError('Failed to copy expense. Please try again.');
+    }
+  };
+
   if (loading) return <div className="container">Loading...</div>;
   if (error) return <div className="container error-message">{error}</div>;
 
@@ -353,22 +464,6 @@ const DetailsScreen = () => {
               <h3>Expense Forms</h3>
               {selectedTitle && <h2>{selectedTitle.title}</h2>}
               
-              {selectedTitleId && (
-                <div className="current-status-section">
-                  <h4>Current Status</h4>
-                  <div className="form-row">
-                    <div className="form-group">
-                      <div>Status</div>
-                      <div className="status-display">{titleStatus.status || 'Not Set'}</div>
-                    </div>
-                    <div className="form-group">
-                      <div>Comments</div>
-                      <div className="comments-display">{titleStatus.comments || 'No comments'}</div>
-                    </div>
-                  </div>
-                </div>
-              )}
-              
               {filteredExpenses.map((expense) => (
                 <div key={expense.id} className="expense-item">
                   <div className="form-row">
@@ -413,6 +508,28 @@ const DetailsScreen = () => {
                   
                   <div className="form-row">
                     <div className="form-group">
+                      <div>CURR</div>
+                      {editingExpense === expense.id ? (
+                        <select
+                          value={pendingEdits[expense.id]?.currency || expense.currency}
+                          onChange={(e) => setPendingEdits(prev => ({
+                            ...prev,
+                            [expense.id]: {
+                              ...prev[expense.id],
+                              currency: e.target.value
+                            }
+                          }))}
+                        >
+                          {CURRENCIES.map(([value, label]) => (
+                            <option key={value} value={value}>{label}</option>
+                          ))}
+                        </select>
+                      ) : (
+                        <div>{expense.currency}</div>
+                      )}
+                    </div>
+                    
+                    <div className="form-group">
                       <div>Amount</div>
                       {editingExpense === expense.id ? (
                         <input
@@ -427,10 +544,12 @@ const DetailsScreen = () => {
                           }))}
                         />
                       ) : (
-                        <div>{expense.amount} {expense.currency}</div>
+                        <div>{expense.amount}</div>
                       )}
                     </div>
-                    
+                  </div>
+
+                  <div className="form-row">
                     <div className="form-group">
                       <div>Date</div>
                       {editingExpense === expense.id ? (
@@ -465,6 +584,20 @@ const DetailsScreen = () => {
                     </div>
                   )}
 
+                  {/* Add status and comments display for all users */}
+                  <div className="form-group">
+                    <div>Status</div>
+                    <div className="status-display">
+                      {expense.status || 'Pending'}
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div>Comments</div>
+                    <div className="comments-display">
+                      {expense.comments || 'No comments'}
+                    </div>
+                  </div>
+
                   <div className="form-actions">
                     {editingExpense === expense.id ? (
                       <>
@@ -490,56 +623,40 @@ const DetailsScreen = () => {
                       </button>
                     )}
                   </div>
-
-                  {isAdmin && (
-                    <div className="admin-actions">
-                      <div className="form-row">
-                        <div className="form-group">
-                          <div>Status</div>
-                          <select
-                            value={expense.status || ''}
-                            onChange={(e) => handleAdminUpdate(expense.id, { status: e.target.value.toUpperCase() })}
-                          >
-                            <option value="">Select Status</option>
-                            <option value="PENDING">Pending</option>
-                            <option value="APPROVED">Approved</option>
-                            <option value="REJECTED">Rejected</option>
-                          </select>
-                        </div>
-                        <div className="form-group">
-                          <div>Comments</div>
-                          <textarea
-                            value={expense.comments || ''}
-                            onChange={(e) => handleAdminUpdate(expense.id, { comments: e.target.value })}
-                            placeholder="Enter comments"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
 
               {isAdmin && selectedTitleId && (
                 <div className="title-status-section">
-                  <h4>Update Status and Comments for All Forms</h4>
+                  <h4>Status and Comments</h4>
                   <div className="form-row">
                     <div className="form-group">
-                      <div>Status</div>
-                      <select
-                        value={titleStatus.status}
-                        onChange={(e) => setTitleStatus(prev => ({
-                          ...prev,
-                          status: e.target.value.toUpperCase()
-                        }))}
-                      >
-                        <option value="">Select Status</option>
-                        <option value="PENDING">Pending</option>
-                        <option value="APPROVED">Approved</option>
-                        <option value="REJECTED">Rejected</option>
-                      </select>
-                    </div>
-                    <div className="form-group">
+                      <div className="status-buttons">
+                        <button
+                          className="btn-accept"
+                          onClick={() => {
+                            setTitleStatus(prev => ({
+                              ...prev,
+                              status: 'APPROVED'
+                            }));
+                            handleTitleStatusUpdate();
+                          }}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="btn-reject"
+                          onClick={() => {
+                            setTitleStatus(prev => ({
+                              ...prev,
+                              status: 'REJECTED'
+                            }));
+                            handleTitleStatusUpdate();
+                          }}
+                        >
+                          Reject
+                        </button>
+                      </div>
                       <div>Comments</div>
                       <textarea
                         value={titleStatus.comments}
@@ -550,13 +667,6 @@ const DetailsScreen = () => {
                         placeholder="Enter comments for all forms"
                       />
                     </div>
-                    <button
-                      className="btn"
-                      onClick={handleTitleStatusUpdate}
-                      disabled={!titleStatus.status}
-                    >
-                      Update All Forms
-                    </button>
                   </div>
                 </div>
               )}

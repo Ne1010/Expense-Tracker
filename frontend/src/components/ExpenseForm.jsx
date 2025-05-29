@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
 
+// Configure axios defaults
+axios.defaults.baseURL = 'http://localhost:8000';  // Update this to match your Django server port
+axios.defaults.withCredentials = true;
+
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -48,38 +52,73 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(''); // Clear any previous errors
+    
     const csrftoken = getCookie('csrftoken');
+    if (!csrftoken) {
+      setError('CSRF token not found. Please refresh the page and try again.');
+      return;
+    }
 
     const formDataToSend = new FormData();
     
+    // Add all form fields
     Object.keys(formData).forEach(key => {
-      if (key !== 'attachment' && formData[key] !== null) {
+      if (key !== 'attachment' && formData[key] !== null && formData[key] !== '') {
         formDataToSend.append(key, formData[key]);
       }
     });
 
+    // Add attachment if exists
     if (formData.attachment) {
       formDataToSend.append('attachment', formData.attachment);
     }
 
+    // Add expense title ID and status
     formDataToSend.append('expense_title_id', titleId);
     formDataToSend.append('status', formData.status.toUpperCase());
+
+    // Log the form data being sent
+    console.log('Sending form data:', {
+      master_group: formData.master_group,
+      subgroup: formData.subgroup,
+      amount: formData.amount,
+      currency: formData.currency,
+      date: formData.date,
+      status: formData.status,
+      expense_title_id: titleId
+    });
 
     try {
       const response = await axios.post('/api/expense-forms/', formDataToSend, {
         headers: {
           'X-CSRFToken': csrftoken,
+          'Content-Type': 'multipart/form-data',
         },
       });
 
       if (response.data) {
+        console.log('Form submitted successfully:', response.data);
         onClose();
       } else {
         setError('Failed to create expense form. Server returned no data.');
       }
     } catch (error) {
-      console.error('Error submitting form:', error.response?.data || error.message);
-      setError(error.response?.data?.message || 'Failed to create expense form. Please try again.');
+      console.error('Error submitting form:', error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Error response:', error.response.data);
+        setError(error.response.data.detail || 'Failed to create expense form. Please try again.');
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received:', error.request);
+        setError('No response from server. Please check your connection and try again.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error setting up request:', error.message);
+        setError('Error setting up request. Please try again.');
+      }
     }
   };
 

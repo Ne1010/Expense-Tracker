@@ -17,7 +17,7 @@ class ExpenseTitleSerializer(serializers.ModelSerializer):
 class ExpenseFormSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     expense_title = ExpenseTitleSerializer(read_only=True)
-    expense_title_id = serializers.CharField(write_only=True, required=False)
+    expense_title_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = ExpenseForm
@@ -30,10 +30,8 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
 
     def validate_expense_title_id(self, value):
         try:
-            expense_title = ExpenseTitle.objects.get(pk=int(value))
+            expense_title = ExpenseTitle.objects.get(pk=value)
             return expense_title
-        except (ValueError, TypeError):
-            raise serializers.ValidationError("Invalid expense title ID format. Must be a number.")
         except ExpenseTitle.DoesNotExist:
             raise serializers.ValidationError("Expense title with this ID does not exist.")
 

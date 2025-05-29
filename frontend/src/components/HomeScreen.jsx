@@ -27,6 +27,8 @@ const HomeScreen = () => {
   const [expenseTitles, setExpenseTitles] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeFormId, setActiveFormId] = useState(null);
+  const [showCopyOptions, setShowCopyOptions] = useState(false);
+  const [copySourceTitleId, setCopySourceTitleId] = useState(null);
 
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin') === 'true';
@@ -36,10 +38,16 @@ const HomeScreen = () => {
 
   const fetchExpenseTitles = async () => {
     try {
-      const response = await axios.get('/api/expense-titles/');
+      const token = localStorage.getItem('token');
+      const response = await axios.get('/api/expense-titles/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       setExpenseTitles(response.data);
     } catch (error) {
       console.error('Error fetching expense titles:', error);
+      setError('Failed to fetch expense titles. Please refresh the page.');
     }
   };
 
@@ -51,21 +59,81 @@ const HomeScreen = () => {
     }
 
     const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
 
     try {
+      // First create the new title
       const titleResponse = await axios.post('/api/expense-titles/', {
         title: expenseTitle
       }, {
         headers: {
           'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
         },
       });
 
-      setExpenseTitles([titleResponse.data, ...expenseTitles]);
+      const newTitleId = titleResponse.data.id;
+
+      // If copying is selected, copy only forms from the selected title
+      if (copySourceTitleId) {
+        try {
+          // Get forms only from the selected source title
+          const sourceFormsResponse = await axios.get(`/api/expense-forms/?expense_title_id=${copySourceTitleId}`, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          
+          const sourceForms = sourceFormsResponse.data;
+          console.log('Source forms to copy:', sourceForms);
+
+          // Create copies of forms for the new title
+          for (const form of sourceForms) {
+            // Create a new form with all the original values
+            const newForm = {
+              expense_title_id: newTitleId,
+              master_group: form.master_group,
+              subgroup: form.subgroup,
+              amount: form.amount,
+              currency: form.currency,
+              date: form.date,
+              status: form.status || 'PENDING',
+              comments: form.comments || ''
+            };
+
+            console.log('Creating new form with data:', newForm);
+
+            const formResponse = await axios.post('/api/expense-forms/', newForm, {
+              headers: {
+                'X-CSRFToken': csrftoken,
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            });
+
+            console.log('Form created successfully:', formResponse.data);
+          }
+
+          // After copying forms, fetch the updated list
+          await fetchExpenseTitles();
+          setError('Successfully created new title with copied forms.');
+        } catch (copyError) {
+          console.error('Error copying forms:', copyError.response?.data || copyError);
+          setError('Created new title but failed to copy forms. Please try copying forms manually.');
+        }
+      } else {
+        // If not copying, just refresh the list
+        await fetchExpenseTitles();
+      }
+      
+      // Reset form
       setExpenseTitle('');
-      setError('');
+      setCopySourceTitleId(null);
+      setShowCopyOptions(false);
     } catch (error) {
-      setError('Failed to create expense. Please try again.');
+      console.error('Error creating expense:', error.response?.data || error);
+      setError(error.response?.data?.detail || 'Failed to create expense. Please try again.');
     }
   };
 
@@ -110,9 +178,34 @@ const HomeScreen = () => {
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn">
-              Add Title
-            </button>
+            <div className="title-action-buttons">
+              <button type="submit" className="btn btn-add">
+                Add Title
+              </button>
+              {!isAdmin && (
+                <button 
+                  type="button"
+                  className="btn btn-copy"
+                  onClick={() => setShowCopyOptions(!showCopyOptions)}
+                >
+                  Copy Expense
+                </button>
+              )}
+            </div>
+            {showCopyOptions && !isAdmin && (
+              <div className="copy-options">
+                <select
+                  value={copySourceTitleId || ''}
+                  onChange={(e) => setCopySourceTitleId(e.target.value)}
+                  className="copy-select"
+                >
+                  <option value="">Select title to copy</option>
+                  {expenseTitles.map(title => (
+                    <option key={title.id} value={title.id}>{title.title}</option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
         </form>
       </div>

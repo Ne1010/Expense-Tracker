@@ -4,6 +4,9 @@ from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from .models import User, ExpenseTitle, ExpenseForm
 from .serializers import UserSerializer, ExpenseTitleSerializer, ExpenseFormSerializer
+import logging
+
+logger = logging.getLogger(__name__)
 
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
@@ -44,17 +47,38 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
-        if self.request.user.is_admin:
-            return ExpenseForm.objects.all()
-        return ExpenseForm.objects.filter(user=self.request.user)
+        queryset = ExpenseForm.objects.all()
+        
+        # Filter by expense_title_id if provided
+        expense_title_id = self.request.query_params.get('expense_title_id')
+        if expense_title_id:
+            queryset = queryset.filter(expense_title_id=expense_title_id)
+        
+        # Apply user-based filtering
+        if not self.request.user.is_admin:
+            queryset = queryset.filter(user=self.request.user)
+            
+        return queryset
 
-    def perform_create(self, serializer):
-        if self.request.user.is_authenticated:
-            serializer.save(user=self.request.user)
-        else:
+    def create(self, request, *args, **kwargs):
+        logger.info(f"Received form data: {request.data}")
+        try:
+            # Create and validate the serializer synchronously
+            serializer = self.get_serializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            logger.info(f"Validated data: {serializer.validated_data}")
+            
+            # Create the instance synchronously
+            instance = serializer.save()
+            logger.info(f"Created expense form with ID: {instance.id}")
+            
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            
+        except Exception as e:
+            logger.error(f"Error creating expense form: {str(e)}")
             return Response(
-                {"detail": "Authentication required to create expense forms."}, 
-                status=status.HTTP_401_UNAUTHORIZED 
+                {"detail": f"Error creating expense form: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
     @action(detail=True, methods=['patch'])
@@ -69,7 +93,6 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
         status_value = request.data.get('status')
         comments = request.data.get('comments', '')
 
-        print('Received status value:', status_value)
         if status_value not in dict(ExpenseForm.STATUS_CHOICES):
             return Response(
                 {"detail": "Invalid status"},
