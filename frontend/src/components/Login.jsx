@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './styles.css';
 import logoImage from '../logo.jpg';
 import Lottie from 'lottie-react';
 import analyticsAnimation from './Analytics.json';
 
+// Configure axios defaults
+axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.withCredentials = true;  // Important for CSRF
 
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    role: 'USER'
   });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,22 +28,58 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+
     try {
-      if (formData.username === 'admin' && formData.password === 'admin123') {
-        localStorage.setItem('token', 'demo-token');
-        localStorage.setItem('isAdmin', 'true');
-        localStorage.setItem('username', 'admin');
-        navigate('/details');
-      } else if (formData.username === 'user' && formData.password === 'user123') {
-        localStorage.setItem('token', 'demo-token');
-        localStorage.setItem('isAdmin', 'false');
-        localStorage.setItem('username', 'user');
-        navigate('/home');
+      // First, get the CSRF token
+      const csrfResponse = await axios.get('/api/csrf-token/');
+      const csrfToken = csrfResponse.data.csrfToken;
+
+      // Then authenticate with the backend
+      const response = await axios.post('/api/token/', {
+        username: formData.username,
+        password: formData.password
+      }, {
+        headers: {
+          'X-CSRFToken': csrfToken,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.data && response.data.token) {
+        // Store the token and user info
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('username', formData.username);
+        localStorage.setItem('isAdmin', formData.username === 'admin' ? 'true' : 'false');
+
+        // Set the default Authorization header for all future requests
+        axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
+
+        // Navigate based on user role
+        if (formData.username === 'admin') {
+          navigate('/details');
+        } else {
+          navigate('/home');
+        }
       } else {
-        setError('Invalid credentials');
+        setError('Invalid response from server');
       }
     } catch (error) {
-      setError('Login failed. Please try again.');
+      console.error('Login error:', error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setError(error.response.data.detail || 'Invalid credentials');
+      } else if (error.request) {
+        // The request was made but no response was received
+        setError('No response from server. Please check your connection.');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setError('Error setting up request. Please try again.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -72,6 +112,7 @@ const Login = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
             </div>
             
@@ -84,11 +125,12 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
             </div>
             
-            <button type="submit" className="btn">
-              Login
+            <button type="submit" className="btn" disabled={loading}>
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
         </div>

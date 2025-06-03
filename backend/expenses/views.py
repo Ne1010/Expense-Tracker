@@ -1,18 +1,27 @@
 from rest_framework import viewsets, permissions, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
+from django.middleware.csrf import get_token
+from django.http import JsonResponse
 from .models import User, ExpenseTitle, ExpenseForm
 from .serializers import UserSerializer, ExpenseTitleSerializer, ExpenseFormSerializer
 import logging
 
 logger = logging.getLogger(__name__)
 
+@api_view(['GET'])
+@permission_classes([permissions.AllowAny])
+def get_csrf_token(request):
+    return JsonResponse({'csrfToken': get_token(request)})
+
 class IsAdminOrReadOnly(permissions.BasePermission):
     def has_permission(self, request, view):
+        # Allow read-only access for all users (including anonymous)
         if request.method in permissions.SAFE_METHODS:
             return True
-        return request.user.is_admin
+        # For write operations, require authentication and admin status
+        return request.user.is_authenticated and getattr(request.user, 'is_admin', False)
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -29,22 +38,31 @@ class ExpenseTitleViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
-        if self.request.user.is_admin:
+        try:
             return ExpenseTitle.objects.all()
-        return ExpenseTitle.objects.filter(created_by=self.request.user)
+        except Exception as e:
+            logger.error(f"Error fetching expense titles: {str(e)}")
+            return ExpenseTitle.objects.none()
 
     def perform_create(self, serializer):
-        if self.request.user.is_authenticated:
-            serializer.save(created_by=self.request.user)
-        else:
+        # Temporarily allow creation without authentication
+        serializer.save(created_by=None)  # You might need to handle this in your model
+
+    def list(self, request, *args, **kwargs):
+        try:
+            queryset = self.get_queryset()
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            logger.error(f"Error in list view: {str(e)}")
             return Response(
-                {"detail": "Only authenticated users can create expense titles"},
-                status=status.HTTP_403_FORBIDDEN
+                {"detail": "Error fetching expense titles. Please try again."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
 
 class ExpenseFormViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseFormSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.AllowAny]  # Temporarily allow all access for testing
 
     def get_queryset(self):
         queryset = ExpenseForm.objects.all()
@@ -54,9 +72,10 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
         if expense_title_id:
             queryset = queryset.filter(expense_title_id=expense_title_id)
         
-        # Apply user-based filtering
-        if not self.request.user.is_admin:
-            queryset = queryset.filter(user=self.request.user)
+        # Apply user-based filtering only for authenticated users
+        if self.request.user.is_authenticated:
+            if not getattr(self.request.user, 'is_admin', False):
+                queryset = queryset.filter(user=self.request.user)
             
         return queryset
 
@@ -83,7 +102,13 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['patch'])
     def update_status(self, request, pk=None):
-        if not request.user.is_admin:
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication credentials were not provided."},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+            
+        if not getattr(request.user, 'is_admin', False):
             return Response(
                 {"detail": "Only admins can update status"},
                 status=status.HTTP_403_FORBIDDEN

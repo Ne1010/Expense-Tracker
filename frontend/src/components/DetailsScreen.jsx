@@ -631,32 +631,21 @@ const DetailsScreen = () => {
                   <h4>Status and Comments</h4>
                   <div className="form-row">
                     <div className="form-group">
-                      <div className="status-buttons">
-                        <button
-                          className="btn-accept"
-                          onClick={() => {
-                            setTitleStatus(prev => ({
-                              ...prev,
-                              status: 'APPROVED'
-                            }));
-                            handleTitleStatusUpdate();
-                          }}
-                        >
-                          Accept
-                        </button>
-                        <button
-                          className="btn-reject"
-                          onClick={() => {
-                            setTitleStatus(prev => ({
-                              ...prev,
-                              status: 'REJECTED'
-                            }));
-                            handleTitleStatusUpdate();
-                          }}
-                        >
-                          Reject
-                        </button>
-                      </div>
+                      <div>Status</div>
+                      <select
+                        value={titleStatus.status}
+                        onChange={(e) => setTitleStatus(prev => ({
+                          ...prev,
+                          status: e.target.value
+                        }))}
+                      >
+                        <option value="">Select Status</option>
+                        {STATUS_OPTIONS.map(([value, label]) => (
+                          <option key={value} value={value}>{label}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="form-group">
                       <div>Comments</div>
                       <textarea
                         value={titleStatus.comments}
@@ -667,6 +656,13 @@ const DetailsScreen = () => {
                         placeholder="Enter comments for all forms"
                       />
                     </div>
+                    <button
+                      className="btn"
+                      onClick={handleTitleStatusUpdate}
+                      disabled={!titleStatus.status}
+                    >
+                      Update Status
+                    </button>
                   </div>
                 </div>
               )}

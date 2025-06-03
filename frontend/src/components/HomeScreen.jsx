@@ -53,6 +53,8 @@ const HomeScreen = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
     if (!expenseTitle.trim()) {
       setError('Please fill in the expense title');
       return;
@@ -60,6 +62,11 @@ const HomeScreen = () => {
 
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
+
+    if (!token) {
+      setError('Authentication token not found. Please login again.');
+      return;
+    }
 
     try {
       // First create the new title
@@ -72,6 +79,10 @@ const HomeScreen = () => {
           'Content-Type': 'application/json'
         },
       });
+
+      if (!titleResponse.data || !titleResponse.data.id) {
+        throw new Error('Failed to create expense title');
+      }
 
       const newTitleId = titleResponse.data.id;
 
@@ -112,6 +123,10 @@ const HomeScreen = () => {
               }
             });
 
+            if (!formResponse.data) {
+              throw new Error('Failed to create form copy');
+            }
+
             console.log('Form created successfully:', formResponse.data);
           }
 
@@ -125,6 +140,7 @@ const HomeScreen = () => {
       } else {
         // If not copying, just refresh the list
         await fetchExpenseTitles();
+        setError('Successfully created new title.');
       }
       
       // Reset form
@@ -179,7 +195,11 @@ const HomeScreen = () => {
           </div>
           <div className="form-group">
             <div className="title-action-buttons">
-              <button type="submit" className="btn btn-add">
+              <button 
+                type="submit" 
+                className="btn btn-add"
+                disabled={!expenseTitle.trim()}
+              >
                 Add Title
               </button>
               {!isAdmin && (
