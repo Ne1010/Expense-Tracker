@@ -26,7 +26,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
     master_group: '',
     subgroup: '',
     amount: '',
-    currency: '',
+    currency: 'CAD',
     date: '',
     status: 'pending',
     comments: '',
@@ -42,7 +42,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
     UTILITIES: ['INTERNET', 'ELECTRICITY']
   };
 
-  const currencies = ['USD', 'EUR', 'GBP', 'INR'];
+  const currencies = ['CAD', 'USD', 'EUR', 'GBP', 'INR'];
 
   useEffect(() => {
     if (formData.master_group) {
@@ -55,6 +55,13 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
     setError(''); // Clear any previous errors
     
     const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      setError('Authentication token not found. Please log in again.');
+      return;
+    }
+
     if (!csrftoken) {
       setError('CSRF token not found. Please refresh the page and try again.');
       return;
@@ -77,24 +84,16 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
     // Add expense title ID and status
     formDataToSend.append('expense_title_id', titleId);
     formDataToSend.append('status', formData.status.toUpperCase());
-
-    // Log the form data being sent
-    console.log('Sending form data:', {
-      master_group: formData.master_group,
-      subgroup: formData.subgroup,
-      amount: formData.amount,
-      currency: formData.currency,
-      date: formData.date,
-      status: formData.status,
-      expense_title_id: titleId
-    });
+    formDataToSend.append('comments', formData.comments || '');
 
     try {
       const response = await axios.post('/api/expense-forms/', formDataToSend, {
         headers: {
           'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
         },
+        withCredentials: true
       });
 
       if (response.data) {
@@ -105,17 +104,15 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
+      if (error.response?.status === 401) {
+        setError('Session expired. Please log in again.');
+      } else if (error.response) {
         console.error('Error response:', error.response.data);
         setError(error.response.data.detail || 'Failed to create expense form. Please try again.');
       } else if (error.request) {
-        // The request was made but no response was received
         console.error('No response received:', error.request);
         setError('No response from server. Please check your connection and try again.');
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.error('Error setting up request:', error.message);
         setError('Error setting up request. Please try again.');
       }
@@ -150,7 +147,6 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
               value={formData.master_group}
               onChange={handleChange}
               required
-              disabled={isAdmin}
             >
               <option value="">Select Master Group</option>
               {Object.keys(masterGroups).map(group => (
@@ -166,7 +162,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
               value={formData.subgroup}
               onChange={handleChange}
               required
-              disabled={!formData.master_group || isAdmin}
+              disabled={!formData.master_group}
             >
               <option value="">Select Subgroup</option>
               {subgroups.map(subgroup => (
@@ -185,7 +181,6 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
               value={formData.amount}
               onChange={handleChange}
               required
-              disabled={isAdmin}
             />
           </div>
 
@@ -196,9 +191,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
               value={formData.currency}
               onChange={handleChange}
               required
-              disabled={isAdmin}
             >
-              <option value="">Select Currency</option>
               {currencies.map(currency => (
                 <option key={currency} value={currency}>{currency}</option>
               ))}
@@ -215,7 +208,6 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
               value={formData.date}
               onChange={handleChange}
               required
-              disabled={isAdmin}
             />
           </div>
 
@@ -241,6 +233,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
             value={formData.comments}
             onChange={handleChange}
             disabled={!isAdmin}
+            placeholder={isAdmin ? "Enter comments..." : "Comments will be added by admin"}
           />
         </div>
 
@@ -250,7 +243,6 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
             type="file"
             name="attachment"
             onChange={handleChange}
-            disabled={isAdmin}
           />
         </div>
 

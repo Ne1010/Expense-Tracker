@@ -500,19 +500,87 @@ select:focus {
   border-color: var(--highlight-color);
 }
 
+/* Update the date input styles */
 input[type="date"] {
-  color: var(--text-color);
-  background-color: var(--secondary-bg);
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: #e6e6e6;
+  color: #333;
+  box-shadow: var(--neumorphic-shadow-inset);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+input[type="date"]:focus {
+  outline: none;
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+    inset -4px -4px 8px rgba(220, 220, 220, 0.5),
+    0 0 0 2px var(--highlight-color);
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+  filter: none;
   cursor: pointer;
+  padding: 0.2rem;
 }
 
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-clear-button {
+  color: #333;
+}
+
+/* Update the file input styles */
+input[type="file"] {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.5rem 0;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: #e6e6e6;
+  color: #333;
+  box-shadow: var(--neumorphic-shadow-inset);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+input[type="file"]:focus {
+  outline: none;
+  box-shadow:
+    inset 4px 4px 8px rgba(0, 0, 0, 0.1),
+    inset -4px -4px 8px rgba(220, 220, 220, 0.5),
+    0 0 0 2px var(--highlight-color);
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  background-color: var(--accent-color);
   color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: var(--transition);
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: var(--highlight-color);
+}
+
+/* Remove the old styles that were overriding these */
+.expense-item input[type="date"] {
+  color: inherit;
+  background-color: inherit;
+}
+
+.expense-item input[type="file"] {
+  padding: inherit;
+  background-color: inherit;
+  border: none;
+  border-radius: inherit;
 }
 
 .expense-item select {
@@ -924,51 +992,6 @@ input[type="date"]::-webkit-clear-button {
 
 .review-item span:last-child {
   color: var(--text-color);
-}
-
-/* File input styling */
-input[type="file"] {
-  padding: 0.5rem;
-  background-color: var(--secondary-bg);
-  border: 1px dashed var(--accent-color);
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-
-input[type="file"]::-webkit-file-upload-button {
-  background-color: var(--highlight-color);
-  color: var(--text-color);
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  margin-right: 1rem;
-}
-
-input[type="file"]::-webkit-file-upload-button:hover {
-  opacity: 0.9;
-}
-
-/* Responsive styles for create expense form */
-@media (max-width: 768px) {
-  .create-expense-container {
-    padding: 1rem;
-  }
-
-  .form-container {
-    padding: 1rem;
-  }
-
-  .progress-step {
-    width: 30px;
-    height: 30px;
-    font-size: 0.9rem;
-  }
-
-  .review-item {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
 }
 
 /* Reports & Analytics Styles */

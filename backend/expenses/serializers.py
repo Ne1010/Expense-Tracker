@@ -36,24 +36,43 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Expense title with this ID does not exist.")
 
     def validate(self, data):
-        # Handle expense_title_id conversion
         expense_title_id = data.pop('expense_title_id', None)
         if expense_title_id:
             data['expense_title'] = expense_title_id
 
-        # Set default status and comments
         data['status'] = 'PENDING'
         data['comments'] = 'Pending'
 
         return data
 
     def create(self, validated_data):
-        # For testing, we'll allow creation without a user
+        # Create the instance first with all data except attachment
+        attachment = validated_data.pop('attachment', None)
+        
         if 'request' in self.context and self.context['request'].user.is_authenticated:
             validated_data['user'] = self.context['request'].user
-        return super().create(validated_data)
+            
+        instance = super().create(validated_data)
+        
+        # Now handle the attachment if it exists
+        if attachment:
+            # Associate the file with the instance
+            attachment.instance = instance
+            instance.attachment = attachment
+            instance.save()
+            
+        return instance
 
     def update(self, instance, validated_data):
         if 'request' in self.context and self.context['request'].user.is_authenticated:
             validated_data['user'] = self.context['request'].user
-        return super().update(instance, validated_data)
+        
+        attachment = validated_data.pop('attachment', None)
+        instance = super().update(instance, validated_data)
+        
+        if attachment:
+            attachment.instance = instance
+            instance.attachment = attachment
+            instance.save()
+            
+        return instance

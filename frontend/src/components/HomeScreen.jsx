@@ -107,10 +107,10 @@ const HomeScreen = () => {
               master_group: form.master_group,
               subgroup: form.subgroup,
               amount: form.amount,
-              currency: form.currency,
+              currency: form.currency || 'CAD',
               date: form.date,
-              status: form.status || 'PENDING',
-              comments: form.comments || ''
+              status: 'PENDING',
+              comments: ''
             };
 
             console.log('Creating new form with data:', newForm);

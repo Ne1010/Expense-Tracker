@@ -102,18 +102,6 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['patch'])
     def update_status(self, request, pk=None):
-        if not request.user.is_authenticated:
-            return Response(
-                {"detail": "Authentication credentials were not provided."},
-                status=status.HTTP_401_UNAUTHORIZED
-            )
-            
-        if not getattr(request.user, 'is_admin', False):
-            return Response(
-                {"detail": "Only admins can update status"},
-                status=status.HTTP_403_FORBIDDEN
-            )
-
         expense_form = self.get_object()
         status_value = request.data.get('status')
         comments = request.data.get('comments', '')

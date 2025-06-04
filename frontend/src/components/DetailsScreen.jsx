@@ -65,7 +65,7 @@ const DetailsScreen = () => {
   const [error, setError] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [titleStatus, setTitleStatus] = useState({
-    status: '',
+    status: 'pending',
     comments: ''
   });
   const [searchQuery, setSearchQuery] = useState('');
@@ -88,10 +88,18 @@ const DetailsScreen = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
+      
+      if (!token) {
+        setError('Authentication token not found. Please log in again.');
+        navigate('/login');
+        return;
+      }
+
       const config = {
         headers: {
           'Authorization': `Bearer ${token}`
-        }
+        },
+        withCredentials: true
       };
 
       const expensesUrl = titleId ? `/api/expense-forms/?title_id=${titleId}` : '/api/expense-forms/';
@@ -116,7 +124,13 @@ const DetailsScreen = () => {
 
       setLoading(false);
     } catch (error) {
-      setError('Failed to fetch data');
+      console.error('Error fetching data:', error.response?.data || error.message);
+      if (error.response?.status === 401) {
+        setError('Session expired. Please log in again.');
+        navigate('/login');
+      } else {
+        setError('Failed to fetch data');
+      }
       setLoading(false);
     }
   };
@@ -173,6 +187,12 @@ const DetailsScreen = () => {
   const handleAdminUpdate = async (expenseId, updatedFields) => {
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
+    
+    if (!token) {
+      setError('Authentication token not found. Please log in again.');
+      return;
+    }
+
     try {
       const response = await axios.patch(`/api/expense-forms/${expenseId}/update_status/`, updatedFields, {
         headers: {
@@ -180,22 +200,36 @@ const DetailsScreen = () => {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
+        withCredentials: true
       });
+      
+      // Update the local state with the response data
       setExpenses(prevExpenses => 
         prevExpenses.map(expense => 
           expense.id === expenseId 
-            ? { ...expense, ...updatedFields }
+            ? { ...expense, ...response.data }
             : expense
         )
       );
+      
+      // Clear any pending edits for this expense
       setPendingEdits(prev => {
         const newEdits = { ...prev };
         delete newEdits[expenseId];
         return newEdits;
       });
+      
+      // Clear any error messages
+      setError('');
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
-      setError('Failed to update expense. Please try again.');
+      if (error.response?.status === 401) {
+        setError('Session expired. Please log in again.');
+        // Optionally redirect to login
+        navigate('/login');
+      } else {
+        setError('Failed to update expense. Please try again.');
+      }
     }
   };
 
@@ -205,43 +239,53 @@ const DetailsScreen = () => {
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
     
+    if (!token) {
+      setError('Authentication token not found. Please log in again.');
+      return;
+    }
+
     try {
       const formsToUpdate = expenses.filter(expense => 
         expense.expense_title?.id === selectedTitleId
       );
 
+      // Update local state first for better UX
       setExpenses(prevExpenses => 
         prevExpenses.map(expense => 
           expense.expense_title?.id === selectedTitleId
             ? { 
                 ...expense, 
                 status: titleStatus.status,
-                comments: titleStatus.comments
+                comments: titleStatus.comments || ''  // Ensure empty string if no comments
               }
             : expense
         )
       );
 
+      // Make API calls to update each form
       const promises = formsToUpdate.map(expense => 
         axios.patch(`/api/expense-forms/${expense.id}/update_status/`, {
           status: titleStatus.status,
-          comments: titleStatus.comments
+          comments: titleStatus.comments || ''  // Ensure empty string if no comments
         }, {
           headers: {
             'X-CSRFToken': csrftoken,
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           },
+          withCredentials: true
         })
       );
 
       await Promise.all(promises);
       
+      // Refresh the data to ensure consistency
       const expensesUrl = `/api/expense-forms/?title_id=${selectedTitleId}`;
       const config = {
         headers: {
           'Authorization': `Bearer ${token}`
-        }
+        },
+        withCredentials: true
       };
       
       const response = await axios.get(expensesUrl, config);
@@ -250,8 +294,13 @@ const DetailsScreen = () => {
       setError('');
     } catch (error) {
       console.error('Error updating expenses:', error.response?.data || error.message);
-      setError('Failed to update expenses. Please try again.');
-      fetchData(selectedTitleId);
+      if (error.response?.status === 401) {
+        setError('Session expired. Please log in again.');
+        navigate('/login');
+      } else {
+        setError('Failed to update expenses. Please try again.');
+        fetchData(selectedTitleId);
+      }
     }
   };
 
@@ -632,18 +681,26 @@ const DetailsScreen = () => {
                   <div className="form-row">
                     <div className="form-group">
                       <div>Status</div>
-                      <select
-                        value={titleStatus.status}
-                        onChange={(e) => setTitleStatus(prev => ({
-                          ...prev,
-                          status: e.target.value
-                        }))}
-                      >
-                        <option value="">Select Status</option>
-                        {STATUS_OPTIONS.map(([value, label]) => (
-                          <option key={value} value={value}>{label}</option>
-                        ))}
-                      </select>
+                      <div className="status-buttons">
+                        <button
+                          className="btn-accept"
+                          onClick={() => setTitleStatus(prev => ({
+                            ...prev,
+                            status: 'APPROVED'
+                          }))}
+                        >
+                          Accept
+                        </button>
+                        <button
+                          className="btn-reject"
+                          onClick={() => setTitleStatus(prev => ({
+                            ...prev,
+                            status: 'REJECTED'
+                          }))}
+                        >
+                          Reject
+                        </button>
+                      </div>
                     </div>
                     <div className="form-group">
                       <div>Comments</div>

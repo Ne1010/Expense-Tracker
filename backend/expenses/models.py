@@ -44,6 +44,7 @@ class ExpenseForm(models.Model):
     ]
 
     CURRENCY_CHOICES = [
+        ('CAD', 'Canadian Dollar'),
         ('USD', 'US Dollar'),
         ('EUR', 'Euro'),
         ('GBP', 'British Pound'),
@@ -69,4 +70,10 @@ class ExpenseForm(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_subgroup_choices(self):
-        return dict(self.SUBGROUPS.get(self.master_group, [])) 
+        return dict(self.SUBGROUPS.get(self.master_group, []))
+
+    def save(self, *args, **kwargs):
+        # Ensure expense_title is set before saving with attachment
+        if self.attachment and not self.expense_title:
+            raise ValueError("Expense title must be set before uploading a file")
+        super().save(*args, **kwargs)
