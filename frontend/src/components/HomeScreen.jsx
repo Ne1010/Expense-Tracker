@@ -29,12 +29,27 @@ const HomeScreen = () => {
   const [activeFormId, setActiveFormId] = useState(null);
   const [showCopyOptions, setShowCopyOptions] = useState(false);
   const [copySourceTitleId, setCopySourceTitleId] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTitleId, setSelectedTitleId] = useState(null);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [filteredTitles, setFilteredTitles] = useState([]);
 
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin') === 'true';
     setIsAdmin(adminStatus);
     fetchExpenseTitles();
   }, []);
+
+  useEffect(() => {
+    if (searchQuery) {
+      const filtered = expenseTitles.filter(title =>
+        title.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredTitles(filtered);
+    } else {
+      setFilteredTitles([]);
+    }
+  }, [searchQuery, expenseTitles]);
 
   const fetchExpenseTitles = async () => {
     try {
@@ -49,6 +64,24 @@ const HomeScreen = () => {
       console.error('Error fetching expense titles:', error);
       setError('Failed to fetch expense titles. Please refresh the page.');
     }
+  };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchBlur = () => {
+    // Delay hiding suggestions to allow for click events
+    setTimeout(() => {
+      setShowSuggestions(false);
+    }, 200);
+  };
+
+  const handleSuggestionClick = (titleId) => {
+    setSelectedTitleId(titleId);
+    setSearchQuery('');
+    setShowSuggestions(false);
+    navigate('/details', { state: { selectedTitleId: titleId } });
   };
 
   const handleSubmit = async (e) => {
@@ -69,7 +102,6 @@ const HomeScreen = () => {
     }
 
     try {
-      // First create the new title
       const titleResponse = await axios.post('/api/expense-titles/', {
         title: expenseTitle
       }, {
@@ -86,10 +118,8 @@ const HomeScreen = () => {
 
       const newTitleId = titleResponse.data.id;
 
-      // If copying is selected, copy only forms from the selected title
       if (copySourceTitleId) {
         try {
-          // Get forms only from the selected source title
           const sourceFormsResponse = await axios.get(`/api/expense-forms/?expense_title_id=${copySourceTitleId}`, {
             headers: {
               'Authorization': `Bearer ${token}`
@@ -97,11 +127,8 @@ const HomeScreen = () => {
           });
           
           const sourceForms = sourceFormsResponse.data;
-          console.log('Source forms to copy:', sourceForms);
 
-          // Create copies of forms for the new title
           for (const form of sourceForms) {
-            // Create a new form with all the original values
             const newForm = {
               expense_title_id: newTitleId,
               master_group: form.master_group,
@@ -113,24 +140,15 @@ const HomeScreen = () => {
               comments: ''
             };
 
-            console.log('Creating new form with data:', newForm);
-
-            const formResponse = await axios.post('/api/expense-forms/', newForm, {
+            await axios.post('/api/expense-forms/', newForm, {
               headers: {
                 'X-CSRFToken': csrftoken,
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
               }
             });
-
-            if (!formResponse.data) {
-              throw new Error('Failed to create form copy');
-            }
-
-            console.log('Form created successfully:', formResponse.data);
           }
 
-          // After copying forms, fetch the updated list
           await fetchExpenseTitles();
           setError('Successfully created new title with copied forms.');
         } catch (copyError) {
@@ -138,16 +156,14 @@ const HomeScreen = () => {
           setError('Created new title but failed to copy forms. Please try copying forms manually.');
         }
       } else {
-        // If not copying, just refresh the list
         await fetchExpenseTitles();
         setError('Successfully created new title.');
       }
       
-      // Reset form
       setExpenseTitle('');
       setCopySourceTitleId(null);
       setShowCopyOptions(false);
-    } catch (error) {
+    } catch (error) { 
       console.error('Error creating expense:', error.response?.data || error);
       setError(error.response?.data?.detail || 'Failed to create expense. Please try again.');
     }
@@ -169,14 +185,49 @@ const HomeScreen = () => {
     navigate('/login');
   };
 
+  const handleTitleSelect = (titleId) => {
+    setSelectedTitleId(titleId);
+    navigate('/details', { state: { selectedTitleId: titleId } });
+  };
+
   return (
     <div className="container">
       <div className="app-title-bar">
         <div className="logo-container">
           <img src={logoImage} alt="Logo" className="logo-img" />
-          <span className="title">Expense Management</span>
+          <span className="title">Expense Details</span>
         </div>
-        <button onClick={handleLogout} className="btn">Logout</button>
+        <div className="search-wrapper">
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search expense titles..."
+              value={searchQuery}
+              onChange={handleSearch}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={handleSearchBlur}
+              className="search-input"
+            />
+            {showSuggestions && searchQuery && (
+              <div className="search-suggestions">
+                {filteredTitles.length > 0 ? (
+                  filteredTitles.map((title) => (
+                    <div
+                      key={title.id}
+                      className="suggestion-item"
+                      onClick={() => handleSuggestionClick(title.id)}
+                    >
+                      {title.title}
+                    </div>
+                  ))
+                ) : (
+                  <div className="no-results">No matching titles found</div>
+                )}
+              </div>
+            )}
+          </div>
+          <button onClick={handleLogout} className="btn">Logout</button>
+        </div>
       </div>
 
       <div className="card">
@@ -230,32 +281,20 @@ const HomeScreen = () => {
         </form>
       </div>
 
-      <div>
-        {expenseTitles.map((title) => (
-          <div key={title.id} className="card expense-title-card">
-            <h3 className="expense-title-heading"
-              onClick={() => navigate('/details', { state: { selectedTitleId: title.id } })}
+      <div className="expense-titles-container">
+        <div className="card">
+          <h3>Expense Titles</h3>
+          {expenseTitles.map((title) => (
+            <div
+              key={title.id}
+              className={`expense-item ${selectedTitleId === title.id ? 'selected' : ''}`}
+              onClick={() => handleTitleSelect(title.id)}
               style={{ cursor: 'pointer' }}
             >
-              {title.title}
-            </h3>
-            <button
-              onClick={() => handleAddForm(title.id)}
-              className="btn add-form-button"
-            >
-              ➕ Add Form
-            </button>
-            {activeFormId === title.id && (
-              <div className="expense-form-container">
-                <ExpenseForm
-                  titleId={title.id}
-                  isAdmin={isAdmin}
-                  onClose={handleCloseForm}
-                />
-              </div>
-            )}
-          </div>
-        ))}
+              <p>{title.title}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

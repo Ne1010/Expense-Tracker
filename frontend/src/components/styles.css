@@ -221,6 +221,54 @@ select:focus {
   transform: translateY(-5px);
 }
 
+.expense-item.collapsed .expense-details {
+  display: none;
+}
+
+.expense-item.expanded .expense-details {
+  display: block;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.expense-summary {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+.expense-summary:hover {
+  background-color: var(--accent-color);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.summary-row .master-group {
+  font-weight: 600;
+  color: var(--text-color);
+  flex: 2;
+}
+
+.summary-row .amount {
+  color: var(--highlight-color);
+  font-weight: 600;
+  flex: 1;
+  text-align: right;
+}
+
+.summary-row .date {
+  color: var(--text-muted);
+  flex: 1;
+  text-align: right;
+}
+
 .attachment-link {
   display: inline-block;
   padding: 0.5rem 1rem;
@@ -396,27 +444,29 @@ select:focus {
 
 .search-container {
   position: relative;
+  width: 100%;
+  max-width: 400px;
 }
 
 .search-input {
-  background-color: var(--accent-color);
-  color: var(--text-color);
-  border: none;
+  width: 100%;
   padding: 0.8rem 1.5rem;
   border-radius: var(--border-radius);
-  font-weight: 600;
+  border: 1px solid var(--accent-color);
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  font-size: 1rem;
   transition: var(--transition);
-  box-shadow: var(--neumorphic-shadow);
-  width: 250px;
-}
-
-.search-input::placeholder {
-  color: var(--text-muted);
 }
 
 .search-input:focus {
   outline: none;
-  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
 }
 
 .search-suggestions {
@@ -425,19 +475,24 @@ select:focus {
   left: 0;
   right: 0;
   background-color: var(--secondary-bg);
+  border: 1px solid var(--accent-color);
   border-radius: var(--border-radius);
   margin-top: 0.5rem;
-  box-shadow: var(--neumorphic-shadow);
-  z-index: 1000;
   max-height: 300px;
   overflow-y: auto;
+  z-index: 1000;
+  box-shadow: var(--neumorphic-shadow);
 }
 
 .suggestion-item {
   padding: 0.8rem 1.5rem;
   cursor: pointer;
   transition: var(--transition);
-  color: var(--text-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
 }
 
 .suggestion-item:hover {
@@ -446,9 +501,33 @@ select:focus {
 }
 
 .no-results {
-  padding: 0.8rem 1.5rem;
+  padding: 1rem;
+  text-align: center;
   color: var(--text-muted);
   font-style: italic;
+}
+
+/* Add smooth scrolling to suggestions */
+.search-suggestions {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--secondary-bg);
+}
+
+.search-suggestions::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-suggestions::-webkit-scrollbar-track {
+  background: var(--secondary-bg);
+}
+
+.search-suggestions::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb:hover {
+  background-color: var(--highlight-color);
 }
 
 /* Update existing styles */
@@ -1161,4 +1240,115 @@ input[type="file"]::-webkit-file-upload-button:hover {
   .trend-chart {
     height: 150px;
   }
+}
+
+/* Update existing styles */
+.title-status-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+}
+
+.title-status-section textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.status-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn-accept, .btn-reject {
+  flex: 1;
+  text-align: center;
+}
+
+/* Add animation for expand/collapse */
+.expense-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.expense-item.expanded .expense-details {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+/* Add smooth transition for the entire expense item */
+.expense-item {
+  transition: all 0.3s ease-in-out;
+}
+
+.expense-item.expanded {
+  background-color: var(--accent-color);
+}
+
+/* Ensure the summary row is always visible */
+.expense-summary {
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.expense-summary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Add a visual indicator for expandable items */
+.expense-summary::after {
+  content: '▼';
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.expense-item.expanded .expense-summary::after {
+  transform: rotate(180deg);
+}
+
+.title-status-display {
+  margin: 10px 0 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.status-badge:has(+ .status-comments) {
+  margin-bottom: 8px;
+}
+
+/* Status-specific colors */
+.status-badge:has(+ .status-comments:contains('PENDING')) {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge:has(+ .status-comments:contains('APPROVED')) {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-badge:has(+ .status-comments:contains('REJECTED')) {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.status-comments {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 4px;
+  padding-left: 4px;
 }

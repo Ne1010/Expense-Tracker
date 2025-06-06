@@ -86,7 +86,15 @@ class OneDriveStorage(Storage):
     def url(self, name):
         """Get the URL for a file in OneDrive"""
         try:
-            return asyncio.run(self.service.get_file_url(name))
+            # Extract expense title and filename from the path
+            parts = name.split('/')
+            if len(parts) >= 2:
+                expense_title = parts[0]
+                filename = parts[1]
+                return asyncio.run(self.service.get_file_url(expense_title, filename))
+            else:
+                logger.error(f"Invalid file path format: {name}")
+                return None
         except Exception as e:
             logger.error(f"Error getting file URL from OneDrive: {str(e)}")
             return None

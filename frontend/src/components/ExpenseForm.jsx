@@ -211,31 +211,33 @@ const ExpenseForm = ({ titleId, isAdmin, onClose }) => {
             />
           </div>
 
-          <div className="form-group">
-            <label>Status</label>
-            <select
-              name="status"
-              value={formData.status}
-              onChange={handleChange}
-              disabled={!isAdmin}
-            >
-              <option value="pending">Pending</option>
-              <option value="approved">Approved</option>
-              <option value="rejected">Rejected</option>
-            </select>
-          </div>
+          {isAdmin && (
+            <div className="form-group">
+              <label>Status</label>
+              <select
+                name="status"
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+              </select>
+            </div>
+          )}
         </div>
 
-        <div className="form-group">
-          <label>Comments</label>
-          <textarea
-            name="comments"
-            value={formData.comments}
-            onChange={handleChange}
-            disabled={!isAdmin}
-            placeholder={isAdmin ? "Enter comments..." : "Comments will be added by admin"}
-          />
-        </div>
+        {isAdmin && (
+          <div className="form-group">
+            <label>Comments</label>
+            <textarea
+              name="comments"
+              value={formData.comments}
+              onChange={handleChange}
+              placeholder="Enter comments..."
+            />
+          </div>
+        )}
 
         <div className="form-group">
           <label>Attachment</label>
