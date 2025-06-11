@@ -33,9 +33,9 @@ body {
 }
 
 .container {
-  max-width: 1400px;
+  padding: 1rem;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -109,11 +109,13 @@ select:focus {
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: none;
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  position: relative;
+  flex: 1;
+  min-width: 250px;
 }
 
 .form-row {
@@ -156,24 +158,20 @@ select:focus {
 
 /* Main layout styles */
 .expense-details-container {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
+  display: block;
 }
 
 .expense-titles-sidebar {
-  flex: 0 0 280px;
-  position: sticky;
-  top: 1rem;
+  display: none;
 }
 
 .expense-forms-main {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
 }
 
 .expense-forms-container {
   width: 100%;
+  padding: 0;
 }
 
 .expense-list {
@@ -183,20 +181,14 @@ select:focus {
 }
 
 .expense-item {
-  background-color: var(--secondary-bg);
+  margin-bottom: 1rem;
   border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--neumorphic-shadow);
-  transition: var(--transition);
-  word-break: break-word;
-  overflow-wrap: break-word;
-  width: 100%;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  margin-bottom: 1.5rem;
+  background-color: var(--secondary-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
 .expense-item:last-child {
-  border-bottom: none;
   margin-bottom: 0;
 }
 
@@ -218,29 +210,27 @@ select:focus {
 }
 
 .expense-item:hover {
-  transform: translateY(-5px);
-}
-
-.expense-item.collapsed .expense-details {
-  display: none;
-}
-
-.expense-item.expanded .expense-details {
-  display: block;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  transform: none;
 }
 
 .expense-summary {
+  padding: 1rem;
   cursor: pointer;
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  transition: var(--transition);
+  transition: background-color 0.2s ease;
 }
 
 .expense-summary:hover {
-  background-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.expense-summary::after {
+  content: '▼';
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.expense-item.expanded .expense-summary::after {
+  transform: rotate(180deg);
 }
 
 .summary-row {
@@ -430,43 +420,53 @@ select:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--title-bar-bg);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--neumorphic-shadow);
 }
 
 .search-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  max-width: 600px;
+  z-index: 1000;
+}
+
+.logout-btn-wrapper {
+  margin-left: auto;
 }
 
 .search-container {
   position: relative;
   width: 100%;
-  max-width: 400px;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--accent-color);
-  background-color: var(--secondary-bg);
+  background-color: var(--accent-color);
   color: var(--text-color);
   font-size: 1rem;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 
 .search-input:focus {
   outline: none;
   border-color: var(--highlight-color);
   box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+  background-color: var(--accent-color);
 }
 
 .search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--text-color);
+  opacity: 0.8;
 }
 
 .search-suggestions {
@@ -485,10 +485,11 @@ select:focus {
 }
 
 .suggestion-item {
-  padding: 0.8rem 1.5rem;
+  padding: 0.8rem 1rem;
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.2s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
 }
 
 .suggestion-item:last-child {
@@ -507,7 +508,6 @@ select:focus {
   font-style: italic;
 }
 
-/* Add smooth scrolling to suggestions */
 .search-suggestions {
   scrollbar-width: thin;
   scrollbar-color: var(--accent-color) var(--secondary-bg);
@@ -530,7 +530,6 @@ select:focus {
   background-color: var(--highlight-color);
 }
 
-/* Update existing styles */
 .logo-container {
   display: flex;
   align-items: center;
@@ -544,7 +543,7 @@ select:focus {
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
   color: #333;
 }
@@ -553,6 +552,7 @@ select:focus {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  justify-content: flex-end;
 }
 
 .btn-secondary {
@@ -579,7 +579,6 @@ select:focus {
   border-color: var(--highlight-color);
 }
 
-/* Update the date input styles */
 input[type="date"] {
   width: 100%;
   padding: 0.8rem;
@@ -612,7 +611,6 @@ input[type="date"]::-webkit-clear-button {
   color: #333;
 }
 
-/* Update the file input styles */
 input[type="file"] {
   width: 100%;
   padding: 0.8rem;
@@ -647,19 +645,6 @@ input[type="file"]::-webkit-file-upload-button {
 
 input[type="file"]::-webkit-file-upload-button:hover {
   background-color: var(--highlight-color);
-}
-
-/* Remove the old styles that were overriding these */
-.expense-item input[type="date"] {
-  color: inherit;
-  background-color: inherit;
-}
-
-.expense-item input[type="file"] {
-  padding: inherit;
-  background-color: inherit;
-  border: none;
-  border-radius: inherit;
 }
 
 .expense-item select {
@@ -727,7 +712,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
   gap: 1rem;
 }
 
-/* Add these to your existing styles.css */
 .title-input-container {
   display: flex;
   flex-direction: column;
@@ -773,45 +757,11 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 .btn-add-form {
-  padding: 0.3rem 0.8rem;
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
-  margin-top: 0.5rem;
+  width: auto;
+  margin: 0.5rem 0;
   background-color: var(--highlight-color);
-}
-
-.btn-accept {
-  background-color: var(--success-color);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 600;
-  transition: var(--transition);
-  box-shadow: var(--neumorphic-shadow);
-  margin: 0.5rem;
-}
-
-.btn-reject {
-  background-color: var(--error-color);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  font-weight: 600;
-  transition: var(--transition);
-  box-shadow: var(--neumorphic-shadow);
-  margin: 0.5rem;
-}
-
-.btn-accept:hover, .btn-reject:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-.btn-accept:active, .btn-reject:active {
-  transform: translateY(0);
 }
 
 .status-buttons {
@@ -947,31 +897,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
 .btn-primary {
   background-color: var(--highlight-color);
-}
-
-/* Responsive styles for dashboard */
-@media (max-width: 768px) {
-  .stats-container {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-actions {
-    flex-direction: column;
-  }
-
-  .filters-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .filter-select,
-  .filter-date {
-    width: 100%;
-  }
-
-  .expenses-container.grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Create Expense Form Styles */
@@ -1209,40 +1134,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
   transition: var(--transition);
 }
 
-/* Responsive styles for reports */
-@media (max-width: 768px) {
-  .reports-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .date-range {
-    flex-direction: column;
-  }
-
-  .report-actions {
-    flex-direction: column;
-  }
-
-  .report-type-select {
-    width: 100%;
-  }
-
-  .export-buttons {
-    width: 100%;
-    justify-content: stretch;
-  }
-
-  .export-buttons .btn {
-    flex: 1;
-  }
-
-  .trend-chart {
-    height: 150px;
-  }
-}
-
-/* Update existing styles */
 .title-status-section {
   margin-bottom: 1.5rem;
   padding: 1rem;
@@ -1255,18 +1146,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
   resize: vertical;
 }
 
-.status-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.btn-accept, .btn-reject {
-  flex: 1;
-  text-align: center;
-}
-
-/* Add animation for expand/collapse */
 .expense-details {
   max-height: 0;
   overflow: hidden;
@@ -1278,77 +1157,263 @@ input[type="file"]::-webkit-file-upload-button:hover {
   transition: max-height 0.5s ease-in;
 }
 
-/* Add smooth transition for the entire expense item */
-.expense-item {
-  transition: all 0.3s ease-in-out;
-}
-
 .expense-item.expanded {
   background-color: var(--accent-color);
 }
 
-/* Ensure the summary row is always visible */
-.expense-summary {
-  padding: 1rem;
+.expense-forms-full-width {
+  width: 100%;
+}
+
+.expense-title-section {
+  margin-bottom: 2rem;
+  background-color: var(--secondary-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--neumorphic-shadow);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.expense-title-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.expense-title-header {
+  padding: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accent-color);
+  transition: var(--transition);
 }
 
-.expense-summary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.expense-title-header:hover {
+  background-color: var(--highlight-color);
 }
 
-/* Add a visual indicator for expandable items */
-.expense-summary::after {
-  content: '▼';
-  float: right;
-  transition: transform 0.3s ease;
-}
-
-.expense-item.expanded .expense-summary::after {
-  transform: rotate(180deg);
-}
-
-.title-status-display {
-  margin: 10px 0 20px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-radius: 4px;
-  border: 1px solid #e9ecef;
+.expense-title-header h2 {
+  margin: 0;
+  color: var(--text-color);
 }
 
 .status-badge {
   display: inline-block;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-weight: 500;
-  font-size: 0.9em;
-  margin-bottom: 8px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.status-badge:has(+ .status-comments) {
-  margin-bottom: 8px;
+.status-badge[data-status="PENDING"] {
+  background-color: #ffecb3;
+  color: #ff6f00;
 }
 
-/* Status-specific colors */
-.status-badge:has(+ .status-comments:contains('PENDING')) {
+.status-badge[data-status="APPROVED"] {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-badge[data-status="REJECTED"] {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.add-form-button {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  width: auto;
+  margin: 0.5rem 0;
+  background-color: var(--highlight-color);
+  font-weight: bold;
+}
+
+.expense-form-container {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+}
+
+.title-status-display {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+/* Responsive styles for dashboard and reports */
+@media (max-width: 768px) {
+  .stats-container,
+  .expenses-container.grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions,
+  .filters-container,
+  .reports-header,
+  .report-actions {
+    flex-direction: column;
+  }
+
+  .filter-select,
+  .filter-date,
+  .report-type-select {
+    width: 100%;
+  }
+
+  .trend-chart {
+    height: 150px;
+  }
+
+  .app-title-bar {
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 3rem;
+  }
+  
+  .search-wrapper {
+    position: static;
+    left: auto;
+    transform: none;
+    width: 100%;
+    order: 2;
+  }
+  
+  .logout-btn-wrapper {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    order: 1;
+  }
+  
+  .logo-container {
+    width: 100%;
+    justify-content: center;
+    padding-right: 60px;
+  }
+
+  .expense-title-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+.title-comments {
+  color: var(--text-color);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.btn-accept,
+.btn-reject {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--neumorphic-shadow);
+  margin: 0.5rem;
+}
+
+.btn-accept {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.btn-reject {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.btn-accept:hover,
+.btn-reject:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-accept:active,
+.btn-reject:active {
+  transform: translateY(0);
+}
+
+.btn-accept.disabled,
+.btn-reject.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-callout {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
   color: #856404;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.status-badge:has(+ .status-comments:contains('APPROVED')) {
-  background-color: #d4edda;
-  color: #155724;
+.status-callout::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffeeba transparent transparent transparent;
 }
 
-.status-badge:has(+ .status-comments:contains('REJECTED')) {
-  background-color: #f8d7da;
-  color: #721c24;
+.comments-error-callout {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffe0b2;
+  border: 1px solid #ff9800;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #333;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.status-comments {
-  font-size: 0.9em;
-  color: #6c757d;
-  margin-top: 4px;
-  padding-left: 4px;
+.comments-error-callout::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ff9800 transparent transparent transparent;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }

@@ -20,6 +20,41 @@ function getCookie(name) {
     return cookieValue;
 }
 
+const STATUS_OPTIONS = [
+  ['PENDING', 'Pending'],
+  ['APPROVED', 'Approved'],
+  ['REJECTED', 'Rejected']
+];
+
+const MASTER_GROUPS = [
+  ['TRAVEL', 'Travel'],
+  ['OFFICE_SUPPLIES', 'Office Supplies'],
+  ['UTILITIES', 'Utilities'],
+];
+
+const CURRENCIES = [
+  ['USD', 'USD'],
+  ['EUR', 'EUR'],
+  ['GBP', 'GBP'],
+  ['INR', 'INR'],
+];
+
+const SUBGROUPS = {
+  'TRAVEL': [
+    ['TICKET', 'Ticket Expense'],
+    ['FOOD', 'Food Expense'],
+    ['HOSPITALITY', 'Hospitality Expense'],
+  ],
+  'OFFICE_SUPPLIES': [
+    ['EQUIPMENT', 'Equipment'],
+    ['STATIONERY', 'Stationery'],
+  ],
+  'UTILITIES': [
+    ['INTERNET', 'Internet'],
+    ['ELECTRICITY', 'Electricity'],
+  ],
+};
+
 const HomeScreen = () => {
   const navigate = useNavigate();
   const [expenseTitle, setExpenseTitle] = useState('');
@@ -32,24 +67,15 @@ const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTitleId, setSelectedTitleId] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [filteredTitles, setFilteredTitles] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin') === 'true';
     setIsAdmin(adminStatus);
     fetchExpenseTitles();
+    fetchExpenses();
   }, []);
-
-  useEffect(() => {
-    if (searchQuery) {
-      const filtered = expenseTitles.filter(title =>
-        title.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      setFilteredTitles(filtered);
-    } else {
-      setFilteredTitles([]);
-    }
-  }, [searchQuery, expenseTitles]);
 
   const fetchExpenseTitles = async () => {
     try {
@@ -66,22 +92,98 @@ const HomeScreen = () => {
     }
   };
 
+  const fetchExpenses = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get('/api/expense-forms/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      setExpenses(response.data);
+    } catch (error) {
+      console.error('Error fetching expenses:', error);
+    }
+  };
+
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
+    const query = e.target.value.toLowerCase().trim();
+    setSearchQuery(query);
+    
+    if (!query) {
+      setSearchResults([]);
+      setShowSuggestions(false);
+      return;
+    }
+
+    // Search in expense titles
+    const titleResults = expenseTitles.filter(title =>
+      title.title.toLowerCase().includes(query)
+    ).map(title => ({
+      type: 'title',
+      id: title.id,
+      title: title.title,
+      displayText: `Title: ${title.title}`
+    }));
+
+    // Search in expenses for status, master group, and subgroup
+    const expenseResults = expenses.filter(expense => {
+      const masterGroupMatch = MASTER_GROUPS.find(([value]) => 
+        value === expense.master_group
+      )?.[1].toLowerCase().includes(query);
+      
+      const subgroupMatch = SUBGROUPS[expense.master_group]?.find(([value]) => 
+        value === expense.subgroup
+      )?.[1].toLowerCase().includes(query);
+      
+      const statusMatch = STATUS_OPTIONS.find(([value]) => 
+        value === expense.status
+      )?.[1].toLowerCase().includes(query);
+
+      const amountMatch = expense.amount?.toString().includes(query);
+      const dateMatch = expense.date?.toLowerCase().includes(query);
+      const currencyMatch = expense.currency?.toLowerCase().includes(query);
+
+      return masterGroupMatch || subgroupMatch || statusMatch || amountMatch || dateMatch || currencyMatch;
+    }).map(expense => {
+      const title = expenseTitles.find(t => t.id === expense.expense_title?.id);
+      const statusLabel = STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1];
+      const masterGroupLabel = MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1];
+      const subgroupLabel = SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1];
+      
+      return {
+        type: 'expense',
+        id: expense.id,
+        titleId: expense.expense_title?.id,
+        displayText: `${title?.title || 'Unknown Title'} - ${masterGroupLabel} - ${subgroupLabel} (${statusLabel}) - ${expense.amount} ${expense.currency}`
+      };
+    });
+
+    // Combine and deduplicate results
+    const combinedResults = [...titleResults, ...expenseResults];
+    const uniqueResults = Array.from(
+      new Map(combinedResults.map(item => [item.id, item])).values()
+    );
+
+    setSearchResults(uniqueResults);
+    setShowSuggestions(true);
   };
 
   const handleSearchBlur = () => {
-    // Delay hiding suggestions to allow for click events
     setTimeout(() => {
       setShowSuggestions(false);
     }, 200);
   };
 
-  const handleSuggestionClick = (titleId) => {
-    setSelectedTitleId(titleId);
+  const handleSuggestionClick = (result) => {
+    if (result.type === 'title') {
+      setSelectedTitleId(result.id);
+    } else {
+      setSelectedTitleId(result.titleId);
+    }
     setSearchQuery('');
     setShowSuggestions(false);
-    navigate('/details', { state: { selectedTitleId: titleId } });
+    navigate('/details', { state: { selectedTitleId: result.type === 'title' ? result.id : result.titleId } });
   };
 
   const handleSubmit = async (e) => {
@@ -201,31 +303,33 @@ const HomeScreen = () => {
           <div className="search-container">
             <input
               type="text"
-              placeholder="Search expense titles..."
+              placeholder="Search by title, status, master group, subgroup, amount, date, or currency..."
               value={searchQuery}
               onChange={handleSearch}
-              onFocus={() => setShowSuggestions(true)}
+              onFocus={() => searchQuery.trim() && setShowSuggestions(true)}
               onBlur={handleSearchBlur}
               className="search-input"
             />
-            {showSuggestions && searchQuery && (
+            {showSuggestions && searchQuery.trim() && (
               <div className="search-suggestions">
-                {filteredTitles.length > 0 ? (
-                  filteredTitles.map((title) => (
+                {searchResults.length > 0 ? (
+                  searchResults.map((result) => (
                     <div
-                      key={title.id}
+                      key={`${result.type}-${result.id}`}
                       className="suggestion-item"
-                      onClick={() => handleSuggestionClick(title.id)}
+                      onClick={() => handleSuggestionClick(result)}
                     >
-                      {title.title}
+                      {result.displayText}
                     </div>
                   ))
                 ) : (
-                  <div className="no-results">No matching titles found</div>
+                  <div className="no-results">No matching results found</div>
                 )}
               </div>
             )}
           </div>
+        </div>
+        <div className="logout-btn-wrapper">
           <button onClick={handleLogout} className="btn">Logout</button>
         </div>
       </div>
