@@ -223,16 +223,6 @@ select:focus {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.expense-summary::after {
-  content: '▼';
-  float: right;
-  transition: transform 0.3s ease;
-}
-
-.expense-item.expanded .expense-summary::after {
-  transform: rotate(180deg);
-}
-
 .summary-row {
   display: flex;
   justify-content: space-between;
@@ -1154,6 +1144,7 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
 .expense-item.expanded .expense-details {
   max-height: 1000px;
+  padding: 1rem;
   transition: max-height 0.5s ease-in;
 }
 
@@ -1416,4 +1407,116 @@ input[type="file"]::-webkit-file-upload-button:hover {
     opacity: 1;
     transform: translate(-50%, 0);
   }
+}
+
+.btn-delete {
+  background-color: var(--error-color);
+  color: white;
+  margin-left: 0.5rem;
+}
+
+.btn-delete:hover {
+  background-color: #d32f2f;
+  transform: translateY(-2px);
+}
+
+.expand-all-button {
+  background-color: var(--accent-color);
+  margin-bottom: 1rem;
+  width: auto;
+  min-width: 120px;
+}
+
+.expand-all-button:hover {
+  background-color: var(--highlight-color);
+  transform: translateY(-2px);
+}
+
+.expense-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.expense-details-table th,
+.expense-details-table td {
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.expense-details-table th {
+  background-color: var(--accent-color);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--highlight-color);
+}
+
+.expense-details-table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.expense-details-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.expense-details-table input,
+.expense-details-table select {
+  width: calc(100% - 16px); /* Adjust for padding */
+  margin: 0;
+  padding: 0.4rem;
+  text-align: center;
+}
+
+.attachment-group {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.expense-item.expanded .expense-summary {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.expense-item.expanded .expense-details {
+  max-height: 1000px; /* or a sufficiently large value */
+  padding: 1rem; /* Restore padding when expanded */
+  transition: max-height 0.5s ease-in;
+}
+
+.expense-item.expanded {
+  background-color: var(--accent-color);
+}
+
+.expense-forms-full-width {
+  width: 100%;
+}
+
+.summary-arrow {
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: var(--text-muted);
+}
+
+.expense-collapse-trigger {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--highlight-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 100%; /* Make it take full width */
+}
+
+.collapse-arrow {
+  transform: rotate(0deg); /* Ensure it's an up arrow */
+  transition: transform 0.3s ease;
 }

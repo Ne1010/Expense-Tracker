@@ -141,10 +141,12 @@ class OneDriveService:
                 if response.status in (200, 201):
                     result = await response.json()
                     logger.info(f"✅ File uploaded to {full_path}")
+                    # Return just the direct URL without additional parameters
+                    download_url = f"https://appglide-my.sharepoint.com/personal/nehas_appglide_io/Documents/Apps/Billing-Site/{full_path}"
                     return {
                         "success": True,
                         "file_id": result.get("id"),
-                        "web_url": result.get("webUrl"),
+                        "web_url": download_url
                     }
                 else:
                     text = await response.text()

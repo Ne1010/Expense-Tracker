@@ -91,7 +91,12 @@ class OneDriveStorage(Storage):
             if len(parts) >= 2:
                 expense_title = parts[0]
                 filename = parts[1]
-                return asyncio.run(self.service.get_file_url(expense_title, filename))
+                result = asyncio.run(self.service.get_file_url(expense_title, filename))
+                if result and result.get('success'):
+                    return result.get('web_url')
+                else:
+                    logger.error(f"Failed to get file URL: {result.get('error', 'Unknown error')}")
+                    return None
             else:
                 logger.error(f"Invalid file path format: {name}")
                 return None

@@ -37,6 +37,7 @@ const CURRENCIES = [
   ['EUR', 'EUR'],
   ['GBP', 'GBP'],
   ['INR', 'INR'],
+  ['CAD', 'CAD'],
 ];
 
 const SUBGROUPS = {
@@ -83,6 +84,7 @@ const DetailsScreen = () => {
   const [statusCalloutMessage, setStatusCalloutMessage] = useState('');
   const [showCommentsError, setShowCommentsError] = useState(false);
   const [isUpdatingStatus, setIsUpdatingStatus] = useState(false);
+  const [isAllExpanded, setIsAllExpanded] = useState(false);
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -165,36 +167,24 @@ const DetailsScreen = () => {
     navigate('/login');
   };
 
-  const handleViewAttachment = async (expense) => {
-    if (!expense.attachment) return;
+  const handleViewAttachment = (expense) => {
+    if (!expense.attachment) {
+      setError('Attachment URL is missing.');
+      return;
+    }
 
     try {
-      // Base OneDrive folder URL
-      const baseOneDriveUrl = 'https://appglide-my.sharepoint.com/:f:/g/personal/nehas_appglide_io/EuH_826LZ8BPuCr3EQWdilEB1zKyzbc86cJiIO-G6EgjJg?e=T6IYng';
-      
-      // Extract expense title from the attachment path
-      // The path format is "expense_title/filename"
-      const pathParts = expense.attachment.split('/');
-      if (pathParts.length < 2) {
-        throw new Error('Invalid attachment path format');
+      // Use the attachment URL directly
+      const url = expense.attachment.trim();
+
+      if (!/^https?:\/\//i.test(url)) {
+        throw new Error('Invalid attachment URL format');
       }
-      
-      const expenseTitle = pathParts[0];
-      
-      // Sanitize the expense title for URL
-      const sanitizedTitle = expenseTitle
-        .replace(/[<>:"/\\|?*]/g, '_') // Replace invalid characters
-        .trim()
-        .replace(/\s+/g, '_'); // Replace spaces with underscores
-      
-      // Construct the full URL with the expense title as a subfolder
-      const oneDriveUrl = `${baseOneDriveUrl}/${sanitizedTitle}`;
-      
-      // Open in new tab
-      window.open(oneDriveUrl, '_blank', 'noopener,noreferrer');
+
+      window.open(url, '_blank', 'noopener,noreferrer');
     } catch (error) {
-      console.error('Error opening OneDrive folder:', error);
-      setError('Failed to open OneDrive folder. Please try again.');
+      console.error('Error opening attachment:', error);
+      setError('Failed to open attachment. Please contact admin.');
     }
   };
 
@@ -205,6 +195,7 @@ const DetailsScreen = () => {
     setSelectedTitleId(titleId);
     setPendingEdits({});
     setExpandedExpenses([]);
+    setIsAllExpanded(false);
     fetchData(titleId);
   };
 
@@ -290,6 +281,8 @@ const DetailsScreen = () => {
     }
     setSearchQuery('');
     setShowSuggestions(false);
+    setExpandedExpenses([]);
+    setIsAllExpanded(false);
   };
 
   const handleTitleStatusUpdate = async (newStatus) => {
@@ -538,6 +531,39 @@ const DetailsScreen = () => {
     });
   };
 
+  const handleDeleteExpense = async (expenseId) => {
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      await axios.delete(`/api/expense-forms/${expenseId}/`, {
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      setExpenses(prevExpenses => 
+        prevExpenses.filter(expense => expense.id !== expenseId)
+      );
+      setError('');
+    } catch (error) {
+      console.error('Error deleting expense:', error.response?.data || error.message);
+      setError('Failed to delete expense. Please try again.');
+    }
+  };
+
+  const toggleAllExpenses = () => {
+    if (isAllExpanded) {
+      setExpandedExpenses([]);
+    } else {
+      const allExpenseIds = filteredExpenses.map(expense => expense.id);
+      setExpandedExpenses(allExpenseIds);
+    }
+    setIsAllExpanded(!isAllExpanded);
+  };
+
   if (loading) return <div className="container">Loading...</div>;
   if (error) return <div className="container error-message">{error}</div>;
 
@@ -674,136 +700,154 @@ const DetailsScreen = () => {
                   </div>
                 )}
 
+                {/* Add expand/collapse all button */}
+                <button
+                  onClick={toggleAllExpenses}
+                  className="btn expand-all-button"
+                >
+                  {isAllExpanded ? 'Collapse All' : 'Expand All'}
+                </button>
+
                 {filteredExpenses.map((expense) => (
                   <div 
                     key={expense.id} 
                     className={`expense-item ${expandedExpenses.includes(expense.id) ? 'expanded' : 'collapsed'}`}
                   >
-                    <div 
-                      className="expense-summary" 
-                      onClick={() => toggleExpandExpense(expense.id)}
-                    >
-                      <div className="summary-row">
-                        <span className="master-group">
-                          {MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}
-                        </span>
-                        <span className="amount">{expense.amount} {expense.currency}</span>
-                        <span className="date">{expense.date}</span>
-                      </div>
-                    </div>
-                    <div className="expense-details">
-                      <div className="form-row">
-                        <div className="form-group">
-                          <div>Master Group</div>
-                          {editingExpense === expense.id ? (
-                            <select
-                              value={pendingEdits[expense.id]?.master_group || expense.master_group}
-                              onChange={(e) => handleMasterGroupChange(expense.id, e.target.value)}
-                            >
-                              {MASTER_GROUPS.map(([value, label]) => (
-                                <option key={value} value={value}>{label}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <div>{MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}</div>
-                          )}
-                        </div>
-                        
-                        <div className="form-group">
-                          <div>Subgroup</div>
-                          {editingExpense === expense.id ? (
-                            <select
-                              value={pendingEdits[expense.id]?.subgroup || expense.subgroup}
-                              onChange={(e) => setPendingEdits(prev => ({
-                                ...prev,
-                                [expense.id]: {
-                                  ...prev[expense.id],
-                                  subgroup: e.target.value
-                                }
-                              }))}
-                            >
-                              {SUBGROUPS[pendingEdits[expense.id]?.master_group || expense.master_group]?.map(([value, label]) => (
-                                <option key={value} value={value}>{label}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <div>{SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}</div>
-                          )}
+                    {/* Summary for collapsed state */}
+                    {!expandedExpenses.includes(expense.id) && (
+                      <div
+                        className="expense-summary"
+                        onClick={() => toggleExpandExpense(expense.id)}
+                      >
+                        <div className="summary-row">
+                          <span className="master-group">
+                            {MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}
+                          </span>
+                          <span className="amount">{expense.amount} {expense.currency}</span>
+                          <span className="date">{expense.date}</span>
+                          <span className="summary-arrow">▼</span> {/* Down arrow for collapsed state */}
                         </div>
                       </div>
-                      
-                      <div className="form-row">
-                        <div className="form-group">
-                          <div>CURR</div>
-                          {editingExpense === expense.id ? (
-                            <select
-                              value={pendingEdits[expense.id]?.currency || expense.currency}
-                              onChange={(e) => setPendingEdits(prev => ({
-                                ...prev,
-                                [expense.id]: {
-                                  ...prev[expense.id],
-                                  currency: e.target.value
-                                }
-                              }))}
-                            >
-                              {CURRENCIES.map(([value, label]) => (
-                                <option key={value} value={value}>{label}</option>
-                              ))}
-                            </select>
-                          ) : (
-                            <div>{expense.currency}</div>
-                          )}
-                        </div>
-                        
-                        <div className="form-group">
-                          <div>Amount</div>
-                          {editingExpense === expense.id ? (
-                            <input
-                              type="number"
-                              step="0.01"
-                              min="0"
-                              value={pendingEdits[expense.id]?.amount || ''}
-                              onChange={(e) => {
-                                const value = e.target.value === '' ? '' : parseFloat(e.target.value);
-                                setPendingEdits(prev => ({
-                                  ...prev,
-                                  [expense.id]: {
-                                    ...prev[expense.id],
-                                    amount: value
-                                  }
-                                }));
-                              }}
-                            />
-                          ) : (
-                            <div>{parseFloat(expense.amount).toFixed(2)}</div>
-                          )}
-                        </div>
-                      </div>
+                    )}
 
-                      <div className="form-row">
-                        <div className="form-group">
-                          <div>Date</div>
-                          {editingExpense === expense.id ? (
-                            <input
-                              type="date"
-                              value={pendingEdits[expense.id]?.date || expense.date}
-                              onChange={(e) => setPendingEdits(prev => ({
-                                ...prev,
-                                [expense.id]: {
-                                  ...prev[expense.id],
-                                  date: e.target.value
-                                }
-                              }))}
-                            />
-                          ) : (
-                            <div>{expense.date}</div>
-                          )}
+                    <div className="expense-details">
+                      {/* Collapse trigger for expanded state */}
+                      {expandedExpenses.includes(expense.id) && (
+                        <div
+                          className="expense-collapse-trigger"
+                          onClick={() => toggleExpandExpense(expense.id)}
+                        >
+                          <span className="collapse-arrow">▲</span> {/* Up arrow for expanded state */}
                         </div>
-                      </div>
+                      )}
+                      <table className="expense-details-table">
+                        <thead>
+                          <tr>
+                            <th>Master Group</th>
+                            <th>Subgroup</th>
+                            <th>CURR</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              {editingExpense === expense.id ? (
+                                <select
+                                  value={pendingEdits[expense.id]?.master_group || expense.master_group}
+                                  onChange={(e) => handleMasterGroupChange(expense.id, e.target.value)}
+                                >
+                                  {MASTER_GROUPS.map(([value, label]) => (
+                                    <option key={value} value={value}>{label}</option>
+                                  ))}
+                                </select>
+                              ) : (
+                                <div>{MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}</div>
+                              )}
+                            </td>
+                            <td>
+                              {editingExpense === expense.id ? (
+                                <select
+                                  value={pendingEdits[expense.id]?.subgroup || expense.subgroup}
+                                  onChange={(e) => setPendingEdits(prev => ({
+                                    ...prev,
+                                    [expense.id]: {
+                                      ...prev[expense.id],
+                                      subgroup: e.target.value
+                                    }
+                                  }))}
+                                >
+                                  {SUBGROUPS[pendingEdits[expense.id]?.master_group || expense.master_group]?.map(([value, label]) => (
+                                    <option key={value} value={value}>{label}</option>
+                                  ))}
+                                </select>
+                              ) : (
+                                <div>{SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}</div>
+                              )}
+                            </td>
+                            <td>
+                              {editingExpense === expense.id ? (
+                                <select
+                                  value={pendingEdits[expense.id]?.currency || expense.currency}
+                                  onChange={(e) => setPendingEdits(prev => ({
+                                    ...prev,
+                                    [expense.id]: {
+                                      ...prev[expense.id],
+                                      currency: e.target.value
+                                    }
+                                  }))}
+                                >
+                                  {CURRENCIES.map(([value, label]) => (
+                                    <option key={value} value={value}>{label}</option>
+                                  ))}
+                                </select>
+                              ) : (
+                                <div>{expense.currency}</div>
+                              )}
+                            </td>
+                            <td>
+                              {editingExpense === expense.id ? (
+                                <input
+                                  type="number"
+                                  value={pendingEdits[expense.id]?.amount ?? ''}
+                                  onChange={(e) => {
+                                    setPendingEdits(prev => ({
+                                      ...prev,
+                                      [expense.id]: {
+                                        ...prev[expense.id],
+                                        amount: e.target.value === '' ? '' : e.target.value
+                                      }
+                                    }));
+                                  }}
+                                />
+                              ) : (
+                                <div>{expense.amount}</div>
+                              )}
+                            </td>
+                            <td>
+                              {editingExpense === expense.id ? (
+                                <input
+                                  type="date"
+                                  value={pendingEdits[expense.id]?.date || expense.date}
+                                  onChange={(e) => setPendingEdits(prev => ({
+                                    ...prev,
+                                    [expense.id]: {
+                                      ...prev[expense.id],
+                                      date: e.target.value
+                                    }
+                                  }))}
+                                />
+                              ) : (
+                                <div>{expense.date}</div>
+                              )}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
 
                       {expense.attachment && (
-                        <div className="form-group">
-                          <div>Attachment</div>
+                        <div className="form-group attachment-group">
                           <button
                             onClick={() => handleViewAttachment(expense)}
                             className="attachment-link"
@@ -831,14 +875,24 @@ const DetailsScreen = () => {
                               </button>
                             </>
                           ) : (
-                            expense.status !== 'APPROVED' && (
-                              <button
-                                className="btn"
-                                onClick={() => handleEditExpense(expense)}
-                              >
-                                Edit Form
-                              </button>
-                            )
+                            <>
+                              {expense.status !== 'APPROVED' && (
+                                <button
+                                  className="btn"
+                                  onClick={() => handleEditExpense(expense)}
+                                >
+                                  Edit Form
+                                </button>
+                              )}
+                              {(titleStatus.status === 'PENDING' || titleStatus.status === 'REJECTED') && (
+                                <button
+                                  className="btn btn-delete"
+                                  onClick={() => handleDeleteExpense(expense.id)}
+                                >
+                                  Delete Form
+                                </button>
+                              )}
+                            </>
                           )}
                         </div>
                       )}
