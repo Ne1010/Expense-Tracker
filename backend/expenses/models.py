@@ -2,9 +2,13 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from .storage import OneDriveStorage
+from decimal import Decimal
 
 class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
+
+    class Meta:
+        app_label = 'expenses'
 
 class ExpenseTitle(models.Model):
     title = models.CharField(max_length=200)
@@ -13,6 +17,9 @@ class ExpenseTitle(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        app_label = 'expenses'
 
 class ExpenseForm(models.Model):
     MASTER_GROUPS = [
@@ -55,7 +62,7 @@ class ExpenseForm(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     master_group = models.CharField(max_length=20, choices=MASTER_GROUPS)
     subgroup = models.CharField(max_length=20)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=19, decimal_places=10)
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES)
     date = models.DateField()
     attachment = models.FileField(
@@ -72,8 +79,20 @@ class ExpenseForm(models.Model):
     def get_subgroup_choices(self):
         return dict(self.SUBGROUPS.get(self.master_group, []))
 
+    def clean_amount(self):
+        amount = self.amount
+        if amount is not None:
+            self.amount = amount.normalize()
+        return self.amount
+
     def save(self, *args, **kwargs):
-        # Ensure expense_title is set before saving with attachment
+        self.clean_amount()
         if self.attachment and not self.expense_title:
             raise ValueError("Expense title must be set before uploading a file")
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.expense_title.title} - {self.amount} {self.currency}"
+
+    class Meta:
+        app_label = 'expenses'

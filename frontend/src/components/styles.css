@@ -228,12 +228,25 @@ select:focus {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.summary-row .category-group {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .summary-row .master-group {
   font-weight: 600;
   color: var(--text-color);
-  flex: 2;
+}
+
+.summary-row .subgroup {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
 }
 
 .summary-row .amount {
@@ -241,12 +254,31 @@ select:focus {
   font-weight: 600;
   flex: 1;
   text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.summary-row .amount::before {
+  content: attr(data-amount);
+  content: attr(data-amount) / 1;
 }
 
 .summary-row .date {
   color: var(--text-muted);
   flex: 1;
   text-align: right;
+  font-size: 0.9rem;
+}
+
+.summary-row .summary-arrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.expense-item.expanded .summary-arrow {
+  transform: rotate(180deg);
 }
 
 .attachment-link {
@@ -1349,9 +1381,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
   transform: translateX(-50%);
   background-color: #fff3cd;
   border: 1px solid #ffeeba;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem 1.5rem;
   border-radius: 4px;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: #856404;
   white-space: nowrap;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -1472,51 +1504,225 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 .attachment-group {
-  text-align: center;
   margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  display: none; /* Hide by default */
 }
 
-.expense-item.expanded .expense-summary {
-  max-height: 0;
-  overflow: hidden;
-  padding: 0;
+.expense-item.expanded .attachment-group {
+  display: block; /* Show only when expanded */
+}
+
+.attachment-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.attachment-header label {
+  color: var(--text-color);
+  font-weight: 600;
   margin: 0;
 }
 
-.expense-item.expanded .expense-details {
-  max-height: 1000px; /* or a sufficiently large value */
-  padding: 1rem; /* Restore padding when expanded */
-  transition: max-height 0.5s ease-in;
+.current-attachment {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
-.expense-item.expanded {
-  background-color: var(--accent-color);
-}
-
-.expense-forms-full-width {
-  width: 100%;
-}
-
-.summary-arrow {
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  margin-left: 0.5rem;
+.current-attachment span {
   color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
-.expense-collapse-trigger {
+.view-btn {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  min-width: 50px;
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.view-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.new-attachment {
+  margin-top: 0.5rem;
+}
+
+.file-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.file-input::-webkit-file-upload-button {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-right: 1rem;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+  background-color: var(--highlight-color);
+}
+
+.attachment-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+}
+
+.attachment-link:hover {
+  background-color: var(--highlight-color);
+  transform: translateY(-2px);
+}
+
+.comment-callout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
-  cursor: pointer;
-  color: var(--highlight-color);
-  font-size: 1.5rem;
-  font-weight: bold;
-  width: 100%; /* Make it take full width */
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.collapse-arrow {
-  transform: rotate(0deg); /* Ensure it's an up arrow */
-  transition: transform 0.3s ease;
+.comment-callout .callout-content {
+  background-color: var(--secondary-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--neumorphic-shadow);
+  animation: slideUp 0.3s ease-in-out;
+}
+
+.comment-callout h4 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.comment-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  resize: vertical;
+  font-family: inherit;
+}
+
+.comment-textarea:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 0 2px rgba(0, 180, 216, 0.2);
+}
+
+.callout-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.delete-confirmation-callout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.delete-confirmation-callout .callout-content {
+  background-color: var(--secondary-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--neumorphic-shadow);
+  animation: slideUp 0.3s ease-in-out;
+  text-align: center;
+}
+
+.delete-confirmation-callout p {
+  color: var(--text-color);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.delete-confirmation-callout .callout-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.delete-confirmation-callout .btn-delete {
+  background-color: var(--error-color);
+  color: white;
+  min-width: 100px;
+}
+
+.delete-confirmation-callout .btn-secondary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  min-width: 100px;
+}
+
+.delete-confirmation-callout .btn-delete:hover,
+.delete-confirmation-callout .btn-secondary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
 }

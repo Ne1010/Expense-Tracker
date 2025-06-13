@@ -56,6 +56,26 @@ const SUBGROUPS = {
   ],
 };
 
+// Utility function to format amount without trailing zeros
+const formatAmount = (amount) => {
+  if (amount === null || amount === undefined || amount === '') return '';
+  // Convert to string and remove trailing zeros
+  return amount.toString().replace(/(\.0*|(?<=(\..*))0*)$/, '');
+};
+
+// Utility function to parse amount input
+const parseAmountInput = (value) => {
+  if (value === '') return '';
+  // Remove any non-digit characters except decimal point
+  const cleaned = value.replace(/[^\d.]/g, '');
+  // Ensure only one decimal point
+  const parts = cleaned.split('.');
+  if (parts.length > 2) {
+    return parts[0] + '.' + parts.slice(1).join('');
+  }
+  return cleaned;
+};
+
 const DetailsScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -85,6 +105,11 @@ const DetailsScreen = () => {
   const [showCommentsError, setShowCommentsError] = useState(false);
   const [isUpdatingStatus, setIsUpdatingStatus] = useState(false);
   const [isAllExpanded, setIsAllExpanded] = useState(false);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+  const [expenseToDelete, setExpenseToDelete] = useState(null);
+  const [showCommentCallout, setShowCommentCallout] = useState(false);
+  const [pendingStatus, setPendingStatus] = useState(null);
+  const [tempComment, setTempComment] = useState('');
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -199,6 +224,11 @@ const DetailsScreen = () => {
     fetchData(titleId);
   };
 
+  const getExpenseTitleStatus = (titleId) => {
+    const titleExpense = expenses.find(e => e.expense_title?.id === titleId);
+    return titleExpense ? titleExpense.status : 'PENDING';
+  };
+
   const selectedTitle = expenseTitles.find(title => title.id === selectedTitleId);
   const filteredExpenses = selectedTitleId
     ? expenses.filter(expense => expense.expense_title && expense.expense_title.id === selectedTitleId)
@@ -296,21 +326,6 @@ const DetailsScreen = () => {
       return;
     }
 
-    // Check if comments are provided
-    if (!titleStatus.comments.trim()) {
-      setShowCommentsError(true);
-      return;
-    }
-
-    // Check if trying to update to same status
-    const currentStatus = expenses.find(e => e.expense_title?.id === selectedTitleId)?.status;
-    if (currentStatus === newStatus) {
-      setStatusCalloutMessage(`This expense is already ${newStatus.toLowerCase()} and no update has to be made`);
-      setShowStatusCallout(true);
-      setTimeout(() => setShowStatusCallout(false), 3000);
-      return;
-    }
-
     try {
       setIsUpdatingStatus(true);
       // Update all related expense forms
@@ -371,7 +386,7 @@ const DetailsScreen = () => {
     setEditingExpense(expense.id);
     setPendingEdits({
       [expense.id]: {
-        amount: parseFloat(expense.amount),
+        amount: expense.amount,
         date: expense.date,
         master_group: expense.master_group,
         subgroup: expense.subgroup,
@@ -379,6 +394,30 @@ const DetailsScreen = () => {
         comments: ''
       }
     });
+
+    // Update all expenses under the same title to PENDING status
+    const titleId = expense.expense_title?.id;
+    if (titleId) {
+      setExpenses(prevExpenses => 
+        prevExpenses.map(exp => {
+          if (exp.expense_title?.id === titleId) {
+            return {
+              ...exp,
+              status: 'PENDING',
+              comments: ''
+            };
+          }
+          return exp;
+        })
+      );
+
+      // Update title status
+      setTitleStatus(prev => ({
+        ...prev,
+        status: 'PENDING',
+        comments: ''
+      }));
+    }
   };
 
   const handleMasterGroupChange = (expenseId, value) => {
@@ -402,17 +441,39 @@ const DetailsScreen = () => {
     const token = localStorage.getItem('token');
     
     try {
-      const response = await axios.patch(`/api/expense-forms/${expenseId}/`, 
-        {
-          ...pendingEdits[expenseId],
-          status: 'PENDING',
-          comments: ''
-        },
+      const formData = new FormData();
+      const edits = pendingEdits[expenseId];
+      
+      // Process amount to ensure it's a valid decimal
+      if (edits.amount) {
+        // Convert to number and back to string to normalize
+        const amountValue = parseFloat(edits.amount);
+        if (isNaN(amountValue)) {
+          throw new Error('Invalid amount value');
+        }
+        formData.append('amount', amountValue.toString());
+      }
+
+      // Add other fields
+      Object.keys(edits).forEach(key => {
+        if (key !== 'amount' && key !== 'attachment') {
+          formData.append(key, edits[key]);
+        }
+      });
+
+      // Handle attachment
+      if (edits.attachment) {
+        formData.append('attachment', edits.attachment);
+      }
+
+      const response = await axios.patch(
+        `/api/expense-forms/${expenseId}/`,
+        formData,
         {
           headers: {
             'X-CSRFToken': csrftoken,
             'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
           },
         }
       );
@@ -430,7 +491,7 @@ const DetailsScreen = () => {
       setError('');
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
-      setError('Failed to update expense. Please try again.');
+      setError(error.response?.data?.amount?.[0] || 'Failed to update expense. Please try again.');
     }
   };
 
@@ -532,11 +593,18 @@ const DetailsScreen = () => {
   };
 
   const handleDeleteExpense = async (expenseId) => {
+    setExpenseToDelete(expenseId);
+    setShowDeleteConfirmation(true);
+  };
+
+  const confirmDeleteExpense = async () => {
+    if (!expenseToDelete) return;
+
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
     
     try {
-      await axios.delete(`/api/expense-forms/${expenseId}/`, {
+      await axios.delete(`/api/expense-forms/${expenseToDelete}/`, {
         headers: {
           'X-CSRFToken': csrftoken,
           'Authorization': `Bearer ${token}`,
@@ -545,12 +613,15 @@ const DetailsScreen = () => {
       });
 
       setExpenses(prevExpenses => 
-        prevExpenses.filter(expense => expense.id !== expenseId)
+        prevExpenses.filter(expense => expense.id !== expenseToDelete)
       );
       setError('');
     } catch (error) {
       console.error('Error deleting expense:', error.response?.data || error.message);
       setError('Failed to delete expense. Please try again.');
+    } finally {
+      setShowDeleteConfirmation(false);
+      setExpenseToDelete(null);
     }
   };
 
@@ -562,6 +633,60 @@ const DetailsScreen = () => {
       setExpandedExpenses(allExpenseIds);
     }
     setIsAllExpanded(!isAllExpanded);
+  };
+
+  const handleStatusButtonClick = (newStatus) => {
+    const currentStatus = titleStatus.status;
+    
+    // Check for double approval/rejection
+    if (currentStatus === newStatus) {
+      setStatusCalloutMessage(`This expense is already ${newStatus.toLowerCase()} and no update has to be made`);
+      setShowStatusCallout(true);
+      setTimeout(() => setShowStatusCallout(false), 3000);
+      return;
+    }
+
+    // Check for transitions that require comments
+    const requiresComments = (
+      (currentStatus === 'APPROVED' && newStatus === 'REJECTED') ||
+      (currentStatus === 'REJECTED' && newStatus === 'APPROVED') ||
+      newStatus === 'APPROVED' ||
+      newStatus === 'REJECTED'
+    );
+
+    if (requiresComments) {
+      setPendingStatus(newStatus);
+      setTempComment(titleStatus.comments);
+      setShowCommentCallout(true);
+    } else {
+      // For create/edit cases (no comments required)
+      handleTitleStatusUpdate(newStatus);
+    }
+  };
+
+  const handleStatusConfirm = async () => {
+    if (!tempComment.trim() && (pendingStatus === 'APPROVED' || pendingStatus === 'REJECTED')) {
+      setShowCommentsError(true);
+      return;
+    }
+
+    // Update the comments before proceeding
+    setTitleStatus(prev => ({
+      ...prev,
+      comments: tempComment
+    }));
+
+    setShowCommentCallout(false);
+    await handleTitleStatusUpdate(pendingStatus);
+    setPendingStatus(null);
+    setTempComment('');
+  };
+
+  const handleStatusCancel = () => {
+    setShowCommentCallout(false);
+    setPendingStatus(null);
+    setTempComment('');
+    setShowCommentsError(false);
   };
 
   if (loading) return <div className="container">Loading...</div>;
@@ -640,14 +765,14 @@ const DetailsScreen = () => {
                         <div className="status-buttons">
                           <button
                             className={`btn-accept ${isUpdatingStatus ? 'disabled' : ''}`}
-                            onClick={() => handleTitleStatusUpdate('APPROVED')}
+                            onClick={() => handleStatusButtonClick('APPROVED')}
                             disabled={isUpdatingStatus}
                           >
-                            {isUpdatingStatus ? 'Processing...' : 'Accept'}
+                            {isUpdatingStatus ? 'Processing...' : 'Approve'}
                           </button>
                           <button
                             className={`btn-reject ${isUpdatingStatus ? 'disabled' : ''}`}
-                            onClick={() => handleTitleStatusUpdate('REJECTED')}
+                            onClick={() => handleStatusButtonClick('REJECTED')}
                             disabled={isUpdatingStatus}
                           >
                             {isUpdatingStatus ? 'Processing...' : 'Reject'}
@@ -681,7 +806,7 @@ const DetailsScreen = () => {
                 )}
                 
                 {/* Only show add form button if status is not APPROVED */}
-                {expenses.find(e => e.expense_title?.id === selectedTitleId)?.status !== 'APPROVED' && (
+                {!isAdmin && expenses.find(e => e.expense_title?.id === selectedTitleId)?.status !== 'APPROVED' && (
                   <button
                     onClick={handleAddForm}
                     className="btn add-form-button"
@@ -708,6 +833,38 @@ const DetailsScreen = () => {
                   {isAllExpanded ? 'Collapse All' : 'Expand All'}
                 </button>
 
+                {showCommentCallout && (
+                  <div className="comment-callout">
+                    <div className="callout-content">
+                      <h4>Add Comments for {pendingStatus === 'APPROVED' ? 'Approval' : 'Rejection'}</h4>
+                      {showCommentsError && (
+                        <div className="comments-error-callout">
+                          Please add comments before confirming
+                        </div>
+                      )}
+                      <textarea
+                        value={tempComment}
+                        onChange={(e) => {
+                          setTempComment(e.target.value);
+                          if (e.target.value.trim()) {
+                            setShowCommentsError(false);
+                          }
+                        }}
+                        placeholder="Enter your comments here..."
+                        className="comment-textarea"
+                      />
+                      <div className="callout-actions">
+                        <button onClick={handleStatusConfirm} className="btn btn-primary">
+                          Confirm
+                        </button>
+                        <button onClick={handleStatusCancel} className="btn btn-secondary">
+                          Cancel
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {filteredExpenses.map((expense) => (
                   <div 
                     key={expense.id} 
@@ -720,10 +877,17 @@ const DetailsScreen = () => {
                         onClick={() => toggleExpandExpense(expense.id)}
                       >
                         <div className="summary-row">
-                          <span className="master-group">
-                            {MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}
+                          <div className="category-group">
+                            <span className="master-group">
+                              {MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}
+                            </span>
+                            <span className="subgroup">
+                              {SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}
+                            </span>
+                          </div>
+                          <span className="amount" data-amount={formatAmount(expense.amount)}>
+                            {formatAmount(expense.amount)} {expense.currency}
                           </span>
-                          <span className="amount">{expense.amount} {expense.currency}</span>
                           <span className="date">{expense.date}</span>
                           <span className="summary-arrow">▼</span> {/* Down arrow for collapsed state */}
                         </div>
@@ -737,7 +901,7 @@ const DetailsScreen = () => {
                           className="expense-collapse-trigger"
                           onClick={() => toggleExpandExpense(expense.id)}
                         >
-                          <span className="collapse-arrow">▲</span> {/* Up arrow for expanded state */}
+                          <span className="collapse-arrow">▲</span>
                         </div>
                       )}
                       <table className="expense-details-table">
@@ -809,20 +973,22 @@ const DetailsScreen = () => {
                             <td>
                               {editingExpense === expense.id ? (
                                 <input
-                                  type="number"
-                                  value={pendingEdits[expense.id]?.amount ?? ''}
+                                  type="text"
+                                  value={pendingEdits[expense.id]?.amount ? formatAmount(pendingEdits[expense.id].amount) : ''}
                                   onChange={(e) => {
+                                    const value = parseAmountInput(e.target.value);
                                     setPendingEdits(prev => ({
                                       ...prev,
                                       [expense.id]: {
                                         ...prev[expense.id],
-                                        amount: e.target.value === '' ? '' : e.target.value
+                                        amount: value
                                       }
                                     }));
                                   }}
+                                  placeholder="Enter amount"
                                 />
                               ) : (
-                                <div>{expense.amount}</div>
+                                <div>{formatAmount(expense.amount)}</div>
                               )}
                             </td>
                             <td>
@@ -846,14 +1012,58 @@ const DetailsScreen = () => {
                         </tbody>
                       </table>
 
-                      {expense.attachment && (
-                        <div className="form-group attachment-group">
-                          <button
-                            onClick={() => handleViewAttachment(expense)}
-                            className="attachment-link"
-                          >
-                            View Attachment
-                          </button>
+                      {editingExpense === expense.id && (
+                        <div className="attachment-group">
+                          <div className="attachment-header">
+                            <label>Attachment</label>
+                            {expense.attachment && (
+                              <div className="current-attachment">
+                                <span>Current Attachment:</span>
+                                <button
+                                  onClick={() => handleViewAttachment(expense)}
+                                  className="view-btn"
+                                >
+                                  View
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                          <div className="new-attachment">
+                            <input
+                              type="file"
+                              onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                  setPendingEdits(prev => ({
+                                    ...prev,
+                                    [expense.id]: {
+                                      ...prev[expense.id],
+                                      attachment: file,
+                                      remove_attachment: true
+                                    }
+                                  }));
+                                }
+                              }}
+                              className="file-input"
+                            />
+                          </div>
+                        </div>
+                      )}
+
+                      {!editingExpense && expense.attachment && (
+                        <div className="attachment-group">
+                          <div className="attachment-header">
+                            <label>Attachment</label>
+                            <div className="current-attachment">
+                              <span>Current Attachment:</span>
+                              <button
+                                onClick={() => handleViewAttachment(expense)}
+                                className="view-btn"
+                              >
+                                View
+                              </button>
+                            </div>
+                          </div>
                         </div>
                       )}
 
@@ -913,13 +1123,31 @@ const DetailsScreen = () => {
                 ➕ Add Title
               </button>
             )}
-            {expenseTitles.map((title) => (
+            {expenseTitles
+              .sort((a, b) => {
+                if (!isAdmin) return 0; // No sorting for non-admin
+
+                const statusA = getExpenseTitleStatus(a.id);
+                const statusB = getExpenseTitleStatus(b.id);
+
+                const order = { 'PENDING': 1, 'REJECTED': 2, 'APPROVED': 3 };
+
+                if (order[statusA] < order[statusB]) {
+                  return -1;
+                } else if (order[statusA] > order[statusB]) {
+                  return 1;
+                } else {
+                  // If statuses are the same, sort by ID descending (most recent first)
+                  return b.id - a.id;
+                }
+              })
+              .map((title) => (
               <div key={title.id} className="expense-title-section">
                 <div className="expense-title-header" onClick={() => handleTitleSelect(title.id)}>
                   <h2>{title.title}</h2>
                   <div className="title-status-display">
-                    <div className="status-badge" data-status={expenses.find(e => e.expense_title?.id === title.id)?.status || 'PENDING'}>
-                      {STATUS_OPTIONS.find(([value]) => value === (expenses.find(e => e.expense_title?.id === title.id)?.status || 'PENDING'))?.[1]}
+                    <div className="status-badge" data-status={getExpenseTitleStatus(title.id)}>
+                      {STATUS_OPTIONS.find(([value]) => value === getExpenseTitleStatus(title.id))?.[1]}
                     </div>
                     <div className="title-comments">
                       {expenses.find(e => e.expense_title?.id === title.id)?.comments || 'No comments'}
@@ -931,6 +1159,22 @@ const DetailsScreen = () => {
           </>
         )}
       </div>
+
+      {showDeleteConfirmation && (
+        <div className="delete-confirmation-callout">
+          <div className="callout-content">
+            <p>Are you sure you want to delete this expense?</p>
+            <div className="callout-actions">
+              <button onClick={confirmDeleteExpense} className="btn btn-delete">
+                Yes, Delete
+              </button>
+              <button onClick={() => setShowDeleteConfirmation(false)} className="btn btn-secondary">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
