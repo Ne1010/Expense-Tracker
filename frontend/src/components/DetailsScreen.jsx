@@ -73,6 +73,10 @@ const parseAmountInput = (value) => {
   if (parts.length > 2) {
     return parts[0] + '.' + parts.slice(1).join('');
   }
+  const parsed = parseFloat(cleaned);
+  if (isNaN(parsed) || parsed === 0) {
+    return ''; // Return empty string if 0 or not a valid number
+  }
   return cleaned;
 };
 
@@ -110,6 +114,7 @@ const DetailsScreen = () => {
   const [showCommentCallout, setShowCommentCallout] = useState(false);
   const [pendingStatus, setPendingStatus] = useState(null);
   const [tempComment, setTempComment] = useState('');
+  const [amountError, setAmountError] = useState('');
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -444,14 +449,17 @@ const DetailsScreen = () => {
       const formData = new FormData();
       const edits = pendingEdits[expenseId];
       
-      // Process amount to ensure it's a valid decimal
+      // Process amount to ensure it's a valid decimal and greater than 0
       if (edits.amount) {
-        // Convert to number and back to string to normalize
         const amountValue = parseFloat(edits.amount);
-        if (isNaN(amountValue)) {
-          throw new Error('Invalid amount value');
+        if (isNaN(amountValue) || amountValue <= 0) {
+          setAmountError('Amount must be greater than 0.');
+          return; // Stop the save process
         }
         formData.append('amount', amountValue.toString());
+      } else {
+        setAmountError('Amount is required.');
+        return; // Stop the save process
       }
 
       // Add other fields
@@ -489,6 +497,7 @@ const DetailsScreen = () => {
       setEditingExpense(null);
       setPendingEdits({});
       setError('');
+      setAmountError(''); // Clear amount error on successful save
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
       setError(error.response?.data?.amount?.[0] || 'Failed to update expense. Please try again.');
@@ -984,11 +993,24 @@ const DetailsScreen = () => {
                                         amount: value
                                       }
                                     }));
+                                    if (value.trim() && parseFloat(value) > 0) {
+                                      setAmountError('');
+                                    }
+                                  }}
+                                  onBlur={() => {
+                                    if (!pendingEdits[expense.id]?.amount || parseFloat(pendingEdits[expense.id].amount) <= 0) {
+                                      setAmountError('Amount must be greater than 0.');
+                                    }
                                   }}
                                   placeholder="Enter amount"
                                 />
                               ) : (
                                 <div>{formatAmount(expense.amount)}</div>
+                              )}
+                              {editingExpense === expense.id && amountError && (
+                                <div className="amount-error-callout">
+                                  {amountError}
+                                </div>
                               )}
                             </td>
                             <td>

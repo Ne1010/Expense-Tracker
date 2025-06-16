@@ -1726,3 +1726,40 @@ input[type="file"]::-webkit-file-upload-button:hover {
   transform: translateY(-2px);
   opacity: 0.9;
 }
+
+.amount-error-callout {
+  color: var(--error-color);
+  background-color: rgba(244, 67, 54, 0.1);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--border-radius);
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  animation: fadeIn 0.3s ease-out forwards;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -25px;
+  z-index: 10;
+  box-shadow: var(--neumorphic-shadow-inset);
+}
+
+.amount-error-callout::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  border-width: 0 8px 10px 8px;
+  border-style: solid;
+  border-color: transparent transparent rgba(244, 67, 54, 0.1) transparent;
+}
+
+.amount-error-callout::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 15px;
+  border-width: 0 8px 10px 8px;
+  border-style: solid;
+  border-color: transparent transparent var(--error-color) transparent;
+  filter: drop-shadow(0 -1px 0px rgba(0,0,0,0.2)); /* Optional: adds a subtle shadow to the caret */
+}
