@@ -56,30 +56,6 @@ const SUBGROUPS = {
   ],
 };
 
-// Utility function to format amount without trailing zeros
-const formatAmount = (amount) => {
-  if (amount === null || amount === undefined || amount === '') return '';
-  // Convert to string and remove trailing zeros
-  return amount.toString().replace(/(\.0*|(?<=(\..*))0*)$/, '');
-};
-
-// Utility function to parse amount input
-const parseAmountInput = (value) => {
-  if (value === '') return '';
-  // Remove any non-digit characters except decimal point
-  const cleaned = value.replace(/[^\d.]/g, '');
-  // Ensure only one decimal point
-  const parts = cleaned.split('.');
-  if (parts.length > 2) {
-    return parts[0] + '.' + parts.slice(1).join('');
-  }
-  const parsed = parseFloat(cleaned);
-  if (isNaN(parsed) || parsed === 0) {
-    return ''; // Return empty string if 0 or not a valid number
-  }
-  return cleaned;
-};
-
 const DetailsScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -111,10 +87,12 @@ const DetailsScreen = () => {
   const [isAllExpanded, setIsAllExpanded] = useState(false);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [expenseToDelete, setExpenseToDelete] = useState(null);
-  const [showCommentCallout, setShowCommentCallout] = useState(false);
-  const [pendingStatus, setPendingStatus] = useState(null);
-  const [tempComment, setTempComment] = useState('');
+  const [commentPromptMessage, setCommentPromptMessage] = useState('');
   const [amountError, setAmountError] = useState('');
+  const [pendingStatusChange, setPendingStatusChange] = useState(null);
+  const [showStatusChangeCallout, setShowStatusChangeCallout] = useState(false);
+  const [showStatusMessage, setShowStatusMessage] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -162,7 +140,7 @@ const DetailsScreen = () => {
           const firstExpense = titleExpenses[0];
           setTitleStatus({
             status: firstExpense.status || 'PENDING',
-            comments: firstExpense.comments || ''
+            comments: firstExpense.status === 'PENDING' ? '' : firstExpense.comments || ''
           });
         } else {
           setTitleStatus({
@@ -197,15 +175,16 @@ const DetailsScreen = () => {
     navigate('/login');
   };
 
-  const handleViewAttachment = (expense) => {
-    if (!expense.attachment) {
+  const handleViewAttachment = (expense, attachmentNumber) => {
+    const attachment = attachmentNumber === 1 ? expense.attachment1 : expense.attachment2;
+    if (!attachment) {
       setError('Attachment URL is missing.');
       return;
     }
 
     try {
       // Use the attachment URL directly
-      const url = expense.attachment.trim();
+      const url = attachment.trim();
 
       if (!/^https?:\/\//i.test(url)) {
         throw new Error('Invalid attachment URL format');
@@ -215,6 +194,19 @@ const DetailsScreen = () => {
     } catch (error) {
       console.error('Error opening attachment:', error);
       setError('Failed to open attachment. Please contact admin.');
+    }
+  };
+
+  // Add new function to get filename from URL
+  const getAttachmentName = (url) => {
+    try {
+      const urlObj = new URL(url);
+      const pathname = urlObj.pathname;
+      const filename = pathname.split('/').pop();
+      return decodeURIComponent(filename);
+    } catch (error) {
+      console.error('Error parsing attachment URL:', error);
+      return 'Unknown file';
     }
   };
 
@@ -344,7 +336,7 @@ const DetailsScreen = () => {
             `/api/expense-forms/${expense.id}/update_status/`,
             {
               status: newStatus,
-              comments: titleStatus.comments
+              comments: newStatus === 'PENDING' ? '' : titleStatus.comments
             },
             {
               headers: {
@@ -374,6 +366,7 @@ const DetailsScreen = () => {
       }));
 
       setShowCommentsError(false);
+      setShowStatusChangeCallout(false);
     } catch (error) {
       console.error('Error updating expenses:', error.response?.data || error.message);
       if (error.response?.status === 401) {
@@ -441,6 +434,26 @@ const DetailsScreen = () => {
     setPendingEdits({});
   };
 
+  const validateAmount = (value) => {
+    if (value === '') return true;
+    
+    // Check if it's a valid number
+    if (isNaN(value)) {
+      setAmountError('Please enter a valid number');
+      return false;
+    }
+
+    // Check decimal places
+    const decimalPlaces = value.toString().split('.')[1]?.length || 0;
+    if (decimalPlaces > 2) {
+      setAmountError('Only two decimal places are allowed');
+      return false;
+    }
+
+    setAmountError('');
+    return true;
+  };
+
   const handleSaveEdit = async (expenseId) => {
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
@@ -449,17 +462,13 @@ const DetailsScreen = () => {
       const formData = new FormData();
       const edits = pendingEdits[expenseId];
       
-      // Process amount to ensure it's a valid decimal and greater than 0
+      // Validate amount before saving
+      if (edits.amount && !validateAmount(edits.amount)) {
+        return;
+      }
+
       if (edits.amount) {
-        const amountValue = parseFloat(edits.amount);
-        if (isNaN(amountValue) || amountValue <= 0) {
-          setAmountError('Amount must be greater than 0.');
-          return; // Stop the save process
-        }
-        formData.append('amount', amountValue.toString());
-      } else {
-        setAmountError('Amount is required.');
-        return; // Stop the save process
+        formData.append('amount', edits.amount.toString());
       }
 
       // Add other fields
@@ -497,7 +506,7 @@ const DetailsScreen = () => {
       setEditingExpense(null);
       setPendingEdits({});
       setError('');
-      setAmountError(''); // Clear amount error on successful save
+      setAmountError('');
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
       setError(error.response?.data?.amount?.[0] || 'Failed to update expense. Please try again.');
@@ -644,58 +653,51 @@ const DetailsScreen = () => {
     setIsAllExpanded(!isAllExpanded);
   };
 
-  const handleStatusButtonClick = (newStatus) => {
+  const handleStatusButtonClick = async (newStatus) => {
     const currentStatus = titleStatus.status;
-    
-    // Check for double approval/rejection
-    if (currentStatus === newStatus) {
-      setStatusCalloutMessage(`This expense is already ${newStatus.toLowerCase()} and no update has to be made`);
-      setShowStatusCallout(true);
-      setTimeout(() => setShowStatusCallout(false), 3000);
-      return;
-    }
 
-    // Check for transitions that require comments
-    const requiresComments = (
-      (currentStatus === 'APPROVED' && newStatus === 'REJECTED') ||
-      (currentStatus === 'REJECTED' && newStatus === 'APPROVED') ||
-      newStatus === 'APPROVED' ||
-      newStatus === 'REJECTED'
-    );
-
-    if (requiresComments) {
-      setPendingStatus(newStatus);
-      setTempComment(titleStatus.comments);
-      setShowCommentCallout(true);
-    } else {
-      // For create/edit cases (no comments required)
-      handleTitleStatusUpdate(newStatus);
-    }
-  };
-
-  const handleStatusConfirm = async () => {
-    if (!tempComment.trim() && (pendingStatus === 'APPROVED' || pendingStatus === 'REJECTED')) {
-      setShowCommentsError(true);
-      return;
-    }
-
-    // Update the comments before proceeding
-    setTitleStatus(prev => ({
-      ...prev,
-      comments: tempComment
-    }));
-
-    setShowCommentCallout(false);
-    await handleTitleStatusUpdate(pendingStatus);
-    setPendingStatus(null);
-    setTempComment('');
-  };
-
-  const handleStatusCancel = () => {
-    setShowCommentCallout(false);
-    setPendingStatus(null);
-    setTempComment('');
+    // Clear any previous messages
     setShowCommentsError(false);
+    setCommentPromptMessage('');
+    setShowStatusMessage(false);
+    setStatusMessage('');
+
+    // Check if trying to approve/reject an already approved/rejected expense
+    if (currentStatus === newStatus) {
+      setStatusMessage(`This expense is already ${newStatus.toLowerCase()}`);
+      setShowStatusMessage(true);
+      return;
+    }
+
+    const transition = `${newStatus}_FROM_${currentStatus}`;
+
+    const commentRequired = {
+      APPROVED_FROM_PENDING: true,
+      REJECTED_FROM_PENDING: true,
+      APPROVED_FROM_REJECTED: true,
+      REJECTED_FROM_APPROVED: true,
+      APPROVED_FROM_APPROVED: false,
+      REJECTED_FROM_REJECTED: false,
+    };
+
+    const requiresComment = commentRequired[transition] ?? false;
+
+    if (!requiresComment) {
+      await handleTitleStatusUpdate(newStatus);
+      setTitleStatus(prev => ({ ...prev, status: newStatus, comments: '' }));
+      return;
+    }
+
+    setPendingStatusChange(newStatus);
+    setTitleStatus(prev => ({ ...prev, comments: '' }));
+    setShowStatusChangeCallout(true);
+    setStatusCalloutMessage(`Add comments to ${newStatus.toLowerCase()}`);
+  };
+
+  const cancelStatusChange = () => {
+    setPendingStatusChange(null);
+    setTitleStatus(prev => ({ ...prev, comments: '' }));
+    setShowStatusChangeCallout(false);
   };
 
   if (loading) return <div className="container">Loading...</div>;
@@ -753,9 +755,11 @@ const DetailsScreen = () => {
                 <div className="status-badge" data-status={titleStatus.status}>
                   {STATUS_OPTIONS.find(([value]) => value === titleStatus.status)?.[1]}
                 </div>
-                <div className="title-comments">
-                  {titleStatus.comments || 'No comments'}
-                </div>
+                {(titleStatus.comments && titleStatus.status !== 'PENDING') && (
+                  <div className="title-comments">
+                    {titleStatus.comments}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -766,11 +770,6 @@ const DetailsScreen = () => {
                     <div className="form-row">
                       <div className="form-group">
                         <div>Status</div>
-                        {showStatusCallout && (
-                          <div className="status-callout">
-                            {statusCalloutMessage}
-                          </div>
-                        )}
                         <div className="status-buttons">
                           <button
                             className={`btn-accept ${isUpdatingStatus ? 'disabled' : ''}`}
@@ -788,28 +787,41 @@ const DetailsScreen = () => {
                           </button>
                         </div>
                       </div>
-                      <div className="form-group">
-                        <div>Comments</div>
-                        {showCommentsError && (
-                          <div className="comments-error-callout">
-                            Please add comments before accepting/rejecting
+                      {showStatusChangeCallout && (
+                        <div className="form-group">
+                          {statusCalloutMessage && (
+                            <div className="status-callout-above-comments">
+                              {statusCalloutMessage}
+                            </div>
+                          )}
+                          <div className="status-comment-popup">
+                            <h4>Enter comments to {pendingStatusChange.toLowerCase()}:</h4>
+                            <textarea
+                              className="popup-comment-box"
+                              placeholder="Enter your comments"
+                              value={titleStatus.comments}
+                              onChange={(e) =>
+                                setTitleStatus(prev => ({ ...prev, comments: e.target.value }))
+                              }
+                            />
+                            <div className="form-actions">
+                              <button
+                                className="btn btn-primary"
+                                onClick={() => handleTitleStatusUpdate(pendingStatusChange)}
+                                disabled={!titleStatus.comments.trim()}
+                              >
+                                Confirm {pendingStatusChange.toLowerCase()}
+                              </button>
+                              <button
+                                className="btn btn-secondary"
+                                onClick={cancelStatusChange}
+                              >
+                                Cancel
+                              </button>
+                            </div>
                           </div>
-                        )}
-                        <textarea
-                          value={titleStatus.comments}
-                          onChange={(e) => {
-                            setTitleStatus(prev => ({
-                              ...prev,
-                              comments: e.target.value
-                            }));
-                            if (e.target.value.trim()) {
-                              setShowCommentsError(false);
-                            }
-                          }}
-                          placeholder="Enter comments for all forms"
-                          required
-                        />
-                      </div>
+                        </div>
+                      )}
                     </div>
                   </div>
                 )}
@@ -842,38 +854,6 @@ const DetailsScreen = () => {
                   {isAllExpanded ? 'Collapse All' : 'Expand All'}
                 </button>
 
-                {showCommentCallout && (
-                  <div className="comment-callout">
-                    <div className="callout-content">
-                      <h4>Add Comments for {pendingStatus === 'APPROVED' ? 'Approval' : 'Rejection'}</h4>
-                      {showCommentsError && (
-                        <div className="comments-error-callout">
-                          Please add comments before confirming
-                        </div>
-                      )}
-                      <textarea
-                        value={tempComment}
-                        onChange={(e) => {
-                          setTempComment(e.target.value);
-                          if (e.target.value.trim()) {
-                            setShowCommentsError(false);
-                          }
-                        }}
-                        placeholder="Enter your comments here..."
-                        className="comment-textarea"
-                      />
-                      <div className="callout-actions">
-                        <button onClick={handleStatusConfirm} className="btn btn-primary">
-                          Confirm
-                        </button>
-                        <button onClick={handleStatusCancel} className="btn btn-secondary">
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
                 {filteredExpenses.map((expense) => (
                   <div 
                     key={expense.id} 
@@ -894,8 +874,8 @@ const DetailsScreen = () => {
                               {SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}
                             </span>
                           </div>
-                          <span className="amount" data-amount={formatAmount(expense.amount)}>
-                            {formatAmount(expense.amount)} {expense.currency}
+                          <span className="amount">
+                            {expense.amount} {expense.currency}
                           </span>
                           <span className="date">{expense.date}</span>
                           <span className="summary-arrow">▼</span> {/* Down arrow for collapsed state */}
@@ -983,29 +963,25 @@ const DetailsScreen = () => {
                               {editingExpense === expense.id ? (
                                 <input
                                   type="text"
-                                  value={pendingEdits[expense.id]?.amount ? formatAmount(pendingEdits[expense.id].amount) : ''}
+                                  value={pendingEdits[expense.id]?.amount || ''}
                                   onChange={(e) => {
-                                    const value = parseAmountInput(e.target.value);
+                                    const value = e.target.value.replace(/[^\d.]/g, '');
+                                    const parts = value.split('.');
+                                    const sanitizedValue = parts.length > 2 ? parts[0] + '.' + parts.slice(1).join('') : value;
+                                    
                                     setPendingEdits(prev => ({
                                       ...prev,
                                       [expense.id]: {
                                         ...prev[expense.id],
-                                        amount: value
+                                        amount: sanitizedValue
                                       }
                                     }));
-                                    if (value.trim() && parseFloat(value) > 0) {
-                                      setAmountError('');
-                                    }
+                                    validateAmount(sanitizedValue);
                                   }}
-                                  onBlur={() => {
-                                    if (!pendingEdits[expense.id]?.amount || parseFloat(pendingEdits[expense.id].amount) <= 0) {
-                                      setAmountError('Amount must be greater than 0.');
-                                    }
-                                  }}
-                                  placeholder="Enter amount"
+                                  placeholder="Enter amount (max 2 decimal places)"
                                 />
                               ) : (
-                                <div>{formatAmount(expense.amount)}</div>
+                                <div>{expense.amount}</div>
                               )}
                               {editingExpense === expense.id && amountError && (
                                 <div className="amount-error-callout">
@@ -1037,12 +1013,23 @@ const DetailsScreen = () => {
                       {editingExpense === expense.id && (
                         <div className="attachment-group">
                           <div className="attachment-header">
-                            <label>Attachment</label>
-                            {expense.attachment && (
+                            <label>Attachments</label>
+                            {expense.attachment1 && (
                               <div className="current-attachment">
-                                <span>Current Attachment:</span>
+                                <span>{getAttachmentName(expense.attachment1)}</span>
                                 <button
-                                  onClick={() => handleViewAttachment(expense)}
+                                  onClick={() => handleViewAttachment(expense, 1)}
+                                  className="view-btn"
+                                >
+                                  View
+                                </button>
+                              </div>
+                            )}
+                            {expense.attachment2 && (
+                              <div className="current-attachment">
+                                <span>{getAttachmentName(expense.attachment2)}</span>
+                                <button
+                                  onClick={() => handleViewAttachment(expense, 2)}
                                   className="view-btn"
                                 >
                                   View
@@ -1060,8 +1047,25 @@ const DetailsScreen = () => {
                                     ...prev,
                                     [expense.id]: {
                                       ...prev[expense.id],
-                                      attachment: file,
-                                      remove_attachment: true
+                                      attachment1: file,
+                                      remove_attachment1: true
+                                    }
+                                  }));
+                                }
+                              }}
+                              className="file-input"
+                            />
+                            <input
+                              type="file"
+                              onChange={(e) => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                  setPendingEdits(prev => ({
+                                    ...prev,
+                                    [expense.id]: {
+                                      ...prev[expense.id],
+                                      attachment2: file,
+                                      remove_attachment2: true
                                     }
                                   }));
                                 }
@@ -1072,19 +1076,32 @@ const DetailsScreen = () => {
                         </div>
                       )}
 
-                      {!editingExpense && expense.attachment && (
+                      {!editingExpense && (expense.attachment1 || expense.attachment2) && (
                         <div className="attachment-group">
                           <div className="attachment-header">
-                            <label>Attachment</label>
-                            <div className="current-attachment">
-                              <span>Current Attachment:</span>
-                              <button
-                                onClick={() => handleViewAttachment(expense)}
-                                className="view-btn"
-                              >
-                                View
-                              </button>
-                            </div>
+                            <label>Attachments</label>
+                            {expense.attachment1 && (
+                              <div className="current-attachment">
+                                <span>{getAttachmentName(expense.attachment1)}</span>
+                                <button
+                                  onClick={() => handleViewAttachment(expense, 1)}
+                                  className="view-btn"
+                                >
+                                  View
+                                </button>
+                              </div>
+                            )}
+                            {expense.attachment2 && (
+                              <div className="current-attachment">
+                                <span>{getAttachmentName(expense.attachment2)}</span>
+                                <button
+                                  onClick={() => handleViewAttachment(expense, 2)}
+                                  className="view-btn"
+                                >
+                                  View
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       )}
@@ -1171,9 +1188,11 @@ const DetailsScreen = () => {
                     <div className="status-badge" data-status={getExpenseTitleStatus(title.id)}>
                       {STATUS_OPTIONS.find(([value]) => value === getExpenseTitleStatus(title.id))?.[1]}
                     </div>
-                    <div className="title-comments">
-                      {expenses.find(e => e.expense_title?.id === title.id)?.comments || 'No comments'}
-                    </div>
+                    {(expenses.find(e => e.expense_title?.id === title.id)?.comments && getExpenseTitleStatus(title.id) !== 'PENDING') && (
+                      <div className="title-comments">
+                        {expenses.find(e => e.expense_title?.id === title.id)?.comments}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -1194,6 +1213,20 @@ const DetailsScreen = () => {
                 Cancel
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {showStatusMessage && (
+        <div className="status-message-callout">
+          <div className="callout-content">
+            <p>{statusMessage}</p>
+            <button 
+              className="btn btn-secondary"
+              onClick={() => setShowStatusMessage(false)}
+            >
+              Close
+            </button>
           </div>
         </div>
       )}

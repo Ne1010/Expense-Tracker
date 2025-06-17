@@ -18,15 +18,24 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     expense_title = ExpenseTitleSerializer(read_only=True)
     expense_title_id = serializers.IntegerField(write_only=True)
+    attachment1_url = serializers.SerializerMethodField()
+    attachment2_url = serializers.SerializerMethodField()
 
     class Meta:
         model = ExpenseForm
         fields = [
             'id', 'expense_title', 'expense_title_id', 'user',
             'master_group', 'subgroup', 'amount', 'currency', 'date',
-            'attachment', 'status', 'comments', 'created_at', 'updated_at'
+            'attachment1', 'attachment2', 'attachment1_url', 'attachment2_url',
+            'status', 'comments', 'created_at', 'updated_at'
         ]
         read_only_fields = ['user', 'status', 'comments', 'created_at', 'updated_at']
+
+    def get_attachment1_url(self, obj):
+        return obj.attachment1.url if obj.attachment1 else None
+
+    def get_attachment2_url(self, obj):
+        return obj.attachment2.url if obj.attachment2 else None
 
     def validate_expense_title_id(self, value):
         try:
@@ -46,33 +55,43 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        # Create the instance first with all data except attachment
-        attachment = validated_data.pop('attachment', None)
+        # Create the instance first with all data except attachments
+        attachment1 = validated_data.pop('attachment1', None)
+        attachment2 = validated_data.pop('attachment2', None)
         
         if 'request' in self.context and self.context['request'].user.is_authenticated:
             validated_data['user'] = self.context['request'].user
             
         instance = super().create(validated_data)
         
-        # Now handle the attachment if it exists
-        if attachment:
-            # Associate the file with the instance
-            attachment.instance = instance
-            instance.attachment = attachment
-            instance.save()
+        # Now handle the attachments if they exist
+        if attachment1:
+            attachment1.instance = instance
+            instance.attachment1 = attachment1
             
+        if attachment2:
+            attachment2.instance = instance
+            instance.attachment2 = attachment2
+            
+        instance.save()
         return instance
 
     def update(self, instance, validated_data):
         if 'request' in self.context and self.context['request'].user.is_authenticated:
             validated_data['user'] = self.context['request'].user
         
-        attachment = validated_data.pop('attachment', None)
+        attachment1 = validated_data.pop('attachment1', None)
+        attachment2 = validated_data.pop('attachment2', None)
+        
         instance = super().update(instance, validated_data)
         
-        if attachment:
-            attachment.instance = instance
-            instance.attachment = attachment
-            instance.save()
+        if attachment1:
+            attachment1.instance = instance
+            instance.attachment1 = attachment1
             
+        if attachment2:
+            attachment2.instance = instance
+            instance.attachment2 = attachment2
+            
+        instance.save()
         return instance

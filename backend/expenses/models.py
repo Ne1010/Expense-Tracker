@@ -62,10 +62,16 @@ class ExpenseForm(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     master_group = models.CharField(max_length=20, choices=MASTER_GROUPS)
     subgroup = models.CharField(max_length=20)
-    amount = models.DecimalField(max_digits=19, decimal_places=10)
+    amount = models.DecimalField(max_digits=19, decimal_places=2)
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES)
     date = models.DateField()
-    attachment = models.FileField(
+    attachment1 = models.FileField(
+        upload_to='expense_attachments/',
+        storage=OneDriveStorage(),
+        null=True,
+        blank=True
+    )
+    attachment2 = models.FileField(
         upload_to='expense_attachments/',
         storage=OneDriveStorage(),
         null=True,
@@ -79,20 +85,13 @@ class ExpenseForm(models.Model):
     def get_subgroup_choices(self):
         return dict(self.SUBGROUPS.get(self.master_group, []))
 
-    def clean_amount(self):
-        amount = self.amount
-        if amount is not None:
-            self.amount = amount.normalize()
-        return self.amount
-
     def save(self, *args, **kwargs):
-        self.clean_amount()
-        if self.attachment and not self.expense_title:
+        if self.attachment1 and not self.expense_title:
             raise ValueError("Expense title must be set before uploading a file")
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.expense_title.title} - {self.amount} {self.currency}"
+        return f"{self.expense_title.title} - {self.amount} {self.get_currency_display()}"
 
     class Meta:
         app_label = 'expenses'

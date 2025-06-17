@@ -70,6 +70,32 @@ const HomeScreen = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [expenses, setExpenses] = useState([]);
 
+  // Helper function to determine the overall status of an expense title
+  const getOverallExpenseTitleStatus = (titleId) => {
+    const titleExpenses = expenses.filter(expense =>
+      expense.expense_title?.id === titleId
+    );
+
+    if (titleExpenses.length === 0) {
+      return 'PENDING'; // Default for titles with no expenses
+    }
+
+    // Prioritize PENDING > REJECTED > APPROVED
+    if (titleExpenses.some(expense => expense.status === 'PENDING')) {
+      return 'PENDING';
+    }
+    if (titleExpenses.some(expense => expense.status === 'REJECTED')) {
+      return 'REJECTED';
+    }
+    return 'APPROVED'; // If no PENDING or REJECTED, all are APPROVED
+  };
+
+  // Unified function to refresh all relevant data
+  const refreshAllData = async () => {
+    await fetchExpenseTitles();
+    await fetchExpenses();
+  };
+
   useEffect(() => {
     const adminStatus = localStorage.getItem('isAdmin') === 'true';
     setIsAdmin(adminStatus);
@@ -251,21 +277,22 @@ const HomeScreen = () => {
             });
           }
 
-          await fetchExpenseTitles();
           setError('Successfully created new title with copied forms.');
         } catch (copyError) {
           console.error('Error copying forms:', copyError.response?.data || copyError);
           setError('Created new title but failed to copy forms. Please try copying forms manually.');
         }
       } else {
-        await fetchExpenseTitles();
         setError('Successfully created new title.');
       }
       
+      // Consolidate refreshing data after any successful operation
+      await refreshAllData();
+
       setExpenseTitle('');
       setCopySourceTitleId(null);
       setShowCopyOptions(false);
-    } catch (error) { 
+    } catch (error) {
       console.error('Error creating expense:', error.response?.data || error);
       setError(error.response?.data?.detail || 'Failed to create expense. Please try again.');
     }
@@ -275,9 +302,9 @@ const HomeScreen = () => {
     setActiveFormId(titleId);
   };
 
-  const handleCloseForm = () => {
+  const handleCloseForm = async () => {
     setActiveFormId(null);
-    fetchExpenseTitles();
+    await refreshAllData();
   };
 
   const handleLogout = () => {
@@ -388,14 +415,32 @@ const HomeScreen = () => {
       <div className="expense-titles-container">
         <div className="card">
           <h3>Expense Titles</h3>
-          {expenseTitles.map((title) => (
+          {expenseTitles
+            .sort((a, b) => {
+              const statusA = getOverallExpenseTitleStatus(a.id);
+              const statusB = getOverallExpenseTitleStatus(b.id);
+
+              const statusOrder = { 'PENDING': 1, 'REJECTED': 2, 'APPROVED': 3 };
+
+              // Primary sort by status priority
+              if (statusOrder[statusA] !== statusOrder[statusB]) {
+                return statusOrder[statusA] - statusOrder[statusB];
+              } else {
+                // Secondary sort by created_at (most recent first) for same status
+                return new Date(b.created_at) - new Date(a.created_at);
+              }
+            })
+            .map((title) => (
             <div
               key={title.id}
               className={`expense-item ${selectedTitleId === title.id ? 'selected' : ''}`}
               onClick={() => handleTitleSelect(title.id)}
-              style={{ cursor: 'pointer' }}
+              style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
             >
               <p>{title.title}</p>
+              <div className="status-badge" data-status={getOverallExpenseTitleStatus(title.id)}>
+                {STATUS_OPTIONS.find(([value]) => value === getOverallExpenseTitleStatus(title.id))?.[1]}
+              </div>
             </div>
           ))}
         </div>
