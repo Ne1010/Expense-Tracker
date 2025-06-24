@@ -1,3 +1,25 @@
 C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\.env not found - if you're not configuring your environment separately, check this.
 Watching for file changes with StatReloader
 C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\manage.py changed, reloading.
+INFO:django.utils.autoreload:2025-06-24 12:19:32,970:autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:2025-06-24 12:19:32,970:autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:2025-06-24 12:21:21,006:autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:2025-06-24 12:21:21,006:autoreload:Watching for file changes with StatReloader
+INFO:django.server:2025-06-24 12:21:37,266:basehttp:"OPTIONS /api/expense-titles/20106/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 12:21:37,266:basehttp:"OPTIONS /api/expense-titles/20106/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 12:21:37,597:basehttp:"DELETE /api/expense-titles/20106/ HTTP/1.1" 204 0
+INFO:django.server:2025-06-24 12:21:37,597:basehttp:"DELETE /api/expense-titles/20106/ HTTP/1.1" 204 0
+INFO:django.server:2025-06-24 12:21:37,604:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 12:21:37,604:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+ERROR:expenses.storage:2025-06-24 12:21:38,307:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 12:21:38,576:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 12:21:38,843:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 12:21:39,064:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 12:21:39,337:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 12:21:39,562:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 12:21:46,674:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 12:21:46,674:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 12:21:46,680:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 12:21:46,680:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 12:21:46,696:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 12:21:46,696:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
