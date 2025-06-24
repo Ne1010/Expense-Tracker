@@ -23,3 +23,127 @@ INFO:django.server:2025-06-24 12:21:46,680:basehttp:"OPTIONS /api/expense-titles
 INFO:django.server:2025-06-24 12:21:46,680:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
 INFO:django.server:2025-06-24 12:21:46,696:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
 INFO:django.server:2025-06-24 12:21:46,696:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.utils.autoreload:2025-06-24 18:46:17,842:autoreload:Watching for file changes with StatReloader
+INFO:django.utils.autoreload:2025-06-24 18:46:17,842:autoreload:Watching for file changes with StatReloader
+WARNING:django.request:2025-06-24 18:47:13,011:log:Not Found: /logo192.png
+WARNING:django.request:2025-06-24 18:47:13,011:log:Not Found: /logo192.png
+WARNING:django.server:2025-06-24 18:47:13,015:basehttp:"GET /logo192.png HTTP/1.1" 404 2482
+WARNING:django.server:2025-06-24 18:47:13,015:basehttp:"GET /logo192.png HTTP/1.1" 404 2482
+WARNING:django.request:2025-06-24 18:47:22,691:log:Not Found: /
+WARNING:django.request:2025-06-24 18:47:22,691:log:Not Found: /
+WARNING:django.server:2025-06-24 18:47:22,693:basehttp:"GET / HTTP/1.1" 404 2431
+WARNING:django.server:2025-06-24 18:47:22,693:basehttp:"GET / HTTP/1.1" 404 2431
+INFO:django.server:2025-06-24 18:47:29,235:basehttp:"GET /admin/ HTTP/1.1" 200 11728
+INFO:django.server:2025-06-24 18:47:29,235:basehttp:"GET /admin/ HTTP/1.1" 200 11728
+INFO:django.server:2025-06-24 18:47:31,362:basehttp:"GET /admin/expenses/expenseform/ HTTP/1.1" 200 16471
+INFO:django.server:2025-06-24 18:47:31,362:basehttp:"GET /admin/expenses/expenseform/ HTTP/1.1" 200 16471
+INFO:django.server:2025-06-24 18:47:31,399:basehttp:"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO:django.server:2025-06-24 18:47:31,399:basehttp:"GET /admin/jsi18n/ HTTP/1.1" 200 3343
+INFO:django.server:2025-06-24 18:47:42,477:basehttp:"GET /api/csrf-token/ HTTP/1.1" 200 81
+INFO:django.server:2025-06-24 18:47:42,477:basehttp:"GET /api/csrf-token/ HTTP/1.1" 200 81
+INFO:django.server:2025-06-24 18:47:42,789:basehttp:"OPTIONS /api/token/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:42,789:basehttp:"OPTIONS /api/token/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,509:basehttp:"POST /api/token/ HTTP/1.1" 200 52
+INFO:django.server:2025-06-24 18:47:43,509:basehttp:"POST /api/token/ HTTP/1.1" 200 52
+INFO:django.server:2025-06-24 18:47:43,550:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,552:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,550:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,552:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,567:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,570:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,567:basehttp:"OPTIONS /api/expense-titles/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,570:basehttp:"OPTIONS /api/expense-forms/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:47:43,618:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:47:43,618:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:47:43,643:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:47:43,643:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+ERROR:expenses.storage:2025-06-24 18:47:44,633:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:44,932:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:45,182:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:45,445:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:45,743:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:45,992:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:47:53,644:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 18:47:53,644:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+ERROR:expenses.storage:2025-06-24 18:47:54,000:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:54,207:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:54,447:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:54,729:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:55,047:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:47:55,262:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:48:03,435:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 18:48:03,435:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 18:48:03,572:basehttp:"POST /api/expense-titles/ HTTP/1.1" 201 91
+INFO:django.server:2025-06-24 18:48:03,572:basehttp:"POST /api/expense-titles/ HTTP/1.1" 201 91
+INFO:django.server:2025-06-24 18:48:03,595:basehttp:"OPTIONS /api/expense-forms/?title_id=20107 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:03,595:basehttp:"OPTIONS /api/expense-forms/?title_id=20107 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:03,595:basehttp:"OPTIONS /api/expense-forms/?title_id=20107 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:03,595:basehttp:"OPTIONS /api/expense-forms/?title_id=20107 HTTP/1.1" 200 0
+ERROR:expenses.storage:2025-06-24 18:48:03,929:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:04,165:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:04,443:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:04,719:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:05,082:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:05,294:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:48:13,604:basehttp:"GET /api/expense-forms/?title_id=20107 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:13,604:basehttp:"GET /api/expense-forms/?title_id=20107 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:13,621:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 382
+INFO:django.server:2025-06-24 18:48:13,621:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 382
+ERROR:expenses.storage:2025-06-24 18:48:14,007:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:14,594:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:14,930:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:15,178:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:15,406:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:15,613:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:48:22,235:basehttp:"GET /api/expense-forms/?title_id=20107 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:22,235:basehttp:"GET /api/expense-forms/?title_id=20107 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:22,251:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 382
+INFO:django.server:2025-06-24 18:48:22,251:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 382
+INFO:django.server:2025-06-24 18:48:34,122:basehttp:"OPTIONS /api/expense-titles/20107/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:34,122:basehttp:"OPTIONS /api/expense-titles/20107/ HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:34,150:basehttp:"DELETE /api/expense-titles/20107/ HTTP/1.1" 204 0
+INFO:django.server:2025-06-24 18:48:34,150:basehttp:"DELETE /api/expense-titles/20107/ HTTP/1.1" 204 0
+ERROR:expenses.storage:2025-06-24 18:48:34,385:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:34,637:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:34,844:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:35,093:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:35,301:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:35,518:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:48:41,576:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 18:48:41,576:basehttp:"GET /api/expense-forms/ HTTP/1.1" 200 6503
+INFO:django.server:2025-06-24 18:48:41,599:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:48:41,599:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:48:48,827:basehttp:"OPTIONS /api/expense-forms/?title_id=20087 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:48,827:basehttp:"OPTIONS /api/expense-forms/?title_id=20087 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:48,827:basehttp:"OPTIONS /api/expense-forms/?title_id=20087 HTTP/1.1" 200 0
+INFO:django.server:2025-06-24 18:48:48,827:basehttp:"OPTIONS /api/expense-forms/?title_id=20087 HTTP/1.1" 200 0
+ERROR:expenses.storage:2025-06-24 18:48:49,081:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:49,328:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:49,546:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:49,863:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:50,110:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:50,341:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:48:57,163:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:57,163:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:48:57,188:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:48:57,188:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+ERROR:expenses.storage:2025-06-24 18:48:57,526:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:57,761:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:58,012:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:58,284:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:58,825:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:48:59,339:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:49:06,723:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:49:06,723:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:49:06,736:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:49:06,736:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+ERROR:expenses.storage:2025-06-24 18:49:19,996:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:49:20,397:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:49:20,788:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:49:21,161:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:49:21,549:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+ERROR:expenses.storage:2025-06-24 18:49:21,902:storage:Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+INFO:django.server:2025-06-24 18:49:28,857:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:49:28,857:basehttp:"GET /api/expense-forms/?title_id=20087 HTTP/1.1" 200 6548
+INFO:django.server:2025-06-24 18:49:28,871:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
+INFO:django.server:2025-06-24 18:49:28,871:basehttp:"GET /api/expense-titles/ HTTP/1.1" 200 290
