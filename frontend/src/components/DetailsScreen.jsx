@@ -74,10 +74,6 @@ const DetailsScreen = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [editingExpense, setEditingExpense] = useState(null);
-  const [newTitle, setNewTitle] = useState('');
-  const [showCopyOptions, setShowCopyOptions] = useState(false);
-  const [copySourceTitleId, setCopySourceTitleId] = useState(null);
-  const [copyForms, setCopyForms] = useState(true);
   const [showExpenseForm, setShowExpenseForm] = useState(false);
   const [expandedExpenses, setExpandedExpenses] = useState([]);
   const [showStatusCallout, setShowStatusCallout] = useState(false);
@@ -93,6 +89,12 @@ const DetailsScreen = () => {
   const [showStatusChangeCallout, setShowStatusChangeCallout] = useState(false);
   const [showStatusMessage, setShowStatusMessage] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const [pendingNewAttachments, setPendingNewAttachments] = useState({});
+  const [pendingRemoveAttachments, setPendingRemoveAttachments] = useState({});
+  const [showAttachmentDeleteModal, setShowAttachmentDeleteModal] = useState(false);
+  const [attachmentToDelete, setAttachmentToDelete] = useState(null);
+  const [showDeleteAllModal, setShowDeleteAllModal] = useState(false);
+  const [expenseIdToDeleteAll, setExpenseIdToDeleteAll] = useState(null);
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -100,6 +102,20 @@ const DetailsScreen = () => {
     localStorage.setItem('isAdmin', isUserAdmin);
     fetchData(selectedTitleId);
   }, [selectedTitleId]);
+
+  // Automatically open add form if there are no expenses for the selected title
+  useEffect(() => {
+    if (
+      selectedTitleId &&
+      !isAdmin &&
+      !loading &&
+      expenses.filter(e => e.expense_title?.id === selectedTitleId).length === 0
+    ) {
+      setShowExpenseForm(true);
+    }
+    // Only run when expenses or selectedTitleId changes
+    // eslint-disable-next-line
+  }, [expenses, selectedTitleId, loading, isAdmin]);
 
   const fetchData = async (titleId = null) => {
     try {
@@ -388,34 +404,13 @@ const DetailsScreen = () => {
         date: expense.date,
         master_group: expense.master_group,
         subgroup: expense.subgroup,
+        currency: expense.currency,
         status: 'PENDING',
         comments: ''
       }
     });
-
-    // Update all expenses under the same title to PENDING status
-    const titleId = expense.expense_title?.id;
-    if (titleId) {
-      setExpenses(prevExpenses => 
-        prevExpenses.map(exp => {
-          if (exp.expense_title?.id === titleId) {
-            return {
-              ...exp,
-              status: 'PENDING',
-              comments: ''
-            };
-          }
-          return exp;
-        })
-      );
-
-      // Update title status
-      setTitleStatus(prev => ({
-        ...prev,
-        status: 'PENDING',
-        comments: ''
-      }));
-    }
+    setPendingNewAttachments((prev) => ({ ...prev, [expense.id]: [] }));
+    setPendingRemoveAttachments((prev) => ({ ...prev, [expense.id]: [] }));
   };
 
   const handleMasterGroupChange = (expenseId, value) => {
@@ -435,21 +430,23 @@ const DetailsScreen = () => {
   };
 
   const validateAmount = (value) => {
-    if (value === '') return true;
-    
-    // Check if it's a valid number
+    if (value === '') {
+      setAmountError('Amount is required');
+      return false;
+    }
     if (isNaN(value)) {
       setAmountError('Please enter a valid number');
       return false;
     }
-
-    // Check decimal places
+    if (Number(value) <= 0) {
+      setAmountError('Amount must be greater than 0');
+      return false;
+    }
     const decimalPlaces = value.toString().split('.')[1]?.length || 0;
     if (decimalPlaces > 2) {
       setAmountError('Only two decimal places are allowed');
       return false;
     }
-
     setAmountError('');
     return true;
   };
@@ -457,32 +454,38 @@ const DetailsScreen = () => {
   const handleSaveEdit = async (expenseId) => {
     const csrftoken = getCookie('csrftoken');
     const token = localStorage.getItem('token');
-    
     try {
       const formData = new FormData();
       const edits = pendingEdits[expenseId];
-      
       // Validate amount before saving
-      if (edits.amount && !validateAmount(edits.amount)) {
+      if (edits.amount === '' || isNaN(edits.amount) || Number(edits.amount) <= 0) {
+        setAmountError('Amount must be greater than 0');
         return;
       }
-
+      if (!validateAmount(edits.amount)) {
+        return;
+      }
       if (edits.amount) {
         formData.append('amount', edits.amount.toString());
       }
-
-      // Add other fields
+      // Add other fields (excluding expense_title_id for PATCH requests)
       Object.keys(edits).forEach(key => {
-        if (key !== 'amount' && key !== 'attachment') {
+        if (key !== 'amount' && key !== 'attachment' && key !== 'expense_title_id') {
           formData.append(key, edits[key]);
         }
       });
-
-      // Handle attachment
-      if (edits.attachment) {
-        formData.append('attachment', edits.attachment);
-      }
-
+      // Set status to PENDING
+      formData.append('status', 'PENDING');
+      formData.append('comments', '');
+      // Handle new attachments
+      (pendingNewAttachments[expenseId] || []).forEach(file => {
+        formData.append('attachments', file);
+      });
+      // Handle removed attachments (send IDs to backend)
+      (pendingRemoveAttachments[expenseId] || []).forEach(id => {
+        formData.append('remove_attachments', id);
+      });
+      // PATCH request
       const response = await axios.patch(
         `/api/expense-forms/${expenseId}/`,
         formData,
@@ -494,7 +497,6 @@ const DetailsScreen = () => {
           },
         }
       );
-
       setExpenses(prevExpenses => 
         prevExpenses.map(expense => 
           expense.id === expenseId 
@@ -502,92 +504,21 @@ const DetailsScreen = () => {
             : expense
         )
       );
-
       setEditingExpense(null);
       setPendingEdits({});
       setError('');
       setAmountError('');
+      setPendingNewAttachments(prev => ({ ...prev, [expenseId]: [] }));
+      setPendingRemoveAttachments(prev => ({ ...prev, [expenseId]: [] }));
+      // Update title status to PENDING
+      setTitleStatus(prev => ({
+        ...prev,
+        status: 'PENDING',
+        comments: ''
+      }));
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
       setError(error.response?.data?.amount?.[0] || 'Failed to update expense. Please try again.');
-    }
-  };
-
-  const handleAddTitle = async () => {
-    if (!newTitle.trim()) return;
-
-    const csrftoken = getCookie('csrftoken');
-    const token = localStorage.getItem('token');
-    
-    try {
-      const response = await axios.post('/api/expense-titles/', {
-        title: newTitle
-      }, {
-        headers: {
-          'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      setExpenseTitles(prev => [...prev, response.data]);
-      setNewTitle('');
-      setError('');
-    } catch (error) {
-      console.error('Error adding title:', error.response?.data || error.message);
-      setError('Failed to add title. Please try again.');
-    }
-  };
-
-  const handleCopyExpense = async () => {
-    if (!newTitle.trim() || !copySourceTitleId) return;
-
-    const csrftoken = getCookie('csrftoken');
-    const token = localStorage.getItem('token');
-    
-    try {
-      const titleResponse = await axios.post('/api/expense-titles/', {
-        title: newTitle
-      }, {
-        headers: {
-          'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const newTitleId = titleResponse.data.id;
-
-      if (copyForms) {
-        const sourceForms = expenses.filter(expense => 
-          expense.expense_title?.id === copySourceTitleId
-        );
-
-        const formPromises = sourceForms.map(form => 
-          axios.post('/api/expense-forms/', {
-            ...form,
-            expense_title: newTitleId,
-            id: undefined
-          }, {
-            headers: {
-              'X-CSRFToken': csrftoken,
-              'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json'
-            }
-          })
-        );
-
-        await Promise.all(formPromises);
-      }
-
-      setExpenseTitles(prev => [...prev, titleResponse.data]);
-      setNewTitle('');
-      setCopySourceTitleId(null);
-      setShowCopyOptions(false);
-      setError('');
-    } catch (error) {
-      console.error('Error copying expense:', error.response?.data || error.message);
-      setError('Failed to copy expense. Please try again.');
     }
   };
 
@@ -598,6 +529,8 @@ const DetailsScreen = () => {
   const handleCloseForm = () => {
     setShowExpenseForm(false);
     fetchData(selectedTitleId);
+    setExpandedExpenses([]);
+    setIsAllExpanded(false);
   };
 
   const toggleExpandExpense = (expenseId) => {
@@ -608,39 +541,6 @@ const DetailsScreen = () => {
         return [...prev, expenseId];
       }
     });
-  };
-
-  const handleDeleteExpense = async (expenseId) => {
-    setExpenseToDelete(expenseId);
-    setShowDeleteConfirmation(true);
-  };
-
-  const confirmDeleteExpense = async () => {
-    if (!expenseToDelete) return;
-
-    const csrftoken = getCookie('csrftoken');
-    const token = localStorage.getItem('token');
-    
-    try {
-      await axios.delete(`/api/expense-forms/${expenseToDelete}/`, {
-        headers: {
-          'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      setExpenses(prevExpenses => 
-        prevExpenses.filter(expense => expense.id !== expenseToDelete)
-      );
-      setError('');
-    } catch (error) {
-      console.error('Error deleting expense:', error.response?.data || error.message);
-      setError('Failed to delete expense. Please try again.');
-    } finally {
-      setShowDeleteConfirmation(false);
-      setExpenseToDelete(null);
-    }
   };
 
   const toggleAllExpenses = () => {
@@ -698,6 +598,164 @@ const DetailsScreen = () => {
     setPendingStatusChange(null);
     setTitleStatus(prev => ({ ...prev, comments: '' }));
     setShowStatusChangeCallout(false);
+  };
+
+  const confirmDeleteExpense = async () => {
+    if (!expenseToDelete) return;
+
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      // First delete all expense forms under this title
+      const formsToDelete = expenses.filter(expense => 
+        expense.expense_title?.id === expenseToDelete
+      );
+
+      await Promise.all(
+        formsToDelete.map(form => 
+          axios.delete(`/api/expense-forms/${form.id}/`, {
+            headers: {
+              'X-CSRFToken': csrftoken,
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            }
+          })
+        )
+      );
+
+      // Then delete the expense title
+      await axios.delete(`/api/expense-titles/${expenseToDelete}/`, {
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // Update state
+      setExpenses(prevExpenses => 
+        prevExpenses.filter(expense => expense.expense_title?.id !== expenseToDelete)
+      );
+      setExpenseTitles(prevTitles => 
+        prevTitles.filter(title => title.id !== expenseToDelete)
+      );
+      setSelectedTitleId(null);
+      setError('');
+    } catch (error) {
+      console.error('Error deleting expense:', error.response?.data || error.message);
+      setError('Failed to delete expense. Please try again.');
+    } finally {
+      setShowDeleteConfirmation(false);
+      setExpenseToDelete(null);
+    }
+  };
+
+  const handleAddNewAttachments = (expenseId, files) => {
+    setPendingNewAttachments(prev => ({
+      ...prev,
+      [expenseId]: [...(prev[expenseId] || []), ...Array.from(files)]
+    }));
+  };
+
+  const handleRemoveNewAttachment = (expenseId, index) => {
+    setPendingNewAttachments(prev => ({
+      ...prev,
+      [expenseId]: prev[expenseId].filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleRequestRemoveExistingAttachment = (expenseId, attachment) => {
+    setAttachmentToDelete({ expenseId, attachment });
+    setShowAttachmentDeleteModal(true);
+  };
+
+  const handleConfirmRemoveExistingAttachment = async () => {
+    if (!attachmentToDelete) return;
+    const { expenseId, attachment } = attachmentToDelete;
+    
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    try {
+      // Call the backend API to hard delete the attachment
+      await axios.delete(
+        `/api/expense-forms/${expenseId}/delete_attachment/`,
+        {
+          data: { attachment_id: attachment.id },
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      // Update the expenses state to reflect the deletion
+      setExpenses(prev => prev.map(exp =>
+        exp.id === expenseId
+          ? { ...exp, attachments: exp.attachments.filter(att => att.id !== attachment.id) }
+          : exp
+      ));
+      
+      setShowAttachmentDeleteModal(false);
+      setAttachmentToDelete(null);
+      setError('');
+    } catch (error) {
+      console.error('Error deleting attachment:', error.response?.data || error.message);
+      setError('Failed to delete attachment. Please try again.');
+      setShowAttachmentDeleteModal(false);
+      setAttachmentToDelete(null);
+    }
+  };
+
+  const handleCancelRemoveExistingAttachment = () => {
+    setShowAttachmentDeleteModal(false);
+    setAttachmentToDelete(null);
+  };
+
+  // Function to delete all attachments for an expense
+  const handleDeleteAllAttachments = async () => {
+    if (!expenseIdToDeleteAll) return;
+    const expense = expenses.find(e => e.id === expenseIdToDeleteAll);
+    if (!expense || !expense.attachments || expense.attachments.length === 0) {
+      setShowDeleteAllModal(false);
+      setExpenseIdToDeleteAll(null);
+      return;
+    }
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    try {
+      // Delete each attachment
+      await Promise.all(
+        expense.attachments.map(att =>
+          axios.delete(
+            `/api/expense-forms/${expenseIdToDeleteAll}/delete_attachment/`,
+            {
+              data: { attachment_id: att.id },
+              headers: {
+                'X-CSRFToken': csrftoken,
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+              }
+            }
+          )
+        )
+      );
+      // Update UI
+      setExpenses(prev => prev.map(exp =>
+        exp.id === expenseIdToDeleteAll
+          ? { ...exp, attachments: [] }
+          : exp
+      ));
+      setShowDeleteAllModal(false);
+      setExpenseIdToDeleteAll(null);
+      setError('');
+    } catch (error) {
+      setError('Failed to delete all attachments. Please try again.');
+      setShowDeleteAllModal(false);
+      setExpenseIdToDeleteAll(null);
+    }
   };
 
   if (loading) return <div className="container">Loading...</div>;
@@ -842,17 +900,32 @@ const DetailsScreen = () => {
                       titleId={selectedTitleId}
                       isAdmin={isAdmin}
                       onClose={handleCloseForm}
+                      expenses={expenses}
+                      existingAttachments={filteredExpenses.flatMap(exp => exp.attachments || [])}
                     />
                   </div>
                 )}
 
                 {/* Add expand/collapse all button */}
-                <button
-                  onClick={toggleAllExpenses}
-                  className="btn expand-all-button"
-                >
-                  {isAllExpanded ? 'Collapse All' : 'Expand All'}
-                </button>
+                <div className="expense-actions-row">
+                  <button
+                    onClick={toggleAllExpenses}
+                    className="btn expand-all-button"
+                  >
+                    {isAllExpanded ? 'Collapse All' : 'Expand All'}
+                  </button>
+                  {!isAdmin && (titleStatus.status === 'PENDING' || titleStatus.status === 'REJECTED') && (
+                    <button
+                      className="btn btn-delete"
+                      onClick={() => {
+                        setShowDeleteConfirmation(true);
+                        setExpenseToDelete(selectedTitleId);
+                      }}
+                    >
+                      Delete Expense
+                    </button>
+                  )}
+                </div>
 
                 {filteredExpenses.map((expense) => (
                   <div 
@@ -1014,94 +1087,82 @@ const DetailsScreen = () => {
                         <div className="attachment-group">
                           <div className="attachment-header">
                             <label>Attachments</label>
-                            {expense.attachment1 && (
-                              <div className="current-attachment">
-                                <span>{getAttachmentName(expense.attachment1)}</span>
-                                <button
-                                  onClick={() => handleViewAttachment(expense, 1)}
-                                  className="view-btn"
-                                >
-                                  View
-                                </button>
-                              </div>
+                            {expense.attachments && expense.attachments.length > 0 && (
+                              <button
+                                className="btn btn-delete-all"
+                                type="button"
+                                onClick={() => {
+                                  setShowDeleteAllModal(true);
+                                  setExpenseIdToDeleteAll(expense.id);
+                                }}
+                                style={{ marginBottom: '1rem', float: 'right' }}
+                              >
+                                Delete All
+                              </button>
                             )}
-                            {expense.attachment2 && (
-                              <div className="current-attachment">
-                                <span>{getAttachmentName(expense.attachment2)}</span>
-                                <button
-                                  onClick={() => handleViewAttachment(expense, 2)}
-                                  className="view-btn"
-                                >
-                                  View
-                                </button>
-                              </div>
+                            {expense.attachments && expense.attachments.length > 0 && (
+                              expense.attachments.map((att, idx) => (
+                                <div className="current-attachment" key={att.id || idx}>
+                                  <span>{getAttachmentName(att.url)}</span>
+                                  <button
+                                    onClick={() => window.open(att.url, '_blank', 'noopener,noreferrer')}
+                                    className="view-btn"
+                                  >
+                                    View
+                                  </button>
+                                  <button
+                                    className="btn btn-delete"
+                                    onClick={() => handleRequestRemoveExistingAttachment(expense.id, att)}
+                                    type="button"
+                                  >
+                                    Delete
+                                  </button>
+                                </div>
+                              ))
                             )}
                           </div>
+                          {(pendingNewAttachments[expense.id]||[]).length > 0 && (
+                            <div className="new-attachments">
+                              {pendingNewAttachments[expense.id].map((file, index) => (
+                                <div key={index} className="attachment-item">
+                                  <span>{file.name}</span>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleRemoveNewAttachment(expense.id, index)}
+                                    className="btn btn-delete"
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                           <div className="new-attachment">
                             <input
                               type="file"
-                              onChange={(e) => {
-                                const file = e.target.files[0];
-                                if (file) {
-                                  setPendingEdits(prev => ({
-                                    ...prev,
-                                    [expense.id]: {
-                                      ...prev[expense.id],
-                                      attachment1: file,
-                                      remove_attachment1: true
-                                    }
-                                  }));
-                                }
-                              }}
-                              className="file-input"
-                            />
-                            <input
-                              type="file"
-                              onChange={(e) => {
-                                const file = e.target.files[0];
-                                if (file) {
-                                  setPendingEdits(prev => ({
-                                    ...prev,
-                                    [expense.id]: {
-                                      ...prev[expense.id],
-                                      attachment2: file,
-                                      remove_attachment2: true
-                                    }
-                                  }));
-                                }
-                              }}
+                              multiple
+                              onChange={e => handleAddNewAttachments(expense.id, e.target.files)}
                               className="file-input"
                             />
                           </div>
                         </div>
                       )}
 
-                      {!editingExpense && (expense.attachment1 || expense.attachment2) && (
+                      {!editingExpense && (expense.attachments && expense.attachments.length > 0) && (
                         <div className="attachment-group">
                           <div className="attachment-header">
                             <label>Attachments</label>
-                            {expense.attachment1 && (
-                              <div className="current-attachment">
-                                <span>{getAttachmentName(expense.attachment1)}</span>
+                            {expense.attachments.map((att, idx) => (
+                              <div className="current-attachment" key={att.id || idx}>
+                                <span>{getAttachmentName(att.url)}</span>
                                 <button
-                                  onClick={() => handleViewAttachment(expense, 1)}
+                                  onClick={() => window.open(att.url, '_blank', 'noopener,noreferrer')}
                                   className="view-btn"
                                 >
                                   View
                                 </button>
                               </div>
-                            )}
-                            {expense.attachment2 && (
-                              <div className="current-attachment">
-                                <span>{getAttachmentName(expense.attachment2)}</span>
-                                <button
-                                  onClick={() => handleViewAttachment(expense, 2)}
-                                  className="view-btn"
-                                >
-                                  View
-                                </button>
-                              </div>
-                            )}
+                            ))}
                           </div>
                         </div>
                       )}
@@ -1133,14 +1194,6 @@ const DetailsScreen = () => {
                                   Edit Form
                                 </button>
                               )}
-                              {(titleStatus.status === 'PENDING' || titleStatus.status === 'REJECTED') && (
-                                <button
-                                  className="btn btn-delete"
-                                  onClick={() => handleDeleteExpense(expense.id)}
-                                >
-                                  Delete Form
-                                </button>
-                              )}
                             </>
                           )}
                         </div>
@@ -1154,14 +1207,6 @@ const DetailsScreen = () => {
         ) : (
           // Show all titles when none is selected
           <>
-            {!isAdmin && (
-              <button
-                onClick={handleAddTitle}
-                className="btn add-title-button"
-              >
-                ➕ Add Title
-              </button>
-            )}
             {expenseTitles
               .sort((a, b) => {
                 if (!isAdmin) return 0; // No sorting for non-admin
@@ -1204,7 +1249,7 @@ const DetailsScreen = () => {
       {showDeleteConfirmation && (
         <div className="delete-confirmation-callout">
           <div className="callout-content">
-            <p>Are you sure you want to delete this expense?</p>
+            <p>Are you sure you want to delete this entire expense and all its forms? This action cannot be undone.</p>
             <div className="callout-actions">
               <button onClick={confirmDeleteExpense} className="btn btn-delete">
                 Yes, Delete
@@ -1227,6 +1272,34 @@ const DetailsScreen = () => {
             >
               Close
             </button>
+          </div>
+        </div>
+      )}
+
+      {showAttachmentDeleteModal && (
+        <div className="delete-confirmation-callout">
+          <div className="callout-content">
+            <p>Are you sure you want to delete this attachment? This action cannot be undone.</p>
+            <div className="callout-actions">
+              <button onClick={handleConfirmRemoveExistingAttachment} className="btn btn-delete">
+                Yes, Delete
+              </button>
+              <button onClick={handleCancelRemoveExistingAttachment} className="btn btn-secondary">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDeleteAllModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <p>Are you sure to delete all expense attachments?</p>
+            <div className="callout-actions">
+              <button className="btn btn-delete" onClick={handleDeleteAllAttachments}>Yes, Delete All</button>
+              <button className="btn btn-secondary" onClick={() => setShowDeleteAllModal(false)}>Cancel</button>
+            </div>
           </div>
         </div>
       )}

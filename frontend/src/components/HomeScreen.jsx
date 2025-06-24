@@ -62,13 +62,15 @@ const HomeScreen = () => {
   const [expenseTitles, setExpenseTitles] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [activeFormId, setActiveFormId] = useState(null);
-  const [showCopyOptions, setShowCopyOptions] = useState(false);
-  const [copySourceTitleId, setCopySourceTitleId] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTitleId, setSelectedTitleId] = useState(null);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [expenses, setExpenses] = useState([]);
+  const [copyModalForTitle, setCopyModalForTitle] = useState(null);
+  const [copyNewTitle, setCopyNewTitle] = useState('');
+  const [copying, setCopying] = useState(false);
+  const [copyError, setCopyError] = useState('');
 
   // Helper function to determine the overall status of an expense title
   const getOverallExpenseTitleStatus = (titleId) => {
@@ -246,52 +248,9 @@ const HomeScreen = () => {
 
       const newTitleId = titleResponse.data.id;
 
-      if (copySourceTitleId) {
-        try {
-          const sourceFormsResponse = await axios.get(`/api/expense-forms/?expense_title_id=${copySourceTitleId}`, {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            }
-          });
-          
-          const sourceForms = sourceFormsResponse.data;
-
-          for (const form of sourceForms) {
-            const newForm = {
-              expense_title_id: newTitleId,
-              master_group: form.master_group,
-              subgroup: form.subgroup,
-              amount: form.amount,
-              currency: form.currency || 'CAD',
-              date: form.date,
-              status: 'PENDING',
-              comments: ''
-            };
-
-            await axios.post('/api/expense-forms/', newForm, {
-              headers: {
-                'X-CSRFToken': csrftoken,
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-              }
-            });
-          }
-
-          setError('Successfully created new title with copied forms.');
-        } catch (copyError) {
-          console.error('Error copying forms:', copyError.response?.data || copyError);
-          setError('Created new title but failed to copy forms. Please try copying forms manually.');
-        }
-      } else {
-        setError('Successfully created new title.');
-      }
-      
-      // Consolidate refreshing data after any successful operation
-      await refreshAllData();
-
       setExpenseTitle('');
-      setCopySourceTitleId(null);
-      setShowCopyOptions(false);
+      // Immediately navigate to DetailsScreen with the new title ID
+      navigate('/details', { state: { selectedTitleId: newTitleId } });
     } catch (error) {
       console.error('Error creating expense:', error.response?.data || error);
       setError(error.response?.data?.detail || 'Failed to create expense. Please try again.');
@@ -384,30 +343,7 @@ const HomeScreen = () => {
               >
                 Add Title
               </button>
-              {!isAdmin && (
-                <button 
-                  type="button"
-                  className="btn btn-copy"
-                  onClick={() => setShowCopyOptions(!showCopyOptions)}
-                >
-                  Copy Expense
-                </button>
-              )}
             </div>
-            {showCopyOptions && !isAdmin && (
-              <div className="copy-options">
-                <select
-                  value={copySourceTitleId || ''}
-                  onChange={(e) => setCopySourceTitleId(e.target.value)}
-                  className="copy-select"
-                >
-                  <option value="">Select title to copy</option>
-                  {expenseTitles.map(title => (
-                    <option key={title.id} value={title.id}>{title.title}</option>
-                  ))}
-                </select>
-              </div>
-            )}
           </div>
         </form>
       </div>
@@ -419,14 +355,10 @@ const HomeScreen = () => {
             .sort((a, b) => {
               const statusA = getOverallExpenseTitleStatus(a.id);
               const statusB = getOverallExpenseTitleStatus(b.id);
-
               const statusOrder = { 'PENDING': 1, 'REJECTED': 2, 'APPROVED': 3 };
-
-              // Primary sort by status priority
               if (statusOrder[statusA] !== statusOrder[statusB]) {
                 return statusOrder[statusA] - statusOrder[statusB];
               } else {
-                // Secondary sort by created_at (most recent first) for same status
                 return new Date(b.created_at) - new Date(a.created_at);
               }
             })
@@ -438,13 +370,150 @@ const HomeScreen = () => {
               style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
             >
               <p>{title.title}</p>
-              <div className="status-badge" data-status={getOverallExpenseTitleStatus(title.id)}>
-                {STATUS_OPTIONS.find(([value]) => value === getOverallExpenseTitleStatus(title.id))?.[1]}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div className="status-badge" data-status={getOverallExpenseTitleStatus(title.id)}>
+                  {STATUS_OPTIONS.find(([value]) => value === getOverallExpenseTitleStatus(title.id))?.[1]}
+                </div>
+                {!isAdmin && (
+                  <button
+                    className="btn btn-copy"
+                    style={{ marginLeft: '0.5rem' }}
+                    onClick={e => {
+                      e.stopPropagation();
+                      setCopyModalForTitle(title.id);
+                      setCopyNewTitle('');
+                      setCopyError('');
+                    }}
+                  >
+                    📋 Copy
+                  </button>
+                )}
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {copyModalForTitle && (
+        <div className="status-message-callout">
+          <div className="callout-content">
+            <h3>Copy Expense</h3>
+            <div className="form-group" style={{ width: '100%' }}>
+              <label>New Expense Title</label>
+              <input
+                type="text"
+                value={copyNewTitle}
+                onChange={e => setCopyNewTitle(e.target.value)}
+                placeholder="Enter new expense title"
+              />
+            </div>
+            {copyError && <div className="error-message">{copyError}</div>}
+            <div className="form-actions" style={{ justifyContent: 'center' }}>
+              <button
+                className="btn btn-primary"
+                onClick={async () => {
+                  if (!copyNewTitle.trim()) {
+                    setCopyError('Please enter a new title');
+                    return;
+                  }
+                  setCopying(true);
+                  setCopyError('');
+                  let failedForms = [];
+                  try {
+                    const token = localStorage.getItem('token');
+                    const csrftoken = getCookie('csrftoken');
+                    // 1. Create new title
+                    const titleResponse = await axios.post('/api/expense-titles/', {
+                      title: copyNewTitle.trim()
+                    }, {
+                      headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                      }
+                    });
+                    const newTitleId = titleResponse.data.id;
+                    // 2. Get all forms from source title
+                    const sourceForms = expenses.filter(exp => exp.expense_title?.id === copyModalForTitle);
+                    // 3. Copy all forms to new title, including attachments
+                    await Promise.all(sourceForms.map(async (form) => {
+                      const formData = new FormData();
+                      formData.append('master_group', form.master_group);
+                      formData.append('subgroup', form.subgroup);
+                      formData.append('amount', form.amount);
+                      formData.append('currency', form.currency);
+                      formData.append('date', form.date);
+                      formData.append('expense_title_id', newTitleId);
+                      formData.append('status', 'PENDING');
+                      formData.append('comments', '');
+                      let attachmentSuccess = 0;
+                      if (form.attachments && form.attachments.length > 0) {
+                        await Promise.all(form.attachments.map(async (att) => {
+                          try {
+                            // Use backend proxy endpoint instead of direct OneDrive URL
+                            const originalFileName = att.url.split('/').pop();
+                            const safeFilename = encodeURIComponent(originalFileName);
+                            const safeTitle = encodeURIComponent(form.expense_title.title || '');
+                            const downloadUrl = `/api/attachments/${safeTitle}/${safeFilename}`;
+                            const response = await fetch(downloadUrl, {
+                              method: 'GET',
+                              headers: {
+                                Authorization: `Token ${token}`,
+                              },
+                              credentials: 'include',
+                            });
+                            if (!response.ok) throw new Error('Attachment download failed from backend');
+                            const blob = await response.blob();
+                            formData.append('attachments', blob, originalFileName);
+                            attachmentSuccess++;
+                          } catch (err) {
+                            console.error('Failed to copy attachment:', err);
+                          }
+                        }));
+                      }
+                      // If there were attachments but all failed, record this form
+                      if ((form.attachments && form.attachments.length > 0) && attachmentSuccess === 0) {
+                        failedForms.push(form);
+                      }
+                      // Submit the form with (possibly partial) attachments
+                      await axios.post('/api/expense-forms/', formData, {
+                        headers: {
+                          'X-CSRFToken': csrftoken,
+                          'Authorization': `Bearer ${token}`,
+                          'Content-Type': 'multipart/form-data'
+                        }
+                      });
+                    }));
+                    setCopyModalForTitle(null);
+                    setCopyNewTitle('');
+                    setCopyError(failedForms.length > 0 ? `Some forms were copied without attachments due to download errors. (${failedForms.length} forms affected)` : '');
+                    setCopying(false);
+                    navigate('/details', { state: { selectedTitleId: newTitleId } });
+                  } catch (error) {
+                    console.error('Copy error:', error);
+                    setCopyError('Failed to copy expense. Please try again.');
+                    setCopying(false);
+                  }
+                }}
+                disabled={copying || !copyNewTitle.trim()}
+              >
+                {copying ? 'Copying...' : 'Copy Expense'}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setCopyModalForTitle(null);
+                  setCopyNewTitle('');
+                  setCopyError('');
+                }}
+                disabled={copying}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

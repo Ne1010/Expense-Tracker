@@ -1,7 +1,16 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, ExpenseTitle, ExpenseForm
+from .models import User, ExpenseTitle, ExpenseForm, ExpenseAttachment
 from django import forms
+
+class ExpenseAttachmentInline(admin.TabularInline):
+    model = ExpenseAttachment
+    extra = 1
+    readonly_fields = ('file_path_display',)
+
+    def file_path_display(self, obj):
+        return obj.file.name if obj.file else "-"
+    file_path_display.short_description = "OneDrive Path"
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
@@ -45,4 +54,14 @@ class ExpenseFormAdmin(admin.ModelAdmin):
     list_display = ('expense_title', 'user', 'master_group', 'subgroup', 'amount', 'currency', 'status')
     list_filter = ('master_group', 'status', 'currency', 'created_at')
     search_fields = ('user__username', 'expense_title__title')
-    readonly_fields = ('created_at', 'updated_at') 
+    readonly_fields = ('created_at', 'updated_at')
+    inlines = [ExpenseAttachmentInline]
+
+@admin.register(ExpenseAttachment)
+class ExpenseAttachmentAdmin(admin.ModelAdmin):
+    list_display = ('expense_form', 'file', 'uploaded_at')
+    readonly_fields = ('file_path_display',)
+
+    def file_path_display(self, obj):
+        return obj.file.name if obj.file else "-"
+    file_path_display.short_description = "OneDrive Path" 

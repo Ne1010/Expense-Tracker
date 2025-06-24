@@ -3,10 +3,13 @@ from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 from django.middleware.csrf import get_token
-from django.http import JsonResponse
-from .models import User, ExpenseTitle, ExpenseForm
+from django.http import JsonResponse, HttpResponse, Http404
+from .models import User, ExpenseTitle, ExpenseForm, ExpenseAttachment
 from .serializers import UserSerializer, ExpenseTitleSerializer, ExpenseFormSerializer
+from rest_framework.views import APIView
+from .services.onedrive_service import OneDriveService
 import logging
+import asyncio
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +65,10 @@ class ExpenseTitleViewSet(viewsets.ModelViewSet):
 
 class ExpenseFormViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseFormSerializer
-    permission_classes = [permissions.AllowAny]  # Temporarily allow all access for testing
+    permission_classes = [permissions.AllowAny]  # Or IsAuthenticated if you want
+
+    def get_serializer_context(self):
+        return {'request': self.request}
 
     def get_queryset(self):
         queryset = ExpenseForm.objects.all()
@@ -82,16 +88,17 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         logger.info(f"Received form data: {request.data}")
         try:
-            # Create and validate the serializer synchronously
             serializer = self.get_serializer(data=request.data)
             serializer.is_valid(raise_exception=True)
-            logger.info(f"Validated data: {serializer.validated_data}")
             
-            # Create the instance synchronously
-            instance = serializer.save()
-            logger.info(f"Created expense form with ID: {instance.id}")
+            attachments = request.FILES.getlist('attachments')
             
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            # Pass attachments through the context
+            expense_form = serializer.save(attachments=attachments)
+            
+            # Re-serialize the instance to include all fields
+            response_serializer = self.get_serializer(expense_form)
+            return Response(response_serializer.data, status=status.HTTP_201_CREATED)
             
         except Exception as e:
             logger.error(f"Error creating expense form: {str(e)}")
@@ -117,4 +124,61 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
         expense_form.save()
 
         serializer = self.get_serializer(expense_form)
-        return Response(serializer.data) 
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['delete'])
+    def delete_attachment(self, request, pk=None):
+        """
+        Hard delete an attachment from both database and OneDrive
+        """
+        try:
+            expense_form = self.get_object()
+            attachment_id = request.data.get('attachment_id')
+            
+            if not attachment_id:
+                return Response(
+                    {"detail": "Attachment ID is required"},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Get the attachment
+            attachment = get_object_or_404(ExpenseAttachment, id=attachment_id, expense_form=expense_form)
+            
+            # Delete from OneDrive first
+            service = OneDriveService()
+            file_path = str(attachment.file)
+            try:
+                asyncio.run(service.delete_file(file_path))
+                logger.info(f"Successfully deleted file from OneDrive: {file_path}")
+            except Exception as e:
+                logger.warning(f"Failed to delete file from OneDrive: {file_path}, error: {str(e)}")
+                # Continue with database deletion even if OneDrive deletion fails
+            
+            # Delete from database
+            attachment.delete()
+            
+            # Re-serialize the expense form to return updated data
+            serializer = self.get_serializer(expense_form)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            logger.error(f"Error deleting attachment: {str(e)}")
+            return Response(
+                {"detail": f"Error deleting attachment: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+class AttachmentProxyView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request, expense_title, filename):
+        service = OneDriveService()
+        try:
+            file_content = asyncio.run(service.download_file(f"{expense_title}/{filename}"))
+            if file_content is None:
+                raise Http404("File not found on OneDrive")
+            response = HttpResponse(file_content, content_type="application/octet-stream")
+            response["Content-Disposition"] = f'attachment; filename="{filename}"'
+            return response
+        except Exception as e:
+            return HttpResponse(f"Error: {str(e)}", status=500) 

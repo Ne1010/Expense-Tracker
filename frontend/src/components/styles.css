@@ -1258,10 +1258,152 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 .expense-form-container {
-  margin: 1rem 0;
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: var(--border-radius);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
+}
+
+.expense-form-container form {
+  width: 100%;
+}
+
+.expense-form-container .form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.expense-form-container .form-group {
+  flex: 1;
+  min-width: 120px;
+  margin-bottom: 0;
+}
+
+.expense-form-container label {
+  font-weight: 600;
+  color: #0f3460;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1rem;
+}
+
+.expense-form-container input[type="text"],
+.expense-form-container input[type="date"],
+.expense-form-container select {
+  background: #f5f8fa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  color: #222;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.expense-form-container input[type="text"]:focus,
+.expense-form-container input[type="date"]:focus,
+.expense-form-container select:focus {
+  border-color: #00b4d8;
+  outline: none;
+}
+
+.attachments-section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 1rem 1rem 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.attachments-section > div {
+  margin-bottom: 0.5rem;
+}
+
+.current-attachment {
+  display: flex;
+  align-items: center;
+  background: #f5f8fa;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.current-attachment a {
+  color: #00b4d8;
+  text-decoration: underline;
+  font-size: 1rem;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.current-attachment .view-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 1rem;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.12);
+  transition: background 0.2s;
+}
+
+.current-attachment .view-btn:hover {
+  background: #388e3c;
+}
+
+.new-attachment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.new-attachment input[type="file"] {
+  background: #f5f8fa;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem 0.5rem;
+  color: #222;
+  font-size: 1rem;
+  box-shadow: none;
+}
+
+.new-attachment input[type="file"]::-webkit-file-upload-button {
+  background: #0f3460;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 1rem;
+  transition: background 0.2s;
+}
+
+.new-attachment input[type="file"]::-webkit-file-upload-button:hover {
+  background: #00b4d8;
+}
+
+/* Hide Save/Cancel buttons for add form mode */
+.expense-form-container .form-actions {
+  display: none;
+}
+
+/* Remove extra margin for error/success in add form */
+.expense-form-container .error-message,
+.expense-form-container .success-message {
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 .title-status-display {
@@ -1585,11 +1727,11 @@ input[type="file"]::-webkit-file-upload-button:hover {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
   animation: fadeIn 0.3s ease-in-out;
 }
 
@@ -1737,4 +1879,184 @@ input[type="file"]::-webkit-file-upload-button:hover {
     opacity: 1;
     transform: translate(-50%, -50%);
   }
+}
+
+.expense-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.btn-save {
+  background-color: #0f3460;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(15,52,96,0.10);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-save:hover:not(:disabled) {
+  background-color: #00b4d8;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2.2rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+  box-shadow: 0 2px 8px rgba(100,100,100,0.10);
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background-color: #bdbdbd;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.expense-actions-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.expand-all-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.expand-all-button:hover {
+  background-color: var(--primary-color-dark);
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.remove-attachment-btn, .btn.btn-delete {
+  background-color: var(--error-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.95rem;
+  margin-left: 0.7rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.remove-attachment-btn:hover, .btn.btn-delete:hover {
+  background-color: #c82333;
+}
+.attachment-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Additional styling for attachment delete buttons */
+.current-attachment .btn-delete {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
+}
+
+.current-attachment .btn-delete:hover {
+  background-color: #c82333;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #222b3a;
+  color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18), 0 1.5px 4px rgba(0,0,0,0.12);
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.modal-content .callout-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.btn-delete-all {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(220,53,69,0.10);
+  margin-left: 1rem;
+  transition: background 0.2s;
+  min-width: unset;
+  width: auto;
+}
+
+.btn-delete-all:hover {
+  background-color: #c82333;
 }

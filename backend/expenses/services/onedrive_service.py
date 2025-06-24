@@ -119,11 +119,58 @@ class OneDriveService:
                     logger.error(f"❌ Failed to create folder: {text}")
                     return False
 
+    async def create_subfolder(self, expense_title):
+        """Create a subfolder for an expense title"""
+        if not self.access_token:
+            await self.get_access_token()
+
+        await self.create_folder()
+
+        subfolder = self._sanitize_folder_name(expense_title)
+        full_path = f"{self.folder_name}/{subfolder}"
+        logger.info(f"Using folder path: {full_path}")
+
+        headers = {
+            "Authorization": f"Bearer {self.access_token}",
+            "Content-Type": "application/json",
+        }
+
+        # Check if the subfolder exists first
+        check_url = f"https://graph.microsoft.com/v1.0/me/drive/special/approot:/{full_path}"
+        async with aiohttp.ClientSession() as session:
+            async with session.get(check_url, headers=headers) as response:
+                if response.status == 200:
+                    logger.info(f"✅ Subfolder '{subfolder}' already exists")
+                    return True
+                elif response.status != 404:
+                    text = await response.text()
+                    logger.error(f"❌ Error checking subfolder: {text}")
+                    return False
+
+        # If not found, create it
+        payload = {
+            "name": subfolder,
+            "folder": {},
+            "@microsoft.graph.conflictBehavior": "fail",
+        }
+        create_url = f"https://graph.microsoft.com/v1.0/me/drive/special/approot:/{self.folder_name}:/children"
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.post(create_url, headers=headers, json=payload) as response:
+                if response.status in (200, 201):
+                    logger.info(f"✅ Subfolder '{subfolder}' created successfully")
+                    return True
+                else:
+                    text = await response.text()
+                    logger.error(f"❌ Failed to create subfolder: {text}")
+                    return False
+
     async def upload_file(self, file_content, expense_title, file_name):
         if not self.access_token:
             await self.get_access_token()
 
         await self.create_folder()
+        await self.create_subfolder(expense_title)
 
         # Only sanitize the expense title for the folder name, keep original filename
         subfolder = self._sanitize_folder_name(expense_title)
@@ -141,12 +188,11 @@ class OneDriveService:
                 if response.status in (200, 201):
                     result = await response.json()
                     logger.info(f"✅ File uploaded to {full_path}")
-                    # Return just the direct URL without additional parameters
-                    download_url = f"https://appglide-my.sharepoint.com/personal/nehas_appglide_io/Documents/Apps/Billing-Site/{full_path}"
+                    # Return the web URL from the API response
                     return {
                         "success": True,
                         "file_id": result.get("id"),
-                        "web_url": download_url
+                        "web_url": result.get("webUrl")
                     }
                 else:
                     text = await response.text()
@@ -176,3 +222,87 @@ class OneDriveService:
                     text = await response.text()
                     logger.error(f"❌ Failed to get file URL: {text}")
                     return {"success": False, "error": text}
+
+    async def file_exists(self, expense_title, file_name):
+        """Check if a file exists in OneDrive"""
+        if not self.access_token:
+            await self.get_access_token()
+
+        subfolder = self._sanitize_folder_name(expense_title)
+        full_path = f"{self.folder_name}/{subfolder}/{file_name}"
+        
+        url = f"https://graph.microsoft.com/v1.0/me/drive/special/approot:/{full_path}"
+        headers = {
+            "Authorization": f"Bearer {self.access_token}",
+        }
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as response:
+                return response.status == 200
+
+    async def download_file(self, file_path):
+        """Download a file from OneDrive"""
+        if not self.access_token:
+            await self.get_access_token()
+
+        # Extract expense title and filename from the path
+        parts = file_path.split('/')
+        if len(parts) >= 2:
+            expense_title = parts[0]
+            filename = parts[1]
+        else:
+            logger.error(f"Invalid file path format: {file_path}")
+            return None
+
+        subfolder = self._sanitize_folder_name(expense_title)
+        full_path = f"{self.folder_name}/{subfolder}/{filename}"
+
+        url = f"https://graph.microsoft.com/v1.0/me/drive/special/approot:/{full_path}:/content"
+
+        headers = {
+            "Authorization": f"Bearer {self.access_token}",
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, headers=headers) as response:
+                if response.status == 200:
+                    content = await response.read()
+                    logger.info(f"✅ File downloaded from {full_path}")
+                    return content
+                else:
+                    text = await response.text()
+                    logger.error(f"❌ Failed to download file: {text}")
+                    return None
+
+    async def delete_file(self, file_path):
+        """Delete a file from OneDrive"""
+        if not self.access_token:
+            await self.get_access_token()
+
+        # Extract expense title and filename from the path
+        parts = file_path.split('/')
+        if len(parts) >= 2:
+            expense_title = parts[0]
+            filename = parts[1]
+        else:
+            logger.error(f"Invalid file path format: {file_path}")
+            return False
+
+        subfolder = self._sanitize_folder_name(expense_title)
+        full_path = f"{self.folder_name}/{subfolder}/{filename}"
+
+        url = f"https://graph.microsoft.com/v1.0/me/drive/special/approot:/{full_path}"
+
+        headers = {
+            "Authorization": f"Bearer {self.access_token}",
+        }
+
+        async with aiohttp.ClientSession() as session:
+            async with session.delete(url, headers=headers) as response:
+                if response.status in (200, 204):
+                    logger.info(f"✅ File deleted from {full_path}")
+                    return True
+                else:
+                    text = await response.text()
+                    logger.error(f"❌ Failed to delete file: {text}")
+                    return False
