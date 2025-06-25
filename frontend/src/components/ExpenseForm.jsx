@@ -387,17 +387,20 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
             </div>
           )}
 
-          {/* File upload input */}
-          <div className="file-input-group">
-            <input
-              type="file"
-              id="file-upload"
-              onChange={handleFileChange}
-              multiple
-              className="file-input"
-            />
+          {/* File upload input - Updated section */}
+          <div className="file-upload-container">
+            <span className="file-status-text">
+              {attachments.length === 0 ? 'No file chosen' : `${attachments.length} file(s) selected`}
+            </span>
             <label htmlFor="file-upload" className="file-upload-label">
-              <span>+ Add Files</span>
+              Choose Files
+              <input
+                type="file"
+                id="file-upload"
+                onChange={handleFileChange}
+                multiple
+                className="file-upload-input"
+              />
             </label>
           </div>
         </div>

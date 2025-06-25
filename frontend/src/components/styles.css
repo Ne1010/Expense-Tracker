@@ -2060,3 +2060,39 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .btn-delete-all:hover {
   background-color: #c82333;
 }
+
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 1rem;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.file-status-text {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.file-upload-label {
+  padding: 0.5rem 1rem;
+  background: #0f3460;
+  color: #fff !important;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 600;
+}
+
+.file-upload-label:hover {
+  background: #00b4d8;
+  color: #fff !important;
+}
+
+.file-upload-input {
+  display: none;
+}
