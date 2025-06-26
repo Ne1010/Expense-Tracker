@@ -1,7 +1,7 @@
 from django.core.files.storage import Storage
 from django.utils.deconstruct import deconstructible
 from .services.onedrive_service import OneDriveService
-import asyncio
+from .utils import run_async
 import os
 import tempfile
 import logging
@@ -16,7 +16,7 @@ class OneDriveStorage(Storage):
 
     def _open(self, name, mode='rb'):
         try:
-            file_content = asyncio.run(self.service.download_file(name))
+            file_content = run_async(self.service.download_file, name)
             if not file_content:
                 logger.error(f"File not found or empty in OneDrive: {name}")
                 raise FileNotFoundError(f"File not found in OneDrive: {name}")
@@ -54,11 +54,11 @@ class OneDriveStorage(Storage):
             expense_title = self._sanitize_folder_name(expense_title)
             filename = os.path.basename(name)
 
-            result = asyncio.run(self.service.upload_file(
+            result = run_async(self.service.upload_file,
                 content.read(),
                 expense_title,
                 filename
-            ))
+            )
 
             if not result['success']:
                 logger.error(f"Failed to upload to OneDrive for '{expense_title}': {result.get('error', 'Unknown error')}")
@@ -78,7 +78,7 @@ class OneDriveStorage(Storage):
 
     def delete(self, name):
         try:
-            asyncio.run(self.service.delete_file(name))
+            run_async(self.service.delete_file, name)
         except Exception as e:
             logger.error(f"Error deleting file from OneDrive: {str(e)}")
             raise
@@ -89,7 +89,7 @@ class OneDriveStorage(Storage):
             if len(parts) >= 2:
                 expense_title = parts[0]
                 filename = parts[1]
-                return asyncio.run(self.service.file_exists(expense_title, filename))
+                return run_async(self.service.file_exists, expense_title, filename)
             return False
         except Exception as e:
             logger.error(f"Error checking file existence in OneDrive: {str(e)}")
@@ -101,7 +101,7 @@ class OneDriveStorage(Storage):
             if len(parts) >= 2:
                 expense_title = parts[0]
                 filename = parts[1]
-                result = asyncio.run(self.service.get_file_url(expense_title, filename))
+                result = run_async(self.service.get_file_url, expense_title, filename)
                 if result and result.get('success'):
                     return result.get('web_url')
                 else:

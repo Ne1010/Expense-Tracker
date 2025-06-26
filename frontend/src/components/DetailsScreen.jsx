@@ -95,6 +95,10 @@ const DetailsScreen = () => {
   const [attachmentToDelete, setAttachmentToDelete] = useState(null);
   const [showDeleteAllModal, setShowDeleteAllModal] = useState(false);
   const [expenseIdToDeleteAll, setExpenseIdToDeleteAll] = useState(null);
+  const [showOneDriveErrorModal, setShowOneDriveErrorModal] = useState(false);
+  const [oneDriveErrorMessage, setOneDriveErrorMessage] = useState('');
+  const [showOneDriveSessionExpiredModal, setShowOneDriveSessionExpiredModal] = useState(false);
+  const [oneDriveSessionExpiredMessage, setOneDriveSessionExpiredMessage] = useState('');
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -174,11 +178,16 @@ const DetailsScreen = () => {
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error.response?.data || error.message);
-      if (error.response?.status === 401) {
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to fetch data';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else if (error.response?.status === 401) {
         setError('Session expired. Please log in again.');
         navigate('/login');
       } else {
-        setError('Failed to fetch data');
+        setError(errorMessage);
       }
       setLoading(false);
     }
@@ -385,11 +394,16 @@ const DetailsScreen = () => {
       setShowStatusChangeCallout(false);
     } catch (error) {
       console.error('Error updating expenses:', error.response?.data || error.message);
-      if (error.response?.status === 401) {
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to update expenses. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else if (error.response?.status === 401) {
         setError('Session expired. Please log in again.');
         navigate('/login');
       } else {
-        setError('Failed to update expenses. Please try again.');
+        setError(errorMessage);
       }
     } finally {
       setIsUpdatingStatus(false);
@@ -518,7 +532,14 @@ const DetailsScreen = () => {
       }));
     } catch (error) {
       console.error('Error updating expense:', error.response?.data || error.message);
-      setError(error.response?.data?.amount?.[0] || 'Failed to update expense. Please try again.');
+      const errorMessage = error.response?.data?.amount?.[0] || error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to update expense. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
     }
   };
 
@@ -644,7 +665,14 @@ const DetailsScreen = () => {
       setError('');
     } catch (error) {
       console.error('Error deleting expense:', error.response?.data || error.message);
-      setError('Failed to delete expense. Please try again.');
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to delete expense. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setShowDeleteConfirmation(false);
       setExpenseToDelete(null);
@@ -703,7 +731,14 @@ const DetailsScreen = () => {
       setError('');
     } catch (error) {
       console.error('Error deleting attachment:', error.response?.data || error.message);
-      setError('Failed to delete attachment. Please try again.');
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to delete attachment. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
       setShowAttachmentDeleteModal(false);
       setAttachmentToDelete(null);
     }
@@ -752,10 +787,51 @@ const DetailsScreen = () => {
       setExpenseIdToDeleteAll(null);
       setError('');
     } catch (error) {
-      setError('Failed to delete all attachments. Please try again.');
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to delete all attachments. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
       setShowDeleteAllModal(false);
       setExpenseIdToDeleteAll(null);
     }
+  };
+
+  // Function to check if error is OneDrive authentication related
+  const isOneDriveAuthError = (errorMessage) => {
+    return errorMessage && (
+      errorMessage.includes('InvalidAuthenticationToken') ||
+      errorMessage.includes('token is expired') ||
+      errorMessage.includes('Upload to OneDrive failed') ||
+      errorMessage.includes('Lifetime validation failed')
+    );
+  };
+
+  // Function to handle OneDrive authentication errors
+  const handleOneDriveAuthError = (errorMessage) => {
+    setOneDriveErrorMessage(errorMessage);
+    setShowOneDriveErrorModal(true);
+  };
+
+  // Function to close OneDrive error modal
+  const closeOneDriveErrorModal = () => {
+    setShowOneDriveErrorModal(false);
+    setOneDriveErrorMessage('');
+  };
+
+  // Function to retry OneDrive authentication
+  const retryOneDriveAuth = () => {
+    closeOneDriveErrorModal();
+    // Refresh the page to trigger new authentication
+    window.location.reload();
+  };
+
+  const handleOneDriveSessionExpired = (errorMessage) => {
+    setOneDriveSessionExpiredMessage(errorMessage);
+    setShowOneDriveSessionExpiredModal(true);
   };
 
   if (loading) return <div className="container">Loading...</div>;
@@ -901,7 +977,7 @@ const DetailsScreen = () => {
                       isAdmin={isAdmin}
                       onClose={handleCloseForm}
                       expenses={expenses}
-                      existingAttachments={filteredExpenses.flatMap(exp => exp.attachments || [])}
+                      existingAttachments={[]}
                     />
                   </div>
                 )}
@@ -1300,6 +1376,64 @@ const DetailsScreen = () => {
               <button className="btn btn-delete" onClick={handleDeleteAllAttachments}>Yes, Delete All</button>
               <button className="btn btn-secondary" onClick={() => setShowDeleteAllModal(false)}>Cancel</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {showOneDriveErrorModal && (
+        <div className="delete-confirmation-callout">
+          <div className="callout-content onedrive-error-content">
+            <div className="onedrive-error-header">
+              <h3>⚠️ OneDrive Authentication Error</h3>
+            </div>
+            <div className="onedrive-error-message">
+              <p>The OneDrive connection has expired or failed. This is needed to upload and manage your expense attachments.</p>
+              <p className="error-details">{oneDriveErrorMessage}</p>
+            </div>
+            <div className="callout-actions">
+              <button onClick={retryOneDriveAuth} className="btn btn-primary">
+                🔄 Retry OneDrive Login
+              </button>
+              <button onClick={closeOneDriveErrorModal} className="btn btn-secondary">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showOneDriveSessionExpiredModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          background: 'rgba(0,0,0,0.85)',
+          zIndex: 9999,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div style={{
+            background: '#fff',
+            color: '#222',
+            borderRadius: '16px',
+            padding: '2.5rem 2rem',
+            boxShadow: '0 4px 24px rgba(0,0,0,0.18)',
+            textAlign: 'center',
+            maxWidth: '90vw',
+            minWidth: '320px',
+          }}>
+            <h2 style={{color: '#111', marginBottom: '1.5rem'}}>🔒 OneDrive Session Expired</h2>
+            <p style={{marginBottom: '2rem'}}>{oneDriveSessionExpiredMessage || 'Your OneDrive session has expired. Please reconnect to continue using attachments.'}</p>
+            <button
+              className="btn btn-primary"
+              style={{minWidth: '180px', fontWeight: 600, fontSize: '1.1rem'}}
+              onClick={() => window.location.reload()}
+            >
+              Reconnect to OneDrive
+            </button>
           </div>
         </div>
       )}

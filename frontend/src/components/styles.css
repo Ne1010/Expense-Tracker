@@ -2096,3 +2096,130 @@ input[type="file"]::-webkit-file-upload-button:hover {
 .file-upload-input {
   display: none;
 }
+
+/* OneDrive Error Modal Styles */
+.onedrive-error-content {
+  background-color: var(--secondary-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--neumorphic-shadow);
+  animation: slideUp 0.3s ease-in-out;
+  text-align: left;
+}
+
+.onedrive-error-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.onedrive-error-header h3 {
+  color: #ff9800;
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.onedrive-error-message {
+  margin-bottom: 2rem;
+}
+
+.onedrive-error-message p {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.onedrive-error-message .error-details {
+  background-color: rgba(255, 152, 0, 0.1);
+  border: 1px solid rgba(255, 152, 0, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #ff9800;
+  word-break: break-word;
+  margin-top: 1rem;
+}
+
+.onedrive-error-content .callout-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.onedrive-error-content .btn-primary {
+  background-color: #2196f3;
+  color: white;
+  min-width: 180px;
+  font-weight: 600;
+}
+
+.onedrive-error-content .btn-primary:hover {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+}
+
+.onedrive-error-content .btn-secondary {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  min-width: 100px;
+}
+
+.onedrive-error-content .btn-secondary:hover {
+  background-color: var(--highlight-color);
+  transform: translateY(-2px);
+}
+
+/* Responsive styles for OneDrive error modal */
+@media (max-width: 768px) {
+  .onedrive-error-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .onedrive-error-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .onedrive-error-message p {
+    font-size: 0.95rem;
+  }
+  
+  .onedrive-error-content .callout-actions {
+    flex-direction: column;
+  }
+  
+  .onedrive-error-content .btn-primary,
+  .onedrive-error-content .btn-secondary {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* OneDrive Session Expired Modal */
+.onedrive-session-expired-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.onedrive-session-expired-modal {
+  background: #fff;
+  color: #222;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  text-align: center;
+  max-width: 90vw;
+  min-width: 320px;
+}

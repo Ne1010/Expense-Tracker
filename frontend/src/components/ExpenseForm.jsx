@@ -65,6 +65,8 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
   const [amountError, setAmountError] = useState('');
   const [attachments, setAttachments] = useState([]);
   const [existingAttachments, setExistingAttachments] = useState(initialAttachments || []);
+  const [showOneDriveErrorModal, setShowOneDriveErrorModal] = useState(false);
+  const [oneDriveErrorMessage, setOneDriveErrorMessage] = useState('');
 
   const validateAmount = (value) => {
     if (value === '') {
@@ -139,8 +141,9 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
       }
       
       // Call the backend API to hard delete the attachment
+      const url = `/api/expense-forms/${expenseForm.id}/delete_attachment/`.trim();
       await axios.delete(
-        `/api/expense-forms/${expenseForm.id}/delete_attachment/`,
+        url,
         {
           data: { attachment_id: attachmentId },
           headers: {
@@ -156,7 +159,14 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
       setError('');
     } catch (error) {
       console.error('Error deleting attachment:', error.response?.data || error.message);
-      setError('Failed to delete attachment. Please try again.');
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to delete attachment. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
     }
   };
 
@@ -244,7 +254,14 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
       // Close the form after successful submission
       onClose();
     } catch (error) {
-      setError(error.response?.data?.message || error.response?.data?.detail || 'Failed to submit expense. Please try again.');
+      const errorMessage = error.response?.data?.message || error.response?.data?.detail || error.message || 'Failed to submit expense. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setLoading(false);
     }
@@ -270,6 +287,35 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
     }));
     // eslint-disable-next-line
   }, [formData.master_group]);
+
+  // Function to check if error is OneDrive authentication related
+  const isOneDriveAuthError = (errorMessage) => {
+    return errorMessage && (
+      errorMessage.includes('InvalidAuthenticationToken') ||
+      errorMessage.includes('token is expired') ||
+      errorMessage.includes('Upload to OneDrive failed') ||
+      errorMessage.includes('Lifetime validation failed')
+    );
+  };
+
+  // Function to handle OneDrive authentication errors
+  const handleOneDriveAuthError = (errorMessage) => {
+    setOneDriveErrorMessage(errorMessage);
+    setShowOneDriveErrorModal(true);
+  };
+
+  // Function to close OneDrive error modal
+  const closeOneDriveErrorModal = () => {
+    setShowOneDriveErrorModal(false);
+    setOneDriveErrorMessage('');
+  };
+
+  // Function to retry OneDrive authentication
+  const retryOneDriveAuth = () => {
+    closeOneDriveErrorModal();
+    // Refresh the page to trigger new authentication
+    window.location.reload();
+  };
 
   return (
     <div className="expense-form-container">
@@ -416,6 +462,28 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
         {error && <div className="error-message">{error}</div>}
         {success && <div className="success-message">Expense submitted successfully!</div>}
       </form>
+      
+      {showOneDriveErrorModal && (
+        <div className="delete-confirmation-callout">
+          <div className="callout-content onedrive-error-content">
+            <div className="onedrive-error-header">
+              <h3>⚠️ OneDrive Authentication Error</h3>
+            </div>
+            <div className="onedrive-error-message">
+              <p>The OneDrive connection has expired or failed. This is needed to upload and manage your expense attachments.</p>
+              <p className="error-details">{oneDriveErrorMessage}</p>
+            </div>
+            <div className="callout-actions">
+              <button onClick={retryOneDriveAuth} className="btn btn-primary">
+                🔄 Retry OneDrive Login
+              </button>
+              <button onClick={closeOneDriveErrorModal} className="btn btn-secondary">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

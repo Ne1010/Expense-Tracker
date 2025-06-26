@@ -1,0 +1,976 @@
+[WARNING] 2025-06-26 15:21:27,307 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 15:21:27,308 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 15:21:27,944 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:27,945 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,290 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,292 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,536 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,536 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,807 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:28,808 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:29,093 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:29,095 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:29,373 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:29,374 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:43,833 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:43,834 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,111 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,111 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,375 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,376 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,710 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,712 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,940 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:44,941 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:45,201 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 15:21:45,201 - expenses.storage: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[WARNING] 2025-06-26 16:56:59,724 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 16:56:59,729 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 16:56:59,877 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"b4dfe98e-f870-4867-aced-3ee909148b33","client-request-id":"b4dfe98e-f870-4867-aced-3ee909148b33"}}}
+[ERROR] 2025-06-26 16:56:59,878 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"b4dfe98e-f870-4867-aced-3ee909148b33","client-request-id":"b4dfe98e-f870-4867-aced-3ee909148b33"}}}
+[ERROR] 2025-06-26 16:56:59,937 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"8341d2e3-62f3-4165-899c-edb5039024f8","client-request-id":"8341d2e3-62f3-4165-899c-edb5039024f8"}}}
+[ERROR] 2025-06-26 16:56:59,937 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"8341d2e3-62f3-4165-899c-edb5039024f8","client-request-id":"8341d2e3-62f3-4165-899c-edb5039024f8"}}}
+[ERROR] 2025-06-26 16:56:59,997 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"9929dce0-af8c-4ff9-8081-2a075063aaad","client-request-id":"9929dce0-af8c-4ff9-8081-2a075063aaad"}}}
+[ERROR] 2025-06-26 16:56:59,997 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"9929dce0-af8c-4ff9-8081-2a075063aaad","client-request-id":"9929dce0-af8c-4ff9-8081-2a075063aaad"}}}
+[ERROR] 2025-06-26 16:57:00,054 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"ca975847-17a7-43fb-813b-91f5e5ae89a3","client-request-id":"ca975847-17a7-43fb-813b-91f5e5ae89a3"}}}
+[ERROR] 2025-06-26 16:57:00,056 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:26:59","request-id":"ca975847-17a7-43fb-813b-91f5e5ae89a3","client-request-id":"ca975847-17a7-43fb-813b-91f5e5ae89a3"}}}
+[ERROR] 2025-06-26 16:57:00,111 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"6155836d-f722-4bdd-bd92-dd3f31c00da3","client-request-id":"6155836d-f722-4bdd-bd92-dd3f31c00da3"}}}
+[ERROR] 2025-06-26 16:57:00,112 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"6155836d-f722-4bdd-bd92-dd3f31c00da3","client-request-id":"6155836d-f722-4bdd-bd92-dd3f31c00da3"}}}
+[ERROR] 2025-06-26 16:57:00,168 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"7b2ee170-271a-4e3d-a16e-30e3b2f058e4","client-request-id":"7b2ee170-271a-4e3d-a16e-30e3b2f058e4"}}}
+[ERROR] 2025-06-26 16:57:00,170 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"7b2ee170-271a-4e3d-a16e-30e3b2f058e4","client-request-id":"7b2ee170-271a-4e3d-a16e-30e3b2f058e4"}}}
+[ERROR] 2025-06-26 16:57:00,209 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"03cc27dc-79ca-48ec-842d-64d0b858b42c","client-request-id":"03cc27dc-79ca-48ec-842d-64d0b858b42c"}}}
+[ERROR] 2025-06-26 16:57:00,209 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"03cc27dc-79ca-48ec-842d-64d0b858b42c","client-request-id":"03cc27dc-79ca-48ec-842d-64d0b858b42c"}}}
+[ERROR] 2025-06-26 16:57:00,253 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"a3872286-dd70-4990-8419-8267de156881","client-request-id":"a3872286-dd70-4990-8419-8267de156881"}}}
+[ERROR] 2025-06-26 16:57:00,254 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"a3872286-dd70-4990-8419-8267de156881","client-request-id":"a3872286-dd70-4990-8419-8267de156881"}}}
+[ERROR] 2025-06-26 16:57:00,292 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"ede5bd6b-cb22-44ff-9815-de8a7cc1c04e","client-request-id":"ede5bd6b-cb22-44ff-9815-de8a7cc1c04e"}}}
+[ERROR] 2025-06-26 16:57:00,293 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"ede5bd6b-cb22-44ff-9815-de8a7cc1c04e","client-request-id":"ede5bd6b-cb22-44ff-9815-de8a7cc1c04e"}}}
+[ERROR] 2025-06-26 16:57:00,352 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"6bd59d16-de36-47af-a91d-1a2df3f5efcd","client-request-id":"6bd59d16-de36-47af-a91d-1a2df3f5efcd"}}}
+[ERROR] 2025-06-26 16:57:00,352 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"6bd59d16-de36-47af-a91d-1a2df3f5efcd","client-request-id":"6bd59d16-de36-47af-a91d-1a2df3f5efcd"}}}
+[ERROR] 2025-06-26 16:57:00,399 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"b2ae6a8b-d64f-420f-920b-0da690de4ba0","client-request-id":"b2ae6a8b-d64f-420f-920b-0da690de4ba0"}}}
+[ERROR] 2025-06-26 16:57:00,400 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"b2ae6a8b-d64f-420f-920b-0da690de4ba0","client-request-id":"b2ae6a8b-d64f-420f-920b-0da690de4ba0"}}}
+[ERROR] 2025-06-26 16:57:00,454 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"3ec83867-9825-42fe-a02a-46c36e116d60","client-request-id":"3ec83867-9825-42fe-a02a-46c36e116d60"}}}
+[ERROR] 2025-06-26 16:57:00,455 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"3ec83867-9825-42fe-a02a-46c36e116d60","client-request-id":"3ec83867-9825-42fe-a02a-46c36e116d60"}}}
+[ERROR] 2025-06-26 16:57:00,518 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"647ed5e3-a818-4546-b942-beb48b044501","client-request-id":"647ed5e3-a818-4546-b942-beb48b044501"}}}
+[ERROR] 2025-06-26 16:57:00,519 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"647ed5e3-a818-4546-b942-beb48b044501","client-request-id":"647ed5e3-a818-4546-b942-beb48b044501"}}}
+[ERROR] 2025-06-26 16:57:00,568 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e2a0345a-51be-4d1b-a390-f26a4e4ca8e8","client-request-id":"e2a0345a-51be-4d1b-a390-f26a4e4ca8e8"}}}
+[ERROR] 2025-06-26 16:57:00,568 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e2a0345a-51be-4d1b-a390-f26a4e4ca8e8","client-request-id":"e2a0345a-51be-4d1b-a390-f26a4e4ca8e8"}}}
+[ERROR] 2025-06-26 16:57:00,670 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"a0a6c2b5-6d42-4afa-8af0-ae1ea58c6c77","client-request-id":"a0a6c2b5-6d42-4afa-8af0-ae1ea58c6c77"}}}
+[ERROR] 2025-06-26 16:57:00,670 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"a0a6c2b5-6d42-4afa-8af0-ae1ea58c6c77","client-request-id":"a0a6c2b5-6d42-4afa-8af0-ae1ea58c6c77"}}}
+[ERROR] 2025-06-26 16:57:00,732 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"60121995-c486-4eef-8fe9-332405a23b66","client-request-id":"60121995-c486-4eef-8fe9-332405a23b66"}}}
+[ERROR] 2025-06-26 16:57:00,733 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"60121995-c486-4eef-8fe9-332405a23b66","client-request-id":"60121995-c486-4eef-8fe9-332405a23b66"}}}
+[ERROR] 2025-06-26 16:57:00,868 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e5848ac5-2eaa-480f-aae5-a5b49817a542","client-request-id":"e5848ac5-2eaa-480f-aae5-a5b49817a542"}}}
+[ERROR] 2025-06-26 16:57:00,869 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e5848ac5-2eaa-480f-aae5-a5b49817a542","client-request-id":"e5848ac5-2eaa-480f-aae5-a5b49817a542"}}}
+[ERROR] 2025-06-26 16:57:01,049 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e5b7dbe6-0edb-45aa-bd32-911b747ee9f3","client-request-id":"e5b7dbe6-0edb-45aa-bd32-911b747ee9f3"}}}
+[ERROR] 2025-06-26 16:57:01,050 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:00","request-id":"e5b7dbe6-0edb-45aa-bd32-911b747ee9f3","client-request-id":"e5b7dbe6-0edb-45aa-bd32-911b747ee9f3"}}}
+[ERROR] 2025-06-26 16:57:01,100 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"de722174-8adc-4f50-adae-71f1ffd579d8","client-request-id":"de722174-8adc-4f50-adae-71f1ffd579d8"}}}
+[ERROR] 2025-06-26 16:57:01,100 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"de722174-8adc-4f50-adae-71f1ffd579d8","client-request-id":"de722174-8adc-4f50-adae-71f1ffd579d8"}}}
+[ERROR] 2025-06-26 16:57:01,138 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"fe2dacb9-40a7-412a-9ae2-3ccbed773d22","client-request-id":"fe2dacb9-40a7-412a-9ae2-3ccbed773d22"}}}
+[ERROR] 2025-06-26 16:57:01,139 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"fe2dacb9-40a7-412a-9ae2-3ccbed773d22","client-request-id":"fe2dacb9-40a7-412a-9ae2-3ccbed773d22"}}}
+[ERROR] 2025-06-26 16:57:01,176 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"cd28f133-22e6-421f-9e6d-d25b84e60491","client-request-id":"cd28f133-22e6-421f-9e6d-d25b84e60491"}}}
+[ERROR] 2025-06-26 16:57:01,177 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"cd28f133-22e6-421f-9e6d-d25b84e60491","client-request-id":"cd28f133-22e6-421f-9e6d-d25b84e60491"}}}
+[ERROR] 2025-06-26 16:57:01,219 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"c6a5dbfb-cdbe-4632-8007-c5e3f5b64fac","client-request-id":"c6a5dbfb-cdbe-4632-8007-c5e3f5b64fac"}}}
+[ERROR] 2025-06-26 16:57:01,220 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"c6a5dbfb-cdbe-4632-8007-c5e3f5b64fac","client-request-id":"c6a5dbfb-cdbe-4632-8007-c5e3f5b64fac"}}}
+[ERROR] 2025-06-26 16:57:01,272 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"f4f46294-f175-480b-a52e-bb8aae6f54bd","client-request-id":"f4f46294-f175-480b-a52e-bb8aae6f54bd"}}}
+[ERROR] 2025-06-26 16:57:01,272 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"f4f46294-f175-480b-a52e-bb8aae6f54bd","client-request-id":"f4f46294-f175-480b-a52e-bb8aae6f54bd"}}}
+[ERROR] 2025-06-26 16:57:01,341 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"12876666-3c73-488a-9348-1f37506571fc","client-request-id":"12876666-3c73-488a-9348-1f37506571fc"}}}
+[ERROR] 2025-06-26 16:57:01,342 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"12876666-3c73-488a-9348-1f37506571fc","client-request-id":"12876666-3c73-488a-9348-1f37506571fc"}}}
+[ERROR] 2025-06-26 16:57:01,412 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"ddd6ec08-7e1a-48ab-9ef9-540514c974b4","client-request-id":"ddd6ec08-7e1a-48ab-9ef9-540514c974b4"}}}
+[ERROR] 2025-06-26 16:57:01,413 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"ddd6ec08-7e1a-48ab-9ef9-540514c974b4","client-request-id":"ddd6ec08-7e1a-48ab-9ef9-540514c974b4"}}}
+[ERROR] 2025-06-26 16:57:01,459 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"49bdb764-18b7-4fdc-8606-394af5012b6d","client-request-id":"49bdb764-18b7-4fdc-8606-394af5012b6d"}}}
+[ERROR] 2025-06-26 16:57:01,459 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"49bdb764-18b7-4fdc-8606-394af5012b6d","client-request-id":"49bdb764-18b7-4fdc-8606-394af5012b6d"}}}
+[ERROR] 2025-06-26 16:57:01,518 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"9fb58a73-7661-4a3c-8cd0-823e8863d186","client-request-id":"9fb58a73-7661-4a3c-8cd0-823e8863d186"}}}
+[ERROR] 2025-06-26 16:57:01,518 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"9fb58a73-7661-4a3c-8cd0-823e8863d186","client-request-id":"9fb58a73-7661-4a3c-8cd0-823e8863d186"}}}
+[ERROR] 2025-06-26 16:57:01,571 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"158b93e0-c5a9-4f1c-bd2c-82f06452e5a9","client-request-id":"158b93e0-c5a9-4f1c-bd2c-82f06452e5a9"}}}
+[ERROR] 2025-06-26 16:57:01,571 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"158b93e0-c5a9-4f1c-bd2c-82f06452e5a9","client-request-id":"158b93e0-c5a9-4f1c-bd2c-82f06452e5a9"}}}
+[ERROR] 2025-06-26 16:57:01,647 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"7c92e5ce-06ff-4e65-8666-99534760c611","client-request-id":"7c92e5ce-06ff-4e65-8666-99534760c611"}}}
+[ERROR] 2025-06-26 16:57:01,647 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"7c92e5ce-06ff-4e65-8666-99534760c611","client-request-id":"7c92e5ce-06ff-4e65-8666-99534760c611"}}}
+[ERROR] 2025-06-26 16:57:01,709 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"46c494cd-aea3-44a9-a794-b6f57e04aec5","client-request-id":"46c494cd-aea3-44a9-a794-b6f57e04aec5"}}}
+[ERROR] 2025-06-26 16:57:01,711 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"46c494cd-aea3-44a9-a794-b6f57e04aec5","client-request-id":"46c494cd-aea3-44a9-a794-b6f57e04aec5"}}}
+[ERROR] 2025-06-26 16:57:01,764 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"c2a270bd-2577-4cc9-b353-57a73aeb2fca","client-request-id":"c2a270bd-2577-4cc9-b353-57a73aeb2fca"}}}
+[ERROR] 2025-06-26 16:57:01,764 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"c2a270bd-2577-4cc9-b353-57a73aeb2fca","client-request-id":"c2a270bd-2577-4cc9-b353-57a73aeb2fca"}}}
+[ERROR] 2025-06-26 16:57:01,827 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"eefe86ee-f7d1-462b-bd71-2384296293cb","client-request-id":"eefe86ee-f7d1-462b-bd71-2384296293cb"}}}
+[ERROR] 2025-06-26 16:57:01,828 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"eefe86ee-f7d1-462b-bd71-2384296293cb","client-request-id":"eefe86ee-f7d1-462b-bd71-2384296293cb"}}}
+[ERROR] 2025-06-26 16:57:01,880 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"24b4db34-f48e-4de0-a6c2-ca7a66684b68","client-request-id":"24b4db34-f48e-4de0-a6c2-ca7a66684b68"}}}
+[ERROR] 2025-06-26 16:57:01,880 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"24b4db34-f48e-4de0-a6c2-ca7a66684b68","client-request-id":"24b4db34-f48e-4de0-a6c2-ca7a66684b68"}}}
+[ERROR] 2025-06-26 16:57:01,943 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"67762a05-ebbc-4c03-8e3b-88ddd97bafd2","client-request-id":"67762a05-ebbc-4c03-8e3b-88ddd97bafd2"}}}
+[ERROR] 2025-06-26 16:57:01,944 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"67762a05-ebbc-4c03-8e3b-88ddd97bafd2","client-request-id":"67762a05-ebbc-4c03-8e3b-88ddd97bafd2"}}}
+[ERROR] 2025-06-26 16:57:01,999 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"16c52c77-c038-48d8-b88b-9beb9c012d25","client-request-id":"16c52c77-c038-48d8-b88b-9beb9c012d25"}}}
+[ERROR] 2025-06-26 16:57:02,000 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"16c52c77-c038-48d8-b88b-9beb9c012d25","client-request-id":"16c52c77-c038-48d8-b88b-9beb9c012d25"}}}
+[ERROR] 2025-06-26 16:57:02,058 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"039567ce-8158-47b6-ac14-eafb953408b0","client-request-id":"039567ce-8158-47b6-ac14-eafb953408b0"}}}
+[ERROR] 2025-06-26 16:57:02,059 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:01","request-id":"039567ce-8158-47b6-ac14-eafb953408b0","client-request-id":"039567ce-8158-47b6-ac14-eafb953408b0"}}}
+[ERROR] 2025-06-26 16:57:02,132 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"2839581f-5a03-48c8-980d-afd82314222a","client-request-id":"2839581f-5a03-48c8-980d-afd82314222a"}}}
+[ERROR] 2025-06-26 16:57:02,135 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"2839581f-5a03-48c8-980d-afd82314222a","client-request-id":"2839581f-5a03-48c8-980d-afd82314222a"}}}
+[ERROR] 2025-06-26 16:57:02,192 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"47ccde0d-dbaf-420f-89f9-349167af4740","client-request-id":"47ccde0d-dbaf-420f-89f9-349167af4740"}}}
+[ERROR] 2025-06-26 16:57:02,193 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"47ccde0d-dbaf-420f-89f9-349167af4740","client-request-id":"47ccde0d-dbaf-420f-89f9-349167af4740"}}}
+[ERROR] 2025-06-26 16:57:02,242 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"d8dd595b-26cd-4817-a5f1-003a0a2dfc4e","client-request-id":"d8dd595b-26cd-4817-a5f1-003a0a2dfc4e"}}}
+[ERROR] 2025-06-26 16:57:02,243 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"d8dd595b-26cd-4817-a5f1-003a0a2dfc4e","client-request-id":"d8dd595b-26cd-4817-a5f1-003a0a2dfc4e"}}}
+[ERROR] 2025-06-26 16:57:02,289 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"d1a5587d-766a-4109-b851-df7095e24b4a","client-request-id":"d1a5587d-766a-4109-b851-df7095e24b4a"}}}
+[ERROR] 2025-06-26 16:57:02,289 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"d1a5587d-766a-4109-b851-df7095e24b4a","client-request-id":"d1a5587d-766a-4109-b851-df7095e24b4a"}}}
+[ERROR] 2025-06-26 16:57:02,339 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"a1b16aa7-7521-4833-85aa-9c9d5b246ea3","client-request-id":"a1b16aa7-7521-4833-85aa-9c9d5b246ea3"}}}
+[ERROR] 2025-06-26 16:57:02,340 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"a1b16aa7-7521-4833-85aa-9c9d5b246ea3","client-request-id":"a1b16aa7-7521-4833-85aa-9c9d5b246ea3"}}}
+[ERROR] 2025-06-26 16:57:02,387 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"9bd99a04-ff5b-4837-8109-50a0524f072f","client-request-id":"9bd99a04-ff5b-4837-8109-50a0524f072f"}}}
+[ERROR] 2025-06-26 16:57:02,388 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"9bd99a04-ff5b-4837-8109-50a0524f072f","client-request-id":"9bd99a04-ff5b-4837-8109-50a0524f072f"}}}
+[ERROR] 2025-06-26 16:57:02,440 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"75bb3c7a-5daa-4d02-84b7-11eb5d972409","client-request-id":"75bb3c7a-5daa-4d02-84b7-11eb5d972409"}}}
+[ERROR] 2025-06-26 16:57:02,441 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"75bb3c7a-5daa-4d02-84b7-11eb5d972409","client-request-id":"75bb3c7a-5daa-4d02-84b7-11eb5d972409"}}}
+[ERROR] 2025-06-26 16:57:02,493 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"e5001caa-235d-4a00-9594-0bdff77c1103","client-request-id":"e5001caa-235d-4a00-9594-0bdff77c1103"}}}
+[ERROR] 2025-06-26 16:57:02,494 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"e5001caa-235d-4a00-9594-0bdff77c1103","client-request-id":"e5001caa-235d-4a00-9594-0bdff77c1103"}}}
+[ERROR] 2025-06-26 16:57:02,553 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"b21742b9-91a6-42e5-b991-5588890d4f37","client-request-id":"b21742b9-91a6-42e5-b991-5588890d4f37"}}}
+[ERROR] 2025-06-26 16:57:02,553 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"b21742b9-91a6-42e5-b991-5588890d4f37","client-request-id":"b21742b9-91a6-42e5-b991-5588890d4f37"}}}
+[ERROR] 2025-06-26 16:57:02,602 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"1a6e5b68-9443-44d4-b6e8-a6e516e2b5e0","client-request-id":"1a6e5b68-9443-44d4-b6e8-a6e516e2b5e0"}}}
+[ERROR] 2025-06-26 16:57:02,603 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"1a6e5b68-9443-44d4-b6e8-a6e516e2b5e0","client-request-id":"1a6e5b68-9443-44d4-b6e8-a6e516e2b5e0"}}}
+[ERROR] 2025-06-26 16:57:02,650 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"775e0cfe-da11-4f91-82a7-52db8723a6b2","client-request-id":"775e0cfe-da11-4f91-82a7-52db8723a6b2"}}}
+[ERROR] 2025-06-26 16:57:02,651 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"775e0cfe-da11-4f91-82a7-52db8723a6b2","client-request-id":"775e0cfe-da11-4f91-82a7-52db8723a6b2"}}}
+[ERROR] 2025-06-26 16:57:02,715 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"a5c1e249-2e1e-48b0-9f41-f1f92a7437fb","client-request-id":"a5c1e249-2e1e-48b0-9f41-f1f92a7437fb"}}}
+[ERROR] 2025-06-26 16:57:02,715 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"a5c1e249-2e1e-48b0-9f41-f1f92a7437fb","client-request-id":"a5c1e249-2e1e-48b0-9f41-f1f92a7437fb"}}}
+[ERROR] 2025-06-26 16:57:02,772 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"e692f86d-f0a6-4663-b302-23f1345771d3","client-request-id":"e692f86d-f0a6-4663-b302-23f1345771d3"}}}
+[ERROR] 2025-06-26 16:57:02,772 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"e692f86d-f0a6-4663-b302-23f1345771d3","client-request-id":"e692f86d-f0a6-4663-b302-23f1345771d3"}}}
+[ERROR] 2025-06-26 16:57:02,835 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"ec4610cd-f94a-4383-8aa4-371ca49c5cec","client-request-id":"ec4610cd-f94a-4383-8aa4-371ca49c5cec"}}}
+[ERROR] 2025-06-26 16:57:02,835 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"ec4610cd-f94a-4383-8aa4-371ca49c5cec","client-request-id":"ec4610cd-f94a-4383-8aa4-371ca49c5cec"}}}
+[ERROR] 2025-06-26 16:57:02,930 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"2d2cac2e-9375-49f7-a92c-cda14ed4c94f","client-request-id":"2d2cac2e-9375-49f7-a92c-cda14ed4c94f"}}}
+[ERROR] 2025-06-26 16:57:02,930 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"2d2cac2e-9375-49f7-a92c-cda14ed4c94f","client-request-id":"2d2cac2e-9375-49f7-a92c-cda14ed4c94f"}}}
+[ERROR] 2025-06-26 16:57:03,034 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"44d42dbc-eec1-4b8b-a219-21ba72ee28bd","client-request-id":"44d42dbc-eec1-4b8b-a219-21ba72ee28bd"}}}
+[ERROR] 2025-06-26 16:57:03,035 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:02","request-id":"44d42dbc-eec1-4b8b-a219-21ba72ee28bd","client-request-id":"44d42dbc-eec1-4b8b-a219-21ba72ee28bd"}}}
+[ERROR] 2025-06-26 16:57:03,122 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"330533a9-07b2-4209-be23-522b57acfd4b","client-request-id":"330533a9-07b2-4209-be23-522b57acfd4b"}}}
+[ERROR] 2025-06-26 16:57:03,122 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"330533a9-07b2-4209-be23-522b57acfd4b","client-request-id":"330533a9-07b2-4209-be23-522b57acfd4b"}}}
+[ERROR] 2025-06-26 16:57:03,183 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"6ddc3eca-4f99-4f8e-be5e-6de3581018be","client-request-id":"6ddc3eca-4f99-4f8e-be5e-6de3581018be"}}}
+[ERROR] 2025-06-26 16:57:03,184 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"6ddc3eca-4f99-4f8e-be5e-6de3581018be","client-request-id":"6ddc3eca-4f99-4f8e-be5e-6de3581018be"}}}
+[ERROR] 2025-06-26 16:57:03,257 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"8d65c158-a1b7-4bb3-9264-96d7f66a9375","client-request-id":"8d65c158-a1b7-4bb3-9264-96d7f66a9375"}}}
+[ERROR] 2025-06-26 16:57:03,258 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"8d65c158-a1b7-4bb3-9264-96d7f66a9375","client-request-id":"8d65c158-a1b7-4bb3-9264-96d7f66a9375"}}}
+[ERROR] 2025-06-26 16:57:03,298 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"119755bd-cfb0-41e2-a630-be6d72497f0e","client-request-id":"119755bd-cfb0-41e2-a630-be6d72497f0e"}}}
+[ERROR] 2025-06-26 16:57:03,298 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"119755bd-cfb0-41e2-a630-be6d72497f0e","client-request-id":"119755bd-cfb0-41e2-a630-be6d72497f0e"}}}
+[ERROR] 2025-06-26 16:57:03,368 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"49ac84fb-6758-4c55-8470-261a0feb15b8","client-request-id":"49ac84fb-6758-4c55-8470-261a0feb15b8"}}}
+[ERROR] 2025-06-26 16:57:03,369 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"49ac84fb-6758-4c55-8470-261a0feb15b8","client-request-id":"49ac84fb-6758-4c55-8470-261a0feb15b8"}}}
+[ERROR] 2025-06-26 16:57:03,433 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"9c8f29c6-d157-453c-a032-d58c102e6df8","client-request-id":"9c8f29c6-d157-453c-a032-d58c102e6df8"}}}
+[ERROR] 2025-06-26 16:57:03,435 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"9c8f29c6-d157-453c-a032-d58c102e6df8","client-request-id":"9c8f29c6-d157-453c-a032-d58c102e6df8"}}}
+[ERROR] 2025-06-26 16:57:03,505 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"721f4ba8-0d14-4c98-aaea-ba097a98891b","client-request-id":"721f4ba8-0d14-4c98-aaea-ba097a98891b"}}}
+[ERROR] 2025-06-26 16:57:03,506 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"721f4ba8-0d14-4c98-aaea-ba097a98891b","client-request-id":"721f4ba8-0d14-4c98-aaea-ba097a98891b"}}}
+[ERROR] 2025-06-26 16:57:03,565 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"2b9aae67-cf95-4950-aaed-a39ca05068a2","client-request-id":"2b9aae67-cf95-4950-aaed-a39ca05068a2"}}}
+[ERROR] 2025-06-26 16:57:03,566 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"2b9aae67-cf95-4950-aaed-a39ca05068a2","client-request-id":"2b9aae67-cf95-4950-aaed-a39ca05068a2"}}}
+[ERROR] 2025-06-26 16:57:03,614 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"98e98fb1-adc6-40cd-b558-485e386313fb","client-request-id":"98e98fb1-adc6-40cd-b558-485e386313fb"}}}
+[ERROR] 2025-06-26 16:57:03,614 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"98e98fb1-adc6-40cd-b558-485e386313fb","client-request-id":"98e98fb1-adc6-40cd-b558-485e386313fb"}}}
+[ERROR] 2025-06-26 16:57:03,658 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"8ad7678a-e41a-4213-922f-5e57ec2ae3b2","client-request-id":"8ad7678a-e41a-4213-922f-5e57ec2ae3b2"}}}
+[ERROR] 2025-06-26 16:57:03,658 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"8ad7678a-e41a-4213-922f-5e57ec2ae3b2","client-request-id":"8ad7678a-e41a-4213-922f-5e57ec2ae3b2"}}}
+[ERROR] 2025-06-26 16:57:03,709 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"bb4ac68d-c0ce-4da4-bd79-847210ee1225","client-request-id":"bb4ac68d-c0ce-4da4-bd79-847210ee1225"}}}
+[ERROR] 2025-06-26 16:57:03,710 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"bb4ac68d-c0ce-4da4-bd79-847210ee1225","client-request-id":"bb4ac68d-c0ce-4da4-bd79-847210ee1225"}}}
+[ERROR] 2025-06-26 16:57:03,769 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"bcccd55e-adfc-4b24-a744-6ea3d4463659","client-request-id":"bcccd55e-adfc-4b24-a744-6ea3d4463659"}}}
+[ERROR] 2025-06-26 16:57:03,770 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"bcccd55e-adfc-4b24-a744-6ea3d4463659","client-request-id":"bcccd55e-adfc-4b24-a744-6ea3d4463659"}}}
+[ERROR] 2025-06-26 16:57:03,870 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"31adb6f8-471b-4437-bf46-46faa599f779","client-request-id":"31adb6f8-471b-4437-bf46-46faa599f779"}}}
+[ERROR] 2025-06-26 16:57:03,871 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"31adb6f8-471b-4437-bf46-46faa599f779","client-request-id":"31adb6f8-471b-4437-bf46-46faa599f779"}}}
+[ERROR] 2025-06-26 16:57:03,982 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"6cc806cd-d746-4479-a547-72ebb243d557","client-request-id":"6cc806cd-d746-4479-a547-72ebb243d557"}}}
+[ERROR] 2025-06-26 16:57:03,983 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:03","request-id":"6cc806cd-d746-4479-a547-72ebb243d557","client-request-id":"6cc806cd-d746-4479-a547-72ebb243d557"}}}
+[ERROR] 2025-06-26 16:57:04,108 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"95f59459-a20f-4b82-aaaa-df37863762ad","client-request-id":"95f59459-a20f-4b82-aaaa-df37863762ad"}}}
+[ERROR] 2025-06-26 16:57:04,109 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"95f59459-a20f-4b82-aaaa-df37863762ad","client-request-id":"95f59459-a20f-4b82-aaaa-df37863762ad"}}}
+[ERROR] 2025-06-26 16:57:04,157 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"d18d33ae-408c-4bbd-9f17-b2d6190277ba","client-request-id":"d18d33ae-408c-4bbd-9f17-b2d6190277ba"}}}
+[ERROR] 2025-06-26 16:57:04,158 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"d18d33ae-408c-4bbd-9f17-b2d6190277ba","client-request-id":"d18d33ae-408c-4bbd-9f17-b2d6190277ba"}}}
+[ERROR] 2025-06-26 16:57:04,228 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"f43379ac-ed13-4123-a719-398ab24f511c","client-request-id":"f43379ac-ed13-4123-a719-398ab24f511c"}}}
+[ERROR] 2025-06-26 16:57:04,229 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"f43379ac-ed13-4123-a719-398ab24f511c","client-request-id":"f43379ac-ed13-4123-a719-398ab24f511c"}}}
+[ERROR] 2025-06-26 16:57:04,303 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"7f7e671f-590e-4297-b55a-3a539070a7aa","client-request-id":"7f7e671f-590e-4297-b55a-3a539070a7aa"}}}
+[ERROR] 2025-06-26 16:57:04,305 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"7f7e671f-590e-4297-b55a-3a539070a7aa","client-request-id":"7f7e671f-590e-4297-b55a-3a539070a7aa"}}}
+[ERROR] 2025-06-26 16:57:04,370 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"8481f1ff-896a-41db-aa66-29963a7fde29","client-request-id":"8481f1ff-896a-41db-aa66-29963a7fde29"}}}
+[ERROR] 2025-06-26 16:57:04,372 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"8481f1ff-896a-41db-aa66-29963a7fde29","client-request-id":"8481f1ff-896a-41db-aa66-29963a7fde29"}}}
+[ERROR] 2025-06-26 16:57:04,421 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"2aec62f1-9103-4340-a1fd-a86c8768cf25","client-request-id":"2aec62f1-9103-4340-a1fd-a86c8768cf25"}}}
+[ERROR] 2025-06-26 16:57:04,422 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"2aec62f1-9103-4340-a1fd-a86c8768cf25","client-request-id":"2aec62f1-9103-4340-a1fd-a86c8768cf25"}}}
+[ERROR] 2025-06-26 16:57:04,467 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"bb8531a4-1452-439e-bf0e-e0d384460a87","client-request-id":"bb8531a4-1452-439e-bf0e-e0d384460a87"}}}
+[ERROR] 2025-06-26 16:57:04,468 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"bb8531a4-1452-439e-bf0e-e0d384460a87","client-request-id":"bb8531a4-1452-439e-bf0e-e0d384460a87"}}}
+[ERROR] 2025-06-26 16:57:04,510 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"c32a64af-053e-4720-ae11-eadde2364749","client-request-id":"c32a64af-053e-4720-ae11-eadde2364749"}}}
+[ERROR] 2025-06-26 16:57:04,511 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"c32a64af-053e-4720-ae11-eadde2364749","client-request-id":"c32a64af-053e-4720-ae11-eadde2364749"}}}
+[ERROR] 2025-06-26 16:57:04,576 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"b839d9a6-7309-4b6c-bc75-bb267b0d8c9e","client-request-id":"b839d9a6-7309-4b6c-bc75-bb267b0d8c9e"}}}
+[ERROR] 2025-06-26 16:57:04,577 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"b839d9a6-7309-4b6c-bc75-bb267b0d8c9e","client-request-id":"b839d9a6-7309-4b6c-bc75-bb267b0d8c9e"}}}
+[ERROR] 2025-06-26 16:57:04,644 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"c3f0f34e-1591-49a6-94b9-7cf4d30e0f74","client-request-id":"c3f0f34e-1591-49a6-94b9-7cf4d30e0f74"}}}
+[ERROR] 2025-06-26 16:57:04,645 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"c3f0f34e-1591-49a6-94b9-7cf4d30e0f74","client-request-id":"c3f0f34e-1591-49a6-94b9-7cf4d30e0f74"}}}
+[ERROR] 2025-06-26 16:57:04,694 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"f9153ff2-c6a7-411e-b3cc-487359087fb8","client-request-id":"f9153ff2-c6a7-411e-b3cc-487359087fb8"}}}
+[ERROR] 2025-06-26 16:57:04,695 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"f9153ff2-c6a7-411e-b3cc-487359087fb8","client-request-id":"f9153ff2-c6a7-411e-b3cc-487359087fb8"}}}
+[ERROR] 2025-06-26 16:57:04,773 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"a7784b85-db48-4f08-a772-371733be65ec","client-request-id":"a7784b85-db48-4f08-a772-371733be65ec"}}}
+[ERROR] 2025-06-26 16:57:04,773 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"a7784b85-db48-4f08-a772-371733be65ec","client-request-id":"a7784b85-db48-4f08-a772-371733be65ec"}}}
+[ERROR] 2025-06-26 16:57:04,888 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"bc5421c3-7f9f-44c2-a707-0ab69acd5364","client-request-id":"bc5421c3-7f9f-44c2-a707-0ab69acd5364"}}}
+[ERROR] 2025-06-26 16:57:04,889 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"bc5421c3-7f9f-44c2-a707-0ab69acd5364","client-request-id":"bc5421c3-7f9f-44c2-a707-0ab69acd5364"}}}
+[ERROR] 2025-06-26 16:57:04,968 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"05e29061-06b1-4af4-86f6-5a1651847df1","client-request-id":"05e29061-06b1-4af4-86f6-5a1651847df1"}}}
+[ERROR] 2025-06-26 16:57:04,969 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"05e29061-06b1-4af4-86f6-5a1651847df1","client-request-id":"05e29061-06b1-4af4-86f6-5a1651847df1"}}}
+[ERROR] 2025-06-26 16:57:05,027 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"281aa4b5-9819-47be-9525-b2225f8e4656","client-request-id":"281aa4b5-9819-47be-9525-b2225f8e4656"}}}
+[ERROR] 2025-06-26 16:57:05,028 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"281aa4b5-9819-47be-9525-b2225f8e4656","client-request-id":"281aa4b5-9819-47be-9525-b2225f8e4656"}}}
+[ERROR] 2025-06-26 16:57:05,090 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"24c06bde-9374-4ec9-85ae-b97a0f0ba02d","client-request-id":"24c06bde-9374-4ec9-85ae-b97a0f0ba02d"}}}
+[ERROR] 2025-06-26 16:57:05,091 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:04","request-id":"24c06bde-9374-4ec9-85ae-b97a0f0ba02d","client-request-id":"24c06bde-9374-4ec9-85ae-b97a0f0ba02d"}}}
+[ERROR] 2025-06-26 16:57:05,153 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"9c0d301f-1ddc-4bda-a12d-e6f352eccbb0","client-request-id":"9c0d301f-1ddc-4bda-a12d-e6f352eccbb0"}}}
+[ERROR] 2025-06-26 16:57:05,154 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"9c0d301f-1ddc-4bda-a12d-e6f352eccbb0","client-request-id":"9c0d301f-1ddc-4bda-a12d-e6f352eccbb0"}}}
+[ERROR] 2025-06-26 16:57:05,212 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"9160a850-9e30-4fd6-9a1e-d7393c7fbb3f","client-request-id":"9160a850-9e30-4fd6-9a1e-d7393c7fbb3f"}}}
+[ERROR] 2025-06-26 16:57:05,213 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"9160a850-9e30-4fd6-9a1e-d7393c7fbb3f","client-request-id":"9160a850-9e30-4fd6-9a1e-d7393c7fbb3f"}}}
+[ERROR] 2025-06-26 16:57:05,279 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"cad579b0-e2fa-43b4-acaf-e61bda572a17","client-request-id":"cad579b0-e2fa-43b4-acaf-e61bda572a17"}}}
+[ERROR] 2025-06-26 16:57:05,280 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"cad579b0-e2fa-43b4-acaf-e61bda572a17","client-request-id":"cad579b0-e2fa-43b4-acaf-e61bda572a17"}}}
+[ERROR] 2025-06-26 16:57:05,348 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"78176e38-fcd5-4614-b302-407f661c55e0","client-request-id":"78176e38-fcd5-4614-b302-407f661c55e0"}}}
+[ERROR] 2025-06-26 16:57:05,350 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"78176e38-fcd5-4614-b302-407f661c55e0","client-request-id":"78176e38-fcd5-4614-b302-407f661c55e0"}}}
+[ERROR] 2025-06-26 16:57:05,464 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"0b1e9cb4-b289-4952-afd8-082f2b68ab9a","client-request-id":"0b1e9cb4-b289-4952-afd8-082f2b68ab9a"}}}
+[ERROR] 2025-06-26 16:57:05,465 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"0b1e9cb4-b289-4952-afd8-082f2b68ab9a","client-request-id":"0b1e9cb4-b289-4952-afd8-082f2b68ab9a"}}}
+[ERROR] 2025-06-26 16:57:05,538 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"d84f4873-615c-4e7f-ac1c-830c3afdc566","client-request-id":"d84f4873-615c-4e7f-ac1c-830c3afdc566"}}}
+[ERROR] 2025-06-26 16:57:05,539 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"d84f4873-615c-4e7f-ac1c-830c3afdc566","client-request-id":"d84f4873-615c-4e7f-ac1c-830c3afdc566"}}}
+[ERROR] 2025-06-26 16:57:05,596 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"7b47c6d2-fbbe-424f-a00b-f758bb869897","client-request-id":"7b47c6d2-fbbe-424f-a00b-f758bb869897"}}}
+[ERROR] 2025-06-26 16:57:05,597 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"7b47c6d2-fbbe-424f-a00b-f758bb869897","client-request-id":"7b47c6d2-fbbe-424f-a00b-f758bb869897"}}}
+[ERROR] 2025-06-26 16:57:05,667 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"887c1358-9186-4cd1-869e-caf05a66dd2c","client-request-id":"887c1358-9186-4cd1-869e-caf05a66dd2c"}}}
+[ERROR] 2025-06-26 16:57:05,668 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"887c1358-9186-4cd1-869e-caf05a66dd2c","client-request-id":"887c1358-9186-4cd1-869e-caf05a66dd2c"}}}
+[ERROR] 2025-06-26 16:57:05,749 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"52898a37-b123-4231-aa3f-e319d84cc98a","client-request-id":"52898a37-b123-4231-aa3f-e319d84cc98a"}}}
+[ERROR] 2025-06-26 16:57:05,750 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"52898a37-b123-4231-aa3f-e319d84cc98a","client-request-id":"52898a37-b123-4231-aa3f-e319d84cc98a"}}}
+[ERROR] 2025-06-26 16:57:05,802 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"d6a7b3d8-8714-4611-a521-5f53cd3a1f5b","client-request-id":"d6a7b3d8-8714-4611-a521-5f53cd3a1f5b"}}}
+[ERROR] 2025-06-26 16:57:05,803 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"d6a7b3d8-8714-4611-a521-5f53cd3a1f5b","client-request-id":"d6a7b3d8-8714-4611-a521-5f53cd3a1f5b"}}}
+[ERROR] 2025-06-26 16:57:05,851 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"a2fedefb-d01c-4235-81d5-a0cc6ab4af80","client-request-id":"a2fedefb-d01c-4235-81d5-a0cc6ab4af80"}}}
+[ERROR] 2025-06-26 16:57:05,852 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"a2fedefb-d01c-4235-81d5-a0cc6ab4af80","client-request-id":"a2fedefb-d01c-4235-81d5-a0cc6ab4af80"}}}
+[ERROR] 2025-06-26 16:57:05,958 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"a4b7bc2b-a711-48b5-8522-c79bf0834f28","client-request-id":"a4b7bc2b-a711-48b5-8522-c79bf0834f28"}}}
+[ERROR] 2025-06-26 16:57:05,960 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"a4b7bc2b-a711-48b5-8522-c79bf0834f28","client-request-id":"a4b7bc2b-a711-48b5-8522-c79bf0834f28"}}}
+[ERROR] 2025-06-26 16:57:06,031 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"0ce1415e-f81f-4d9a-b3a9-ffa24bce82c1","client-request-id":"0ce1415e-f81f-4d9a-b3a9-ffa24bce82c1"}}}
+[ERROR] 2025-06-26 16:57:06,031 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:05","request-id":"0ce1415e-f81f-4d9a-b3a9-ffa24bce82c1","client-request-id":"0ce1415e-f81f-4d9a-b3a9-ffa24bce82c1"}}}
+[ERROR] 2025-06-26 16:57:06,118 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"14f74bc7-bbf7-4676-95c4-cce4850c2bec","client-request-id":"14f74bc7-bbf7-4676-95c4-cce4850c2bec"}}}
+[ERROR] 2025-06-26 16:57:06,119 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"14f74bc7-bbf7-4676-95c4-cce4850c2bec","client-request-id":"14f74bc7-bbf7-4676-95c4-cce4850c2bec"}}}
+[ERROR] 2025-06-26 16:57:06,197 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"1044f101-c8ac-4c61-aaec-eb8da97a747f","client-request-id":"1044f101-c8ac-4c61-aaec-eb8da97a747f"}}}
+[ERROR] 2025-06-26 16:57:06,198 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"1044f101-c8ac-4c61-aaec-eb8da97a747f","client-request-id":"1044f101-c8ac-4c61-aaec-eb8da97a747f"}}}
+[ERROR] 2025-06-26 16:57:06,244 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"931703af-9d13-495f-996a-eb5cef7c0ef6","client-request-id":"931703af-9d13-495f-996a-eb5cef7c0ef6"}}}
+[ERROR] 2025-06-26 16:57:06,244 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"931703af-9d13-495f-996a-eb5cef7c0ef6","client-request-id":"931703af-9d13-495f-996a-eb5cef7c0ef6"}}}
+[ERROR] 2025-06-26 16:57:06,318 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"c580c804-29a1-442c-9047-2e2798a0354d","client-request-id":"c580c804-29a1-442c-9047-2e2798a0354d"}}}
+[ERROR] 2025-06-26 16:57:06,320 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"c580c804-29a1-442c-9047-2e2798a0354d","client-request-id":"c580c804-29a1-442c-9047-2e2798a0354d"}}}
+[ERROR] 2025-06-26 16:57:06,389 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"2195f88d-bff6-4f92-b0f8-4f9243b65c3c","client-request-id":"2195f88d-bff6-4f92-b0f8-4f9243b65c3c"}}}
+[ERROR] 2025-06-26 16:57:06,389 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:06","request-id":"2195f88d-bff6-4f92-b0f8-4f9243b65c3c","client-request-id":"2195f88d-bff6-4f92-b0f8-4f9243b65c3c"}}}
+[WARNING] 2025-06-26 16:57:08,118 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 16:57:08,119 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 16:57:31,196 - expenses.services.onedrive_service: Error checking folder: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"f4c53962-066a-449f-a09b-537852dcaa4f","client-request-id":"f4c53962-066a-449f-a09b-537852dcaa4f"}}}
+[ERROR] 2025-06-26 16:57:31,245 - expenses.services.onedrive_service: Error checking folder: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"68374670-a37a-437c-9b5b-99be7b741c5c","client-request-id":"68374670-a37a-437c-9b5b-99be7b741c5c"}}}
+[ERROR] 2025-06-26 16:57:31,297 - expenses.services.onedrive_service: Error checking subfolder: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"b2847473-ec61-408b-a081-9a54f4ee3320","client-request-id":"b2847473-ec61-408b-a081-9a54f4ee3320"}}}
+[ERROR] 2025-06-26 16:57:31,352 - expenses.services.onedrive_service: Upload failed: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d","client-request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d"}}}
+[ERROR] 2025-06-26 16:57:31,353 - expenses.storage: Failed to upload to OneDrive for 'test2': {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d","client-request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d"}}}
+[ERROR] 2025-06-26 16:57:31,354 - expenses.storage: Error saving file to OneDrive: Upload to OneDrive failed: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d","client-request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d"}}}
+[ERROR] 2025-06-26 16:57:31,519 - django.request: Internal Server Error: /api/expense-forms/10222/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 100, in update
+    attachment.save()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\compiler.py", line 554, in as_sql
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1695, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\fields\files.py", line 317, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\fields\files.py", line 93, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\files\storage\base.py", line 38, in save
+    name = self._save(name, content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\storage.py", line 65, in _save
+    raise Exception(f"Upload to OneDrive failed: {result.get('error', 'Unknown error')}")
+Exception: Upload to OneDrive failed: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:31","request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d","client-request-id":"08d5c51d-569f-433a-bd11-4a8239215d7d"}}}
+[ERROR] 2025-06-26 16:57:31,530 - django.server: "PATCH /api/expense-forms/10222/ HTTP/1.1" 500 201216
+[ERROR] 2025-06-26 16:57:55,030 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:54","request-id":"f0a7ab87-8470-4815-8cd8-57a4cf77e687","client-request-id":"f0a7ab87-8470-4815-8cd8-57a4cf77e687"}}}
+[ERROR] 2025-06-26 16:57:55,031 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:54","request-id":"f0a7ab87-8470-4815-8cd8-57a4cf77e687","client-request-id":"f0a7ab87-8470-4815-8cd8-57a4cf77e687"}}}
+[ERROR] 2025-06-26 16:57:55,085 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:54","request-id":"b573b1bd-d953-4486-a2c4-96f89291da44","client-request-id":"b573b1bd-d953-4486-a2c4-96f89291da44"}}}
+[ERROR] 2025-06-26 16:57:55,086 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:54","request-id":"b573b1bd-d953-4486-a2c4-96f89291da44","client-request-id":"b573b1bd-d953-4486-a2c4-96f89291da44"}}}
+[ERROR] 2025-06-26 16:57:55,163 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:55","request-id":"b2eb5ab5-bc92-4589-8157-73cf6d48b65b","client-request-id":"b2eb5ab5-bc92-4589-8157-73cf6d48b65b"}}}
+[ERROR] 2025-06-26 16:57:55,165 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:55","request-id":"b2eb5ab5-bc92-4589-8157-73cf6d48b65b","client-request-id":"b2eb5ab5-bc92-4589-8157-73cf6d48b65b"}}}
+[ERROR] 2025-06-26 16:57:55,214 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:55","request-id":"0e6b8232-3d3c-4caf-b64d-5b6b93593227","client-request-id":"0e6b8232-3d3c-4caf-b64d-5b6b93593227"}}}
+[ERROR] 2025-06-26 16:57:55,215 - expenses.storage: Failed to get file URL: {"error":{"code":"InvalidAuthenticationToken","message":"Lifetime validation failed, the token is expired.","innerError":{"date":"2025-06-26T11:27:55","request-id":"0e6b8232-3d3c-4caf-b64d-5b6b93593227","client-request-id":"0e6b8232-3d3c-4caf-b64d-5b6b93593227"}}}
+[WARNING] 2025-06-26 17:05:40,439 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:05:40,439 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 17:05:40,479 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,500 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,513 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,531 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,550 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,569 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,585 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,599 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,610 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,624 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,695 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,738 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,760 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,782 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,801 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,815 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,833 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,848 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,865 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,879 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,893 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,907 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,921 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,935 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,962 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,979 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:40,997 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,012 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,030 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,046 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,070 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,089 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,108 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,124 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,146 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,162 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,188 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,208 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,226 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,250 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,271 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,287 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,305 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,323 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,342 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,364 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,388 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,403 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,420 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,436 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,494 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,524 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,544 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,561 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,580 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,599 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,620 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,637 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,653 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,669 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,684 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,699 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,718 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,733 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,750 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,767 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,782 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,797 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,814 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,829 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,847 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,865 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,883 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,900 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,926 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,942 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,959 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,976 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:41,997 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,014 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,033 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,049 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,066 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,082 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,098 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,120 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,151 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,174 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,195 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,214 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,239 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,265 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,292 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,319 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,342 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,365 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,398 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,419 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,444 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:42,474 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[WARNING] 2025-06-26 17:05:46,637 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:05:46,638 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-06-26 17:05:50,586 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:05:50,586 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 17:05:50,590 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,613 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,634 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,649 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,667 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,685 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,700 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,718 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,736 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,753 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,770 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,789 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,810 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,831 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,852 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,873 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,890 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,926 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:50,982 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,009 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,033 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,053 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,066 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,080 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,106 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,122 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,134 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,148 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,173 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,193 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,217 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,233 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,250 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,268 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,284 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,298 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,316 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,331 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,348 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,365 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,385 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,400 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,415 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,430 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,446 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,461 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,481 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,497 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,515 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,536 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,596 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,615 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,638 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,658 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,675 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,691 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,705 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,719 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,732 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,749 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,786 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,807 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,843 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,857 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,872 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,885 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,902 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,917 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,932 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,949 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,963 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,977 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:51,990 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,003 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,042 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,056 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,072 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,088 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,113 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,127 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,153 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,166 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,181 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,194 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,209 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,229 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,258 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,273 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,288 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,305 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,322 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,335 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,349 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,366 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,380 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,394 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,427 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,441 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,455 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:05:52,468 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[WARNING] 2025-06-26 17:06:04,341 - expenses.views: Failed to delete file from OneDrive: test2/dashboard.jpg, error: You cannot use any scope value that is reserved.
+Your input: ['Files.ReadWrite.AppFolder', 'Files.ReadWrite.All', 'offline_access']
+The reserved list: ['offline_access', 'profile', 'openid']
+[ERROR] 2025-06-26 17:06:04,378 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:06:04,416 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:06:14,786 - expenses.storage: Error saving file to OneDrive: 'value'
+[ERROR] 2025-06-26 17:06:14,991 - django.request: Internal Server Error: /api/expense-forms/10222/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 82, in partial_update
+    return self.update(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 68, in update
+    self.perform_update(serializer)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 78, in perform_update
+    serializer.save()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 207, in save
+    self.instance = self.update(self.instance, validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 100, in update
+    attachment.save()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 814, in save
+    self.save_base(
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 877, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 1020, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\base.py", line 1061, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1805, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1821, in execute_sql
+    for sql, params in self.as_sql():
+                       ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\compiler.py", line 554, in as_sql
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1695, in pre_save_val
+    return field.pre_save(obj, add=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\fields\files.py", line 317, in pre_save
+    file.save(file.name, file.file, save=False)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\fields\files.py", line 93, in save
+    self.name = self.storage.save(name, content, max_length=self.field.max_length)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\files\storage\base.py", line 38, in save
+    name = self._save(name, content)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\storage.py", line 57, in _save
+    result = run_async(self.service.upload_file,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\utils.py", line 15, in run_async
+    return result['value']
+          ~~~~~~^^^^^^^^^
+KeyError: 'value'
+[ERROR] 2025-06-26 17:06:15,004 - django.server: "PATCH /api/expense-forms/10222/ HTTP/1.1" 500 206067
+[WARNING] 2025-06-26 17:09:27,109 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:09:27,110 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 17:09:27,785 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:27,802 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:28,420 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:28,432 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:28,676 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:28,686 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:28,900 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:28,909 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:29,125 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:29,136 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:29,886 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:29,897 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:42,594 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:42,602 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:42,802 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:42,813 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:43,034 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:43,053 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:43,277 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:43,289 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:43,484 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:43,502 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:09:43,726 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:09:43,738 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:34,078 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[WARNING] 2025-06-26 17:48:46,145 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:48:46,145 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 17:48:46,691 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:46,698 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:46,906 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:46,918 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:47,169 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:47,181 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:47,380 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:47,388 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:47,617 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:47,626 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:47,931 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:47,942 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:59,417 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:59,427 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:59,655 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:59,662 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:48:59,879 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:48:59,888 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:49:00,128 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:49:00,137 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:49:00,323 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:49:00,334 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:49:00,528 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:49:00,538 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[WARNING] 2025-06-26 17:50:46,140 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:50:46,141 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-06-26 17:50:46,383 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:46,394 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:50:46,631 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:46,641 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:50:46,860 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:46,870 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:50:47,117 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:47,129 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:50:47,317 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:47,332 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[ERROR] 2025-06-26 17:50:47,529 - expenses.services.onedrive_service: Failed to get file URL: {"error":{"code":"itemNotFound","message":"The resource could not be found."}}
+[ERROR] 2025-06-26 17:50:47,541 - expenses.storage: Error getting file URL from OneDrive: 'value'
+[WARNING] 2025-06-26 17:52:30,896 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:52:30,897 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-06-26 17:52:40,017 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:40,018 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:40,234 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:40,235 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:40,449 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:40,450 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:40,657 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:40,658 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:40,877 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:40,878 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:41,113 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:41,114 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:44,512 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:44,512 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:44,711 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:44,712 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:44,880 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:44,881 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:45,065 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:45,066 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:45,339 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:45,340 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:45,575 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:45,575 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:51,951 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:51,952 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:52,155 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:52,156 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:52,369 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:52,370 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:52,574 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:52,575 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:52,822 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:52,823 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:53,035 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:53,035 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:57,693 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:57,694 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:57,943 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:52:57,944 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:58,166 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:58,167 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:58,389 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:52:58,389 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:58,636 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:58,637 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:52:58,822 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:52:58,823 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:08,115 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:08,115 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:08,308 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:08,309 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:08,498 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:08,498 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:08,682 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:08,682 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:08,901 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:08,902 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:09,187 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:09,188 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:21,132 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:21,133 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:21,577 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:21,578 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:21,774 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:21,775 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,092 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:22,093 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,267 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:22,267 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,314 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:22,315 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,491 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:22,494 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,531 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:22,533 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:22,689 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:22,690 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:23,215 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:23,216 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:23,520 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:23,520 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:23,705 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:23,706 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:32,164 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:32,165 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:32,339 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:32,340 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:32,585 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:32,585 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:32,809 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:32,810 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,001 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:33,002 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,271 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:33,272 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,361 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:33,362 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,537 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:33,538 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,721 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:33,721 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:33,913 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:33,913 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:34,089 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:34,089 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:34,286 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:34,286 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:56,999 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:57,000 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:57,206 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:53:57,207 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:57,378 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:57,380 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:57,581 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:53:57,581 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:57,842 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:57,842 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:53:58,061 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:53:58,062 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:35,936 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:56:35,936 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:36,147 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:56:36,148 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:36,330 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:56:36,331 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:36,548 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:56:36,550 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:36,786 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:56:36,788 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:37,023 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:56:37,024 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:50,503 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:56:50,504 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:50,722 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:56:50,723 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:51,448 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:56:51,449 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:51,651 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:56:51,652 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:51,936 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:56:51,936 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:56:52,204 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:56:52,205 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:24,262 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:57:24,263 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:24,446 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:57:24,447 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:24,659 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:57:24,661 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:24,883 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:57:24,884 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:25,116 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:57:25,117 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:25,355 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:57:25,356 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:38,310 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:57:38,312 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:38,509 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:57:38,511 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:38,723 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:57:38,724 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:38,965 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:57:38,966 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:39,172 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:57:39,173 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:57:39,388 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:57:39,389 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:27,471 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:27,471 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:27,622 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:58:27,623 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-06-26 17:58:27,644 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:27,645 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:27,823 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:27,823 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:27,988 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:27,989 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:28,241 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:28,243 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:28,429 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:28,430 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:40,294 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:40,295 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:40,470 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:40,471 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:40,668 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:40,668 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:40,888 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:40,890 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:41,083 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:41,084 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:41,301 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:41,302 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:43,599 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:43,600 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:43,846 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:43,846 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:44,047 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:44,048 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:44,234 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:44,234 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:44,426 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:44,428 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:44,631 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:44,632 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:55,668 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:55,668 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:56,034 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:58:56,036 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:56,247 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:56,249 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:56,511 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:58:56,513 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:56,719 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:56,721 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:58:56,928 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:58:56,929 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:19,310 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:19,311 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:19,547 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:19,549 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:19,767 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:19,768 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:19,971 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:19,972 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:20,294 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:20,295 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:20,489 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:20,490 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:21,224 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:21,225 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:21,479 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:21,480 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:21,710 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:21,712 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:21,940 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:21,941 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:22,166 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:22,167 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:22,420 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:22,421 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:33,245 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:33,246 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:33,453 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:33,454 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:33,648 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:33,649 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:33,848 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:33,848 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:34,036 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:34,037 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:34,223 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:34,224 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:34,859 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:34,861 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:35,276 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:35,277 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:35,471 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:35,472 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:35,661 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:35,662 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:35,892 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:35,893 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:36,071 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:36,072 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:52,204 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:52,204 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:52,346 - django.request: Not Found: /logo192.png
+[WARNING] 2025-06-26 17:59:52,347 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-06-26 17:59:52,427 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 17:59:52,428 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:52,631 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:52,632 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:52,822 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 17:59:52,823 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:53,047 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:53,048 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 17:59:53,521 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 17:59:53,522 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:04,289 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 18:00:04,291 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:04,567 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/4bfd35e18e9543beb9e365a49f332346.png
+[ERROR] 2025-06-26 18:00:04,568 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:04,848 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 18:00:04,849 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:05,136 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/71ba03bd9ac84bac97bdb1f9d3f24773.png
+[ERROR] 2025-06-26 18:00:05,137 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:05,716 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 18:00:05,717 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[WARNING] 2025-06-26 18:00:05,942 - expenses.services.onedrive_service: File not found: billing_uploads/unknown_uploads/46d70e392c014a2c84a6797c948cf708.png
+[ERROR] 2025-06-26 18:00:05,942 - expenses.storage: Failed to get file URL: File not found in OneDrive.
+[ERROR] 2025-06-26 18:00:19,710 - expenses.services.onedrive_service: Failed to delete file: {"error":{"code":"itemNotFound","message":"The resource could not be found.","innerError":{"date":"2025-06-26T12:30:19","request-id":"81f410cc-7fd5-4bcb-964c-d258449b7212","client-request-id":"81f410cc-7fd5-4bcb-964c-d258449b7212"}}}
+[WARNING] 2025-06-26 18:00:19,713 - expenses.views: Failed to delete file from OneDrive: test2/MS.csv, error: {"error":{"code":"itemNotFound","message":"The resource could not be found.","innerError":{"date":"2025-06-26T12:30:19","request-id":"81f410cc-7fd5-4bcb-964c-d258449b7212","client-request-id":"81f410cc-7fd5-4bcb-964c-d258449b7212"}}}

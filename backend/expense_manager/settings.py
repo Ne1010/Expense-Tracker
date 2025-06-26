@@ -1,6 +1,7 @@
 import environ
 import os
 from pathlib import Path
+from logging.handlers import RotatingFileHandler
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -184,51 +185,72 @@ SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 
+LOG_DIR = os.path.join(BASE_DIR, 'logs')
+os.makedirs(LOG_DIR, exist_ok=True)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+
     'formatters': {
         'verbose': {
-            'format': '{levelname}:{name}:{asctime}:{module}:{message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
+            'format': '[{levelname}] {asctime} - {name}: {message}',
             'style': '{',
         },
     },
+
+    'filters': {
+        'info_only': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: record.levelno == 20,  # INFO = 20
+        },
+        'warn_and_above': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': lambda record: record.levelno >= 30,  # WARNING and above
+        },
+    },
+
     'handlers': {
-        'file': {
+        'info_file': {
             'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR.parent, 'billing_site.log'),
+            'filters': ['info_only'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'info.log'),
+            'maxBytes': 2 * 1024 * 1024,
+            'backupCount': 3,
             'formatter': 'verbose',
         },
-        'console': {
-            'level': 'INFO',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
+        'error_file': {
+            'level': 'WARNING',
+            'filters': ['warn_and_above'],
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_DIR, 'error.log'),
+            'maxBytes': 2 * 1024 * 1024,
+            'backupCount': 5,
+            'formatter': 'verbose',
         },
     },
+
     'loggers': {
         'django': {
-            'handlers': ['file', 'console'],
+            'handlers': ['info_file', 'error_file'],
             'level': 'INFO',
-            'propagate': True,
+            'propagate': False,
         },
         'expenses.services.onedrive_service': {
-            'handlers': ['file', 'console'],
+            'handlers': ['info_file', 'error_file'],
             'level': 'INFO',
             'propagate': False,
         },
         'expenses.storage': {
-            'handlers': ['file', 'console'],
+            'handlers': ['info_file', 'error_file'],
             'level': 'INFO',
             'propagate': False,
         },
     },
+
     'root': {
-        'handlers': ['file', 'console'],
+        'handlers': ['info_file', 'error_file'],
         'level': 'INFO',
-    }
+    },
 } 
