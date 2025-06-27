@@ -22,6 +22,7 @@ function getCookie(name) {
 
 const STATUS_OPTIONS = [
   ['PENDING', 'Pending'],
+  ['SEND_FOR_APPROVAL', 'Send for Approval'],
   ['APPROVED', 'Approved'],
   ['REJECTED', 'Rejected']
 ];

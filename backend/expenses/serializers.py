@@ -61,6 +61,8 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             validated_data['user'] = user
+        else:
+            validated_data['user'] = None
 
         # Pop attachments from validated_data as it's not a model field
         validated_data.pop('attachments', None)
@@ -84,6 +86,8 @@ class ExpenseFormSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if user.is_authenticated:
             validated_data['user'] = user
+        else:
+            validated_data['user'] = None
 
         # Pop attachments from validated_data as it's not a model field
         validated_data.pop('attachments', None)

@@ -22,6 +22,7 @@ function getCookie(name) {
 
 const STATUS_OPTIONS = [
   ['PENDING', 'Pending'],
+  ['SEND_FOR_APPROVAL', 'Send for Approval'],
   ['APPROVED', 'Approved'],
   ['REJECTED', 'Rejected']
 ];
@@ -82,7 +83,10 @@ const HomeScreen = () => {
       return 'PENDING'; // Default for titles with no expenses
     }
 
-    // Prioritize PENDING > REJECTED > APPROVED
+    // Prioritize SEND_FOR_APPROVAL > PENDING > REJECTED > APPROVED
+    if (titleExpenses.some(expense => expense.status === 'SEND_FOR_APPROVAL')) {
+      return 'SEND_FOR_APPROVAL';
+    }
     if (titleExpenses.some(expense => expense.status === 'PENDING')) {
       return 'PENDING';
     }
@@ -374,6 +378,37 @@ const HomeScreen = () => {
                 <div className="status-badge" data-status={getOverallExpenseTitleStatus(title.id)}>
                   {STATUS_OPTIONS.find(([value]) => value === getOverallExpenseTitleStatus(title.id))?.[1]}
                 </div>
+                {!isAdmin && getOverallExpenseTitleStatus(title.id) === 'PENDING' && (
+                  <button
+                    className="btn btn-secondary"
+                    style={{ marginLeft: '0.5rem', background: '#888', color: '#fff' }}
+                    onClick={async e => {
+                      e.stopPropagation();
+                      try {
+                        const token = localStorage.getItem('token');
+                        const csrftoken = getCookie('csrftoken');
+                        // Find the first expense form for this title
+                        const expenseForm = expenses.find(exp => exp.expense_title?.id === title.id);
+                        if (!expenseForm) {
+                          setError('No expense form found to send for approval.');
+                          return;
+                        }
+                        await axios.post(`/api/expense-forms/${expenseForm.id}/send_for_approval/`, {}, {
+                          headers: {
+                            'X-CSRFToken': csrftoken,
+                            'Authorization': `Bearer ${token}`,
+                            'Content-Type': 'application/json'
+                          }
+                        });
+                        await refreshAllData();
+                      } catch (err) {
+                        setError('Failed to send for approval. Please try again.');
+                      }
+                    }}
+                  >
+                    Send for Approval
+                  </button>
+                )}
                 {!isAdmin && (
                   <button
                     className="btn btn-copy"

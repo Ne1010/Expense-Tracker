@@ -28,7 +28,7 @@ class Command(BaseCommand):
 
         # Create regular user
         regular_user, user_created = User.objects.get_or_create(
-            username='user',
+            username='user1',
             defaults={
                 'email': 'user@example.com',
                 'is_staff': False,
@@ -38,11 +38,11 @@ class Command(BaseCommand):
         if user_created:
             regular_user.set_password('user123')
             regular_user.save()
-            self.stdout.write(self.style.SUCCESS('Successfully created regular user'))
+            self.stdout.write(self.style.SUCCESS('Successfully created regular user "user1"'))
         else:
             regular_user.set_password('user123')
             regular_user.save()
-            self.stdout.write(self.style.SUCCESS('Regular user already exists, password updated'))
+            self.stdout.write(self.style.SUCCESS('Regular user "user1" already exists, password updated'))
 
         # Create or update tokens
         admin_token, _ = Token.objects.get_or_create(user=admin_user)

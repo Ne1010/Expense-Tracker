@@ -57,15 +57,37 @@ class OneDriveService:
         except Exception as e:
             self._logger.error(f"Failed to save token cache: {e}")
 
+    def _acquire_token_interactive(self):
+        self._logger.info("Attempting interactive token acquisition.")
+        flow = self.app.initiate_device_flow(scopes=self.ALL_SCOPES)
+        if "user_code" not in flow:
+            raise ValueError(
+                "Failed to create device flow. Err: " + flow.get("error_description")
+            )
+        
+        print(f"Please sign in here: {flow['verification_uri']} and enter code: {flow['user_code']}")
+        webbrowser.open(flow["verification_uri"])
+        
+        result = self.app.acquire_token_by_device_flow(flow)
+        
+        if "access_token" in result:
+            self._save_token_cache()
+            return result["access_token"]
+        
+        self._logger.error(f"Failed to acquire token interactively: {result.get('error_description')}")
+        raise Exception(f"Failed to acquire token: {result.get('error_description')}")
+
     def _get_valid_access_token(self, force_refresh=False):
         accounts = self.app.get_accounts()
         if not accounts:
-            raise Exception("No accounts found. Please authenticate with OneDrive.")
-        # Use only RESOURCE_SCOPES for silent token acquisition
+            return self._acquire_token_interactive()
+
         result = self.app.acquire_token_silent(self.RESOURCE_SCOPES, account=accounts[0], force_refresh=force_refresh)
+        
         if not result or "access_token" not in result:
-            self._logger.warning("Silent token refresh failed — refresh token may be expired.")
-            raise Exception("🔒 Your session has expired. Please reconnect to OneDrive.")
+            self._logger.warning("Silent token acquisition failed. Attempting interactive.")
+            return self._acquire_token_interactive()
+
         self._save_token_cache()
         return result["access_token"]
 

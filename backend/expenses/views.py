@@ -8,8 +8,10 @@ from .models import User, ExpenseTitle, ExpenseForm, ExpenseAttachment
 from .serializers import UserSerializer, ExpenseTitleSerializer, ExpenseFormSerializer
 from rest_framework.views import APIView
 from .services.onedrive_service import OneDriveService
+from .services.email_service import send_expense_notification_email_sync
 import logging
 import asyncio
+from rest_framework.exceptions import ValidationError
 
 logger = logging.getLogger(__name__)
 
@@ -100,12 +102,36 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
             response_serializer = self.get_serializer(expense_form)
             return Response(response_serializer.data, status=status.HTTP_201_CREATED)
             
+        except ValidationError as e:
+            logger.error(f"Validation error creating expense form: {e.detail}")
+            return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             logger.error(f"Error creating expense form: {str(e)}")
             return Response(
                 {"detail": f"Error creating expense form: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+    def update(self, request, *args, **kwargs):
+        try:
+            partial = kwargs.pop('partial', False)
+            instance = self.get_object()
+            serializer = self.get_serializer(instance, data=request.data, partial=partial)
+            serializer.is_valid(raise_exception=True)
+            self.perform_update(serializer)
+            return Response(serializer.data)
+        except ValidationError as e:
+            logger.error(f"Validation error updating expense form: {e.detail}")
+            return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            logger.error(f"Error updating expense form: {str(e)}")
+            return Response(
+                {"detail": f"Error updating expense form: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    def perform_update(self, serializer):
+        serializer.save()
 
     @action(detail=True, methods=['patch'])
     def update_status(self, request, pk=None):
@@ -167,6 +193,26 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
                 {"detail": f"Error deleting attachment: {str(e)}"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
+
+    @action(detail=True, methods=['post'])
+    def send_for_approval(self, request, pk=None):
+        expense_form = self.get_object()
+        if expense_form.status != 'PENDING':
+            return Response({"detail": "Only pending expenses can be sent for approval."}, status=status.HTTP_400_BAD_REQUEST)
+        expense_form.status = 'SEND_FOR_APPROVAL'
+        expense_form.save()
+        # Send email
+        try:
+            subject = "New Expense Submitted for Approval"
+            body = (
+                "A new expense has been added. Please login using this link http://localhost:3000/login to approve/reject it."
+            )
+            send_expense_notification_email_sync(subject, body)
+        except Exception as e:
+            logger.error(f"Failed to send approval email: {str(e)}")
+            return Response({"detail": f"Expense status updated, but failed to send email: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        serializer = self.get_serializer(expense_form)
+        return Response(serializer.data)
 
 class AttachmentProxyView(APIView):
     permission_classes = [permissions.IsAuthenticated]

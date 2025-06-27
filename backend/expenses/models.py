@@ -46,6 +46,7 @@ class ExpenseForm(models.Model):
 
     STATUS_CHOICES = [
         ('PENDING', 'Pending'),
+        ('SEND_FOR_APPROVAL', 'Send for Approval'),
         ('APPROVED', 'Approved'),
         ('REJECTED', 'Rejected'),
     ]
@@ -65,7 +66,7 @@ class ExpenseForm(models.Model):
     amount = models.DecimalField(max_digits=19, decimal_places=2)
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES)
     date = models.DateField()
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='PENDING')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='PENDING')
     comments = models.TextField(blank=True, default='Pending')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

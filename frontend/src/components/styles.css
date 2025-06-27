@@ -1248,6 +1248,11 @@ input[type="file"]::-webkit-file-upload-button:hover {
   color: #c62828;
 }
 
+.status-badge[data-status="SEND_FOR_APPROVAL"] {
+  background-color: #e0e0e0;
+  color: #555;
+}
+
 .add-form-button {
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
