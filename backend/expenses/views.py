@@ -98,6 +98,24 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
             # Pass attachments through the context
             expense_form = serializer.save(attachments=attachments)
             
+            # Send notification email to admin
+            try:
+                admin_user = User.objects.filter(is_staff=True, is_superuser=True).first()
+                if admin_user and admin_user.email:
+                    expense_title = expense_form.expense_title.title
+                    submitted_by = expense_form.user.username if expense_form.user else 'A user'
+                    subject = f"New Expense Submitted: {expense_title}"
+                    body = f"A new expense titled '{expense_title}' has been submitted by {submitted_by}."
+                    send_expense_notification_email_sync(
+                        subject=subject,
+                        body=body,
+                        to_email=admin_user.email,
+                        username='Admin',
+                        from_admin=False  # From noreply
+                    )
+            except Exception as e:
+                logger.error(f"Failed to send new expense submission email: {str(e)}")
+
             # Re-serialize the instance to include all fields
             response_serializer = self.get_serializer(expense_form)
             return Response(response_serializer.data, status=status.HTTP_201_CREATED)
@@ -181,7 +199,7 @@ Expense Details:
 
 ---
 This is an automated notification from the Expense Management System.
-Sent from: noreply@appglide.io
+
                     """.strip()
                 else:  # REJECTED
                     subject = f"❌ Expense Rejected: {expense_title}"
@@ -202,7 +220,6 @@ Please review the comments and resubmit if necessary.
 
 ---
 This is an automated notification from the Expense Management System.
-Sent from: noreply@appglide.io
                     """.strip()
                 
                 # Get the user details for sending the email
@@ -212,7 +229,8 @@ Sent from: noreply@appglide.io
                         subject=subject,
                         body=body,
                         to_email=user.email,
-                        username=user.username
+                        username=user.username,
+                        from_admin=True # From admin to user
                     )
                     logger.info(f"Status change email sent successfully for expense: {expense_title} - Status: {status_value}")
                 else:
@@ -250,9 +268,10 @@ Please log in to the system to review and take action.
                             subject=subject,
                             body=body,
                             to_email=admin.email,
-                            username=admin.username
+                            username=admin.username,
+                            from_admin=False # From noreply to admin
                         )
-                logger.info(f"Sent 'Send for Approval' notification to admins for expense: {expense_title}")
+                        logger.info(f"Sent 'Send for Approval' notification to admin {admin.email}")
 
             except Exception as e:
                 logger.error(f"Failed to send 'Send for Approval' email: {str(e)}")
@@ -305,66 +324,60 @@ Please log in to the system to review and take action.
     @action(detail=True, methods=['post'])
     def send_for_approval(self, request, pk=None):
         expense_form = self.get_object()
-        if expense_form.status != 'PENDING':
-            return Response({"detail": "Only pending expenses can be sent for approval."}, status=status.HTTP_400_BAD_REQUEST)
+        if expense_form.status not in ['PENDING', 'REJECTED']:
+            return Response({"detail": "Only pending or rejected expenses can be sent for approval."}, status=status.HTTP_400_BAD_REQUEST)
         
-        expense_form.status = 'SEND_FOR_APPROVAL'
-        expense_form.save()
+        # Update status for all forms under the same title
+        title = expense_form.expense_title
+        forms_to_update = ExpenseForm.objects.filter(expense_title=title)
+        forms_to_update.update(status='SEND_FOR_APPROVAL')
         
-        # Send email notification with detailed information
+        # Send email notification to admin
         try:
-            # Get expense details for the email
-            expense_title = expense_form.expense_title.title
-            amount = expense_form.amount
-            currency = expense_form.currency
-            master_group = expense_form.get_master_group_display()
-            subgroup = expense_form.subgroup
-            date = expense_form.date
-            user_name = expense_form.user.username if expense_form.user else "Unknown User"
-            
-            subject = f"📋 Expense Approval Required: {expense_title}"
-            
-            body = f"""
-🔔 NEW EXPENSE SUBMITTED FOR APPROVAL
+            admin_user = User.objects.filter(is_staff=True, is_superuser=True).first()
+            if not admin_user or not admin_user.email:
+                logger.warning("Admin user not found or has no email, skipping notification.")
+            else:
+                expense_title = title.title
+                user_name = expense_form.user.username if expense_form.user else "an unknown user"
+                
+                # Get expense details for email body
+                amount = expense_form.amount
+                currency = expense_form.currency
+                master_group = expense_form.get_master_group_display()
+                subgroup = expense_form.get_subgroup_display()
+                date = expense_form.date
+
+                subject = f"Expense Approval Required: {expense_title}"
+                body = f"""
+A new expense has been submitted for your approval.
 
 Expense Details:
-• Title: {expense_title}
-• Amount: {amount} {currency}
-• Category: {master_group} - {subgroup}
-• Date: {date}
+- Title: {expense_title}
+- Submitted by: {user_name}
+- Amount: {amount} {currency}
+- Category: {master_group} - {subgroup}
+- Date: {date}
 
-
-📝 Action Required:
 Please review and approve/reject this expense by logging into the admin panel.
 
-🔗 Login Link: http://localhost:3000/login
-
----
-This is an automated notification from the Expense Management System.
-Sent from: noreply@appglide.io
-            """.strip()
-            
-            # Get the user details for sending the email
-            user = expense_form.user
-            if user and user.email:
+Login Link: http://localhost:3000/login
+                """.strip()
+                
                 send_expense_notification_email_sync(
                     subject=subject,
                     body=body,
-                    to_email=user.email,
-                    username=user.username
+                    to_email=admin_user.email,
+                    username='Admin',
+                    from_admin=False  # From noreply to admin
                 )
-                logger.info(f"Approval email sent successfully for expense: {expense_title}")
-            else:
-                logger.warning(f"Could not send email because user or email is missing for expense form {expense_form.id}")
-            
+                logger.info(f"Sent 'for approval' notification to admin for expense title: {expense_title}")
+
         except Exception as e:
-            logger.error(f"Failed to send approval email: {str(e)}")
-            return Response(
-                {"detail": f"Expense status updated, but failed to send email: {str(e)}"}, 
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+            logger.error(f"Failed to send 'for approval' email: {str(e)}")
+            # Do not fail the request, just log the error
         
-        serializer = self.get_serializer(expense_form)
+        serializer = self.get_serializer(forms_to_update, many=True)
         return Response(serializer.data)
 
 class AttachmentProxyView(APIView):

@@ -15,7 +15,11 @@ class GraphEmailService:
         self.tenant_id = os.environ.get("MS_TENANT_ID", "dcd98ff5-357f-450f-91dc-94ea4024b76c")
         self.authority = f"https://login.microsoftonline.com/{self.tenant_id}"
         self.scopes = ["https://graph.microsoft.com/.default"]
-        self.from_email = "nehas@appglide.io"
+        self.admin_email = "nehas@appglide.io"
+        try:
+            self.noreply_email = f"noreply@{self.admin_email.split('@')[1]}"
+        except IndexError:
+            self.noreply_email = "noreply@example.com"
         
         self.app = ConfidentialClientApplication(
             client_id=self.client_id,
@@ -33,10 +37,11 @@ class GraphEmailService:
             raise Exception(f"Could not acquire access token: {error_msg}")
         return result["access_token"]
 
-    async def send_expense_notification_email(self, subject, body, to_email, username):
+    async def send_expense_notification_email(self, subject, body, to_email, username, from_admin=False):
         """Send email using Microsoft Graph API with app-only authentication"""
         access_token = self._get_valid_access_token()
-        url = f"https://graph.microsoft.com/v1.0/users/{self.from_email}/sendMail"
+        sender_email = self.admin_email if from_admin else self.noreply_email
+        url = f"https://graph.microsoft.com/v1.0/users/{sender_email}/sendMail"
         
         email_body = f"Hi {username},\n\n{body}"
         
@@ -61,17 +66,18 @@ class GraphEmailService:
         async with aiohttp.ClientSession() as session:
             async with session.post(url, headers=headers, json=message) as response:
                 if response.status in (202, 200):
-                    self._logger.info(f"Email sent from {self.from_email} to {to_email}")
+                    self._logger.info(f"Email sent from {sender_email} to {to_email}")
                     return True
                 else:
                     text = await response.text()
                     self._logger.error(f"Failed to send email: {text}")
                     raise Exception(f"Failed to send email: {text}")
 
-    def send_expense_notification_email_sync(self, subject, body, to_email, username):
+    def send_expense_notification_email_sync(self, subject, body, to_email, username, from_admin=False):
         """Synchronous version of send_expense_notification_email"""
         access_token = self._get_valid_access_token()
-        url = f"https://graph.microsoft.com/v1.0/users/{self.from_email}/sendMail"
+        sender_email = self.admin_email if from_admin else self.noreply_email
+        url = f"https://graph.microsoft.com/v1.0/users/{sender_email}/sendMail"
         
         email_body = f"Hi {username},\n\n{body}"
         
@@ -95,13 +101,13 @@ class GraphEmailService:
         
         response = requests.post(url, headers=headers, json=message)
         if response.status_code in (202, 200):
-            self._logger.info(f"Email sent from {self.from_email} to {to_email}")
+            self._logger.info(f"Email sent from {sender_email} to {to_email}")
             return True
         else:
             self._logger.error(f"Failed to send email: {response.text}")
             raise Exception(f"Failed to send email: {response.text}")
 
-def send_expense_notification_email_sync(subject, body, to_email, username):
+def send_expense_notification_email_sync(subject, body, to_email, username, from_admin=False):
     """Standalone function for synchronous email sending"""
     service = GraphEmailService()
-    return service.send_expense_notification_email_sync(subject, body, to_email, username) 
+    return service.send_expense_notification_email_sync(subject, body, to_email, username, from_admin) 

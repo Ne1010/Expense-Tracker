@@ -71,6 +71,10 @@ class ExpenseForm(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def get_subgroup_display(self):
+        """Returns the display name for the current subgroup."""
+        return dict(self.SUBGROUPS.get(self.master_group, [])).get(self.subgroup, self.subgroup)
+
     def get_subgroup_choices(self):
         return dict(self.SUBGROUPS.get(self.master_group, []))
 

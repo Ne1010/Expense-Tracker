@@ -465,16 +465,16 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
           {/* File upload input - Updated section */}
           <div className="form-group">
             <label htmlFor="attachments">ATTACHMENTS</label>
-            <input
-              type="file"
+              <input
+                type="file"
               id="attachments"
               multiple
-              onChange={handleFileChange}
+                onChange={handleFileChange}
               className={duplicateAttachmentError ? 'input-error-shake' : ''}
-            />
-            {duplicateAttachmentError && (
-              <div className="error-message">{duplicateAttachmentError}</div>
-            )}
+              />
+          {duplicateAttachmentError && (
+            <div className="error-message">{duplicateAttachmentError}</div>
+          )}
           </div>
         </div>
 
