@@ -14,7 +14,8 @@
     "react-router-dom": "^6.20.0",
     "react-scripts": "^3.0.1",
     "tailwindcss": "^3.3.5",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xlsx": "^0.18.5"
   },
   "scripts": {
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",

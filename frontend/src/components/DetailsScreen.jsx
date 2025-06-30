@@ -22,7 +22,7 @@ function getCookie(name) {
 
 const STATUS_OPTIONS = [
   ['PENDING', 'Pending'],
-  ['SEND_FOR_APPROVAL', 'Send for Approval'],
+  ['SEND_FOR_APPROVAL', 'Sent for Approval'],
   ['APPROVED', 'Approved'],
   ['REJECTED', 'Rejected']
 ];
@@ -100,6 +100,9 @@ const DetailsScreen = () => {
   const [oneDriveErrorMessage, setOneDriveErrorMessage] = useState('');
   const [showOneDriveSessionExpiredModal, setShowOneDriveSessionExpiredModal] = useState(false);
   const [oneDriveSessionExpiredMessage, setOneDriveSessionExpiredMessage] = useState('');
+  const [showExportDropdown, setShowExportDropdown] = useState(false);
+  const [exportingFormat, setExportingFormat] = useState('');
+  const [attachmentError, setAttachmentError] = useState({});
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -121,6 +124,20 @@ const DetailsScreen = () => {
     // Only run when expenses or selectedTitleId changes
     // eslint-disable-next-line
   }, [expenses, selectedTitleId, loading, isAdmin]);
+
+  // Handle clicking outside export dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (showExportDropdown && !event.target.closest('.export-container')) {
+        setShowExportDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showExportDropdown]);
 
   const fetchData = async (titleId = null) => {
     try {
@@ -426,6 +443,7 @@ const DetailsScreen = () => {
     });
     setPendingNewAttachments((prev) => ({ ...prev, [expense.id]: [] }));
     setPendingRemoveAttachments((prev) => ({ ...prev, [expense.id]: [] }));
+    setAttachmentError(prev => ({ ...prev, [expense.id]: '' }));
   };
 
   const handleMasterGroupChange = (expenseId, value) => {
@@ -442,6 +460,7 @@ const DetailsScreen = () => {
   const handleCancelEdit = () => {
     setEditingExpense(null);
     setPendingEdits({});
+    setAttachmentError({});
   };
 
   const validateAmount = (value) => {
@@ -525,6 +544,7 @@ const DetailsScreen = () => {
       setAmountError('');
       setPendingNewAttachments(prev => ({ ...prev, [expenseId]: [] }));
       setPendingRemoveAttachments(prev => ({ ...prev, [expenseId]: [] }));
+      setAttachmentError(prev => ({ ...prev, [expenseId]: '' }));
       // Update title status to PENDING
       setTitleStatus(prev => ({
         ...prev,
@@ -579,39 +599,20 @@ const DetailsScreen = () => {
     const currentStatus = titleStatus.status;
 
     // Clear any previous messages
-    setShowCommentsError(false);
-    setCommentPromptMessage('');
     setShowStatusMessage(false);
     setStatusMessage('');
 
-    // Check if trying to approve/reject an already approved/rejected expense
+    // Handle Double Approve/Reject case from the screenshot
     if (currentStatus === newStatus) {
-      setStatusMessage(`This expense is already ${newStatus.toLowerCase()}`);
+      setStatusMessage(`This expense is already ${newStatus.toLowerCase()}.`);
       setShowStatusMessage(true);
       return;
     }
 
-    const transition = `${newStatus}_FROM_${currentStatus}`;
-
-    const commentRequired = {
-      APPROVED_FROM_PENDING: true,
-      REJECTED_FROM_PENDING: true,
-      APPROVED_FROM_REJECTED: true,
-      REJECTED_FROM_APPROVED: true,
-      APPROVED_FROM_APPROVED: false,
-      REJECTED_FROM_REJECTED: false,
-    };
-
-    const requiresComment = commentRequired[transition] ?? false;
-
-    if (!requiresComment) {
-      await handleTitleStatusUpdate(newStatus);
-      setTitleStatus(prev => ({ ...prev, status: newStatus, comments: '' }));
-      return;
-    }
-
+    // For all other transitions (e.g., Pending -> Approved, Approved -> Rejected),
+    // the screenshot requires comments.
     setPendingStatusChange(newStatus);
-    setTitleStatus(prev => ({ ...prev, comments: '' }));
+    setTitleStatus(prev => ({ ...prev, comments: '' })); // Clear previous comments
     setShowStatusChangeCallout(true);
     setStatusCalloutMessage(`Add comments to ${newStatus.toLowerCase()}`);
   };
@@ -680,11 +681,44 @@ const DetailsScreen = () => {
     }
   };
 
-  const handleAddNewAttachments = (expenseId, files) => {
-    setPendingNewAttachments(prev => ({
-      ...prev,
-      [expenseId]: [...(prev[expenseId] || []), ...Array.from(files)]
-    }));
+  const handleAddNewAttachments = (e, expenseId) => {
+    const files = Array.from(e.target.files);
+    let duplicateFound = false;
+    const normalize = name => name?.trim().toLowerCase();
+
+    const expense = expenses.find(exp => exp.id === expenseId);
+    if (!expense) return;
+
+    // Combine all known attachment names for this expense
+    const existingNames = new Set([
+      ...(expense.attachments || []).map(att => normalize(getAttachmentName(att.url))),
+      ...(pendingNewAttachments[expenseId] || []).map(f => normalize(f.name))
+    ]);
+
+    const newFiles = [];
+    for (const file of files) {
+        const fileName = normalize(file.name);
+        if (existingNames.has(fileName)) {
+            duplicateFound = true;
+        } else {
+            newFiles.push(file);
+            existingNames.add(fileName); // Check for duplicates within the same selection
+        }
+    }
+
+    if (duplicateFound) {
+        setAttachmentError(prev => ({
+            ...prev,
+            [expenseId]: '❌ Duplicate attachment detected. Please do not add the same file again.'
+        }));
+        e.target.value = null; // Reset file input
+    } else {
+        setAttachmentError(prev => ({ ...prev, [expenseId]: '' }));
+        setPendingNewAttachments(prev => ({
+            ...prev,
+            [expenseId]: [...(prev[expenseId] || []), ...newFiles]
+        }));
+    }
   };
 
   const handleRemoveNewAttachment = (expenseId, index) => {
@@ -835,6 +869,151 @@ const DetailsScreen = () => {
     setShowOneDriveSessionExpiredModal(true);
   };
 
+  // Export functions
+  const exportToCSV = (expenses, title) => {
+    const headers = ['Master Group', 'Subgroup', 'Currency', 'Amount', 'Date', 'Status', 'Comments'];
+    const csvContent = [
+      headers.join(','),
+      ...expenses.map(expense => [
+        MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group,
+        SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
+        expense.currency,
+        expense.amount,
+        expense.date,
+        STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
+        expense.comments || ''
+      ].join(','))
+    ].join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `${title}_expenses.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const exportToXML = (expenses, title) => {
+    const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<expenses title="${title}">
+${expenses.map(expense => `  <expense>
+    <master_group>${MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group}</master_group>
+    <subgroup>${SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}</subgroup>
+    <currency>${expense.currency}</currency>
+    <amount>${expense.amount}</amount>
+    <date>${expense.date}</date>
+    <status>${STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status}</status>
+    <comments>${expense.comments || ''}</comments>
+  </expense>`).join('\n')}
+</expenses>`;
+
+    const blob = new Blob([xmlContent], { type: 'application/xml;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `${title}_expenses.xml`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const exportToJSON = (expenses, title) => {
+    const jsonData = {
+      title: title,
+      exportDate: new Date().toISOString(),
+      expenses: expenses.map(expense => ({
+        master_group: MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group,
+        subgroup: SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
+        currency: expense.currency,
+        amount: expense.amount,
+        date: expense.date,
+        status: STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
+        comments: expense.comments || ''
+      }))
+    };
+
+    const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `${title}_expenses.json`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const exportToXLSX = async (expenses, title) => {
+    try {
+      // Dynamic import for XLSX library
+      const XLSX = await import('xlsx');
+      
+      const data = expenses.map(expense => ({
+        'Master Group': MASTER_GROUPS.find(([value]) => value === expense.master_group)?.[1] || expense.master_group,
+        'Subgroup': SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
+        'Currency': expense.currency,
+        'Amount': expense.amount,
+        'Date': expense.date,
+        'Status': STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
+        'Comments': expense.comments || ''
+      }));
+
+      const ws = XLSX.utils.json_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Expenses');
+      
+      XLSX.writeFile(wb, `${title}_expenses.xlsx`);
+    } catch (error) {
+      console.error('Error exporting to XLSX:', error);
+      setError('Failed to export to XLSX. Please try another format.');
+    }
+  };
+
+  const handleExport = async (format) => {
+    if (!selectedTitleId) return;
+    
+    const titleExpenses = expenses.filter(expense => 
+      expense.expense_title?.id === selectedTitleId
+    );
+    
+    if (titleExpenses.length === 0) {
+      setError('No expenses found to export.');
+      return;
+    }
+
+    const title = expenseTitles.find(t => t.id === selectedTitleId)?.title || 'Unknown';
+    setExportingFormat(format);
+    setShowExportDropdown(false);
+
+    try {
+      switch (format) {
+        case 'csv':
+          exportToCSV(titleExpenses, title);
+          break;
+        case 'xml':
+          exportToXML(titleExpenses, title);
+          break;
+        case 'json':
+          exportToJSON(titleExpenses, title);
+          break;
+        case 'xlsx':
+          await exportToXLSX(titleExpenses, title);
+          break;
+        default:
+          setError('Unsupported export format.');
+      }
+    } catch (error) {
+      console.error('Export error:', error);
+      setError('Failed to export data. Please try again.');
+    } finally {
+      setExportingFormat('');
+    }
+  };
+
   if (loading) return <div className="container">Loading...</div>;
   if (error) return <div className="container error-message">{error}</div>;
 
@@ -890,7 +1069,7 @@ const DetailsScreen = () => {
                 <div className="status-badge" data-status={titleStatus.status}>
                   {STATUS_OPTIONS.find(([value]) => value === titleStatus.status)?.[1]}
                 </div>
-                {(titleStatus.comments && titleStatus.status !== 'PENDING') && (
+                {(titleStatus.comments && titleStatus.status !== 'PENDING' && titleStatus.status !== 'SEND_FOR_APPROVAL') && (
                   <div className="title-comments">
                     {titleStatus.comments}
                   </div>
@@ -920,6 +1099,48 @@ const DetailsScreen = () => {
                           >
                             {isUpdatingStatus ? 'Processing...' : 'Reject'}
                           </button>
+                          <div className="export-container">
+                            <button
+                              className={`btn-export ${showExportDropdown ? 'active' : ''}`}
+                              onClick={() => setShowExportDropdown(!showExportDropdown)}
+                              disabled={isUpdatingStatus}
+                            >
+                              {exportingFormat ? `Exporting ${exportingFormat.toUpperCase()}...` : 'Export'}
+                              <span className="dropdown-arrow">▼</span>
+                            </button>
+                            {showExportDropdown && (
+                              <div className="export-dropdown">
+                                <button
+                                  className="export-option"
+                                  onClick={() => handleExport('csv')}
+                                  disabled={exportingFormat}
+                                >
+                                  📄 Download as CSV
+                                </button>
+                                <button
+                                  className="export-option"
+                                  onClick={() => handleExport('xml')}
+                                  disabled={exportingFormat}
+                                >
+                                  📄 Download as XML
+                                </button>
+                                <button
+                                  className="export-option"
+                                  onClick={() => handleExport('json')}
+                                  disabled={exportingFormat}
+                                >
+                                  📄 Download as JSON
+                                </button>
+                                <button
+                                  className="export-option"
+                                  onClick={() => handleExport('xlsx')}
+                                  disabled={exportingFormat}
+                                >
+                                  📄 Download as XLSX
+                                </button>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
                       {showStatusChangeCallout && (
@@ -930,7 +1151,7 @@ const DetailsScreen = () => {
                             </div>
                           )}
                           <div className="status-comment-popup">
-                            <h4>Enter comments to {pendingStatusChange.toLowerCase()}:</h4>
+                            <h4>Enter comments to {pendingStatusChange?.toLowerCase()}:</h4>
                             <textarea
                               className="popup-comment-box"
                               placeholder="Enter your comments"
@@ -943,13 +1164,14 @@ const DetailsScreen = () => {
                               <button
                                 className="btn btn-primary"
                                 onClick={() => handleTitleStatusUpdate(pendingStatusChange)}
-                                disabled={!titleStatus.comments.trim()}
+                                disabled={!titleStatus.comments.trim() || isUpdatingStatus}
                               >
-                                Confirm {pendingStatusChange.toLowerCase()}
+                                Confirm {pendingStatusChange?.toLowerCase()}
                               </button>
                               <button
                                 className="btn btn-secondary"
                                 onClick={cancelStatusChange}
+                                disabled={isUpdatingStatus}
                               >
                                 Cancel
                               </button>
@@ -1218,9 +1440,12 @@ const DetailsScreen = () => {
                             <input
                               type="file"
                               multiple
-                              onChange={e => handleAddNewAttachments(expense.id, e.target.files)}
-                              className="file-input"
+                              onChange={e => handleAddNewAttachments(e, expense.id)}
+                              className={`file-input ${attachmentError[expense.id] ? 'input-error-shake' : ''}`}
                             />
+                             {attachmentError[expense.id] && (
+                                <div className="error-message">{attachmentError[expense.id]}</div>
+                            )}
                           </div>
                         </div>
                       )}
@@ -1310,7 +1535,7 @@ const DetailsScreen = () => {
                     <div className="status-badge" data-status={getExpenseTitleStatus(title.id)}>
                       {STATUS_OPTIONS.find(([value]) => value === getExpenseTitleStatus(title.id))?.[1]}
                     </div>
-                    {(expenses.find(e => e.expense_title?.id === title.id)?.comments && getExpenseTitleStatus(title.id) !== 'PENDING') && (
+                    {(expenses.find(e => e.expense_title?.id === title.id)?.comments && getExpenseTitleStatus(title.id) !== 'PENDING' && getExpenseTitleStatus(title.id) !== 'SEND_FOR_APPROVAL') && (
                       <div className="title-comments">
                         {expenses.find(e => e.expense_title?.id === title.id)?.comments}
                       </div>

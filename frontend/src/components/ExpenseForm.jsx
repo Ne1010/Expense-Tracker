@@ -67,6 +67,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
   const [existingAttachments, setExistingAttachments] = useState(initialAttachments || []);
   const [showOneDriveErrorModal, setShowOneDriveErrorModal] = useState(false);
   const [oneDriveErrorMessage, setOneDriveErrorMessage] = useState('');
+  const [duplicateAttachmentError, setDuplicateAttachmentError] = useState('');
 
   const validateAmount = (value) => {
     if (value === '') {
@@ -118,7 +119,35 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
-    setAttachments(prev => [...prev, ...files]);
+    let duplicateFound = false;
+
+    const normalize = name => name?.trim().toLowerCase();
+
+    // Get all existing names: current + already saved on server
+    const existingNames = new Set([
+      ...attachments.map(f => normalize(f.name)),
+      ...existingAttachments.map(att => normalize(att.name || (att.url ? att.url.split('/').pop() : '')))
+    ]);
+
+    const newFiles = [];
+
+    for (let file of files) {
+      const fileName = normalize(file.name);
+      if (existingNames.has(fileName)) {
+        duplicateFound = true;
+      } else {
+        newFiles.push(file);
+        existingNames.add(fileName);
+      }
+    }
+
+    if (duplicateFound) {
+      setDuplicateAttachmentError('❌ Duplicate attachment detected. Please do not add the same file again.');
+      e.target.value = null; // Reset the file input
+    } else {
+      setDuplicateAttachmentError('');
+      setAttachments(prev => [...prev, ...newFiles]);
+    }
   };
 
   const handleRemoveAttachment = (index) => {
@@ -434,20 +463,18 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
           )}
 
           {/* File upload input - Updated section */}
-          <div className="file-upload-container">
-            <span className="file-status-text">
-              {attachments.length === 0 ? 'No file chosen' : `${attachments.length} file(s) selected`}
-            </span>
-            <label htmlFor="file-upload" className="file-upload-label">
-              Choose Files
-              <input
-                type="file"
-                id="file-upload"
-                onChange={handleFileChange}
-                multiple
-                className="file-upload-input"
-              />
-            </label>
+          <div className="form-group">
+            <label htmlFor="attachments">ATTACHMENTS</label>
+            <input
+              type="file"
+              id="attachments"
+              multiple
+              onChange={handleFileChange}
+              className={duplicateAttachmentError ? 'input-error-shake' : ''}
+            />
+            {duplicateAttachmentError && (
+              <div className="error-message">{duplicateAttachmentError}</div>
+            )}
           </div>
         </div>
 

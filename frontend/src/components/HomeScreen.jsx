@@ -22,7 +22,7 @@ function getCookie(name) {
 
 const STATUS_OPTIONS = [
   ['PENDING', 'Pending'],
-  ['SEND_FOR_APPROVAL', 'Send for Approval'],
+  ['SEND_FOR_APPROVAL', 'Sent for Approval'],
   ['APPROVED', 'Approved'],
   ['REJECTED', 'Rejected']
 ];
@@ -72,6 +72,11 @@ const HomeScreen = () => {
   const [copyNewTitle, setCopyNewTitle] = useState('');
   const [copying, setCopying] = useState(false);
   const [copyError, setCopyError] = useState('');
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [importTitle, setImportTitle] = useState('');
+  const [importFile, setImportFile] = useState(null);
+  const [importError, setImportError] = useState('');
+  const [importing, setImporting] = useState(false);
 
   // Helper function to determine the overall status of an expense title
   const getOverallExpenseTitleStatus = (titleId) => {
@@ -282,6 +287,134 @@ const HomeScreen = () => {
     navigate('/details', { state: { selectedTitleId: titleId } });
   };
 
+  const handleImportFile = async () => {
+    if (!importTitle.trim() || !importFile) {
+      setImportError('Please provide a title and select a file.');
+      return;
+    }
+
+    setImporting(true);
+    setImportError('');
+
+    const reader = new FileReader();
+
+    reader.onload = async (event) => {
+      try {
+        const fileContent = event.target.result;
+        const fileType = importFile.name.split('.').pop().toLowerCase();
+        let rawExpenses = [];
+
+        if (fileType === 'json') {
+          const data = JSON.parse(fileContent);
+          if (!data.expenses || !Array.isArray(data.expenses)) {
+            throw new Error('Invalid JSON format. Expected an object with an "expenses" array.');
+          }
+          rawExpenses = data.expenses.map(exp => ({
+            'Master Group': exp.master_group,
+            'Subgroup': exp.subgroup,
+            'Currency': exp.currency,
+            'Amount': exp.amount,
+            'Date': exp.date,
+          }));
+        } else if (fileType === 'xml') {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(fileContent, "application/xml");
+          const expenseNodes = xmlDoc.getElementsByTagName('expense');
+          rawExpenses = Array.from(expenseNodes).map(node => {
+            const getTagValue = (tagName) => node.getElementsByTagName(tagName)[0]?.textContent || '';
+            return {
+              'Master Group': getTagValue('master_group'),
+              'Subgroup': getTagValue('subgroup'),
+              'Currency': getTagValue('currency'),
+              'Amount': getTagValue('amount'),
+              'Date': getTagValue('date'),
+            };
+          });
+        } else if (fileType === 'csv' || fileType === 'xlsx') {
+          const XLSX = await import('xlsx');
+          const workbook = XLSX.read(fileContent, { type: fileType === 'csv' ? 'string' : 'binary' });
+          const sheetName = workbook.SheetNames[0];
+          rawExpenses = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
+        } else {
+          throw new Error('Unsupported file type.');
+        }
+
+        const transformImportedData = (data) => {
+          return data.map(item => {
+            const masterGroupValue = MASTER_GROUPS.find(g => g[1] === item['Master Group'])?.[0];
+            if (!masterGroupValue) return null;
+
+            const subgroupValue = SUBGROUPS[masterGroupValue]?.find(sg => sg[1] === item['Subgroup'])?.[0];
+            if (!subgroupValue) return null;
+            
+            return {
+              master_group: masterGroupValue,
+              subgroup: subgroupValue,
+              currency: item['Currency'] || item['currency'],
+              amount: item['Amount'] || item['amount'],
+              date: item['Date'] ? new Date(item['Date']).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+            };
+          }).filter(Boolean);
+        };
+
+        const transformedExpenses = transformImportedData(rawExpenses);
+
+        if (transformedExpenses.length === 0) {
+          throw new Error('No valid expense data found in the file or data is malformed.');
+        }
+
+        const token = localStorage.getItem('token');
+        const csrftoken = getCookie('csrftoken');
+        const headers = {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        };
+
+        const titleResponse = await axios.post('/api/expense-titles/', { title: importTitle.trim() }, { headers });
+        const newTitleId = titleResponse.data.id;
+
+        const creationPromises = transformedExpenses.map(expenseData => {
+          const payload = {
+            ...expenseData,
+            expense_title_id: newTitleId,
+            status: 'PENDING',
+            comments: ''
+          };
+          return axios.post('/api/expense-forms/', payload, { headers });
+        });
+
+        await Promise.all(creationPromises);
+
+        setShowImportModal(false);
+        setImportTitle('');
+        setImportFile(null);
+        navigate('/details', { state: { selectedTitleId: newTitleId } });
+
+      } catch (error) {
+        console.error('Import error:', error);
+        setImportError(error.message || 'Failed to import expenses.');
+      } finally {
+        setImporting(false);
+      }
+    };
+
+    reader.onerror = () => {
+      setImportError('Failed to read the file.');
+      setImporting(false);
+    };
+
+    const fileType = importFile.name.split('.').pop().toLowerCase();
+    if (fileType === 'csv' || fileType === 'json' || fileType === 'xml') {
+      reader.readAsText(importFile);
+    } else if (fileType === 'xlsx') {
+      reader.readAsBinaryString(importFile);
+    } else {
+      setImportError('Unsupported file type.');
+      setImporting(false);
+    }
+  };
+
   return (
     <div className="container">
       <div className="app-title-bar">
@@ -346,6 +479,13 @@ const HomeScreen = () => {
                 disabled={!expenseTitle.trim()}
               >
                 Add Title
+              </button>
+              <button
+                type="button"
+                className="btn btn-import"
+                onClick={() => setShowImportModal(true)}
+              >
+                Import
               </button>
             </div>
           </div>
@@ -542,6 +682,54 @@ const HomeScreen = () => {
                   setCopyError('');
                 }}
                 disabled={copying}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showImportModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Import Expenses from File</h3>
+            {importError && <div className="error-message">{importError}</div>}
+            <div className="form-group">
+              <label>New Expense Title</label>
+              <input
+                type="text"
+                value={importTitle}
+                onChange={e => setImportTitle(e.target.value)}
+                placeholder="Enter title for imported expenses"
+              />
+            </div>
+            <div className="form-group">
+              <label>Select File to Import</label>
+              <input
+                type="file"
+                className="file-input"
+                accept=".csv,.xlsx,.json,.xml"
+                onChange={e => setImportFile(e.target.files[0])}
+              />
+            </div>
+            <div className="form-actions">
+              <button
+                className="btn btn-primary"
+                onClick={handleImportFile}
+                disabled={importing || !importTitle.trim() || !importFile}
+              >
+                {importing ? 'Importing...' : 'Import'}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setShowImportModal(false);
+                  setImportTitle('');
+                  setImportFile(null);
+                  setImportError('');
+                }}
+                disabled={importing}
               >
                 Cancel
               </button>

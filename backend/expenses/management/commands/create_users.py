@@ -44,8 +44,27 @@ class Command(BaseCommand):
             regular_user.save()
             self.stdout.write(self.style.SUCCESS('Regular user "user1" already exists, password updated'))
 
+        # Create neha user
+        neha_user, neha_created = User.objects.get_or_create(
+            username='neha',
+            defaults={
+                'email': 'nehas@appglide.io',
+                'is_staff': False,
+                'is_superuser': False
+            }
+        )
+        if neha_created:
+            neha_user.set_password('neha123')
+            neha_user.save()
+            self.stdout.write(self.style.SUCCESS('Successfully created regular user "neha"'))
+        else:
+            neha_user.set_password('neha123')
+            neha_user.save()
+            self.stdout.write(self.style.SUCCESS('Regular user "neha" already exists, password updated'))
+
         # Create or update tokens
         admin_token, _ = Token.objects.get_or_create(user=admin_user)
         user_token, _ = Token.objects.get_or_create(user=regular_user)
+        neha_token, _ = Token.objects.get_or_create(user=neha_user)
 
         self.stdout.write(self.style.SUCCESS('Successfully created/updated tokens')) 

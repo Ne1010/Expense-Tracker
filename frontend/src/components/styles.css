@@ -135,7 +135,9 @@ select:focus {
   padding: 0.8rem;
   border-radius: var(--border-radius);
   margin-bottom: 1rem;
+  margin-top: 0.5rem;
   box-shadow: var(--neumorphic-shadow-inset);
+  font-weight: bold;
 }
 
 .success-message {
@@ -2227,4 +2229,158 @@ input[type="file"]::-webkit-file-upload-button:hover {
   text-align: center;
   max-width: 90vw;
   min-width: 320px;
+}
+
+/* Export Button and Dropdown Styles */
+.export-container {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-export {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--neumorphic-shadow);
+  margin: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-export:hover:not(:disabled) {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+}
+
+.btn-export:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-export.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-export.active {
+  background-color: #1976d2;
+  box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.btn-export.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.export-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--neumorphic-shadow);
+  z-index: 1000;
+  min-width: 200px;
+  margin-top: 0.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.export-option {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.export-option:last-child {
+  border-bottom: none;
+}
+
+.export-option:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  color: var(--highlight-color);
+}
+
+.export-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive styles for export dropdown */
+@media (max-width: 768px) {
+  .status-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .export-container {
+    width: 100%;
+  }
+  
+  .btn-export {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .export-dropdown {
+    width: 100%;
+    right: 0;
+  }
+}
+
+/* Import Button Styles */
+.btn-import {
+  background-color: #ff9800; /* Orange color for import */
+  color: white;
+}
+
+.btn-import:hover:not(:disabled) {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+}
+
+.input-error-shake {
+  animation: shake 0.3s ease;
+  border: 2px solid #dc3545; /* Bootstrap's danger color */
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }

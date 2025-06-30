@@ -253,4 +253,11 @@ LOGGING = {
         'handlers': ['info_file', 'error_file'],
         'level': 'INFO',
     },
-} 
+}
+
+# Microsoft Graph API Configuration
+MS_CLIENT_ID = env('MS_CLIENT_ID', default='b11001d0-8a8e-423a-b403-393a4ad78ce7')
+MS_CLIENT_SECRET = env('MS_CLIENT_SECRET', default='ipm8Q~u.qLAeWwmmm9nFHEtpM5B11PF1L33RBavS')
+MS_TENANT_ID = env('MS_TENANT_ID', default='dcd98ff5-357f-450f-91dc-94ea4024b76c')
+MS_FROM_EMAIL = env('MS_FROM_EMAIL', default='noreply@appglide.io')
+MS_TO_EMAIL = env('MS_TO_EMAIL', default='nehas@appglide.io') 
