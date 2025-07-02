@@ -152,7 +152,7 @@ const DetailsScreen = () => {
 
       const config = {
         headers: {
-          'Authorization': `Bearer ${token}`
+          'Authorization': `Token ${token}`
         },
         withCredentials: true
       };
@@ -384,7 +384,7 @@ const DetailsScreen = () => {
             {
               headers: {
                 'X-CSRFToken': csrftoken,
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Token ${token}`,
                 'Content-Type': 'application/json'
               },
               withCredentials: true
@@ -526,7 +526,7 @@ const DetailsScreen = () => {
         {
           headers: {
             'X-CSRFToken': csrftoken,
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Token ${token}`,
             'Content-Type': 'multipart/form-data'
           },
         }
@@ -640,7 +640,7 @@ const DetailsScreen = () => {
           axios.delete(`/api/expense-forms/${form.id}/`, {
             headers: {
               'X-CSRFToken': csrftoken,
-              'Authorization': `Bearer ${token}`,
+              'Authorization': `Token ${token}`,
               'Content-Type': 'application/json'
             }
           })
@@ -651,7 +651,7 @@ const DetailsScreen = () => {
       await axios.delete(`/api/expense-titles/${expenseToDelete}/`, {
         headers: {
           'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Token ${token}`,
           'Content-Type': 'application/json'
         }
       });
@@ -748,7 +748,7 @@ const DetailsScreen = () => {
           data: { attachment_id: attachment.id },
           headers: {
             'X-CSRFToken': csrftoken,
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Token ${token}`,
             'Content-Type': 'application/json'
           }
         }
@@ -805,7 +805,7 @@ const DetailsScreen = () => {
               data: { attachment_id: att.id },
               headers: {
                 'X-CSRFToken': csrftoken,
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Token ${token}`,
                 'Content-Type': 'application/json'
               }
             }

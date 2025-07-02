@@ -40,7 +40,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class ExpenseTitleViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseTitleSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         try:
@@ -50,8 +50,8 @@ class ExpenseTitleViewSet(viewsets.ModelViewSet):
             return ExpenseTitle.objects.none()
 
     def perform_create(self, serializer):
-        # Temporarily allow creation without authentication
-        serializer.save(created_by=None)  # You might need to handle this in your model
+        user = self.request.user if self.request.user.is_authenticated else None
+        serializer.save(created_by=user)
 
     def list(self, request, *args, **kwargs):
         try:
@@ -67,7 +67,7 @@ class ExpenseTitleViewSet(viewsets.ModelViewSet):
 
 class ExpenseFormViewSet(viewsets.ModelViewSet):
     serializer_class = ExpenseFormSerializer
-    permission_classes = [permissions.AllowAny]  # Or IsAuthenticated if you want
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_serializer_context(self):
         return {'request': self.request}

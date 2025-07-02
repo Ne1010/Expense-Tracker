@@ -842,3 +842,99 @@ OSError: [WinError 6] The handle is invalid
 [WARNING] 2025-06-30 18:01:44,811 - django.request: Not Found: /logo192.png
 [WARNING] 2025-06-30 18:01:44,812 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
 [WARNING] 2025-06-30 18:11:28,098 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 09:52:09,167 - django.request: Not Found: /
+[WARNING] 2025-07-02 09:52:09,169 - django.server: "GET / HTTP/1.1" 404 2431
+[WARNING] 2025-07-02 09:52:09,386 - django.request: Not Found: /favicon.ico
+[WARNING] 2025-07-02 09:52:09,386 - django.server: "GET /favicon.ico HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 09:52:54,509 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 09:52:54,510 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 09:53:57,919 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 09:53:57,920 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 09:54:47,897 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 09:54:47,898 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 09:57:42,898 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 09:57:42,899 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:08:47,599 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:08:47,599 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:08:47,983 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:08:47,984 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:09:15,854 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:09:15,855 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:09:16,194 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:09:16,195 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:00,707 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:00,708 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:00,728 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:00,729 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:12,560 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:12,561 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:12,886 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:12,887 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:28,910 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:28,911 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:28,948 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:28,949 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:56,835 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:56,836 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:10:57,103 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:10:57,104 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:11:55,548 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:11:55,548 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:11:55,770 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:11:55,771 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:13:12,936 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:13:12,936 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:13:12,968 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:13:12,969 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 10:14:25,653 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 10:14:25,654 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-02 10:55:43,032 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[WARNING] 2025-07-02 11:37:15,223 - django.request: Not Found: /
+[WARNING] 2025-07-02 11:37:15,224 - django.server: "GET / HTTP/1.1" 404 2431
+[WARNING] 2025-07-02 11:37:58,631 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 11:37:58,634 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 11:52:29,518 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 11:52:29,519 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 11:57:52,509 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 11:57:52,510 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:08:50,959 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:08:50,959 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:09:08,735 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:09:08,736 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:09:12,927 - django.request: Unauthorized: /api/expense-titles/
+[WARNING] 2025-07-02 12:09:12,927 - django.server: "POST /api/expense-titles/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:09:22,480 - django.request: Unauthorized: /api/expense-titles/
+[WARNING] 2025-07-02 12:09:22,480 - django.server: "POST /api/expense-titles/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:10:10,304 - django.request: Unauthorized: /api/expense-titles/
+[WARNING] 2025-07-02 12:10:10,304 - django.server: "POST /api/expense-titles/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:17:58,778 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:17:58,779 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:19:29,143 - django.request: Unauthorized: /api/expense-forms/
+[WARNING] 2025-07-02 12:19:29,144 - django.server: "POST /api/expense-forms/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:19:48,581 - django.request: Unauthorized: /api/expense-forms/
+[WARNING] 2025-07-02 12:19:48,582 - django.server: "POST /api/expense-forms/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:20:17,824 - django.request: Unauthorized: /api/expense-forms/
+[WARNING] 2025-07-02 12:20:17,825 - django.server: "POST /api/expense-forms/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:20:29,382 - django.request: Unauthorized: /api/expense-forms/
+[WARNING] 2025-07-02 12:20:29,383 - django.server: "POST /api/expense-forms/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:21:39,489 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:21:39,490 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:22:03,600 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:22:03,601 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:24:06,795 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:24:06,795 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:25:35,600 - django.request: Unauthorized: /api/expense-forms/10243/update_status/
+[WARNING] 2025-07-02 12:25:35,601 - django.server: "PATCH /api/expense-forms/10243/update_status/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:26:55,531 - django.request: Unauthorized: /api/expense-forms/10243/update_status/
+[WARNING] 2025-07-02 12:26:55,532 - django.server: "PATCH /api/expense-forms/10243/update_status/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:27:31,601 - django.request: Unauthorized: /api/expense-forms/10243/update_status/
+[WARNING] 2025-07-02 12:27:31,602 - django.server: "PATCH /api/expense-forms/10243/update_status/ HTTP/1.1" 401 58
+[WARNING] 2025-07-02 12:28:35,268 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:28:35,269 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-02 12:28:35,306 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-02 12:28:35,307 - django.server: "GET /logo192.png HTTP/1.1" 404 2482

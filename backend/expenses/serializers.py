@@ -9,10 +9,15 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['is_admin']
 
 class ExpenseTitleSerializer(serializers.ModelSerializer):
+    created_by_username = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = ExpenseTitle
-        fields = ['id', 'title', 'created_by', 'created_at']
-        read_only_fields = ['created_by', 'created_at']
+        fields = ['id', 'title', 'created_by', 'created_by_username', 'created_at']
+        read_only_fields = ['created_by', 'created_by_username', 'created_at']
+
+    def get_created_by_username(self, obj):
+        return obj.created_by.username if obj.created_by else None
 
 class ExpenseAttachmentSerializer(serializers.ModelSerializer):
     url = serializers.SerializerMethodField()

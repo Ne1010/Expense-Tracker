@@ -25,6 +25,7 @@ class ExpenseTitleAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_by', 'created_at')
     list_filter = ('created_by', 'created_at')
     search_fields = ('title',)
+    readonly_fields = ('created_by', 'created_at')
 
 class ExpenseFormAdminForm(forms.ModelForm):
     class Meta:

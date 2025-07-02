@@ -177,7 +177,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
           data: { attachment_id: attachmentId },
           headers: {
             'X-CSRFToken': csrftoken,
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Token ${token}`,
             'Content-Type': 'application/json'
           }
         }
@@ -244,7 +244,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
       const response = await axios.post('/api/expense-forms/', submitData, {
         headers: {
           'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Token ${token}`,
           'Content-Type': 'multipart/form-data'
         }
       });
@@ -262,7 +262,7 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
             {
               headers: {
                 'X-CSRFToken': csrftoken,
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Token ${token}`,
                 'Content-Type': 'application/json'
               }
             }

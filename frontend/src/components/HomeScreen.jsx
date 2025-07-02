@@ -241,15 +241,16 @@ const HomeScreen = () => {
     }
 
     try {
+      const token = localStorage.getItem('token');
+      const csrftoken = getCookie('csrftoken');
+      const headers = {
+        'X-CSRFToken': csrftoken,
+        'Authorization': `Token ${token}`,
+        'Content-Type': 'application/json'
+      };
       const titleResponse = await axios.post('/api/expense-titles/', {
         title: expenseTitle
-      }, {
-        headers: {
-          'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        },
-      });
+      }, { headers });
 
       if (!titleResponse.data || !titleResponse.data.id) {
         throw new Error('Failed to create expense title');
@@ -367,7 +368,7 @@ const HomeScreen = () => {
         const csrftoken = getCookie('csrftoken');
         const headers = {
           'X-CSRFToken': csrftoken,
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Token ${token}`,
           'Content-Type': 'application/json'
         };
 
@@ -536,7 +537,7 @@ const HomeScreen = () => {
                         await axios.post(`/api/expense-forms/${expenseForm.id}/send_for_approval/`, {}, {
                           headers: {
                             'X-CSRFToken': csrftoken,
-                            'Authorization': `Bearer ${token}`,
+                            'Authorization': `Token ${token}`,
                             'Content-Type': 'application/json'
                           }
                         });
@@ -603,7 +604,7 @@ const HomeScreen = () => {
                     }, {
                       headers: {
                         'X-CSRFToken': csrftoken,
-                        'Authorization': `Bearer ${token}`,
+                        'Authorization': `Token ${token}`,
                         'Content-Type': 'application/json'
                       }
                     });
@@ -654,7 +655,7 @@ const HomeScreen = () => {
                       await axios.post('/api/expense-forms/', formData, {
                         headers: {
                           'X-CSRFToken': csrftoken,
-                          'Authorization': `Bearer ${token}`,
+                          'Authorization': `Token ${token}`,
                           'Content-Type': 'multipart/form-data'
                         }
                       });
