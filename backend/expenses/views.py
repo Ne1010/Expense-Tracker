@@ -98,24 +98,6 @@ class ExpenseFormViewSet(viewsets.ModelViewSet):
             # Pass attachments through the context
             expense_form = serializer.save(attachments=attachments)
             
-            # Send notification email to admin
-            try:
-                admin_user = User.objects.filter(is_staff=True, is_superuser=True).first()
-                if admin_user and admin_user.email:
-                    expense_title = expense_form.expense_title.title
-                    submitted_by = expense_form.user.username if expense_form.user else 'A user'
-                    subject = f"New Expense Submitted: {expense_title}"
-                    body = f"A new expense titled '{expense_title}' has been submitted by {submitted_by}."
-                    send_expense_notification_email_sync(
-                        subject=subject,
-                        body=body,
-                        to_email=admin_user.email,
-                        username='Admin',
-                        from_admin=False  # From noreply
-                    )
-            except Exception as e:
-                logger.error(f"Failed to send new expense submission email: {str(e)}")
-
             # Re-serialize the instance to include all fields
             response_serializer = self.get_serializer(expense_form)
             return Response(response_serializer.data, status=status.HTTP_201_CREATED)
@@ -375,6 +357,66 @@ Login Link: http://localhost:3000/login
 
         except Exception as e:
             logger.error(f"Failed to send 'for approval' email: {str(e)}")
+            # Do not fail the request, just log the error
+        
+        serializer = self.get_serializer(forms_to_update, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['post'])
+    def revoke_approval(self, request, pk=None):
+        expense_form = self.get_object()
+        if expense_form.status != 'SEND_FOR_APPROVAL':
+            return Response({"detail": "Only expenses with 'Sent for Approval' status can be revoked."}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # Update status for all forms under the same title back to PENDING
+        title = expense_form.expense_title
+        forms_to_update = ExpenseForm.objects.filter(expense_title=title)
+        forms_to_update.update(status='PENDING', comments='')
+        
+        # Send email notification to admin about the revocation
+        try:
+            admin_user = User.objects.filter(is_staff=True, is_superuser=True).first()
+            if not admin_user or not admin_user.email:
+                logger.warning("Admin user not found or has no email, skipping revocation notification.")
+            else:
+                expense_title = title.title
+                user_name = expense_form.user.username if expense_form.user else "an unknown user"
+                
+                # Get expense details for email body
+                amount = expense_form.amount
+                currency = expense_form.currency
+                master_group = expense_form.get_master_group_display()
+                subgroup = expense_form.get_subgroup_display()
+                date = expense_form.date
+
+                subject = f"🔄 Expense Revoked from Approval: {expense_title}"
+                body = f"""
+The following expense has be revoked by {user_name}
+
+Expense Details:
+- Title: {expense_title}
+- Revoked by: {user_name}
+- Amount: {amount} {currency}
+- Category: {master_group} - {subgroup}
+- Date: {date}
+
+The expense status has been changed back to 'Pending' and is no longer available for approval/rejection.
+
+---
+This is an automated notification from the Expense Management System.
+                """.strip()
+                
+                send_expense_notification_email_sync(
+                    subject=subject,
+                    body=body,
+                    to_email=admin_user.email,
+                    username='Admin',
+                    from_admin=False  # From noreply to admin
+                )
+                logger.info(f"Sent revocation notification to admin for expense title: {expense_title}")
+
+        except Exception as e:
+            logger.error(f"Failed to send revocation email: {str(e)}")
             # Do not fail the request, just log the error
         
         serializer = self.get_serializer(forms_to_update, many=True)

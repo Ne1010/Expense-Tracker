@@ -1,7 +1,7 @@
 import environ
 import os
 from pathlib import Path
-from logging.handlers import RotatingFileHandler
+from concurrent_log_handler import ConcurrentRotatingFileHandler
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -191,66 +191,57 @@ os.makedirs(LOG_DIR, exist_ok=True)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-
     'formatters': {
         'verbose': {
-            'format': '[{levelname}] {asctime} - {name}: {message}',
-            'style': '{',
+            'format': '[%(levelname)s] %(asctime)s - %(name)s: %(message)s'
         },
     },
-
-    'filters': {
-        'info_only': {
-            '()': 'django.utils.log.CallbackFilter',
-            'callback': lambda record: record.levelno == 20,  # INFO = 20
-        },
-        'warn_and_above': {
-            '()': 'django.utils.log.CallbackFilter',
-            'callback': lambda record: record.levelno >= 30,  # WARNING and above
-        },
-    },
-
     'handlers': {
         'info_file': {
             'level': 'INFO',
-            'filters': ['info_only'],
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'info.log'),
-            'maxBytes': 2 * 1024 * 1024,
-            'backupCount': 3,
+            'maxBytes': 5 * 1024 * 1024,  # 5 MB
+            'backupCount': 5,
             'formatter': 'verbose',
         },
         'error_file': {
             'level': 'WARNING',
-            'filters': ['warn_and_above'],
-            'class': 'logging.handlers.RotatingFileHandler',
+            'class': 'concurrent_log_handler.ConcurrentRotatingFileHandler',
             'filename': os.path.join(LOG_DIR, 'error.log'),
-            'maxBytes': 2 * 1024 * 1024,
+            'maxBytes': 5 * 1024 * 1024,
             'backupCount': 5,
             'formatter': 'verbose',
         },
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        }
     },
-
     'loggers': {
         'django': {
-            'handlers': ['info_file', 'error_file'],
+            'handlers': ['info_file', 'error_file', 'console'],
             'level': 'INFO',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['error_file'],
+            'level': 'WARNING',
             'propagate': False,
         },
         'expenses.services.onedrive_service': {
-            'handlers': ['info_file', 'error_file'],
+            'handlers': ['info_file', 'error_file', 'console'],
             'level': 'INFO',
             'propagate': False,
         },
         'expenses.storage': {
-            'handlers': ['info_file', 'error_file'],
+            'handlers': ['info_file', 'error_file', 'console'],
             'level': 'INFO',
             'propagate': False,
         },
     },
-
     'root': {
-        'handlers': ['info_file', 'error_file'],
+        'handlers': ['info_file', 'error_file', 'console'],
         'level': 'INFO',
     },
 }

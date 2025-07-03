@@ -463,6 +463,75 @@ const DetailsScreen = () => {
     setAttachmentError({});
   };
 
+  const handleRevokeApproval = async () => {
+    if (!selectedTitleId) return;
+
+    const csrftoken = getCookie('csrftoken');
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      setError('Authentication token not found. Please log in again.');
+      return;
+    }
+
+    try {
+      // Find the first expense form for this title
+      const expenseForm = expenses.find(expense => 
+        expense.expense_title?.id === selectedTitleId
+      );
+      
+      if (!expenseForm) {
+        setError('No expense form found to revoke.');
+        return;
+      }
+
+      const response = await axios.post(
+        `/api/expense-forms/${expenseForm.id}/revoke_approval/`,
+        {},
+        {
+          headers: {
+            'X-CSRFToken': csrftoken,
+            'Authorization': `Token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          withCredentials: true
+        }
+      );
+
+      // Update state with backend response
+      setExpenses(prev => 
+        prev.map(expense => {
+          if (expense.expense_title?.id === selectedTitleId) {
+            return { ...expense, status: 'PENDING', comments: '' };
+          }
+          return expense;
+        })
+      );
+
+      // Update title status
+      setTitleStatus(prev => ({
+        ...prev,
+        status: 'PENDING',
+        comments: ''
+      }));
+
+      setError('');
+    } catch (error) {
+      console.error('Error revoking approval:', error.response?.data || error.message);
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to revoke approval. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else if (error.response?.status === 401) {
+        setError('Session expired. Please log in again.');
+        navigate('/login');
+      } else {
+        setError(errorMessage);
+      }
+    }
+  };
+
   const validateAmount = (value) => {
     if (value === '') {
       setAmountError('Amount is required');
@@ -1184,7 +1253,7 @@ ${expenses.map(expense => `  <expense>
                 )}
                 
                 {/* Only show add form button if status is not APPROVED */}
-                {!isAdmin && expenses.find(e => e.expense_title?.id === selectedTitleId)?.status !== 'APPROVED' && (
+                {!isAdmin && (expenses.find(e => e.expense_title?.id === selectedTitleId)?.status !== 'APPROVED') && (
                   <button
                     onClick={handleAddForm}
                     className="btn add-form-button"
@@ -1213,6 +1282,7 @@ ${expenses.map(expense => `  <expense>
                   >
                     {isAllExpanded ? 'Collapse All' : 'Expand All'}
                   </button>
+                  {/* Only show delete button for non-admin and if status is PENDING or REJECTED */}
                   {!isAdmin && (titleStatus.status === 'PENDING' || titleStatus.status === 'REJECTED') && (
                     <button
                       className="btn btn-delete"
@@ -1252,6 +1322,11 @@ ${expenses.map(expense => `  <expense>
                           <span className="date">{expense.date}</span>
                           <span className="summary-arrow">▼</span> {/* Down arrow for collapsed state */}
                         </div>
+                        {expense.status === 'SEND_FOR_APPROVAL' && !isAdmin && (
+                          <div className="status-message" style={{ fontSize: '0.8rem', textAlign: 'center', marginTop: '0.5rem', fontStyle: 'italic' }}>
+                            ⚠️ Sent for approval - Click to expand and revoke for changes
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -1488,7 +1563,20 @@ ${expenses.map(expense => `  <expense>
                             </>
                           ) : (
                             <>
-                              {expense.status !== 'APPROVED' && (
+                              {expense.status === 'SEND_FOR_APPROVAL' && (
+                                <>
+                                  <div className="status-message">
+                                    ⚠️ This expense is sent for approval. Click "Revoke" to make changes.
+                                  </div>
+                                  <button
+                                    className="btn btn-revoke"
+                                    onClick={handleRevokeApproval}
+                                  >
+                                    Revoke
+                                  </button>
+                                </>
+                              )}
+                              {expense.status !== 'APPROVED' && expense.status !== 'SEND_FOR_APPROVAL' && (
                                 <button
                                   className="btn"
                                   onClick={() => handleEditExpense(expense)}
