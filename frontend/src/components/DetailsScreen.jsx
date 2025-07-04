@@ -1154,20 +1154,24 @@ ${expenses.map(expense => `  <expense>
                       <div className="form-group">
                         <div>Status</div>
                         <div className="status-buttons">
-                          <button
-                            className={`btn-accept ${isUpdatingStatus ? 'disabled' : ''}`}
-                            onClick={() => handleStatusButtonClick('APPROVED')}
-                            disabled={isUpdatingStatus}
-                          >
-                            {isUpdatingStatus ? 'Processing...' : 'Approve'}
-                          </button>
-                          <button
-                            className={`btn-reject ${isUpdatingStatus ? 'disabled' : ''}`}
-                            onClick={() => handleStatusButtonClick('REJECTED')}
-                            disabled={isUpdatingStatus}
-                          >
-                            {isUpdatingStatus ? 'Processing...' : 'Reject'}
-                          </button>
+                          {titleStatus.status === 'PENDING' && (
+                            <>
+                              <button
+                                className={`btn-accept ${isUpdatingStatus ? 'disabled' : ''}`}
+                                onClick={() => handleStatusButtonClick('APPROVED')}
+                                disabled={isUpdatingStatus}
+                              >
+                                {isUpdatingStatus ? 'Processing...' : 'Approve'}
+                              </button>
+                              <button
+                                className={`btn-reject ${isUpdatingStatus ? 'disabled' : ''}`}
+                                onClick={() => handleStatusButtonClick('REJECTED')}
+                                disabled={isUpdatingStatus}
+                              >
+                                {isUpdatingStatus ? 'Processing...' : 'Reject'}
+                              </button>
+                            </>
+                          )}
                           <div className="export-container">
                             <button
                               className={`btn-export ${showExportDropdown ? 'active' : ''}`}
