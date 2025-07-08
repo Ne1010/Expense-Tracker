@@ -51,6 +51,15 @@ const SUBGROUPS = {
   ],
 };
 
+// Utility to robustly parse a date string to yyyy-mm-dd
+function parseToYYYYMMDD(dateStr) {
+  if (!dateStr) return new Date().toISOString().split('T')[0];
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return dateStr;
+  const d = new Date(dateStr);
+  if (!isNaN(d.getTime())) return d.toISOString().split('T')[0];
+  return new Date().toISOString().split('T')[0];
+}
+
 const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAttachments = [], expenses }) => {
   const [formData, setFormData] = useState({
     master_group: 'TRAVEL',
@@ -221,7 +230,11 @@ const ExpenseForm = ({ titleId, isAdmin, onClose, existingAttachments: initialAt
       // Add form fields
       Object.keys(formData).forEach(key => {
         if (formData[key] !== null) {
-          submitData.append(key, formData[key]);
+          if (key === 'date') {
+            submitData.append('date', parseToYYYYMMDD(formData[key]));
+          } else {
+            submitData.append(key, formData[key]);
+          }
         }
       });
       

@@ -938,9 +938,21 @@ const DetailsScreen = () => {
     setShowOneDriveSessionExpiredModal(true);
   };
 
+  // Helper function to format date as YYYY-MM-DD
+  const formatDateToYYYYMMDD = (dateString) => {
+    if (!dateString) return '';
+    try {
+      const date = new Date(dateString);
+      if (isNaN(date.getTime())) return dateString; // Return original if invalid date
+      return date.toISOString().split('T')[0]; // Returns YYYY-MM-DD format
+    } catch (error) {
+      return dateString; // Return original if parsing fails
+    }
+  };
+
   // Export functions
   const exportToCSV = (expenses, title) => {
-    const headers = ['Master Group', 'Subgroup', 'Currency', 'Amount', 'Date', 'Status', 'Comments'];
+    const headers = ['Master Group', 'Subgroup', 'Currency', 'Amount', 'Date'];
     const csvContent = [
       headers.join(','),
       ...expenses.map(expense => [
@@ -948,9 +960,7 @@ const DetailsScreen = () => {
         SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
         expense.currency,
         expense.amount,
-        expense.date,
-        STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
-        expense.comments || ''
+        formatDateToYYYYMMDD(expense.date)
       ].join(','))
     ].join('\n');
 
@@ -973,9 +983,7 @@ ${expenses.map(expense => `  <expense>
     <subgroup>${SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup}</subgroup>
     <currency>${expense.currency}</currency>
     <amount>${expense.amount}</amount>
-    <date>${expense.date}</date>
-    <status>${STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status}</status>
-    <comments>${expense.comments || ''}</comments>
+    <date>${formatDateToYYYYMMDD(expense.date)}</date>
   </expense>`).join('\n')}
 </expenses>`;
 
@@ -999,9 +1007,7 @@ ${expenses.map(expense => `  <expense>
         subgroup: SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
         currency: expense.currency,
         amount: expense.amount,
-        date: expense.date,
-        status: STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
-        comments: expense.comments || ''
+        date: formatDateToYYYYMMDD(expense.date)
       }))
     };
 
@@ -1026,9 +1032,7 @@ ${expenses.map(expense => `  <expense>
         'Subgroup': SUBGROUPS[expense.master_group]?.find(([value]) => value === expense.subgroup)?.[1] || expense.subgroup,
         'Currency': expense.currency,
         'Amount': expense.amount,
-        'Date': expense.date,
-        'Status': STATUS_OPTIONS.find(([value]) => value === expense.status)?.[1] || expense.status,
-        'Comments': expense.comments || ''
+        'Date': formatDateToYYYYMMDD(expense.date)
       }));
 
       const ws = XLSX.utils.json_to_sheet(data);

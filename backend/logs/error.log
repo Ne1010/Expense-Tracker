@@ -1,21 +1,72 @@
-[WARNING] 2025-07-04 17:16:51,141 - django.request: Not Found: /
-[WARNING] 2025-07-04 17:16:51,147 - django.server: "GET / HTTP/1.1" 404 2431
-[WARNING] 2025-07-04 17:16:51,147 - django.server: "GET / HTTP/1.1" 404 2431
-[WARNING] 2025-07-04 17:16:51,479 - django.request: Not Found: /favicon.ico
-[WARNING] 2025-07-04 17:16:51,482 - django.server: "GET /favicon.ico HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:16:51,482 - django.server: "GET /favicon.ico HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:18:14,939 - django.request: Not Found: /logo192.png
-[WARNING] 2025-07-04 17:18:14,942 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:18:14,942 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:18:59,248 - django.request: Not Found: /logo192.png
-[WARNING] 2025-07-04 17:18:59,251 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:18:59,251 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:30:24,914 - django.request: Not Found: /logo192.png
-[WARNING] 2025-07-04 17:30:24,916 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:30:24,916 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:32:55,136 - django.request: Not Found: /logo192.png
-[WARNING] 2025-07-04 17:32:55,138 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:32:55,138 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:35:30,019 - django.request: Not Found: /logo192.png
-[WARNING] 2025-07-04 17:35:30,021 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
-[WARNING] 2025-07-04 17:35:30,021 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:04:10,802 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:04:10,819 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:04:10,819 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:04:34,072 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:04:34,074 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:04:34,074 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:05:03,031 - django.request: Bad Request: /api/token/
+[WARNING] 2025-07-08 12:05:03,035 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 12:05:03,035 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 12:05:07,827 - django.request: Bad Request: /api/token/
+[WARNING] 2025-07-08 12:05:07,832 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 12:05:07,832 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 12:05:41,467 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:05:41,473 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:05:41,473 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:07:48,241 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:07:48,242 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:07:48,242 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:02,695 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:08:02,703 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:02,703 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:07,860 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:08:07,862 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:07,862 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:16,822 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:08:16,822 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:08:16,822 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:10:31,332 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:10:31,336 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:10:31,336 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 12:27:17,570 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[WARNING] 2025-07-08 12:28:20,752 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:28:20,753 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:28:20,753 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:28:25,117 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:28:25,119 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:28:25,119 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:38:58,099 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:38:58,106 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:38:58,106 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:40:05,462 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:40:05,463 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:40:05,463 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:46:13,582 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:46:13,583 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:46:13,583 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:51:10,216 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:51:10,219 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:51:10,219 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:54:50,323 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 12:54:50,326 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 12:54:50,326 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 13:08:56,996 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 13:08:56,997 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 13:08:56,997 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:29:29,734 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 14:29:29,735 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:29:29,735 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 14:34:10,377 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[WARNING] 2025-07-08 14:36:40,792 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 14:36:40,803 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:36:40,803 - django.server: "GET /logo192.png HTTP/1.1" 404 2482

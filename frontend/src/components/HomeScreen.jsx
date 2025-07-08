@@ -56,6 +56,79 @@ const SUBGROUPS = {
   ],
 };
 
+// Utility to robustly parse a date string to yyyy-mm-dd
+function parseToYYYYMMDD(dateStr) {
+  if (!dateStr) return new Date().toISOString().split('T')[0];
+  const str = String(dateStr).trim();
+  // If already in yyyy-mm-dd format, return as-is
+  if (/^\d{4}-\d{2}-\d{2}$/.test(str)) return str;
+
+  // Handle Excel numeric dates (days since 1900)
+  if (/^\d+\.?\d*$/.test(str)) {
+    const excelDate = parseFloat(str);
+    // Excel incorrectly considers 1900 as a leap year, so we need to adjust for dates after Feb 28, 1900
+    const excelEpoch = new Date(1899, 11, 30); // Dec 30, 1899
+    const date = new Date(excelEpoch.getTime() + excelDate * 24 * 60 * 60 * 1000);
+    // Check if the date is before 1900 (which would indicate an invalid Excel date)
+    if (date.getFullYear() < 1900) {
+      // If the numeric value is small (like 1 or 0), it's likely not an Excel date
+      if (excelDate < 2) {
+        return new Date().toISOString().split('T')[0]; // fallback to today
+      }
+    }
+    return date.toISOString().split('T')[0];
+  }
+
+  // Try parsing with Date object first
+  const parsedDate = new Date(str);
+  if (!isNaN(parsedDate.getTime())) {
+    return parsedDate.toISOString().split('T')[0];
+  }
+
+  // Handle various string formats
+  const formats = [
+    // dd-mm-yyyy or dd/mm/yyyy
+    /^([0-3]?\d)[-/]([0-1]?\d)[-/](\d{4})$/,
+    // mm-dd-yyyy or mm/dd/yyyy
+    /^([0-1]?\d)[-/]([0-3]?\d)[-/](\d{4})$/,
+    // yyyy-mm-dd or yyyy/mm/dd
+    /^(\d{4})[-/]([0-1]?\d)[-/]([0-3]?\d)$/,
+    // Month name formats (e.g., "Jan 01 2023", "01 Jan 2023")
+    /^([A-Za-z]{3})\s(\d{1,2}),?\s(\d{4})$/,
+    /^(\d{1,2})\s([A-Za-z]{3}),?\s(\d{4})$/
+  ];
+
+  for (const format of formats) {
+    const match = str.match(format);
+    if (match) {
+      let year, month, day;
+      if (format === formats[0]) { // dd-mm-yyyy or dd/mm/yyyy
+        [, day, month, year] = match;
+      } else if (format === formats[1]) { // mm-dd-yyyy or mm/dd/yyyy
+        [, month, day, year] = match;
+      } else if (format === formats[2]) { // yyyy-mm-dd or yyyy/mm/dd
+        [, year, month, day] = match;
+      } else if (format === formats[3]) { // "Jan 01 2023"
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        month = (monthNames.indexOf(match[1]) + 1);
+        day = match[2];
+        year = match[3];
+      } else if (format === formats[4]) { // "01 Jan 2023"
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        day = match[1];
+        month = (monthNames.indexOf(match[2])) + 1;
+        year = match[3];
+      }
+      // Pad month and day with leading zeros if needed
+      month = month.toString().padStart(2, '0');
+      day = day.toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+  }
+  // If all else fails, return today's date
+  return new Date().toISOString().split('T')[0];
+}
+
 const HomeScreen = () => {
   const navigate = useNavigate();
   const [expenseTitle, setExpenseTitle] = useState('');
@@ -342,18 +415,26 @@ const HomeScreen = () => {
 
         const transformImportedData = (data) => {
           return data.map(item => {
-            const masterGroupValue = MASTER_GROUPS.find(g => g[1] === item['Master Group'])?.[0];
+            const masterGroupValue = MASTER_GROUPS.find(g => 
+              g[1] === item['Master Group'] || g[0] === item['Master Group']
+            )?.[0];
             if (!masterGroupValue) return null;
 
-            const subgroupValue = SUBGROUPS[masterGroupValue]?.find(sg => sg[1] === item['Subgroup'])?.[0];
+            const subgroupValue = SUBGROUPS[masterGroupValue]?.find(sg => 
+              sg[1] === item['Subgroup'] || sg[0] === item['Subgroup']
+            )?.[0];
             if (!subgroupValue) return null;
+            
+            // Get the date from the item, trying different possible field names
+            const dateField = item['Date'] || item['date'] || item['DATE'] || item['Expense Date'];
+            const parsedDate = parseToYYYYMMDD(dateField);
             
             return {
               master_group: masterGroupValue,
               subgroup: subgroupValue,
-              currency: item['Currency'] || item['currency'],
-              amount: item['Amount'] || item['amount'],
-              date: item['Date'] ? new Date(item['Date']).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+              currency: item['Currency'] || item['currency'] || 'USD', // default to USD if not specified
+              amount: item['Amount'] || item['amount'] || 0,
+              date: parsedDate
             };
           }).filter(Boolean);
         };
