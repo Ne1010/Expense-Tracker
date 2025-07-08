@@ -442,7 +442,7 @@ const HomeScreen = () => {
         const transformedExpenses = transformImportedData(rawExpenses);
 
         if (transformedExpenses.length === 0) {
-          throw new Error('No valid expense data found in the file or data is malformed.');
+          throw new Error('No valid expense data found in the file or data is malformed.\n\nPlease verify that your file contains the following required fields with correct values: Master Group, Subgroup, Currency, Amount, Date.');
         }
 
         const token = localStorage.getItem('token');

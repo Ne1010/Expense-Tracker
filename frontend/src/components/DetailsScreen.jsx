@@ -1158,7 +1158,8 @@ ${expenses.map(expense => `  <expense>
                       <div className="form-group">
                         <div>Status</div>
                         <div className="status-buttons">
-                          {titleStatus.status === 'PENDING' && (
+                          {/* Only show Approve/Reject if any expense under this title is SEND_FOR_APPROVAL */}
+                          {expenses.some(e => e.expense_title?.id === selectedTitleId && e.status === 'SEND_FOR_APPROVAL') && (
                             <>
                               <button
                                 className={`btn-accept ${isUpdatingStatus ? 'disabled' : ''}`}

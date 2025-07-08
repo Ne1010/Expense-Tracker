@@ -70,3 +70,640 @@ OSError: [WinError 6] The handle is invalid
 [WARNING] 2025-07-08 14:36:40,792 - django.request: Not Found: /logo192.png
 [WARNING] 2025-07-08 14:36:40,803 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
 [WARNING] 2025-07-08 14:36:40,803 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:58:46,661 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 14:58:46,670 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:58:46,670 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:00:22,681 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:00:22,687 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:00:22,687 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:01:07,479 - django.request: Bad Request: /api/token/
+[WARNING] 2025-07-08 15:01:07,484 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 15:01:07,484 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 15:23:54,793 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:23:54,794 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:23:54,794 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:40:49,472 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:40:49,474 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:40:49,474 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 15:40:49,617 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:40:49,626 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,626 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,738 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:40:49,742 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,742 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,711 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:41:58,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,864 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:41:58,870 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,870 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[WARNING] 2025-07-08 15:41:58,911 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:41:58,912 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:41:58,912 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:42:05,318 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:42:05,328 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:42:05,328 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 15:42:05,443 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:42:05,454 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,454 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,582 - django.request: Internal Server Error: /api/expense-forms/
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pyodbc.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\views\decorators\csrf.py", line 56, in wrapper_view
+    return view_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\viewsets.py", line 125, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\mixins.py", line 46, in list
+    return Response(serializer.data)
+                    ^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 522, in to_representation
+    ret[field.field_name] = field.to_representation(attribute)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\fields.py", line 1838, in to_representation
+    return method(value)
+           ^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py", line 115, in get_attachments
+    return ExpenseAttachmentSerializer(obj.attachments.filter(deleted=False), many=True).data
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\rest_framework\serializers.py", line 687, in to_representation
+    self.child.to_representation(item) for item in iterable
+                                                   ^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 398, in __iter__
+    self._fetch_all()
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 1881, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 102, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 67, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 80, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\django\db\backends\utils.py", line 89, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Neha\OneDrive\Desktop\Billing-Site\venv\Lib\site-packages\mssql\base.py", line 621, in execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Invalid column name 'deleted_at'. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Statement(s) could not be prepared. (8180)")
+[ERROR] 2025-07-08 15:42:05,591 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,591 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[WARNING] 2025-07-08 15:42:35,051 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:42:35,052 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:42:35,052 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 15:43:01,734 - expenses.views: Error updating expense form: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot insert the value NULL into column 'deleted', table 'Billing.dbo.expenses_expenseattachment'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]The statement has been terminated. (3621)")
+[ERROR] 2025-07-08 15:43:01,737 - django.request: Internal Server Error: /api/expense-forms/10261/
+[ERROR] 2025-07-08 15:43:01,739 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 500 389
+[ERROR] 2025-07-08 15:43:01,739 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 500 389
+[ERROR] 2025-07-08 15:43:58,607 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[WARNING] 2025-07-08 15:44:48,039 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:44:48,040 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:44:48,040 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:53:53,977 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:53:53,980 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:53:53,980 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:54:25,910 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 15:54:25,911 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:54:25,911 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:58:01,253 - django.request: Bad Request: /api/token/
+[WARNING] 2025-07-08 15:58:01,255 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 15:58:01,255 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 16:01:56,129 - django.request: Not Found: /logo192.png
+[WARNING] 2025-07-08 16:01:56,131 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 16:01:56,131 - django.server: "GET /logo192.png HTTP/1.1" 404 2482

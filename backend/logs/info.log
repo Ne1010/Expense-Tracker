@@ -1802,3 +1802,1514 @@ OSError: [WinError 6] The handle is invalid
 [INFO] 2025-07-08 14:40:36,301 - django.server: "GET /admin/expenses/expensetitle/20165/change/ HTTP/1.1" 200 11953
 [INFO] 2025-07-08 14:40:36,323 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
 [INFO] 2025-07-08 14:40:36,323 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO] 2025-07-08 14:58:22,541 - django.server: "OPTIONS /api/expense-forms/?title_id=20151 HTTP/1.1" 200 0
+[INFO] 2025-07-08 14:58:22,541 - django.server: "OPTIONS /api/expense-forms/?title_id=20151 HTTP/1.1" 200 0
+[INFO] 2025-07-08 14:58:22,915 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:23,414 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:23,430 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:23,735 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:23,759 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:23,759 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:23,826 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:23,826 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:30,588 - django.server: "OPTIONS /api/expense-forms/?title_id=20121 HTTP/1.1" 200 0
+[INFO] 2025-07-08 14:58:30,588 - django.server: "OPTIONS /api/expense-forms/?title_id=20121 HTTP/1.1" 200 0
+[INFO] 2025-07-08 14:58:30,634 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:31,044 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:31,054 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:31,502 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:31,517 - django.server: "GET /api/expense-forms/?title_id=20121 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:31,517 - django.server: "GET /api/expense-forms/?title_id=20121 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:31,554 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:31,554 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:46,293 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:46,639 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:46,655 - expenses.services.onedrive_service: Token cache saved successfully
+[WARNING] 2025-07-08 14:58:46,670 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 14:58:46,670 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 14:58:47,012 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:47,033 - django.server: "GET /api/expense-forms/?title_id=20165 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:47,033 - django.server: "GET /api/expense-forms/?title_id=20165 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:47,098 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:47,110 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:47,110 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:47,409 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:47,419 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 14:58:47,896 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 14:58:47,914 - django.server: "GET /api/expense-forms/?title_id=20165 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:47,914 - django.server: "GET /api/expense-forms/?title_id=20165 HTTP/1.1" 200 1397
+[INFO] 2025-07-08 14:58:47,950 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 14:58:47,950 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[WARNING] 2025-07-08 15:00:22,687 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:00:22,687 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:01:06,609 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:01:06,609 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[WARNING] 2025-07-08 15:01:07,484 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 15:01:07,484 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[INFO] 2025-07-08 15:01:25,073 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:01:25,073 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:01:25,997 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:01:25,997 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:01:26,090 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:28,819 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:28,835 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:29,144 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:29,170 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:29,487 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:29,499 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:29,855 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:29,865 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:30,144 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:30,160 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:30,516 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:30,543 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:30,880 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:30,889 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:31,246 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:31,291 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:31,291 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:31,354 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:31,354 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:31,361 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:31,690 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:31,702 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:32,157 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:32,181 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:32,502 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:32,512 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:32,786 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:32,797 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:33,052 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:33,062 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:33,444 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:33,469 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:33,751 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:33,764 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:34,069 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:34,103 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:34,103 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:34,138 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:34,138 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:36,356 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:36,715 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:36,732 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:36,981 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:37,020 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:37,637 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:37,647 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:38,113 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:38,122 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:38,688 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:38,705 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:39,372 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:39,398 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:39,635 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:39,644 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:40,091 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:40,138 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:40,138 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:40,191 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:40,191 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:40,195 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:40,471 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:40,484 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:40,833 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:01:40,854 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:41,225 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:41,235 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:41,478 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:01:41,489 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:41,798 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:41,810 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:42,043 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:01:42,079 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:42,455 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:42,471 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:01:42,749 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:01:42,796 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:42,796 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:01:42,836 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:01:42,836 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:02:17,577 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:17,898 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:02:17,917 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:18,303 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:02:18,328 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:18,971 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:02:18,984 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:19,336 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:02:19,345 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:19,702 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:02:19,716 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:19,957 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:02:19,984 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:20,242 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:02:20,251 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:20,703 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:02:20,747 - django.server: "GET /api/expense-forms/?title_id=20121 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:02:20,747 - django.server: "GET /api/expense-forms/?title_id=20121 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:02:20,790 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:02:20,790 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:02:57,669 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:58,030 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:02:58,050 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:58,334 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:02:58,382 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:58,687 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:02:58,700 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:59,165 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:02:59,182 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:59,494 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:02:59,508 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:02:59,878 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:02:59,911 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:00,224 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:00,231 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:00,755 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:00,795 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:00,795 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:00,840 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:00,840 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:13,402 - django.server: "OPTIONS /api/csrf-token/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:13,405 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:03:13,402 - django.server: "OPTIONS /api/csrf-token/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:13,405 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:03:14,262 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:03:14,262 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:03:14,333 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:14,665 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:14,684 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:14,938 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:14,958 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:15,537 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:15,546 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:15,851 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:15,864 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:16,149 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:16,166 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:16,481 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:16,526 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:16,882 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:16,895 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:17,172 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:17,226 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:17,226 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:17,285 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:17,288 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:17,288 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:17,600 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:17,611 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:17,906 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:17,940 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:18,300 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:18,309 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:18,706 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:18,723 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:19,026 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:19,033 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:19,555 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:19,591 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:19,936 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:19,951 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:20,314 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:20,355 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:20,355 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:20,394 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:20,394 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:24,680 - django.server: "OPTIONS /api/expense-forms/?title_id=20149 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:24,680 - django.server: "OPTIONS /api/expense-forms/?title_id=20149 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:24,695 - django.server: "OPTIONS /api/expense-forms/?title_id=20149 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:24,695 - django.server: "OPTIONS /api/expense-forms/?title_id=20149 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:24,736 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:25,049 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:25,060 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:25,418 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:25,448 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:25,791 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:25,801 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:26,182 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:26,196 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:26,504 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:26,516 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:26,851 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:26,880 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:27,295 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:27,305 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:27,663 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:27,703 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:27,703 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:27,787 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:27,787 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:27,795 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:28,126 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:28,139 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:28,433 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:03:28,463 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:28,692 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:28,705 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:28,964 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:28,975 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:29,361 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:29,375 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:29,615 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:29,636 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:29,886 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:29,897 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:30,243 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:03:30,285 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:30,285 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4272
+[INFO] 2025-07-08 15:03:30,333 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:30,333 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:03:47,497 - django.server: "OPTIONS /api/expense-forms/10261/update_status/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:47,497 - django.server: "OPTIONS /api/expense-forms/10261/update_status/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:03:48,493 - expenses.services.email_service: Email sent from nehas@appglide.io to nehas@appglide.io
+[INFO] 2025-07-08 15:03:48,496 - expenses.views: Status change email sent successfully for expense: s2 - Status: REJECTED
+[INFO] 2025-07-08 15:03:48,514 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:48,869 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:48,880 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:49,298 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:03:49,310 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:49,607 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:49,619 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:03:49,937 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:03:49,945 - django.server: "PATCH /api/expense-forms/10261/update_status/ HTTP/1.1" 200 1139
+[INFO] 2025-07-08 15:03:49,945 - django.server: "PATCH /api/expense-forms/10261/update_status/ HTTP/1.1" 200 1139
+[INFO] 2025-07-08 15:04:04,321 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:04:04,321 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:04:04,350 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO] 2025-07-08 15:04:04,350 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO] 2025-07-08 15:04:23,521 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:23,786 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:23,798 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:24,081 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:24,129 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:24,451 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:24,462 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:24,767 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:24,777 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:25,201 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:25,208 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:25,445 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:25,478 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:25,754 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:25,772 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:26,018 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:26,060 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:26,060 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:26,108 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:26,108 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:26,121 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:26,384 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:26,399 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:26,876 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:26,905 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:27,157 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:27,170 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:27,455 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:27,472 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:27,728 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:27,740 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:28,016 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:28,041 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:28,330 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:28,341 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:28,729 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:28,775 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:28,775 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:28,826 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:28,826 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:33,354 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:33,713 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:33,726 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:34,075 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:34,106 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:34,396 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:34,409 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:34,723 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:34,734 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:34,993 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:35,003 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:35,299 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:35,354 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:35,625 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:35,640 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:35,895 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:35,943 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:35,943 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:36,049 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:36,056 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:36,056 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:36,329 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:36,339 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:36,592 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:04:36,613 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:36,926 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:36,938 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:37,221 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:04:37,236 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:37,525 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:37,536 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:37,809 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:04:37,844 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:38,148 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:38,158 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:04:38,442 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:04:38,499 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:38,499 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:04:38,559 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:04:38,559 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:19:40,496 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:19:40,496 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:19:42,589 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:19:42,589 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:19:46,065 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\views.py changed, reloading.
+[INFO] 2025-07-08 15:19:46,065 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\views.py changed, reloading.
+[INFO] 2025-07-08 15:19:47,906 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:19:47,906 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:19:50,500 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py changed, reloading.
+[INFO] 2025-07-08 15:19:50,500 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py changed, reloading.
+[INFO] 2025-07-08 15:19:52,634 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:19:52,634 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:23:41,875 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:23:41,875 - django.utils.autoreload: Watching for file changes with StatReloader
+[WARNING] 2025-07-08 15:23:54,794 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:23:54,794 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:23:54,836 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:55,093 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:23:55,097 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:55,351 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:23:55,394 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:55,629 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:23:55,633 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:55,857 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:23:55,863 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:56,080 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:23:56,084 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:56,385 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:23:56,418 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:56,758 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:23:56,762 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:57,120 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:23:57,166 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:23:57,166 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:23:57,214 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:23:57,214 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:23:57,217 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:57,492 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:23:57,497 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:57,820 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:23:57,831 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:58,079 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:23:58,088 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:58,296 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:23:58,304 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:58,739 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:23:58,748 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:58,991 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:23:59,022 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:59,281 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:23:59,287 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:23:59,520 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:23:59,557 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:23:59,557 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:23:59,590 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:23:59,590 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:08,643 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:24:08,643 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:24:09,063 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:24:09,063 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:24:09,102 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:09,102 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:09,116 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:09,142 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:09,142 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:09,428 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:24:09,434 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:09,715 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:24:09,728 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:10,002 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:10,008 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:10,249 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:10,254 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:10,538 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:10,544 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:10,875 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:10,887 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:11,262 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:11,266 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:11,506 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:11,528 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:24:11,528 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:24:11,559 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:11,798 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:24:11,802 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:12,018 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:24:12,034 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:12,313 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:12,317 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:12,566 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:12,575 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:12,813 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:12,817 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:13,103 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:13,118 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:13,379 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:13,385 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:13,613 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:13,635 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:24:13,635 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4291
+[INFO] 2025-07-08 15:24:15,776 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:16,048 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:16,053 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:16,547 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:16,551 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:16,832 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:16,837 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:17,130 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:17,144 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:17,375 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:17,380 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:17,601 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:17,618 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2895
+[INFO] 2025-07-08 15:24:17,618 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2895
+[INFO] 2025-07-08 15:24:17,661 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:17,661 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:17,661 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:17,919 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:17,928 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:18,193 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:18,198 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:18,439 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:18,443 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:18,685 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:18,721 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:18,968 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:18,973 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:19,226 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:24:19,252 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2895
+[INFO] 2025-07-08 15:24:19,252 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2895
+[INFO] 2025-07-08 15:24:19,283 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:19,283 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:24:30,185 - django.server: "OPTIONS /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:24:30,185 - django.server: "OPTIONS /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:24:30,443 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:30,760 - expenses.services.onedrive_service: File deleted from billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:24:30,764 - expenses.views: Successfully deleted file from OneDrive: s2/arc.png
+[INFO] 2025-07-08 15:24:30,798 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:31,041 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:31,047 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:24:31,296 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:24:31,301 - django.server: "DELETE /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 828
+[INFO] 2025-07-08 15:24:31,301 - django.server: "DELETE /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 828
+[INFO] 2025-07-08 15:25:59,195 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:25:59,658 - expenses.services.onedrive_service: File deleted from billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:25:59,664 - expenses.views: Successfully deleted file from OneDrive: s2/Appglide_logo.png
+[INFO] 2025-07-08 15:25:59,701 - django.server: "DELETE /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 498
+[INFO] 2025-07-08 15:25:59,701 - django.server: "DELETE /api/expense-forms/10261/delete_attachment/ HTTP/1.1" 200 498
+[INFO] 2025-07-08 15:38:36,007 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:38:36,007 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:38:40,000 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:38:40,000 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:40:20,766 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:40:20,766 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:40:29,922 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:40:29,922 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:40:32,386 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py changed, reloading.
+[INFO] 2025-07-08 15:40:32,386 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\serializers.py changed, reloading.
+[INFO] 2025-07-08 15:40:35,073 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:40:35,073 - django.utils.autoreload: Watching for file changes with StatReloader
+[WARNING] 2025-07-08 15:40:49,474 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:40:49,474 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 15:40:49,626 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,626 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,742 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:40:49,742 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,870 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:41:58,870 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[WARNING] 2025-07-08 15:41:58,912 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:41:58,912 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:42:02,891 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:42:02,891 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:42:02,917 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO] 2025-07-08 15:42:02,917 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[WARNING] 2025-07-08 15:42:05,328 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:42:05,328 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[ERROR] 2025-07-08 15:42:05,454 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,454 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,591 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[ERROR] 2025-07-08 15:42:05,591 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 500 225007
+[INFO] 2025-07-08 15:42:24,051 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:42:24,051 - django.utils.autoreload: C:\Users\Neha\OneDrive\Desktop\Billing-Site\backend\expenses\models.py changed, reloading.
+[INFO] 2025-07-08 15:42:30,344 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:42:30,344 - django.utils.autoreload: Watching for file changes with StatReloader
+[WARNING] 2025-07-08 15:42:35,052 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:42:35,052 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:42:35,394 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:42:35,725 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:42:35,745 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:42:35,962 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:42:35,989 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2254
+[INFO] 2025-07-08 15:42:35,989 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2254
+[INFO] 2025-07-08 15:42:36,101 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:42:36,101 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:42:36,111 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:42:36,375 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:42:36,378 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:42:36,692 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:42:36,729 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2254
+[INFO] 2025-07-08 15:42:36,729 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2254
+[INFO] 2025-07-08 15:42:36,757 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:42:36,757 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:42:59,853 - django.server: "OPTIONS /api/expense-forms/10261/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:42:59,853 - django.server: "OPTIONS /api/expense-forms/10261/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:42:59,944 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:42:59,950 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:43:00,266 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:43:00,269 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:43:00,272 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:43:00,547 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:43:00,550 - expenses.services.onedrive_service: Using folder path: billing_uploads/s2
+[INFO] 2025-07-08 15:43:00,842 - expenses.services.onedrive_service: Subfolder 's2' already exists
+[INFO] 2025-07-08 15:43:01,706 - expenses.services.onedrive_service: File uploaded to billing_uploads/s2/Appglide_logo.png
+[ERROR] 2025-07-08 15:43:01,734 - expenses.views: Error updating expense form: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Cannot insert the value NULL into column 'deleted', table 'Billing.dbo.expenses_expenseattachment'; column does not allow nulls. INSERT fails. (515) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]The statement has been terminated. (3621)")
+[ERROR] 2025-07-08 15:43:01,739 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 500 389
+[ERROR] 2025-07-08 15:43:01,739 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 500 389
+[ERROR] 2025-07-08 15:43:58,607 - asyncio: Cancelling an overlapped future failed
+future: <_OverlappedFuture pending cb=[_ProactorReadPipeTransport._loop_reading()]>
+Traceback (most recent call last):
+  File "C:\Users\Neha\AppData\Local\Programs\Python\Python312\Lib\asyncio\windows_events.py", line 72, in _cancel_overlapped
+    self._ov.cancel()
+OSError: [WinError 6] The handle is invalid
+[INFO] 2025-07-08 15:44:24,918 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:44:24,918 - django.utils.autoreload: Watching for file changes with StatReloader
+[INFO] 2025-07-08 15:44:45,366 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:44:45,366 - django.server: "GET /admin/expenses/expensetitle/ HTTP/1.1" 200 14502
+[INFO] 2025-07-08 15:44:45,390 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[INFO] 2025-07-08 15:44:45,390 - django.server: "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+[WARNING] 2025-07-08 15:44:48,040 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:44:48,040 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:46:02,531 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:46:02,531 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:46:02,973 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:46:02,973 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:46:03,016 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:03,016 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:03,036 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:03,047 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:03,047 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:03,576 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:46:03,581 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:03,879 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:46:03,912 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:04,261 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:04,267 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:04,564 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:04,580 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 3631
+[INFO] 2025-07-08 15:46:04,580 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 3631
+[INFO] 2025-07-08 15:46:04,598 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:04,871 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:46:04,876 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:05,538 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:46:05,557 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:06,454 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:06,463 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:06,990 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:07,032 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 3631
+[INFO] 2025-07-08 15:46:07,032 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 3631
+[INFO] 2025-07-08 15:46:08,527 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:08,929 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:08,938 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:09,416 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:09,435 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2235
+[INFO] 2025-07-08 15:46:09,435 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2235
+[INFO] 2025-07-08 15:46:09,462 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:09,462 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:09,475 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:09,900 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:09,905 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:12,496 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:46:12,524 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2235
+[INFO] 2025-07-08 15:46:12,524 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 2235
+[INFO] 2025-07-08 15:46:12,558 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:12,558 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:46:26,339 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:26,343 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:26,598 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:26,600 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:26,605 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:26,867 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:26,870 - expenses.services.onedrive_service: Using folder path: billing_uploads/s2
+[INFO] 2025-07-08 15:46:27,219 - expenses.services.onedrive_service: Subfolder 's2' already exists
+[INFO] 2025-07-08 15:46:27,812 - expenses.services.onedrive_service: File uploaded to billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:46:27,826 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:27,828 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:28,071 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:28,075 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:28,078 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:28,402 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:28,403 - expenses.services.onedrive_service: Subfolder 's2' found in cache
+[INFO] 2025-07-08 15:46:29,174 - expenses.services.onedrive_service: File uploaded to billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:46:29,188 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:29,194 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:29,522 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:29,524 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:29,526 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:29,756 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:29,757 - expenses.services.onedrive_service: Subfolder 's2' found in cache
+[INFO] 2025-07-08 15:46:30,365 - expenses.services.onedrive_service: File uploaded to billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:46:30,383 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:30,390 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:30,809 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:30,812 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:30,814 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:31,070 - expenses.services.onedrive_service: Folder 'billing_uploads' already exists
+[INFO] 2025-07-08 15:46:31,072 - expenses.services.onedrive_service: Subfolder 's2' found in cache
+[INFO] 2025-07-08 15:46:31,719 - expenses.services.onedrive_service: File uploaded to billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:46:31,748 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:32,068 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:46:32,074 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:32,447 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:46:32,454 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:32,863 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:46:32,871 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:33,455 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:46:33,460 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:33,972 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:46:33,977 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:34,266 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:46:34,273 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:34,605 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:46:34,609 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:46:34,874 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:46:34,876 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 200 1746
+[INFO] 2025-07-08 15:46:34,876 - django.server: "PATCH /api/expense-forms/10261/ HTTP/1.1" 200 1746
+[INFO] 2025-07-08 15:48:17,610 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:48:17,610 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:48:18,068 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:48:18,068 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:48:18,106 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:18,348 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:18,355 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:18,676 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:18,696 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:18,943 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:18,951 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:19,440 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:19,446 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:19,737 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:19,744 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:20,085 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:20,093 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:20,378 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:20,386 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:20,890 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:20,895 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:21,230 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:21,238 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:21,511 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:21,531 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:21,785 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:21,801 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:22,027 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:22,056 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:22,056 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:22,110 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:22,110 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:22,122 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:22,574 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:22,581 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:22,824 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:22,844 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,079 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:23,088 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,371 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,404 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:23,413 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,655 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:23,664 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,811 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:23,821 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:23,921 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:23,930 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,056 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:24,075 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,157 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:24,166 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,329 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:24,339 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,520 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:24,525 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,576 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:24,582 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,756 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:24,764 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:24,853 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:24,861 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,110 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:25,129 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,136 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:25,150 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,393 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:25,399 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,406 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:25,417 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,662 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:25,667 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:25,676 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:25,719 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:25,719 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:25,758 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:25,758 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:25,932 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:25,936 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:26,177 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:26,205 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:26,512 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:26,519 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:26,815 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:26,851 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:26,851 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:26,914 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:26,923 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:26,923 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:27,363 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:27,369 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:27,585 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:27,599 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:27,829 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:27,834 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:28,271 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:28,279 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:28,646 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:28,660 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:28,988 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:28,998 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:29,291 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:29,299 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:29,596 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:29,610 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:29,918 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:29,927 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:30,244 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:30,262 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:30,600 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:30,608 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:30,883 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:30,920 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:30,920 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:30,953 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:30,953 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:49,749 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:48:49,749 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:48:50,022 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:48:50,022 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:48:50,057 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:50,057 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:50,067 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:50,079 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:50,079 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:48:50,314 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:50,332 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:50,555 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:50,583 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:50,863 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:50,880 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:51,116 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:51,121 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:51,434 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:51,441 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:51,658 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:51,662 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:51,868 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:51,873 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:52,137 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:52,155 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:52,463 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:52,481 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:52,771 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:52,803 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:53,047 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:53,054 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:53,353 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:53,382 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:53,382 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:53,414 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:53,652 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:53,680 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:54,242 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:48:54,270 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:54,668 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:54,694 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:55,123 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:55,142 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:55,494 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:55,499 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:55,653 - django.server: "OPTIONS /api/expense-forms/10261/send_for_approval/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:48:55,653 - django.server: "OPTIONS /api/expense-forms/10261/send_for_approval/ HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:48:55,848 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:55,852 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:56,340 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:56,347 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:56,812 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:56,842 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:57,050 - expenses.services.email_service: Email sent from noreply@appglide.io to nehas@appglide.io
+[INFO] 2025-07-08 15:48:57,052 - expenses.views: Sent 'for approval' notification to admin for expense title: s2
+[INFO] 2025-07-08 15:48:57,088 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:57,445 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:57,449 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:57,452 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:57,457 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:57,873 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:48:57,880 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:57,900 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:48:57,911 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:58,141 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:58,158 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:58,178 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:58,182 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:58,485 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:48:58,518 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:58,518 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4898
+[INFO] 2025-07-08 15:48:58,520 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:48:58,550 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:48:59,267 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:48:59,281 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:00,144 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:00,153 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:00,573 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:00,581 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:01,001 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:01,006 - django.server: "POST /api/expense-forms/10261/send_for_approval/ HTTP/1.1" 200 1758
+[INFO] 2025-07-08 15:49:01,006 - django.server: "POST /api/expense-forms/10261/send_for_approval/ HTTP/1.1" 200 1758
+[INFO] 2025-07-08 15:49:01,031 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:01,031 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:01,085 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:01,447 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:01,450 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:02,131 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:02,517 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:02,942 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:02,945 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:03,251 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:03,257 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:03,518 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:03,526 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:03,782 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:03,788 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:04,145 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:04,171 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:04,432 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:04,437 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:04,753 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:04,756 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:04,989 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:05,025 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:05,388 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:05,392 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:05,711 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:05,742 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:05,742 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:18,249 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:18,512 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:18,542 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:18,882 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:18,897 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:19,191 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:19,196 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:19,419 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:19,426 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:19,634 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:19,658 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:19,923 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:19,939 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:20,150 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:20,154 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:20,375 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:20,407 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:21,046 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:21,051 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:21,313 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:21,326 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 3512
+[INFO] 2025-07-08 15:49:21,326 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 3512
+[INFO] 2025-07-08 15:49:21,345 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:21,348 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:21,348 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:21,577 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:21,585 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:21,814 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:21,833 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:22,648 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:22,653 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:22,894 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:22,897 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:23,115 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:23,121 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:23,396 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:23,418 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:23,663 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:23,696 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:23,973 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:23,983 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:24,359 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:24,364 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:24,825 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:24,842 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 3512
+[INFO] 2025-07-08 15:49:24,842 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 3512
+[INFO] 2025-07-08 15:49:24,867 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:24,867 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:36,872 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:49:36,872 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:49:37,124 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:49:37,124 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:49:37,178 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:37,397 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:37,403 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:37,638 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:37,654 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:37,916 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:37,938 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:38,169 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:38,177 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:38,513 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:38,517 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:38,780 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:38,787 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:39,050 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:39,071 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:39,313 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:39,317 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:39,566 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:39,574 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:39,870 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:39,909 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:40,176 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:40,183 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:40,443 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:40,472 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:40,472 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:40,494 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:40,494 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:40,517 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:40,928 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:40,935 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:41,160 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:41,202 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:41,456 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:41,482 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:41,715 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:41,721 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:41,987 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:42,008 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:42,256 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:42,262 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:42,504 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:42,508 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:42,756 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:42,782 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:42,985 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:42,992 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:43,229 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:43,266 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:43,330 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:43,480 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:43,486 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:43,619 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:43,624 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:43,718 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:43,761 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:43,761 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:43,795 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:43,795 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:43,878 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:43,929 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:44,214 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:44,218 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:44,414 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:44,441 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:44,721 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:44,728 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:44,952 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:44,974 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:45,201 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:45,205 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:45,453 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:45,461 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:45,711 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:45,737 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:46,100 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:46,140 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:46,429 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:46,451 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:46,679 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:46,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:46,719 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:46,748 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:46,753 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:46,753 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:46,957 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:46,966 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:47,507 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:49:47,546 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:47,771 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:47,776 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:48,061 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:49:48,067 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:48,330 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:48,353 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:48,675 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:49:48,682 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:48,961 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:48,990 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:49,358 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:49:49,367 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:49,562 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:49,593 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:49,877 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:49:49,918 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:50,147 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:50,154 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:49:50,370 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:49:50,399 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:50,399 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:49:50,420 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:49:50,420 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:53:53,652 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:53,971 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[WARNING] 2025-07-08 15:53:53,980 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:53:53,981 - expenses.services.onedrive_service: Token cache saved successfully
+[WARNING] 2025-07-08 15:53:53,980 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:53:54,378 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:53:54,397 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:54,727 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:53:54,732 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:54,949 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:53:54,952 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:55,181 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:53:55,186 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:55,448 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:53:55,455 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:55,698 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:53:55,703 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:55,923 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:53:55,929 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:56,166 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:53:56,192 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:56,387 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:53:56,397 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:56,625 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:53:56,633 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:56,846 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:53:56,869 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:53:56,869 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:53:56,892 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:53:56,892 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:53:56,897 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:57,122 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:53:57,127 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:57,368 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:53:57,402 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:57,679 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:53:57,683 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:57,969 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:53:57,975 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:58,281 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:53:58,287 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:58,567 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:53:58,572 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:58,804 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:53:58,829 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:59,095 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:53:59,111 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:59,326 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:53:59,358 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:59,600 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:53:59,635 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:53:59,872 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:53:59,888 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:00,146 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:00,171 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:00,171 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:00,194 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:00,194 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[WARNING] 2025-07-08 15:54:25,911 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 15:54:25,911 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 15:54:25,916 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:26,221 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:26,225 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:26,546 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:26,580 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:26,852 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:26,856 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:27,085 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:27,090 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:27,405 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:27,409 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:27,666 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:27,672 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:27,896 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:27,924 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:28,185 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:28,189 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:28,437 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:28,446 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:28,756 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:28,770 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:29,120 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:29,128 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:29,453 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:29,480 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:29,480 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:29,525 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:29,527 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:29,527 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:30,115 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:30,120 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:30,460 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:30,472 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:30,783 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:30,787 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:31,019 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:31,027 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:31,241 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:31,245 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:31,456 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:31,459 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:31,763 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:31,767 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:32,007 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:32,013 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:32,238 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:32,242 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:32,499 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:32,510 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:32,740 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:32,744 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:33,091 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:33,110 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:33,110 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:33,134 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:33,134 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:46,518 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:46,752 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:46,782 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:47,159 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:47,172 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:47,431 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:47,451 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:47,751 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:47,756 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:48,042 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:48,048 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:48,354 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:48,375 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:48,634 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:48,641 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:48,907 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:48,937 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:49,190 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:49,194 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:49,530 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:49,560 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:49,754 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:49,760 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:49,986 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:50,005 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:50,005 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:50,038 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:50,057 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:50,057 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:50,262 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:50,269 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:50,640 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:54:50,651 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:50,919 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:50,923 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:51,269 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:54:51,273 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:51,807 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:51,812 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:52,023 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:54:52,027 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:52,244 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:52,248 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:52,553 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:54:52,557 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:52,774 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:52,779 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:53,018 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:54:53,032 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:53,358 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:53,369 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:54:53,658 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:54:53,688 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:53,688 - django.server: "GET /api/expense-forms/?title_id=20149 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:54:53,723 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:54:53,723 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:09,411 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:09,674 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:09,681 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:09,933 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:09,944 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:10,152 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:10,157 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:10,396 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:10,400 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:10,642 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:10,646 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:10,890 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:10,897 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:11,127 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:11,131 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:11,378 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:11,382 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:11,657 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:11,661 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:11,921 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:11,938 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:12,318 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:12,324 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:12,570 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:12,647 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:12,647 - django.server: "GET /api/expense-forms/?title_id=20151 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:12,683 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:12,683 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:20,444 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:20,664 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:20,670 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:20,942 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:20,956 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:21,304 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:21,313 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:21,550 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:21,556 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:21,816 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:21,821 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:22,060 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:22,064 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:22,416 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:22,419 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:22,769 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:22,775 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:23,037 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:23,051 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:23,407 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:23,418 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:23,680 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:23,689 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:24,074 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:24,109 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:24,109 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:24,162 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:24,162 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:24,162 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:24,400 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:24,404 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:24,631 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:24,653 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:24,898 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:24,903 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:25,125 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:25,134 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:25,510 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:25,519 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:25,791 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:25,796 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,050 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:26,055 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,302 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:26,311 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,588 - django.server: "OPTIONS /api/expense-forms/?title_id=20152 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:55:26,590 - django.server: "OPTIONS /api/expense-forms/?title_id=20152 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:55:26,588 - django.server: "OPTIONS /api/expense-forms/?title_id=20152 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:55:26,590 - django.server: "OPTIONS /api/expense-forms/?title_id=20152 HTTP/1.1" 200 0
+[INFO] 2025-07-08 15:55:26,614 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,692 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:26,697 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,856 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:26,861 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:26,943 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:26,956 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:27,109 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:27,121 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:27,221 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:27,227 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:27,348 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:27,352 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:27,535 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:27,573 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:27,573 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:27,600 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:27,600 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:28,245 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:28,254 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:28,563 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:28,567 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:28,877 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:28,883 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:29,110 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:29,116 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:29,329 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:29,338 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:29,593 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:29,608 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:29,890 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:29,903 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:30,165 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:30,172 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:30,401 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:30,442 - django.server: "GET /api/expense-forms/?title_id=20152 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:30,442 - django.server: "GET /api/expense-forms/?title_id=20152 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:30,488 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:30,489 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:30,488 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:30,754 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:30,763 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:31,037 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:55:31,056 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:31,371 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:31,379 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:31,686 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:55:31,690 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:31,997 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:32,006 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:32,356 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:55:32,363 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:32,607 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:32,615 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:32,914 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:55:32,922 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:33,164 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:33,172 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:33,501 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:55:33,521 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:33,754 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:33,762 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:55:34,061 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:55:34,083 - django.server: "GET /api/expense-forms/?title_id=20152 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:34,083 - django.server: "GET /api/expense-forms/?title_id=20152 HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:55:34,103 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:55:34,103 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:58:00,824 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:58:00,824 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[WARNING] 2025-07-08 15:58:01,255 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[WARNING] 2025-07-08 15:58:01,255 - django.server: "POST /api/token/ HTTP/1.1" 400 68
+[INFO] 2025-07-08 15:58:11,921 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:58:11,921 - django.server: "GET /api/csrf-token/ HTTP/1.1" 200 81
+[INFO] 2025-07-08 15:58:12,366 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:58:12,366 - django.server: "POST /api/token/ HTTP/1.1" 200 52
+[INFO] 2025-07-08 15:58:12,412 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:58:12,412 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:58:12,457 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:58:12,461 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:12,457 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 15:58:12,834 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:58:12,842 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:13,160 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:58:13,179 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:13,501 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:58:13,510 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:14,206 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:58:14,216 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:14,488 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:58:14,497 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:14,720 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:58:14,728 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:14,968 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:58:14,974 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:15,377 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:58:15,386 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:15,634 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:58:15,644 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:15,951 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:58:15,968 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:16,206 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:58:16,213 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:16,551 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:58:16,580 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:58:16,580 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:58:16,609 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:16,919 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:58:16,923 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:17,197 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 15:58:17,210 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:17,541 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:58:17,546 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:17,819 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 15:58:17,827 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:18,053 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:58:18,063 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:18,316 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 15:58:18,327 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:18,610 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:58:18,618 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:18,839 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 15:58:18,843 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:19,055 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:58:19,063 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:19,317 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 15:58:19,336 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:19,716 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:58:19,728 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 15:58:20,051 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 15:58:20,089 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 15:58:20,089 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 16:01:55,721 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 16:01:55,725 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:55,721 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 16:01:55,747 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 16:01:55,747 - django.server: "GET /api/expense-titles/ HTTP/1.1" 200 638
+[INFO] 2025-07-08 16:01:55,975 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 16:01:55,981 - expenses.services.onedrive_service: Token cache saved successfully
+[WARNING] 2025-07-08 16:01:56,131 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[WARNING] 2025-07-08 16:01:56,131 - django.server: "GET /logo192.png HTTP/1.1" 404 2482
+[INFO] 2025-07-08 16:01:56,233 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 16:01:56,246 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:56,457 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 16:01:56,462 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:56,715 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 16:01:56,731 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:56,994 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 16:01:56,999 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:57,231 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 16:01:57,285 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:57,543 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 16:01:57,567 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:57,814 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 16:01:57,822 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:58,094 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 16:01:58,098 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:58,314 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 16:01:58,323 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:58,540 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 16:01:58,546 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:58,750 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 16:01:58,777 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 16:01:58,777 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 16:01:58,797 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:59,011 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 16:01:59,038 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:59,273 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/Vancouver trip/cdc.jpg
+[INFO] 2025-07-08 16:01:59,308 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:59,522 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 16:01:59,553 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:01:59,766 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/Appglide_logo.png
+[INFO] 2025-07-08 16:01:59,789 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:00,035 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 16:02:00,040 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:00,316 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc.png
+[INFO] 2025-07-08 16:02:00,321 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:00,626 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 16:02:00,632 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:00,878 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc2.png
+[INFO] 2025-07-08 16:02:00,905 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:01,139 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 16:02:01,144 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:01,409 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s2/arc3.png
+[INFO] 2025-07-08 16:02:01,450 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:01,650 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 16:02:01,658 - expenses.services.onedrive_service: Token cache saved successfully
+[INFO] 2025-07-08 16:02:01,893 - expenses.services.onedrive_service: File URL retrieved for billing_uploads/s1/arcc.png
+[INFO] 2025-07-08 16:02:01,914 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
+[INFO] 2025-07-08 16:02:01,914 - django.server: "GET /api/expense-forms/ HTTP/1.1" 200 4908
