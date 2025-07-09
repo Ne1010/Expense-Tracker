@@ -642,7 +642,7 @@ const HomeScreen = () => {
                       setCopyError('');
                     }}
                   >
-                    📋 Copy
+                    Copy
                   </button>
                 )}
               </div>

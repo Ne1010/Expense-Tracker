@@ -103,6 +103,11 @@ const DetailsScreen = () => {
   const [showExportDropdown, setShowExportDropdown] = useState(false);
   const [exportingFormat, setExportingFormat] = useState('');
   const [attachmentError, setAttachmentError] = useState({});
+  const [copyModalForTitle, setCopyModalForTitle] = useState(null);
+  const [copyNewTitle, setCopyNewTitle] = useState('');
+  const [copying, setCopying] = useState(false);
+  const [copyError, setCopyError] = useState('');
+  const [copyingForm, setCopyingForm] = useState(false);
 
   useEffect(() => {
     const isUserAdmin = localStorage.getItem('username') === 'admin';
@@ -1087,6 +1092,56 @@ ${expenses.map(expense => `  <expense>
     }
   };
 
+  // Unified function to refresh all relevant data
+  const refreshAllData = async () => {
+    await fetchData(selectedTitleId);
+  };
+
+  // Function to copy an individual expense form within the same title
+  const handleCopyForm = async (expense) => {
+    if (!selectedTitleId) return;
+
+    setCopyingForm(true);
+    try {
+      const token = localStorage.getItem('token');
+      const csrftoken = getCookie('csrftoken');
+      
+      const formData = new FormData();
+      formData.append('master_group', expense.master_group);
+      formData.append('subgroup', expense.subgroup);
+      formData.append('amount', expense.amount);
+      formData.append('currency', expense.currency);
+      formData.append('date', expense.date);
+      formData.append('expense_title_id', selectedTitleId);
+      formData.append('status', 'PENDING');
+      formData.append('comments', '');
+
+      const response = await axios.post('/api/expense-forms/', formData, {
+        headers: {
+          'X-CSRFToken': csrftoken,
+          'Authorization': `Token ${token}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+
+      // Refresh data to show the new form
+      await refreshAllData();
+      setError('');
+    } catch (error) {
+      console.error('Error copying form:', error.response?.data || error.message);
+      const errorMessage = error.response?.data?.detail || error.response?.data?.message || error.message || 'Failed to copy form. Please try again.';
+      
+      // Check if it's a OneDrive authentication error
+      if (isOneDriveAuthError(errorMessage)) {
+        handleOneDriveAuthError(errorMessage);
+      } else {
+        setError(errorMessage);
+      }
+    } finally {
+      setCopyingForm(false);
+    }
+  };
+
   if (loading) return <div className="container">Loading...</div>;
   if (error) return <div className="container error-message">{error}</div>;
 
@@ -1128,6 +1183,7 @@ ${expenses.map(expense => `  <expense>
           </div>
         </div>
         <div className="logout-btn-wrapper">
+          <button onClick={() => navigate('/home')} className="btn btn-home">Home</button>
           <button onClick={handleLogout} className="btn">Logout</button>
         </div>
       </div>
@@ -1145,6 +1201,54 @@ ${expenses.map(expense => `  <expense>
                 {(titleStatus.comments && titleStatus.status !== 'PENDING' && titleStatus.status !== 'SEND_FOR_APPROVAL') && (
                   <div className="title-comments">
                     {titleStatus.comments}
+                  </div>
+                )}
+                {/* Add Send for Approval and Copy buttons for non-admin users */}
+                {!isAdmin && (
+                  <div className="title-action-buttons">
+                    {titleStatus.status === 'PENDING' && (
+                      <button
+                        className="btn btn-secondary"
+                        style={{ marginLeft: '0.5rem', background: '#888', color: '#fff' }}
+                        onClick={async e => {
+                          e.stopPropagation();
+                          try {
+                            const token = localStorage.getItem('token');
+                            const csrftoken = getCookie('csrftoken');
+                            // Find the first expense form for this title
+                            const expenseForm = expenses.find(exp => exp.expense_title?.id === selectedTitleId);
+                            if (!expenseForm) {
+                              setError('No expense form found to send for approval.');
+                              return;
+                            }
+                            await axios.post(`/api/expense-forms/${expenseForm.id}/send_for_approval/`, {}, {
+                              headers: {
+                                'X-CSRFToken': csrftoken,
+                                'Authorization': `Token ${token}`,
+                                'Content-Type': 'application/json'
+                              }
+                            });
+                            await refreshAllData();
+                          } catch (err) {
+                            setError('Failed to send for approval. Please try again.');
+                          }
+                        }}
+                      >
+                        Send for Approval
+                      </button>
+                    )}
+                    <button
+                      className="btn btn-copy"
+                      style={{ marginLeft: '0.5rem' }}
+                      onClick={e => {
+                        e.stopPropagation();
+                        setCopyModalForTitle(selectedTitleId);
+                        setCopyNewTitle('');
+                        setCopyError('');
+                      }}
+                    >
+                      Copy
+                    </button>
                   </div>
                 )}
               </div>
@@ -1267,7 +1371,7 @@ ${expenses.map(expense => `  <expense>
                     onClick={handleAddForm}
                     className="btn add-form-button"
                   >
-                    ➕ Add Form
+                    ➕ Add Expense
                   </button>
                 )}
 
@@ -1586,12 +1690,21 @@ ${expenses.map(expense => `  <expense>
                                 </>
                               )}
                               {expense.status !== 'APPROVED' && expense.status !== 'SEND_FOR_APPROVAL' && (
-                                <button
-                                  className="btn"
-                                  onClick={() => handleEditExpense(expense)}
-                                >
-                                  Edit Form
-                                </button>
+                                <>
+                                  <button
+                                    className="btn btn-copy-form"
+                                    onClick={() => handleCopyForm(expense)}
+                                    disabled={copyingForm}
+                                  >
+                                    {copyingForm ? 'Copying...' : 'Copy Form'}
+                                  </button>
+                                  <button
+                                    className="btn"
+                                    onClick={() => handleEditExpense(expense)}
+                                  >
+                                    Edit Form
+                                  </button>
+                                </>
                               )}
                             </>
                           )}
@@ -1757,6 +1870,127 @@ ${expenses.map(expense => `  <expense>
             >
               Reconnect to OneDrive
             </button>
+          </div>
+        </div>
+      )}
+
+      {copyModalForTitle && (
+        <div className="status-message-callout">
+          <div className="callout-content">
+            <h3>Copy Expense</h3>
+            <div className="form-group" style={{ width: '100%' }}>
+              <label>New Expense Title</label>
+              <input
+                type="text"
+                value={copyNewTitle}
+                onChange={e => setCopyNewTitle(e.target.value)}
+                placeholder="Enter new expense title"
+              />
+            </div>
+            {copyError && <div className="error-message">{copyError}</div>}
+            <div className="form-actions" style={{ justifyContent: 'center' }}>
+              <button
+                className="btn btn-primary"
+                onClick={async () => {
+                  if (!copyNewTitle.trim()) {
+                    setCopyError('Please enter a new title');
+                    return;
+                  }
+                  setCopying(true);
+                  setCopyError('');
+                  let failedForms = [];
+                  try {
+                    const token = localStorage.getItem('token');
+                    const csrftoken = getCookie('csrftoken');
+                    // 1. Create new title
+                    const titleResponse = await axios.post('/api/expense-titles/', {
+                      title: copyNewTitle.trim()
+                    }, {
+                      headers: {
+                        'X-CSRFToken': csrftoken,
+                        'Authorization': `Token ${token}`,
+                        'Content-Type': 'application/json'
+                      }
+                    });
+                    const newTitleId = titleResponse.data.id;
+                    // 2. Get all forms from source title
+                    const sourceForms = expenses.filter(exp => exp.expense_title?.id === copyModalForTitle);
+                    // 3. Copy all forms to new title, including attachments
+                    await Promise.all(sourceForms.map(async (form) => {
+                      const formData = new FormData();
+                      formData.append('master_group', form.master_group);
+                      formData.append('subgroup', form.subgroup);
+                      formData.append('amount', form.amount);
+                      formData.append('currency', form.currency);
+                      formData.append('date', form.date);
+                      formData.append('expense_title_id', newTitleId);
+                      formData.append('status', 'PENDING');
+                      formData.append('comments', '');
+                      let attachmentSuccess = 0;
+                      if (form.attachments && form.attachments.length > 0) {
+                        await Promise.all(form.attachments.map(async (att) => {
+                          try {
+                            // Use backend proxy endpoint instead of direct OneDrive URL
+                            const originalFileName = att.url.split('/').pop();
+                            const safeFilename = encodeURIComponent(originalFileName);
+                            const safeTitle = encodeURIComponent(form.expense_title.title || '');
+                            const downloadUrl = `/api/attachments/${safeTitle}/${safeFilename}`;
+                            const response = await fetch(downloadUrl, {
+                              method: 'GET',
+                              headers: {
+                                Authorization: `Token ${token}`,
+                              },
+                              credentials: 'include',
+                            });
+                            if (!response.ok) throw new Error('Attachment download failed from backend');
+                            const blob = await response.blob();
+                            formData.append('attachments', blob, originalFileName);
+                            attachmentSuccess++;
+                          } catch (err) {
+                            console.error('Failed to copy attachment:', err);
+                          }
+                        }));
+                      }
+                      // If there were attachments but all failed, record this form
+                      if ((form.attachments && form.attachments.length > 0) && attachmentSuccess === 0) {
+                        failedForms.push(form);
+                      }
+                      // Submit the form with (possibly partial) attachments
+                      await axios.post('/api/expense-forms/', formData, {
+                        headers: {
+                          'X-CSRFToken': csrftoken,
+                          'Authorization': `Token ${token}`,
+                          'Content-Type': 'multipart/form-data'
+                        }
+                      });
+                    }));
+                    setCopyModalForTitle(null);
+                    setCopyNewTitle('');
+                    setCopyError(failedForms.length > 0 ? `Some forms were copied without attachments due to download errors. (${failedForms.length} forms affected)` : '');
+                    setCopying(false);
+                    navigate('/details', { state: { selectedTitleId: newTitleId } });
+                  } catch (error) {
+                    console.error('Copy error:', error);
+                    setCopyError('Failed to copy expense. Please try again.');
+                    setCopying(false);
+                  }
+                }}
+                disabled={copying || !copyNewTitle.trim()}
+              >
+                {copying ? 'Copying...' : 'Copy Expense'}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setCopyModalForTitle(null);
+                  setCopyNewTitle('');
+                  setCopyError('');
+                }}
+                disabled={copying}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}

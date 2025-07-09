@@ -463,6 +463,34 @@ select:focus {
 
 .logout-btn-wrapper {
   margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.btn-home {
+  background-color: var(--highlight-color);
+  color: var(--text-color);
+}
+
+.btn-home:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.btn-copy-form {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-copy-form:hover:not(:disabled) {
+  background-color: #f57c00;
+  transform: translateY(-2px);
+}
+
+.btn-copy-form:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .search-container {
@@ -747,6 +775,18 @@ input[type="file"]::-webkit-file-upload-button:hover {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  margin-top: 0.5rem;
+}
+
+.title-status-display .title-action-buttons {
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.title-status-display .title-action-buttons .btn {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  margin: 0.2rem;
 }
 
 .btn-add {
@@ -1463,6 +1503,13 @@ input[type="file"]::-webkit-file-upload-button:hover {
     top: 1rem;
     right: 1rem;
     order: 1;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .logout-btn-wrapper .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
   }
   
   .logo-container {
@@ -1475,6 +1522,31 @@ input[type="file"]::-webkit-file-upload-button:hover {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+  }
+  
+  .title-status-display .title-action-buttons {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .title-status-display .title-action-buttons .btn {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .form-actions .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+    margin: 0.3rem;
+  }
+  
+  .form-actions .btn-copy-form {
+    order: 1;
+  }
+  
+  .form-actions .btn:not(.btn-copy-form) {
+    order: 2;
   }
 }
 
